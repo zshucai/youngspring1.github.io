@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>生活 on youngspring1 Blog</title>
-    <link>youngspring1.github.io/categories/%E7%94%9F%E6%B4%BB/</link>
+    <link>http://youngspring1.github.io/categories/%E7%94%9F%E6%B4%BB/</link>
     <description>Recent content in 生活 on youngspring1 Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
     <lastBuildDate>Mon, 29 Feb 2016 21:49:44 +0800</lastBuildDate>
-    <atom:link href="youngspring1.github.io/categories/%E7%94%9F%E6%B4%BB/feed/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://youngspring1.github.io/categories/%E7%94%9F%E6%B4%BB/feed/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>2016 02 29 life</title>
-      <link>/youngspring1.github.io/post/2016-02-29-life/</link>
+      <link>http://youngspring1.github.io/post/2016-02-29-life/</link>
       <pubDate>Mon, 29 Feb 2016 21:49:44 +0800</pubDate>
       
-      <guid>/youngspring1.github.io/post/2016-02-29-life/</guid>
+      <guid>http://youngspring1.github.io/post/2016-02-29-life/</guid>
       <description>&lt;p&gt;生活&lt;/p&gt;
 </description>
     </item>
