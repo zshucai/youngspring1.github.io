@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>first - 行行重行行</title>
+  <title>利用hugo搭建个人博客入门教程 - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<meta name="description" content="Hello Hugo aaa bbb ccc">
+<meta name="keywords" content="hugo,入门教程,">
+<meta name="description" content="hugo搭建个人博客入门教程">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="first - 行行重行行">
-<meta itemprop="description" content="Hello Hugo aaa bbb ccc">
+<meta itemprop="name" content="利用hugo搭建个人博客入门教程 - 行行重行行">
+<meta itemprop="description" content="hugo搭建个人博客入门教程">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="first - 行行重行行" />
+<meta property="og:title" content="利用hugo搭建个人博客入门教程 - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/post/first/" />
+<meta property="og:url" content="http://youngspring1.github.io/post/20160306-hellohugo/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="Hello Hugo aaa bbb ccc">
+<meta property="og:description" content="hugo搭建个人博客入门教程">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="first - 行行重行行">
-<meta name="twitter:description" content="Hello Hugo aaa bbb ccc">
+<meta name="twitter:title" content="利用hugo搭建个人博客入门教程 - 行行重行行">
+<meta name="twitter:description" content="hugo搭建个人博客入门教程">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/post/first/">
-  <link rel='shortlink' href="http://youngspring1.github.io/post/first/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/post/20160306-hellohugo/">
+  <link rel='shortlink' href="http://youngspring1.github.io/post/20160306-hellohugo/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -164,6 +164,10 @@
             <div class="page-title pad group">
               <ul class="meta-single group">
                 
+                <li class="category">
+                  <a href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/" rel="category tag">新知</a>
+                </li>
+                
               </ul>
             </div>
 
@@ -173,12 +177,12 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">first</h1>
+                  <h1 class="post-title">利用hugo搭建个人博客入门教程</h1>
 
                   <p class="post-byline">
-                    by  · 2016年02月28日 · 5 Words ·
-                    ~1min reading time |
-                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/first.md"
+                    by  · 2016年03月06日 · 1484 Words ·
+                    ~3min reading time |
+                    <a href="https://github.com/coderzh/coderzh-hugo-blog/blob/master/content/post/20160306-hellohugo.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
@@ -187,15 +191,168 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p>##起因<br />
+之前看过腾讯工程师写的《Web全站工程师的自我修养》<sup class="footnote-ref" id="fnref:8b23c249a00043d9721462f81d1942c6:1"><a rel="footnote" href="#fn:8b23c249a00043d9721462f81d1942c6:1">1</a></sup>一书，萌生了搭建一个博客的想法，用来记录学习记录和生活感受。先用免费的github，挂载静态页面试试吧。原来计划使用道听途说的Jekyll，然后一不小心看到了这篇文章<a href="http://blog.coderzh.com/2015/08/29/hugo/">http://blog.coderzh.com/2015/08/29/hugo/</a>，各种好:<br />
+1.只有一个二进制文件。<br />
+2.可以将宇宙标准MarkDown格式的文章自动转换为静态网页。<br />
+3.内置Web服务器，可以立即在本地查看修改结果。<br />
+那么就用hugo<sup class="footnote-ref" id="fnref:8b23c249a00043d9721462f81d1942c6:2"><a rel="footnote" href="#fn:8b23c249a00043d9721462f81d1942c6:2">2</a></sup>吧。有空再试试hexo<sup class="footnote-ref" id="fnref:8b23c249a00043d9721462f81d1942c6:3"><a rel="footnote" href="#fn:8b23c249a00043d9721462f81d1942c6:3">3</a></sup>。</p>
 
-<h2 id="hello-hugo:e8fb9c67eba912c72729806db31eaa1b">Hello Hugo</h2>
+<p>##安装hugo<br />
+我是在mac上通过tar压缩文件安装的。<br />
+其他方法可以参考官方文档。<br />
+1.下载<br />
+&emsp;下载地址：<a href="https://github.com/spf13/hugo/releases">https://github.com/spf13/hugo/releases</a><br />
+&emsp;我要的mac版，文件名长这样：hugo_X.YY_darwin_amd64.zip<br />
+2.解压<br />
+&emsp;解压后是这样：</p>
+
+<pre><code>$ ls -l   
+total 31696
+-rw-r--r--@ 1 username  staff     10480  2 28 21:38 LICENSE.md
+-rw-r--r--@ 1 username  staff      7694  2 28 21:38 README.md
+-rwxr-xr-x@ 1 username  staff  16201084  2 28 21:38 hugo_0.15_darwin_amd64
+</code></pre>
+
+<p>&emsp;试一试：</p>
+
+<pre><code>$ ./hugo_0.15_darwin_amd64 version   
+Hugo Static Site Generator v0.15 BuildDate: 2016-02-28T21:38:32+08:00   
+</code></pre>
+
+<p>3.创建链接文件<br />
+&emsp;这么长的命令，用起来多不方便啊，我们简化一下。</p>
+
+<pre><code>$ ln -s /fullpath/fullpath/hugo_0.15_darwin_amd64 hugo
+$ ls -l
+total 31696
+-rw-r--r--@ 1 username  staff     10480  2 28 21:38 LICENSE.md
+-rw-r--r--@ 1 username  staff      7694  2 28 21:38 README.md
+lrwxr-xr-x  1 username  staff        54  2 28 22:05 hugo -&gt; /fullpath/fullpath/hugo_0.15_darwin_amd64
+-rwxr-xr-x@ 1 username  staff  16201084  2 28 21:38 hugo_0.15_darwin_amd64
+</code></pre>
+
+<p>&emsp;亲测有效：</p>
+
+<pre><code>$ ./hugo version   
+Hugo Static Site Generator v0.15 BuildDate: 2016-02-28T21:38:32+08:00   
+</code></pre>
+
+<p>4.加入PATH<br />
+&emsp;这还不够，我们要加到PATH里去。</p>
+
+<pre><code>$ which hugo
+/fullpath/fullpath/hugo
+$ vi ~/.bash_profile
+</code></pre>
+
+<p>&emsp;加入这一行：</p>
+
+<pre><code>export PATH=$PATH:/fullpath/fullpath
+</code></pre>
+
+<p>&emsp;这样你应该可以在任意位置运行hugo命令了：</p>
+
+<pre><code>$ hugo version   
+Hugo Static Site Generator v0.15 BuildDate: 2016-02-28T21:38:32+08:00   
+</code></pre>
+
+<p>##生成本地站点<br />
+安装好hugo之后，就可以很轻松地生成本地站点啦：</p>
+
+<pre><code>$ hugo new site mysite
+</code></pre>
+
+<p>hugo会在当前的目录下，生成mysite这个目录，cd进去，目录结构如下</p>
+
+<pre><code>archetypes/
+content/
+layouts/
+static/
+config.toml
+</code></pre>
+
+<p>其中content是MarkDown文章目录，layouts存放的是网站的模版文件，static存放的是图片、css、js资源等。config.toml是网站的配置文件，你也可以换成yaml、json等。</p>
+
+<p>##创建文章<br />
+在mysite目录下，创建一个[关于]页面：</p>
+
+<pre><code>$ cd mysite
+$ hugo new about.md
+</code></pre>
+
+<p>内容自己填呗。
+再创建一个文章页面：</p>
+
+<pre><code>$ hugo new post/2016-03-06-first.md
+</code></pre>
+
+<p>内容自己填。<br />
+想看看效果么？等等，还需要导入个主题。</p>
+
+<p>##导入主题<br />
+还是在在mysite目录下，创建一个文件夹，我们随便clone一个主题下来。<br />
+我在<a href="https://themes.gohugo.io">https://themes.gohugo.io</a>上没有找到喜欢的主题，就直接拉了上面原文作者的主题。</p>
+
+<pre><code>$ mkdir themes
+$ cd themes
+$ git clone https://github.com/coderzh/hugo-rapid-theme.git
+$ cd ..
+</code></pre>
+
+<p>（主题里面包含了作者的信息，如果需要使用，记得修改。）</p>
+
+<p>##调试<br />
+现在终于可以调试了。</p>
+
+<pre><code>$ hugo server --theme=hugo-rapid-theme --buildDrafts --watch
+</code></pre>
+
+<p>浏览器里打开：<a href="http://localhost:1313">http://localhost:1313</a><br />
+选项watch会让服务器自动检测文章的改动，自动刷新浏览器，非常方便。</p>
+
+<p>##发布<br />
+在本地自己偷着看有什么意思，发布到github上去吧。<br />
+1.生成静态页面</p>
+
+<pre><code>$ hugo --theme=hugo-rapid-theme --buildDrafts --baseUrl=&quot;http://youngspring1.github.io&quot;
+</code></pre>
+
+<p>&emsp;这里的url要替换成你自己的。<br />
+&emsp;所有的静态页面都会生成到public目录。</p>
+
+<p>2.创建Repository<br />
+&emsp;在github上创建一个Repository，名为&rdquo;youngspring1.github.io&rdquo;。<br />
+&emsp;同样，不认识的名字要替换成你自己的。</p>
+
+<p>3.提交
+&emsp;把public目录下的内容，全部提交到刚刚创建的Repository中。</p>
+
+<pre><code>$ cd public
+$ git init
+$ git remote add origin https://github.com/youngspring1/youngspring1.github.io.git
+$ git add -A
+$ git commit -m &quot;first commit&quot;
+$ git push -u origin master
+</code></pre>
+
+<p>&emsp;在浏览器中访问<a href="http://youngspring1.github.io">http://youngspring1.github.io</a></p>
+
+<p>##参考<br />
+原文作者<a href="http://blog.coderzh.com">coderzh</a>搭建的中文的hugo站点：<a href="http://www.gohugo.org/">http://www.gohugo.org/</a></p>
+<div class="footnotes">
+
+<hr />
 
 <ol>
-<li>aaa</li>
-<li>bbb</li>
-<li>ccc</li>
+<li id="fn:8b23c249a00043d9721462f81d1942c6:1">余果：<a href="http://www.amazon.cn/Web全栈工程师的自我修养-余果/dp/B0141BI0D2/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1457233956&amp;sr=1-1">《Web全站工程师的自我修养》</a>
+ <a class="footnote-return" href="#fnref:8b23c249a00043d9721462f81d1942c6:1"><sup>[return]</sup></a></li>
+<li id="fn:8b23c249a00043d9721462f81d1942c6:2">hugo主页：<a href="https://gohugo.io">https://gohugo.io</a>
+ <a class="footnote-return" href="#fnref:8b23c249a00043d9721462f81d1942c6:2"><sup>[return]</sup></a></li>
+<li id="fn:8b23c249a00043d9721462f81d1942c6:3">hexo主页：<a href="https://www.hexo.io">https://www.hexo.io</a>
+ <a class="footnote-return" href="#fnref:8b23c249a00043d9721462f81d1942c6:3"><sup>[return]</sup></a></li>
 </ol>
+</div>
 
                       
                     </div>
@@ -203,7 +360,7 @@
 
                         <div>
 
-                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/first/">http://youngspring1.github.io/post/first/</a>
+                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/20160306-hellohugo/">http://youngspring1.github.io/post/20160306-hellohugo/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -256,20 +413,14 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://youngspring1.github.io/about/" rel="next">
+        <a href="http://youngspring1.github.io/post/first/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>about</span>
+          <span>first</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://youngspring1.github.io/post/20160306-hellohugo/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>利用hugo搭建个人博客入门教程</span>
-        </a>
         
       </li>
     </ul>
