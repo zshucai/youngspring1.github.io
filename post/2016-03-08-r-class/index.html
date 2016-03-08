@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>敦煌旅行计划 - 行行重行行</title>
+  <title>R语言中的class()、mode()和typeof()的区别 - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="旅行,敦煌,">
-<meta name="description" content="敦煌旅行计划">
+<meta name="keywords" content="r,class,mode,typeof,">
+<meta name="description" content="今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？ 定义 mode &emsp;The (Storage) Mode of an Object Description &emsp;Get or set the type or storage mode of an object. typeof &emsp;The Type of an">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="敦煌旅行计划 - 行行重行行">
-<meta itemprop="description" content="敦煌旅行计划">
+<meta itemprop="name" content="R语言中的class()、mode()和typeof()的区别 - 行行重行行">
+<meta itemprop="description" content="今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？ 定义 mode &emsp;The (Storage) Mode of an Object Description &emsp;Get or set the type or storage mode of an object. typeof &emsp;The Type of an">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="敦煌旅行计划 - 行行重行行" />
+<meta property="og:title" content="R语言中的class()、mode()和typeof()的区别 - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/post/2016-03-06-plan/" />
+<meta property="og:url" content="http://youngspring1.github.io/post/2016-03-08-r-class/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="敦煌旅行计划">
+<meta property="og:description" content="今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？ 定义 mode &emsp;The (Storage) Mode of an Object Description &emsp;Get or set the type or storage mode of an object. typeof &emsp;The Type of an">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="敦煌旅行计划 - 行行重行行">
-<meta name="twitter:description" content="敦煌旅行计划">
+<meta name="twitter:title" content="R语言中的class()、mode()和typeof()的区别 - 行行重行行">
+<meta name="twitter:description" content="今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？ 定义 mode &emsp;The (Storage) Mode of an Object Description &emsp;Get or set the type or storage mode of an object. typeof &emsp;The Type of an">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/post/2016-03-06-plan/">
-  <link rel='shortlink' href="http://youngspring1.github.io/post/2016-03-06-plan/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/post/2016-03-08-r-class/">
+  <link rel='shortlink' href="http://youngspring1.github.io/post/2016-03-08-r-class/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -165,7 +165,7 @@
               <ul class="meta-single group">
                 
                 <li class="category">
-                  <a href="http://youngspring1.github.io/categories/%E7%94%9F%E6%B4%BB/" rel="category tag">生活</a>
+                  <a href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/" rel="category tag">新知</a>
                 </li>
                 
               </ul>
@@ -177,10 +177,10 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">敦煌旅行计划</h1>
+                  <h1 class="post-title">R语言中的class()、mode()和typeof()的区别</h1>
 
                   <p class="post-byline">
-                    by  · 2016年03月06日 · 495 Words ·
+                    by  · 2016年03月08日 · 426 Words ·
                     ~1min reading time |
 
                   </p>
@@ -192,53 +192,63 @@
                       
                       
 
-<h3 id="day1-南京-兰州:4d92112643788221cfde671ff2b890a2">Day1:南京－兰州</h3>
+<p>今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？</p>
 
-<p>正宁路夜市（小吃）：到达的当晚可以逛。<br />
-永昌路夜市（杂货）：返程有空就逛，连着正宁路夜市。<br />
-中山铁桥：清朝。<br />
-省博：返程住兰州，有空逛，大约半天。</p>
+<h3 id="定义:4392bb40a36ba9fbdbf9a9669f2b4fbf">定义</h3>
 
-<h3 id="day2-兰州-武威-张掖:4d92112643788221cfde671ff2b890a2">Day2:兰州－武威－张掖</h3>
+<p><strong>mode</strong><br />
+&emsp;The (Storage) Mode of an Object<br />
+<strong>Description</strong><br />
+&emsp;Get or set the type or storage mode of an object.</p>
 
-<p>武威旧称凉州，西夏文化，特色小吃：拨鱼儿、面片、三套车。<br />
-张掖<br />
-&emsp;丹霞景区（40元），最好早晨或者傍晚去，雨后更佳。<br />
-&emsp;大佛寺（41元），西夏国寺，卧佛。<br />
-&emsp;甘州美食广场。</p>
+<p><strong>typeof</strong><br />
+&emsp;The Type of an Object<br />
+<strong>Description</strong><br />
+&emsp;typeof determines the (R internal) type or storage mode of any object</p>
 
-<h3 id="day3-张掖-嘉峪关-敦煌:4d92112643788221cfde671ff2b890a2">Day3:张掖－嘉峪关－敦煌</h3>
+<p><strong>class</strong><br />
+&emsp;Object Classes<br />
+<strong>Description</strong><br />
+&emsp;R possesses a simple generic function mechanism which can be used for an object-oriented style of programming.<br />
+&emsp;Method dispatch takes place based on the class of the first argument to the generic function.</p>
 
-<p>嘉峪关<br />
-&emsp;关城、第一城、悬壁长城三景区联票，但距离较远。<br />
-&emsp;镜铁市场的眼镜烧烤有名。<br />
-瓜洲<br />
-&emsp;榆林窟，有空就去。</p>
+<h3 id="解释:4392bb40a36ba9fbdbf9a9669f2b4fbf">解释</h3>
 
-<h3 id="day4-敦煌:4d92112643788221cfde671ff2b890a2">Day4:敦煌</h3>
+<p>在R里面，每一个对象都有一个mode和一个class。<br />
+前者表示对象在内存中是如何存储的。 (numeric, character, list and function)<br />
+后者表示对象的抽象类型。</p>
 
-<p>敦煌市区以及莫高窟<br />
-&emsp;鸣沙山月牙泉（120元）傍晚去。<br />
-&emsp;市博。<br />
-&emsp;沙洲市场（敦煌夜市）。<br />
-东线：莫高窟。</p>
+<pre><code>d &lt;- data.frame(V1=c(1,2))
+class(d)
+# [1] &quot;data.frame&quot;
+mode(d)
+# [1] &quot;list&quot;
+typeof(d)
+# list
 
-<h3 id="day5-敦煌:4d92112643788221cfde671ff2b890a2">Day5:敦煌</h3>
+</code></pre>
 
-<p>敦煌周边<br />
-西线：<br />
-&emsp;西北：玉门关（90km 40元）、雅丹魔鬼城（80km 80元）<br />
-&emsp;西南：西千佛洞（35km）、阳关（70km 50元包含博物馆）</p>
+<p>通过上面的例子，我们可以知道，data frame这种类型，在内存中作为list被存储，但是它们被包装成data frame。<br />
+对于某个函数的参数，它的类型是data frame，却不能说是list。</p>
 
-<h3 id="day6-敦煌-青海湖-兰州:4d92112643788221cfde671ff2b890a2">Day6:敦煌－青海湖－兰州</h3>
+<p>再来看mode和typeof。<br />
+mode和typeof通常返回同样的值，但也有例外。</p>
 
-<h3 id="day7-兰州-南京:4d92112643788221cfde671ff2b890a2">Day7:兰州－南京</h3>
+<pre><code>typeof(c(1,2))
+# [1] &quot;double&quot;
+mode(c(1,2))
+# [1] &quot;numeric&quot;
 
-<h3 id="路线备忘:4d92112643788221cfde671ff2b890a2">路线备忘</h3>
+</code></pre>
 
-<p>G30 丝绸之路：兰州－武威－张掖－酒泉－瓜洲：1000km<br />
-S314 瓜洲－敦煌：120km<br />
-G215-G315-G25 敦煌－青海湖－兰州</p>
+<p>历史原因啦。R语言由S语言发展而来。<br />
+mode，为了和S语言兼容，返回R的对象的模式。<br />
+typeof是R语言特有的，返回一个R的对象的类型。（哎呀，解释不清楚啦）</p>
+
+<h3 id="参考:4392bb40a36ba9fbdbf9a9669f2b4fbf">参考</h3>
+
+<p>1.<a href="http://stackoverflow.com/questions/6258004/r-types-and-classes-of-variables">http://stackoverflow.com/questions/6258004/r-types-and-classes-of-variables</a><br />
+2.<a href="http://stats.stackexchange.com/questions/3212/mode-class-and-type-of-r-objects">http://stats.stackexchange.com/questions/3212/mode-class-and-type-of-r-objects</a></p>
 
                       
                     </div>
@@ -246,7 +256,7 @@ G215-G315-G25 敦煌－青海湖－兰州</p>
 
                         <div>
 
-                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016-03-06-plan/">http://youngspring1.github.io/post/2016-03-06-plan/</a>
+                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016-03-08-r-class/">http://youngspring1.github.io/post/2016-03-08-r-class/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -299,20 +309,14 @@ G215-G315-G25 敦煌－青海湖－兰州</p>
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://youngspring1.github.io/post/2016-03-06-ssn/" rel="next">
+        <a href="http://youngspring1.github.io/post/2016-03-08-thought/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>20160306 碎碎念</span>
+          <span>大部分时候都是目光短浅的动物</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://youngspring1.github.io/post/2016-03-08-thought/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>大部分时候都是目光短浅的动物</span>
-        </a>
         
       </li>
     </ul>

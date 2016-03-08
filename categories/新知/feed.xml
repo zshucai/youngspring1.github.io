@@ -7,8 +7,76 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 06 Mar 2016 13:53:07 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Mar 2016 22:52:12 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R语言中的class()、mode()和typeof()的区别</title>
+      <link>http://youngspring1.github.io/post/2016-03-08-r-class/</link>
+      <pubDate>Tue, 08 Mar 2016 22:52:12 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016-03-08-r-class/</guid>
+      <description>
+
+&lt;p&gt;今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？&lt;/p&gt;
+
+&lt;h3 id=&#34;定义:4392bb40a36ba9fbdbf9a9669f2b4fbf&#34;&gt;定义&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;mode&lt;/strong&gt;&lt;br /&gt;
+&amp;emsp;The (Storage) Mode of an Object&lt;br /&gt;
+&lt;strong&gt;Description&lt;/strong&gt;&lt;br /&gt;
+&amp;emsp;Get or set the type or storage mode of an object.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;typeof&lt;/strong&gt;&lt;br /&gt;
+&amp;emsp;The Type of an Object&lt;br /&gt;
+&lt;strong&gt;Description&lt;/strong&gt;&lt;br /&gt;
+&amp;emsp;typeof determines the (R internal) type or storage mode of any object&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;class&lt;/strong&gt;&lt;br /&gt;
+&amp;emsp;Object Classes&lt;br /&gt;
+&lt;strong&gt;Description&lt;/strong&gt;&lt;br /&gt;
+&amp;emsp;R possesses a simple generic function mechanism which can be used for an object-oriented style of programming.&lt;br /&gt;
+&amp;emsp;Method dispatch takes place based on the class of the first argument to the generic function.&lt;/p&gt;
+
+&lt;h3 id=&#34;解释:4392bb40a36ba9fbdbf9a9669f2b4fbf&#34;&gt;解释&lt;/h3&gt;
+
+&lt;p&gt;在R里面，每一个对象都有一个mode和一个class。&lt;br /&gt;
+前者表示对象在内存中是如何存储的。 (numeric, character, list and function)&lt;br /&gt;
+后者表示对象的抽象类型。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;d &amp;lt;- data.frame(V1=c(1,2))
+class(d)
+# [1] &amp;quot;data.frame&amp;quot;
+mode(d)
+# [1] &amp;quot;list&amp;quot;
+typeof(d)
+# list
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过上面的例子，我们可以知道，data frame这种类型，在内存中作为list被存储，但是它们被包装成data frame。&lt;br /&gt;
+对于某个函数的参数，它的类型是data frame，却不能说是list。&lt;/p&gt;
+
+&lt;p&gt;再来看mode和typeof。&lt;br /&gt;
+mode和typeof通常返回同样的值，但也有例外。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;typeof(c(1,2))
+# [1] &amp;quot;double&amp;quot;
+mode(c(1,2))
+# [1] &amp;quot;numeric&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;历史原因啦。R语言由S语言发展而来。&lt;br /&gt;
+mode，为了和S语言兼容，返回R的对象的模式。&lt;br /&gt;
+typeof是R语言特有的，返回一个R的对象的类型。（哎呀，解释不清楚啦）&lt;/p&gt;
+
+&lt;h3 id=&#34;参考:4392bb40a36ba9fbdbf9a9669f2b4fbf&#34;&gt;参考&lt;/h3&gt;
+
+&lt;p&gt;1.&lt;a href=&#34;http://stackoverflow.com/questions/6258004/r-types-and-classes-of-variables&#34;&gt;http://stackoverflow.com/questions/6258004/r-types-and-classes-of-variables&lt;/a&gt;&lt;br /&gt;
+2.&lt;a href=&#34;http://stats.stackexchange.com/questions/3212/mode-class-and-type-of-r-objects&#34;&gt;http://stats.stackexchange.com/questions/3212/mode-class-and-type-of-r-objects&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Git常用命令备忘</title>
