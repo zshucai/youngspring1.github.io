@@ -7,42 +7,163 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 06 Mar 2016 14:57:21 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Mar 2016 21:56:16 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/categories/%E8%AF%BB%E4%B9%A6/feed/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>KK必然 读书笔记</title>
+      <title>非设计师的设计书</title>
+      <link>http://youngspring1.github.io/post/2016-03-12-designer/</link>
+      <pubDate>Sat, 12 Mar 2016 21:56:16 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016-03-12-designer/</guid>
+      <description>
+
+&lt;p&gt;即使不是设计师，如果懂一点设计，做出来的产品会更明确和清晰。&lt;br /&gt;
+况且，一个现代人，总会有书面形式的表达，此时知晓一些设计原则，对文档非常有帮助。&lt;/p&gt;
+
+&lt;p&gt;这本设计书，就是写给设计师以外的人看的。&lt;br /&gt;
+The Non-Designer&amp;rsquo;s Design Book&lt;/p&gt;
+
+&lt;p&gt;在看这本书以前，对于日常能见到的海报、传单、商品包装、图书封面，我都不甚在意；看完这本书之后，同样还是对于这些常见信息的展示形式，有了新的认识。&lt;br /&gt;
+也就是说，能明确地说出来，这个传单，遵循了什么样的规则，所以产生了什么样的效果。而那个海报，如果稍微如何如何修改一下，或许能够变得更好。&lt;/p&gt;
+
+&lt;h2 id=&#34;四大设计原则:52b2b97ee6d139c2c7764e1ed205052a&#34;&gt;四大设计原则&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;亲密性&lt;/li&gt;
+&lt;li&gt;对齐&lt;/li&gt;
+&lt;li&gt;重复&lt;/li&gt;
+&lt;li&gt;对比&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;书上介绍了很多没有遵循这些原则的实例，然后告诉我们应该如何修改这些实例。&lt;br /&gt;
+通过实例，能够更容易掌握下面这些干巴巴的定义。&lt;/p&gt;
+
+&lt;h4 id=&#34;亲密性:52b2b97ee6d139c2c7764e1ed205052a&#34;&gt;亲密性&lt;/h4&gt;
+
+&lt;p&gt;彼此相关的信息，应当归并在一起，形成一个视觉单元，而不是多个孤立的元素。&lt;br /&gt;
+这有助于组织信息，减少混乱，为读者提供清晰的结构。&lt;/p&gt;
+
+&lt;h4 id=&#34;对齐:52b2b97ee6d139c2c7764e1ed205052a&#34;&gt;对齐&lt;/h4&gt;
+
+&lt;p&gt;每个元素都应当于页面上的另一个元素有视觉的联系。&lt;br /&gt;
+以此建立一种清晰、精巧而且清爽的外观。&lt;/p&gt;
+
+&lt;h4 id=&#34;重复:52b2b97ee6d139c2c7764e1ed205052a&#34;&gt;重复&lt;/h4&gt;
+
+&lt;p&gt;同一类元素应当以同样的颜色、形状、材质、空间关系、线宽、字体、大小和图片来重复出现。&lt;br /&gt;
+既能增加条理性，还可以加强统一性。&lt;/p&gt;
+
+&lt;h4 id=&#34;对比:52b2b97ee6d139c2c7764e1ed205052a&#34;&gt;对比&lt;/h4&gt;
+
+&lt;p&gt;不同类别的元素，应当截然不同。&lt;/p&gt;
+
+&lt;h2 id=&#34;颜色:52b2b97ee6d139c2c7764e1ed205052a&#34;&gt;颜色&lt;/h2&gt;
+
+&lt;p&gt;介绍了调色板里面各种颜色的关系，以及“亮色“和“暗色”的对比，“暖色”和“冷色”的对比，“纸”和“显示屏”的对比。&lt;/p&gt;
+
+&lt;h2 id=&#34;字体:52b2b97ee6d139c2c7764e1ed205052a&#34;&gt;字体&lt;/h2&gt;
+
+&lt;p&gt;介绍了不同字体的来源和对比，非常有启发。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;亚马逊链接：&lt;a href=&#34;http://www.amazon.cn/写给大家看的设计书-威廉姆斯/dp/B018KMT5WI/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1457794020&amp;amp;sr=1-1&#34;&gt;写给大家看的设计书&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>必然</title>
       <link>http://youngspring1.github.io/post/2016-03-06-inevitable/</link>
       <pubDate>Sun, 06 Mar 2016 14:57:21 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016-03-06-inevitable/</guid>
       <description>
 
-&lt;p&gt;我们期待哪些预言能够成为现实！&lt;/p&gt;
+&lt;p&gt;我们期待未来30年，哪些预言能够成为现实！&lt;/p&gt;
 
 &lt;h3 id=&#34;形成-becoming:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;形成(Becoming)&lt;/h3&gt;
 
+&lt;p&gt;无数在未来颠覆我们当前世界的产品，可能还没有发明出来，所以当下就是创业的最佳时机。&lt;br /&gt;
+未来正在“形成”，正在被我们所塑造。我们没有迟到。&lt;br /&gt;
+上学的时候有人讲“互联网的圈地时代已经过去了”，现在看来，过去的十年里，无数的互联网公司涌现出来，并且在几个巨头的统治下，顽强地生存着。人类的需求和欲望，是不断扩大和增长的，有这一点，就有足够的理由期待未来有更多的产品，来满足人类的需求。&lt;/p&gt;
+
 &lt;h3 id=&#34;知化-cognifying:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;知化(Cognifying)&lt;/h3&gt;
+
+&lt;p&gt;大数据＋计算能力＋算法＝人工智能时代。
+一个有趣的循环：&lt;br /&gt;
+1.机器人（电脑）干不了我的工作。&lt;br /&gt;
+2.好吧，它会许多事情，但我做的事情，它不一定都会。&lt;br /&gt;
+3.好吧，我做的事情它都会，但它常常出故障，这时需要我来处理。&lt;br /&gt;
+4.好吧，它干常规工作时从不出错，但是我需要训练它学习新任务。&lt;br /&gt;
+5.好吧，就让它做我原来的工作吧，那本来就不是人该干的。&lt;br /&gt;
+6.哇，机器人正在干我以前做的工作，我的新工作不仅好玩多了，工资还高！&lt;br /&gt;
+7.真高兴，机器人（电脑）绝对干不了我现在做的事情。&lt;/p&gt;
+
+&lt;p&gt;好了，我要去找工作了！&lt;/p&gt;
 
 &lt;h3 id=&#34;流动-flowing:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;流动(Flowing)&lt;/h3&gt;
 
+&lt;p&gt;如果某个产品可以依赖互联网复制，那么价格会趋近于免费。&lt;br /&gt;
+但是下面这几种特性却无法复制，我们可以从这些角度创造价值：&lt;br /&gt;
+1.即时性&lt;br /&gt;
+2.个性化&lt;br /&gt;
+3.解释性（用户手册、技术支持收费）&lt;br /&gt;
+4.可靠性&lt;br /&gt;
+5.获取权（云服务）&lt;br /&gt;
+6.实体化（现场感）&lt;br /&gt;
+7.可赞助&lt;br /&gt;
+8.可寻性（相关性数据）&lt;br /&gt;
+在“流动”的时代，互联网产品时开放的，可分享的，也是变化的。&lt;/p&gt;
+
 &lt;h3 id=&#34;屏读-screening:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;屏读(Screening)&lt;/h3&gt;
+
+&lt;p&gt;从古登堡以来，人们获取信息的方式，从书页转移到屏幕。未来我们的生活中会使用大大小小、分散在各处的屏幕。&lt;/p&gt;
 
 &lt;h3 id=&#34;使用-accessing:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;使用(Accessing)&lt;/h3&gt;
 
+&lt;p&gt;未来我们不需要真正“拥有”某些资源，我们只在需要的时候，租用／借阅／访问这些资源。&lt;/p&gt;
+
 &lt;h3 id=&#34;共享-sharing:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;共享(Sharing)&lt;/h3&gt;
+
+&lt;p&gt;我们分享我们的知识（StackOverflow），并且互相协作（github），看上去是免费提供的，但是参与者可以获得满足感。
+如果对某个设想感兴趣，并且想把它制造出来，可以“众筹”，也就是粉丝们集体资助他们所喜爱的，再也没有比“众筹”更能让创作者受益的好方法了。&lt;/p&gt;
 
 &lt;h3 id=&#34;过滤-filtering:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;过滤(Filtering)&lt;/h3&gt;
 
+&lt;p&gt;这个世界每秒钟创造出来的信息，可能我一辈子都阅览不完。这个一个信息爆炸的时代，最稀缺的资源是我们自己的注意力，我们需要过滤器，将这些大量丰富的信息缩减到令人满意的程度，再将我们的注意力投入之上。&lt;br /&gt;
+事实上，这些过滤器已经在工作了。电子邮件服务器帮我们区分出正常邮件／广告邮件／垃圾邮件；朋友圈／微博只推送给我，那些我感兴趣的信息；亚马逊通过我的购买记录，给我推荐我可能感兴趣的商品信息，我无须再自己搜索。&lt;br /&gt;
+Google这样的广告服务商，可以根据用户的信息，提供更加准确的广告投放服务。&lt;br /&gt;
+未来我们会在自己的身体或者生活中加入更多的感知仪器，测量到的数据会发送给我个人的过滤器，让我得到更加准确有效的信息。&lt;/p&gt;
+
 &lt;h3 id=&#34;重混-remixing:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;重混(Remixing)&lt;/h3&gt;
+
+&lt;p&gt;文学作品／音乐／摄影作品／电影，这些作品在未来，最有可能发生再创作。同人小说创作、音乐改编、PS、电影片段剪辑。。。&lt;br /&gt;
+法律上，应该如何界定一段代码、一个idea、一段旋律的所有权和期限，都可以是亟待探明的问题。&lt;/p&gt;
 
 &lt;h3 id=&#34;互动-interacting:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;互动(Interacting)&lt;/h3&gt;
 
+&lt;p&gt;通过各种各样的感应器，我们可以在增强现实／虚拟现实的世界里，用我们自己的感知和行为跟这个世界互动。
+有些感应器可以增强我们的能力，比如视力、听力，有些感应器能够给我们添加一些新能力，比如GPS定位、X光透视、温度探测等。互动发生的区域，会比现在的手机和手表，离我们更近。&lt;br /&gt;
+我们自己就是密码和数字身份证。我们的步态、心跳模式、敲击键盘的节奏、表情、眨眼的频率、坐下的姿势、声音等等，都是和他人不同的，也几乎无法仿造。&lt;/p&gt;
+
 &lt;h3 id=&#34;追踪-tracking:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;追踪(Tracking)&lt;/h3&gt;
+
+&lt;p&gt;越来越多的物联网设备记录了我们生活中的各种数据：行驶记录、旅行记录、手机位置、公共摄像头、公共wifi、社交网络、浏览器、智能家居设备、健康追踪等等。我们不断增长的自身信息，被追踪、分析，甚至被利用。&lt;/p&gt;
 
 &lt;h3 id=&#34;提问-questioning:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;提问(Questioning)&lt;/h3&gt;
 
+&lt;p&gt;在互联网上提问，可能是别人回答你的问题，比如维基百科、知乎；也有可能是人工智能回答你的问题，比如Google、Siri。
+好的提问创造更多价值。&lt;/p&gt;
+
 &lt;h3 id=&#34;开始-beginning:fa9b0ec1f63f40caaef72feef83ae042&#34;&gt;开始(Beginning)&lt;/h3&gt;
+
+&lt;p&gt;未来正在发生，我们就站在起点，能够参与其中，深感荣幸。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;亚马逊链接：&lt;a href=&#34;http://www.amazon.cn/gp/product/B0176RQ53A?ref_=s9_hps_bw_g14_i1&#34;&gt;必然&lt;/a&gt;&lt;br /&gt;
+&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160306-the-inevitable.jpg&#34; alt=&#34;必然&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
