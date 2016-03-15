@@ -7,8 +7,147 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 08 Mar 2016 22:52:12 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 13 Mar 2016 18:57:40 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>data.table 讲义1（翻译中）</title>
+      <link>http://youngspring1.github.io/post/2016-03-13-datatable1/</link>
+      <pubDate>Sun, 13 Mar 2016 18:57:40 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016-03-13-datatable1/</guid>
+      <description>
+
+&lt;p&gt;最近使用data.table这个library计算数据的聚合信息，比sql语句简单明了不是一点半点，于是想把data.table的资料翻译出来。&lt;/p&gt;
+
+&lt;p&gt;目录：&lt;br /&gt;
+1) data.table 介绍&lt;br /&gt;
+2) Reference semantics&lt;br /&gt;
+3) Keys and fast binary search based subsets&lt;br /&gt;
+4) Efficient reshaping using data.tables&lt;/p&gt;
+
+&lt;p&gt;原文地址：&lt;br /&gt;
+1) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html&#34;&gt;Introduction to data.table&lt;/a&gt;&lt;br /&gt;
+2) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reference-semantics.html&#34;&gt;Reference semantics&lt;/a&gt;&lt;br /&gt;
+3) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-keys-fast-subset.html&#34;&gt;Keys and fast binary search based subsets&lt;/a&gt;&lt;br /&gt;
+4) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reshape.html&#34;&gt;Efficient reshaping using data.tables&lt;/a&gt;&lt;br /&gt;
+5) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-faq.html&#34;&gt;Frequently asked questions&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;本讲义介绍data.table的语法，大概的形式，如何subset行，如何按列select／compute，如何分组聚合。熟悉data.frame的数据结构是有帮助的，不过不熟悉也没关系。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;使用data-table分析数据:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;使用data.table分析数据&lt;/h2&gt;
+
+&lt;p&gt;支持操作数据的功能，例如subset、group、update、join等。&lt;br /&gt;
+这些功能可以让我们：&lt;br /&gt;
+*
+*
+*
+简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table就是为这而生。我们通过这一系列讲义，说明这些功能。&lt;/p&gt;
+
+&lt;h2 id=&#34;数据:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;数据&lt;/h2&gt;
+
+&lt;p&gt;在这个讲义中，我们使用&lt;a href=&#34;https://github.com/arunsrinivasan/flights/wiki/NYC-Flights-2014-data&#34;&gt;NYC-flights14&lt;/a&gt;的数据。它包含了2014年纽约机场发出的所有航班信息。这份数据只有2014年1月到10月是公开的。&lt;br /&gt;
+我们可以使用data.table的fread()函数，用下面的方式，快速直接读取航班数据：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flights &amp;lt;- fread(&amp;quot;https://raw.githubusercontent.com/wiki/arunsrinivasan/    flights/NYCflights14/flights14.csv&amp;quot;)
+flights
+#         year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight
+#      1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1
+#      2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3
+#      3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21
+#      4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29
+#      5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117
+#     ---                                                                                      
+# 253312: 2014    10  31     1459         1     1747       -30         0      UA  N23708   1744
+# 253313: 2014    10  31      854        -5     1147       -14         0      UA  N33132   1758
+# 253314: 2014    10  31     1102        -8     1311        16         0      MQ  N827MQ   3591
+# 253315: 2014    10  31     1106        -4     1325        15         0      MQ  N511MQ   3592
+# 253316: 2014    10  31      824        -5     1045         1         0      MQ  N813MQ   3599
+#         origin dest air_time distance hour min
+#      1:    JFK  LAX      359     2475    9  14
+#      2:    JFK  LAX      363     2475   11  57
+#      3:    JFK  LAX      351     2475   19   2
+#      4:    LGA  PBI      157     1035    7  22
+#      5:    JFK  LAX      350     2475   13  47
+#     ---                                       
+# 253312:    LGA  IAH      201     1416   14  59
+# 253313:    EWR  IAH      189     1400    8  54
+# 253314:    LGA  RDU       83      431   11   2
+# 253315:    LGA  DTW       75      502   11   6
+# 253316:    LGA  SDF      110      659    8  24
+dim(flights)
+# [1] 253316     17
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;既然整个讲义我们都会使用这份数据，那你不妨先下载到你的电脑上，然后每次使用的时候再读取。&lt;/p&gt;
+
+&lt;h2 id=&#34;介绍:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;介绍&lt;/h2&gt;
+
+&lt;h2 id=&#34;1-基础:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;1.基础&lt;/h2&gt;
+
+&lt;h4 id=&#34;a-什么是data-table:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;a)什么是data.table&lt;/h4&gt;
+
+&lt;h4 id=&#34;b-形式-data-table的特长:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;b)形式－data.table的特长&lt;/h4&gt;
+
+&lt;h4 id=&#34;c-subset行:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;c)Subset行&lt;/h4&gt;
+
+&lt;h4 id=&#34;d-select列:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;d)Select列&lt;/h4&gt;
+
+&lt;h4 id=&#34;f-j:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;f)j&lt;/h4&gt;
+
+&lt;h4 id=&#34;g-names:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;g)names&lt;/h4&gt;
+
+&lt;h2 id=&#34;2-聚合:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;2.聚合&lt;/h2&gt;
+
+&lt;h4 id=&#34;a-分组:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;a)分组&lt;/h4&gt;
+
+&lt;h4 id=&#34;b-keyby:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;b)keyby&lt;/h4&gt;
+
+&lt;h4 id=&#34;c-chaining:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;c)chaining&lt;/h4&gt;
+
+&lt;h4 id=&#34;d-by表达式:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;d)by表达式&lt;/h4&gt;
+
+&lt;h4 id=&#34;e-j:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;e)j&lt;/h4&gt;
+
+&lt;h4 id=&#34;f-subset:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;f)subset&lt;/h4&gt;
+
+&lt;h4 id=&#34;g-j:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;g)j&lt;/h4&gt;
+
+&lt;h2 id=&#34;总结:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;data.table的语法形式是：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DT[i, j, by]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在我们知道：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;指定i：   
+* 类似于data.frame，我们可以subset行，除非
+* 我们可以使用order()排序。为了得到更快速的效果，order()函数内部使用了data.table的快速排序。   
+
+
+
+指定j：
+* 
+*
+*
+*
+*
+
+指定by：
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;小提示：&lt;br /&gt;
+只要j返回一个list，这个list的每个元素都会是结果data.table的一列。&lt;/p&gt;
+
+&lt;p&gt;下一讲，我们学习如何用reference来add／update／delete某一列，如何通过i和by合并它们。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>R语言中的class()、mode()和typeof()的区别</title>
