@@ -104,7 +104,7 @@
 *
 *
 *
-简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table就是为这而生。我们通过这一系列讲义，说明这些功能。&lt;/p&gt;
+简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table就是干这事儿的。我们通过这一系列讲义，说明这些功能。&lt;/p&gt;
 
 &lt;h2 id=&#34;数据:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;数据&lt;/h2&gt;
 
@@ -145,15 +145,146 @@ dim(flights)
 
 &lt;h2 id=&#34;介绍:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;介绍&lt;/h2&gt;
 
+&lt;p&gt;在本章中，我们会学习下面两点：&lt;br /&gt;
+1. 基础 － 什么是data.table，它的形式，如何subset行，如何select列，如何按列进行运算。&lt;br /&gt;
+2. 聚合 － 按组聚合的效果。&lt;/p&gt;
+
 &lt;h2 id=&#34;1-基础:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;1.基础&lt;/h2&gt;
 
 &lt;h4 id=&#34;a-什么是data-table:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;a)什么是data.table&lt;/h4&gt;
 
-&lt;h4 id=&#34;b-形式-data-table的特长:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;b)形式－data.table的特长&lt;/h4&gt;
+&lt;p&gt;data.table是R语言的一个包，它是对data.frames的增强。在上文（读取航班）“数据”的部分，我们通过函数fread()创建了一个data.table。我们也可以通过函数data.table()创建一个data.table，比如这样：&lt;/p&gt;
 
-&lt;h4 id=&#34;c-subset行:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;c)Subset行&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;DT = data.table(ID = c(&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;c&amp;quot;), a = 1:6, b = 7:12, c=13:18)
+DT
+#    ID a  b  c
+# 1:  b 1  7 13
+# 2:  b 2  8 14
+# 3:  b 3  9 15
+# 4:  a 4 10 16
+# 5:  a 5 11 17
+# 6:  c 6 12 18
+class(DT$ID)
+# [1] &amp;quot;character&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;d-select列:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;d)Select列&lt;/h4&gt;
+&lt;p&gt;我们也可以通过as.data.table()将已经存在的对象转化成data.table。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;注意：
+* 不同于data.frames，字符型的列，不会被自动转化成因子。
+* 行号后面有个冒号，用于隔开第一列的内容。
+* 如果数据的条目超过了全局选项datatable.print.nrows所定义的数值（默认是100条），那么只会输出数据最开头和最末尾的5行。就如同上文（读取航班）“数据”的部分。
+
+getOption(&amp;quot;datatable.print.nrows&amp;quot;)
+# [1] 100
+
+* data.table不能设置行的名称。我们会在第三讲中说明原因。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;b-形式-data-table增强了什么:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;b)形式－data.table增强了什么&lt;/h4&gt;
+
+&lt;p&gt;和data.frame相反，我们能做的可不仅仅局限于subset行或者select列。首先介绍下data.table的语法，如下所示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DT[i, j, by]
+
+##   R:      i                 j        by
+## SQL:  where   select | update  group by
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果你有SQL语句的基础，那么你应该能马上明白data.table的语法。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;语法是：
+对于DT这个data.table，使用 i 来subset行，然后计算 j ，最后用 by 分组。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;c-subset行:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;c)subset行&lt;/h4&gt;
+
+&lt;p&gt;－ 获取六月份所有从&amp;rdquo;JFK&amp;rdquo;机场起飞的航班&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L]
+head(ans)
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     6   1      851        -9     1205        -5         0      AA  N787AA      1    JFK
+# 2: 2014     6   1     1220       -10     1522       -13         0      AA  N795AA      3    JFK
+# 3: 2014     6   1      718        18     1014        -1         0      AA  N784AA      9    JFK
+# 4: 2014     6   1     1024        -6     1314       -16         0      AA  N791AA     19    JFK
+# 5: 2014     6   1     1841        -4     2125       -45         0      AA  N790AA     21    JFK
+# 6: 2014     6   1     1454        -6     1757       -23         0      AA  N785AA    117    JFK
+#    dest air_time distance hour min
+# 1:  LAX      324     2475    8  51
+# 2:  LAX      329     2475   12  20
+# 3:  LAX      326     2475    7  18
+# 4:  LAX      320     2475   10  24
+# 5:  LAX      326     2475   18  41
+# 6:  LAX      329     2475   14  54
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* 通过data.frame的frame？，列可以像变量一样被引用。因此，我们不需要加上 flights$ 前缀，比如 flights$dest 和 flights$month，而是直接简单地引用 dest 和 month这两列。
+* 满足 origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L 这两个条件的行会被抽出出来。既然我们没有指定其他的条件，一个包含原数据里面所有列的data.table会被返回。
+* 语法里面[i,j,k]的逗号不是必须的，当然如果指定了逗号，比如 flights[dest == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L, ] 也是没问题的。但在data.frame里面，逗号却是必须的。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;－ 获取 flights 开头的两行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[1:2]
+ans
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1    JFK
+# 2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
+#    dest air_time distance hour min
+# 1:  LAX      359     2475    9  14
+# 2:  LAX      363     2475   11  57
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* 我们没有指定任何条件。行的索引已经自动提供给参数 i 了。因此，我们得到一个包含原数据 flight 里所有列的data.table（for 这些行的索引？）。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;－ 排序（先按 origin列 的升序，再按 dest 的降序排列）
+我们可以通过R语言的基础函数 order() 来完成这个功能。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[order(origin, -dest)]
+head(ans)
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     1   5      836         6     1151        49         0      EV  N12175   4419    EWR
+# 2: 2014     1   6      833         7     1111        13         0      EV  N24128   4419    EWR
+# 3: 2014     1   7      811        -6     1035       -13         0      EV  N12142   4419    EWR
+# 4: 2014     1   8      810        -7     1036       -12         0      EV  N11193   4419    EWR
+# 5: 2014     1   9      833        16     1055         7         0      EV  N14198   4419    EWR
+# 6: 2014     1  13      923        66     1154        66         0      EV  N12157   4419    EWR
+#    dest air_time distance hour min
+# 1:  XNA      195     1131    8  36
+# 2:  XNA      190     1131    8  33
+# 3:  XNA      179     1131    8  11
+# 4:  XNA      184     1131    8  10
+# 5:  XNA      181     1131    8  33
+# 6:  XNA      188     1131    9  23
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;内置的 order() 函数
+* 我们可以对一个字符型的列，使用减号“-”，来实现降序排列。
+* 另外，函数 order() 其实调用了data.table的快速基数排序函数 forder()，它比 base::order 快很多。这是一个说明它们基本区别的例子：
+
+odt = data.table(col=sample(1e7))
+(t1 &amp;lt;- system.time(ans1 &amp;lt;- odt[base::order(col)]))  ## uses order from base R
+#    user  system elapsed 
+#   8.610   0.056   8.708
+(t2 &amp;lt;- system.time(ans2 &amp;lt;- odt[order(col)]))        ## uses data.table&#39;s forder
+#    user  system elapsed 
+#   0.526   0.024   0.553
+(identical(ans1, ans2))
+# [1] TRUE
+
+order() 比 base::order 大约快了16倍。我们会在data.table的内部讲义中讨论data.table快速排序的更多细节。
+* 因此，使用我们熟悉的函数，就可以显著地提高分析效率。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;d-select列:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;d)select列&lt;/h4&gt;
 
 &lt;h4 id=&#34;f-j:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;f)j&lt;/h4&gt;
 
