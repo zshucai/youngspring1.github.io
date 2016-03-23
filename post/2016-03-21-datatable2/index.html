@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>演化 - 行行重行行</title>
+  <title>data.table 教程2（翻译中） - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="evalution,">
-<meta name="description" content="自古登堡以来，书籍因为其“不变”的特质，象征着稳定、专注、权威；而电子时代，amazon可以很方便地更新我手中kindle中的内容。 这是一个">
+<meta name="keywords" content="R data.table,">
+<meta name="description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 本教程讨论data.table的">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="演化 - 行行重行行">
-<meta itemprop="description" content="自古登堡以来，书籍因为其“不变”的特质，象征着稳定、专注、权威；而电子时代，amazon可以很方便地更新我手中kindle中的内容。 这是一个">
+<meta itemprop="name" content="data.table 教程2（翻译中） - 行行重行行">
+<meta itemprop="description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 本教程讨论data.table的">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="演化 - 行行重行行" />
+<meta property="og:title" content="data.table 教程2（翻译中） - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/post/2016-03-15-evalution/" />
+<meta property="og:url" content="http://youngspring1.github.io/post/2016-03-21-datatable2/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="自古登堡以来，书籍因为其“不变”的特质，象征着稳定、专注、权威；而电子时代，amazon可以很方便地更新我手中kindle中的内容。 这是一个">
+<meta property="og:description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 本教程讨论data.table的">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="演化 - 行行重行行">
-<meta name="twitter:description" content="自古登堡以来，书籍因为其“不变”的特质，象征着稳定、专注、权威；而电子时代，amazon可以很方便地更新我手中kindle中的内容。 这是一个">
+<meta name="twitter:title" content="data.table 教程2（翻译中） - 行行重行行">
+<meta name="twitter:description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 本教程讨论data.table的">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/post/2016-03-15-evalution/">
-  <link rel='shortlink' href="http://youngspring1.github.io/post/2016-03-15-evalution/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/post/2016-03-21-datatable2/">
+  <link rel='shortlink' href="http://youngspring1.github.io/post/2016-03-21-datatable2/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -165,7 +165,7 @@
               <ul class="meta-single group">
                 
                 <li class="category">
-                  <a href="http://youngspring1.github.io/categories/%E7%94%9F%E6%B4%BB/" rel="category tag">生活</a>
+                  <a href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/" rel="category tag">新知</a>
                 </li>
                 
               </ul>
@@ -177,11 +177,11 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">演化</h1>
+                  <h1 class="post-title">data.table 教程2（翻译中）</h1>
 
                   <p class="post-byline">
-                    by  · 2016年03月15日 · 83 Words ·
-                    ~1min reading time |
+                    by  · 2016年03月21日 · 1200 Words ·
+                    ~3min reading time |
 
                   </p>
 
@@ -190,9 +190,140 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p>自古登堡以来，书籍因为其“不变”的特质，象征着稳定、专注、权威；而电子时代，amazon可以很方便地更新我手中kindle中的内容。<br />
-这是一个一直在变化的时代，我们也不用等待准备好了，才去做某件事情。<br />
-我们一直处在演化的过程中。</p>
+                      
+
+<p>目录：<br />
+1) <a href="http://youngspring1.github.io/post/2016-03-13-datatable1/">data.table 介绍</a><br />
+2) 语义引用<br />
+3) Keys and fast binary search based subsets<br />
+4) Efficient reshaping using data.tables</p>
+
+<p>原文地址：<br />
+1) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html">Introduction to data.table</a><br />
+2) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reference-semantics.html">Reference semantics</a><br />
+3) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-keys-fast-subset.html">Keys and fast binary search based subsets</a><br />
+4) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reshape.html">Efficient reshaping using data.tables</a><br />
+5) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-faq.html">Frequently asked questions</a></p>
+
+<hr />
+
+<p>本教程讨论data.table的语义引用，它允许通过引用来add/update/delete列，然后通过参数i和by结合。它主要给那些熟悉data.table语法、知道如何subset行／select列／分组的人使用。如果你对这些不熟悉，请学习上一讲 <a href="http://youngspring1.github.io/post/2016-03-13-datatable1/">data.table 介绍</a>。</p>
+
+<hr />
+
+<h2 id="数据:e5b9ad2772afb60de67bb09a99ffa4e1">数据</h2>
+
+<p>我们继续使用上一讲中使用的航班信息flights。</p>
+
+<pre><code>flights &lt;- fread(&quot;https://raw.githubusercontent.com/wiki/arunsrinivasan/    flights/NYCflights14/flights14.csv&quot;)
+flights
+#         year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight
+#      1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1
+#      2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3
+#      3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21
+#      4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29
+#      5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117
+#     ---                                                                                      
+# 253312: 2014    10  31     1459         1     1747       -30         0      UA  N23708   1744
+# 253313: 2014    10  31      854        -5     1147       -14         0      UA  N33132   1758
+# 253314: 2014    10  31     1102        -8     1311        16         0      MQ  N827MQ   3591
+# 253315: 2014    10  31     1106        -4     1325        15         0      MQ  N511MQ   3592
+# 253316: 2014    10  31      824        -5     1045         1         0      MQ  N813MQ   3599
+#         origin dest air_time distance hour min
+#      1:    JFK  LAX      359     2475    9  14
+#      2:    JFK  LAX      363     2475   11  57
+#      3:    JFK  LAX      351     2475   19   2
+#      4:    LGA  PBI      157     1035    7  22
+#      5:    JFK  LAX      350     2475   13  47
+#     ---                                       
+# 253312:    LGA  IAH      201     1416   14  59
+# 253313:    EWR  IAH      189     1400    8  54
+# 253314:    LGA  RDU       83      431   11   2
+# 253315:    LGA  DTW       75      502   11   6
+# 253316:    LGA  SDF      110      659    8  24
+dim(flights)
+# [1] 253316     17
+</code></pre>
+
+<h2 id="介绍:e5b9ad2772afb60de67bb09a99ffa4e1">介绍</h2>
+
+<p>在这一讲，我们会：</p>
+
+<pre><code>* 简要讨论“语义引用”，然后比较操作符“:=”的两种不同的形式。
+* 学习如何在参数j里面使用操作符“:=”来add/update/delete列，如何与参数i和by相结合。
+* 了解操作符“:=”的副作用，并学习如何用 copy() 来避免这些副作用。
+</code></pre>
+
+<h2 id="1-语义引用:e5b9ad2772afb60de67bb09a99ffa4e1">1. 语义引用</h2>
+
+<p>到目前为止，我们学习到的所有的操作都会生成一个新的数据集。接下来，我们会学习如何在原来数据集的基础上，添加／更新／删除那些已经存在的列。</p>
+
+<h4 id="a-背景:e5b9ad2772afb60de67bb09a99ffa4e1">a) 背景</h4>
+
+<p>在学习语义引用之前，我们先来看下面这个data.frame：</p>
+
+<pre><code>DF = data.frame(ID = c(&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;a&quot;,&quot;a&quot;,&quot;c&quot;), a = 1:6, b = 7:12, c=13:18)
+DF
+#   ID a  b  c
+# 1  b 1  7 13
+# 2  b 2  8 14
+# 3  b 3  9 15
+# 4  a 4 10 16
+# 5  a 5 11 17
+# 6  c 6 12 18
+</code></pre>
+
+<p>当我们执行下面的命令：</p>
+
+<pre><code>DF$c &lt;- 18:13               # (1) -- replace entire column
+# or
+DF$c[DF$ID == &quot;b&quot;] &lt;- 15:13 # (2) -- subassign in column 'c'
+</code></pre>
+
+<p>在R语言V3.1之前的版本里，上面这两种方法都会导致对整个data.frame的深度拷贝<sup class="footnote-ref" id="fnref:e5b9ad2772afb60de67bb09a99ffa4e1:1"><a rel="footnote" href="#fn:e5b9ad2772afb60de67bb09a99ffa4e1:1">1</a></sup>。而且还会拷贝多次<sup class="footnote-ref" id="fnref:e5b9ad2772afb60de67bb09a99ffa4e1:2"><a rel="footnote" href="#fn:e5b9ad2772afb60de67bb09a99ffa4e1:2">2</a></sup>。为了提高效率避免冗余操作，data.tabel使用了操作符&rdquo;:=&ldquo;。R里面本来就有定义了这个操作符，但却没有使用<sup class="footnote-ref" id="fnref:e5b9ad2772afb60de67bb09a99ffa4e1:3"><a rel="footnote" href="#fn:e5b9ad2772afb60de67bb09a99ffa4e1:3">3</a></sup>。<br />
+在R语言V3.1之前的版本里，方法(1)只做影子拷贝，处理性能有了很大提升。然而，方法(2)还是会做深度拷贝。这就意味着，对于同样的查询语句，想要选取的列越多，需要做的深度拷贝就越多。</p>
+
+<pre><code>影子拷贝 vs 深度拷贝
+影子拷贝，只是一份指向列的指针向量的拷贝，它会随着data.frame或者data.table的变化而变化。但在内存里，数据不是真的被复制了。   
+深度拷贝，正相反，它会复制整个数据，并且保存在内存里。
+</code></pre>
+
+<p>如果使用操作符&rdquo;:=&ldquo;，不管在R语言的什么版本里，不管是方法(1)还是方法(2)，都不会再拷贝。这是因为，操作符&rdquo;:=&ldquo;通过引用更新列。</p>
+
+<h4 id="b-操作符:e5b9ad2772afb60de67bb09a99ffa4e1">b) 操作符“:=”</h4>
+
+<h2 id="2-通过引用添加-更新-删除列:e5b9ad2772afb60de67bb09a99ffa4e1">2. 通过引用添加／更新／删除列</h2>
+
+<h4 id="a-添加列:e5b9ad2772afb60de67bb09a99ffa4e1">a) 添加列</h4>
+
+<h4 id="b-更新列-sub-assign:e5b9ad2772afb60de67bb09a99ffa4e1">b) 更新列（sub-assign）</h4>
+
+<h4 id="c-删除列:e5b9ad2772afb60de67bb09a99ffa4e1">c) 删除列</h4>
+
+<h4 id="d-和分组:e5b9ad2772afb60de67bb09a99ffa4e1">d) “:=”和分组</h4>
+
+<h4 id="e-和复数列:e5b9ad2772afb60de67bb09a99ffa4e1">e) “:=”和复数列</h4>
+
+<h2 id="3-和copy:e5b9ad2772afb60de67bb09a99ffa4e1">3. “:=”和copy()</h2>
+
+<h4 id="a-的副作用:e5b9ad2772afb60de67bb09a99ffa4e1">a) “:=”的副作用</h4>
+
+<h4 id="b-函数copy:e5b9ad2772afb60de67bb09a99ffa4e1">b) 函数copy()</h4>
+
+<h2 id="总结:e5b9ad2772afb60de67bb09a99ffa4e1">总结</h2>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:e5b9ad2772afb60de67bb09a99ffa4e1:1"><a href="http://r.789695.n4.nabble.com/speeding-up-perception-td3640920.html#a3646694">TODO</a>
+ <a class="footnote-return" href="#fnref:e5b9ad2772afb60de67bb09a99ffa4e1:1"><sup>[return]</sup></a></li>
+<li id="fn:e5b9ad2772afb60de67bb09a99ffa4e1:2"><a href="http://stackoverflow.com/questions/23898969/is-data-really-copied-four-times-in-rs-replacement-functions">Is data really copied four times in R&rsquo;s replacement functions?</a>
+ <a class="footnote-return" href="#fnref:e5b9ad2772afb60de67bb09a99ffa4e1:2"><sup>[return]</sup></a></li>
+<li id="fn:e5b9ad2772afb60de67bb09a99ffa4e1:3"><a href="http://stackoverflow.com/questions/7033106/why-has-data-table-defined-rather-than-overloading">Why has data.table defined := rather than overloading &lt;-?</a>
+ <a class="footnote-return" href="#fnref:e5b9ad2772afb60de67bb09a99ffa4e1:3"><sup>[return]</sup></a></li>
+</ol>
+</div>
 
                       
                     </div>
@@ -200,7 +331,7 @@
 
                         <div>
 
-                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016-03-15-evalution/">http://youngspring1.github.io/post/2016-03-15-evalution/</a>
+                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016-03-21-datatable2/">http://youngspring1.github.io/post/2016-03-21-datatable2/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -253,19 +384,19 @@
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://youngspring1.github.io/post/2016-03-13-datatable1/" rel="next">
+        <a href="http://youngspring1.github.io/post/2016-03-20-bike/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>data.table 教程1（校对中）</span>
+          <span>单车一周旅行计划</span>
         </a>
         
       </li>
       <li class="previous">
         
-        <a href="http://youngspring1.github.io/post/2016-03-15-career/" rel="prev">
+        <a href="http://youngspring1.github.io/post/2016-03-22-R1/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>转：某T的职级系统</span>
+          <span>R语言入门教程1（编写中）</span>
         </a>
         
       </li>

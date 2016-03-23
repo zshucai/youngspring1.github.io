@@ -12,40 +12,38 @@
         }
     }
   </script>
-  <title>Posts - 行行重行行</title>
+  <title>data.table 教程3（翻译中） - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<meta name="description" content="Posts">
+<meta name="keywords" content="xxx,">
+<meta name="description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a) What is a key? b) Set, get and use keys on a data.table">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="Posts - 行行重行行">
-<meta itemprop="description" content="Posts">
+<meta itemprop="name" content="data.table 教程3（翻译中） - 行行重行行">
+<meta itemprop="description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a) What is a key? b) Set, get and use keys on a data.table">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="Posts - 行行重行行" />
+<meta property="og:title" content="data.table 教程3（翻译中） - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/post/" />
+<meta property="og:url" content="http://youngspring1.github.io/post/2016-03-22-datatable3/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="Posts">
+<meta property="og:description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a) What is a key? b) Set, get and use keys on a data.table">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="Posts - 行行重行行">
-<meta name="twitter:description" content="Posts">
+<meta name="twitter:title" content="data.table 教程3（翻译中） - 行行重行行">
+<meta name="twitter:description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a) What is a key? b) Set, get and use keys on a data.table">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/post/">
-  <link rel='shortlink' href="http://youngspring1.github.io/post/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/post/2016-03-22-datatable3/">
+  <link rel='shortlink' href="http://youngspring1.github.io/post/2016-03-22-datatable3/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
- <link href="http://youngspring1.github.io//feed.xml" rel="alternate" type="application/rss+xml" title="行行重行行" />
-
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" id="human-style-css2" href="http://youngspring1.github.io/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" id="responsive-css" href="http://youngspring1.github.io/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
@@ -65,8 +63,7 @@
 
 </head>
 
-<body class="archive category col-3cm full-width topbar-enabled chrome">
-
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
   <header id="header">
 
@@ -165,253 +162,106 @@
         <div class="main-inner group">
           <section class="content">
             <div class="page-title pad group">
-              <h1><i class="fa fa-folder-open"></i>Category: <span>Posts</span></h1>
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/" rel="category tag">新知</a>
+                </li>
+                
+              </ul>
             </div>
+
             <div class="pad group">
-              <div class="post-list group">
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月22日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-22-datatable3/" rel="bookmark" title="data.table 教程3（翻译中）">data.table 教程3（翻译中）</a></p>
-</div>
 
-  </div>
-  
-</article>
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
 
+                  <h1 class="post-title">data.table 教程3（翻译中）</h1>
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月22日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-22-R1/" rel="bookmark" title="R语言入门教程1（编写中）">R语言入门教程1（编写中）</a></p>
-</div>
+                  <p class="post-byline">
+                    by  · 2016年03月22日 · 142 Words ·
+                    ~1min reading time |
 
-  </div>
-  
-</article>
+                  </p>
 
+                  <div class="clear"></div>
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月21日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-21-datatable2/" rel="bookmark" title="data.table 教程2（翻译中）">data.table 教程2（翻译中）</a></p>
-</div>
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
 
-  </div>
-  
-</article>
+<p>目录：<br />
+1) <a href="http://youngspring1.github.io/post/2016-03-13-datatable1/">data.table 介绍</a><br />
+2) <a href="http://youngspring1.github.io/post/2016-03-21-datatable2/">语义引用</a><br />
+3) Keys and fast binary search based subsets<br />
+4) Efficient reshaping using data.tables</p>
 
+<p>原文地址：<br />
+1) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html">Introduction to data.table</a><br />
+2) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reference-semantics.html">Reference semantics</a><br />
+3) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-keys-fast-subset.html">Keys and fast binary search based subsets</a><br />
+4) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reshape.html">Efficient reshaping using data.tables</a><br />
+5) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-faq.html">Frequently asked questions</a></p>
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月20日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-20-bike/" rel="bookmark" title="单车一周旅行计划">单车一周旅行计划</a></p>
-</div>
+<hr />
 
-  </div>
-  
-</article>
+<h2 id="1-keys:e288dbec01fe10fa9bd0f8ade4810458">1. Keys</h2>
 
+<h4 id="a-what-is-a-key:e288dbec01fe10fa9bd0f8ade4810458">a) What is a key?</h4>
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月15日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-15-career/" rel="bookmark" title="转：某T的职级系统">转：某T的职级系统</a></p>
-</div>
+<h4 id="b-set-get-and-use-keys-on-a-data-table:e288dbec01fe10fa9bd0f8ade4810458">b) Set, get and use keys on a data.table</h4>
 
-  </div>
-  
-</article>
+<h4 id="c-keys-and-multiple-columns:e288dbec01fe10fa9bd0f8ade4810458">c) Keys and multiple columns</h4>
 
+<h2 id="2-combining-keys-with-j-and-by:e288dbec01fe10fa9bd0f8ade4810458">2. Combining keys with j and by</h2>
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月15日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-15-evalution/" rel="bookmark" title="演化">演化</a></p>
-</div>
+<h4 id="a-select-in-j:e288dbec01fe10fa9bd0f8ade4810458">a) Select in j</h4>
 
-  </div>
-  
-</article>
+<h4 id="b-chaining:e288dbec01fe10fa9bd0f8ade4810458">b) Chaining</h4>
 
+<h4 id="c-compute-or-do-in-j:e288dbec01fe10fa9bd0f8ade4810458">c) Compute or do in j</h4>
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月13日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-13-datatable1/" rel="bookmark" title="data.table 教程1（校对中）">data.table 教程1（校对中）</a></p>
-</div>
+<h4 id="d-sub-assign-by-reference-using-in-j:e288dbec01fe10fa9bd0f8ade4810458">d) sub-assign by reference using := in j</h4>
 
-  </div>
-  
-</article>
+<h4 id="e-aggregation-using-by:e288dbec01fe10fa9bd0f8ade4810458">e) Aggregation using by</h4>
 
+<h2 id="3-additional-arguments-mult-and-nomatch:e288dbec01fe10fa9bd0f8ade4810458">3. Additional arguments - mult and nomatch</h2>
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月12日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-12-designer/" rel="bookmark" title="写给大家看的设计书">写给大家看的设计书</a></p>
-</div>
+<h4 id="a-the-mult-argument:e288dbec01fe10fa9bd0f8ade4810458">a) The mult argument</h4>
 
-  </div>
-  
-</article>
+<h2 id="4-binary-search-vs-vector-scans:e288dbec01fe10fa9bd0f8ade4810458">4. binary search vs vector scans</h2>
 
+<h4 id="a-performance-of-binary-search-approach:e288dbec01fe10fa9bd0f8ade4810458">a) Performance of binary search approach</h4>
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月08日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-08-r-class/" rel="bookmark" title="R语言中的class()、mode()和typeof()的区别">R语言中的class()、mode()和typeof()的区别</a></p>
-</div>
+<h4 id="b-why-does-keying-a-data-table-result-in-blazing-fast-susbets:e288dbec01fe10fa9bd0f8ade4810458">b) Why does keying a data.table result in blazing fast susbets?</h4>
 
-  </div>
-  
-</article>
+<h2 id="总结:e288dbec01fe10fa9bd0f8ade4810458">总结</h2>
 
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
 
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月08日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-08-thought/" rel="bookmark" title="大部分时候都是目光短浅的动物">大部分时候都是目光短浅的动物</a></p>
-</div>
+                        <div>
 
-  </div>
-  
-</article>
+                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016-03-22-datatable3/">http://youngspring1.github.io/post/2016-03-22-datatable3/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
 
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月06日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-06-plan/" rel="bookmark" title="敦煌旅行计划">敦煌旅行计划</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月06日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-06-ssn/" rel="bookmark" title="20160306 碎碎念">20160306 碎碎念</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月06日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-06-inevitable/" rel="bookmark" title="必然">必然</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月06日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-06-git/" rel="bookmark" title="Git常用命令备忘">Git常用命令备忘</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月06日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016-03-06-hugo/" rel="bookmark" title="利用hugo搭建个人博客入门教程">利用hugo搭建个人博客入门教程</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年02月28日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/first/" rel="bookmark" title="first">first</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-</div>
-
+                </div>
+                
+              </article>
+              
+              <div class="clear"></div>
+              
+              
+              
             </div>
           </section>
           <div class="sidebar s1">
@@ -445,6 +295,20 @@
 
 </div>
 
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://youngspring1.github.io/post/2016-03-22-R1/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>R语言入门教程1（编写中）</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+      </li>
+    </ul>
     <div id="search-2" class="widget widget_search"><h3>Search</h3>
       <form method="get" class="searchform themeform" action="https://www.google.com/search">
         <div>
@@ -453,6 +317,7 @@
       </form>
     </div>
   </div>
+  
 </div>
 
           <div class="sidebar s2">

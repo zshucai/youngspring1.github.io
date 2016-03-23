@@ -12,7 +12,7 @@
         }
     }
   </script>
-  <title>data.table 讲义1（校对中） - 行行重行行</title>
+  <title>data.table 教程1（校对中） - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,11 +22,11 @@
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="data.table 讲义1（校对中） - 行行重行行">
+<meta itemprop="name" content="data.table 教程1（校对中） - 行行重行行">
 <meta itemprop="description" content="data.table 文档翻译">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="data.table 讲义1（校对中） - 行行重行行" />
+<meta property="og:title" content="data.table 教程1（校对中） - 行行重行行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://youngspring1.github.io/post/2016-03-13-datatable1/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
@@ -34,7 +34,7 @@
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="data.table 讲义1（校对中） - 行行重行行">
+<meta name="twitter:title" content="data.table 教程1（校对中） - 行行重行行">
 <meta name="twitter:description" content="data.table 文档翻译">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
@@ -177,7 +177,7 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">data.table 讲义1（校对中）</h1>
+                  <h1 class="post-title">data.table 教程1（校对中）</h1>
 
                   <p class="post-byline">
                     by  · 2016年03月13日 · 9467 Words ·
@@ -209,7 +209,7 @@
 
 <hr />
 
-<p>本讲义介绍data.table的语法，大概的形式，如何subset行，如何按列select／compute，如何分组聚合。熟悉data.frame的数据结构是有帮助的，不过不熟悉也没关系。</p>
+<p>本教程介绍data.table的语法，大概的形式，如何subset行，如何按列select／compute，如何分组聚合。熟悉data.frame的数据结构是有帮助的，不过不熟悉也没关系。</p>
 
 <hr />
 
@@ -223,11 +223,11 @@
 * 精确地知道每步操作所需要的数据，内部自动优化操作，在运行速度和内存开销两方面都很有效果。
 </code></pre>
 
-<p>简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table就是干这事儿的。我们通过这一系列讲义，说明这些功能。</p>
+<p>简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table就是干这事儿的。我们通过这一系列教程，说明这些功能。</p>
 
 <h2 id="数据:3d5b18c834d19c525ed890cfd64b400c">数据</h2>
 
-<p>在这个讲义中，我们使用<a href="https://github.com/arunsrinivasan/flights/wiki/NYC-Flights-2014-data">NYC-flights14</a>的数据。它包含了2014年纽约机场发出的所有航班信息。这份数据只有2014年1月到10月是公开的。<br />
+<p>在这个教程中，我们使用<a href="https://github.com/arunsrinivasan/flights/wiki/NYC-Flights-2014-data">NYC-flights14</a>的数据。它包含了2014年纽约机场发出的所有航班信息。这份数据只有2014年1月到10月是公开的。<br />
 我们可以使用data.table的fread()函数，用下面的方式，快速直接读取航班数据：</p>
 
 <pre><code>flights &lt;- fread(&quot;https://raw.githubusercontent.com/wiki/arunsrinivasan/    flights/NYCflights14/flights14.csv&quot;)
@@ -260,7 +260,7 @@ dim(flights)
 # [1] 253316     17
 </code></pre>
 
-<p>既然整个讲义我们都会使用这份数据，那你不妨先下载到你的电脑上，然后每次使用的时候再读取。</p>
+<p>既然整个教程我们都会使用这份数据，那你不妨先下载到你的电脑上，然后每次使用的时候再读取。</p>
 
 <h2 id="介绍:3d5b18c834d19c525ed890cfd64b400c">介绍</h2>
 
@@ -399,7 +399,7 @@ odt = data.table(col=sample(1e7))
 (identical(ans1, ans2))
 # [1] TRUE
 
-order() 比 base::order 大约快了16倍。我们会在data.table的内部讲义中讨论data.table快速排序的更多细节。
+order() 比 base::order 大约快了16倍。我们会在data.table的内部教程中讨论data.table快速排序的更多细节。
 * 因此，使用我们熟悉的函数，就可以显著地提高分析效率。
 </code></pre>
 
@@ -435,7 +435,7 @@ head(ans)
 <p>说明：</p>
 
 <pre><code>* 我们用 list() 把列名 arr_delay 包围起来，它可以确保返回值是data.table。正如前面一个例子，如果不这样做，返回值就是一个向量。
-* data.table也允许用 .() 来包围列名，它是 list() 的别名，它们的效果是同样的。讲义后面会使用 .() 来说明。
+* data.table也允许用 .() 来包围列名，它是 list() 的别名，它们的效果是同样的。教程后面会使用 .() 来说明。
 </code></pre>
 
 <p>注意：</p>
@@ -539,7 +539,7 @@ ans
 <pre><code>* 再说一遍，首先在i参数里，找到所有符合 origin (机场)是&quot;JFK&quot;，并且 month (月份)是 6 这样条件的行。   
 * 在参数j里，我们只指定了 .N，其他什么也没指定。所以实际上我们什么也没做。我们只是返回了符合条件的行的数目（就是行的 length长度）。   
 * 注意，我们没有用 list() 或者 .() 包围 .N，所以返回值是个向量。
-我们也可以这样完成这个任务 nrow(flights[origin == &quot;JFK&quot; &amp; month == 6L])。但是，这会从整个data.table里面subset符合条件的行，然后用 nrow() 返回行的数目，这是没有必要的，而且效率低下。我们会在 data.table的设计 这个讲义里面说明这一点和其他的优化方法。
+我们也可以这样完成这个任务 nrow(flights[origin == &quot;JFK&quot; &amp; month == 6L])。但是，这会从整个data.table里面subset符合条件的行，然后用 nrow() 返回行的数目，这是没有必要的，而且效率低下。我们会在 data.table的设计 这个教程里面说明这一点和其他的优化方法。
 </code></pre>
 
 <h4 id="g-太棒了-但我应该如何用参数j里面的名字引用列-就像在data-frame那样:3d5b18c834d19c525ed890cfd64b400c">g) 太棒了！但我应该如何用参数j里面的名字引用列（就像在data.frame那样）</h4>
@@ -737,7 +737,7 @@ ans
 <p>说明：</p>
 
 <pre><code>* 我们做的，只是把 by 改为了 keyby。这会自动的将结果按照升序排列。注意 keyby() 在完成操作后生效，例如，在计算结果后再排序。   
-keys：实际上 keyby 做的不只是排序。它在排序之后，设置一个叫做sorted的属性。我们会在下一讲义学习更多关于 keys的内容。   
+keys：实际上 keyby 做的不只是排序。它在排序之后，设置一个叫做sorted的属性。我们会在下一教程学习更多关于 keys的内容。   
 现在，你需要知道的，就是使用 keyby 自动排序。
 </code></pre>
 
@@ -765,7 +765,7 @@ head(ans)
 <p>说明：</p>
 
 <pre><code>* 回忆一下，我们在函数 order()中，对一个字符型的列使用 &quot;-&quot; 来降序排列。由于data.table的内部查询优化(internal query optimisation)，这样做是可行的。
-* 再回忆一下 order(...)已经通过data.table内部的快速基数排序函数 forder()优化过了。那么，我们可以继续使用熟悉的R的基础函数，而不是考虑使用data.table提供的速度快内存消耗少的排序方法。我们会在data.table internals的讲义中说明更多细节。
+* 再回忆一下 order(...)已经通过data.table内部的快速基数排序函数 forder()优化过了。那么，我们可以继续使用熟悉的R的基础函数，而不是考虑使用data.table提供的速度快内存消耗少的排序方法。我们会在data.table internals的教程中说明更多细节。
 </code></pre>
 
 <p>但是这么做会生成一个临时变量，然后再修改这个临时变量。其实我们可以通过添加chaining表达式，避免生成临时变量。</p>
@@ -932,7 +932,7 @@ head(ans)
 
 <h4 id="g-为什么参数j这么灵活:3d5b18c834d19c525ed890cfd64b400c">g) 为什么参数j这么灵活</h4>
 
-<p>这样，我们有了符合R语言风格的语法，我们也使用R语言里面既存的函数定义，而不是定义新的函数。我们用讲义一开始创建的DT来说明。</p>
+<p>这样，我们有了符合R语言风格的语法，我们也使用R语言里面既存的函数定义，而不是定义新的函数。我们用教程一开始创建的DT来说明。</p>
 
 <p>－如何保存按照ID分组后数据中的 a列和 b列 的信息</p>
 
@@ -1017,7 +1017,7 @@ DT[, print(list(c(a,b))), by=ID]
 
 <pre><code>* 类似于data.frame，我们可以subset行，除非不需要重复地使用 DT$，既然我们能将列当做变量来引用。 
 * 我们可以使用order()排序。为了得到更快速的效果，order()函数内部使用了data.table的快速排序。 
-我们可以通过参数i做更多的事，得到更快速的选取和连结。我们可以在讲义“Keys and fast binary search based subsets”和“Joins and rolling joins”中学到这些。 
+我们可以通过参数i做更多的事，得到更快速的选取和连结。我们可以在教程“Keys and fast binary search based subsets”和“Joins and rolling joins”中学到这些。 
 </code></pre>
 
 <p>指定参数j：</p>
