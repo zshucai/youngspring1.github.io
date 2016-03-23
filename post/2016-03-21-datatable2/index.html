@@ -180,8 +180,8 @@
                   <h1 class="post-title">data.table 教程2（翻译中）</h1>
 
                   <p class="post-byline">
-                    by  · 2016年03月21日 · 1200 Words ·
-                    ~3min reading time |
+                    by  · 2016年03月21日 · 1607 Words ·
+                    ~4min reading time |
 
                   </p>
 
@@ -291,6 +291,40 @@ DF$c[DF$ID == &quot;b&quot;] &lt;- 15:13 # (2) -- subassign in column 'c'
 <p>如果使用操作符&rdquo;:=&ldquo;，不管在R语言的什么版本里，不管是方法(1)还是方法(2)，都不会再拷贝。这是因为，操作符&rdquo;:=&ldquo;通过引用更新列。</p>
 
 <h4 id="b-操作符:e5b9ad2772afb60de67bb09a99ffa4e1">b) 操作符“:=”</h4>
+
+<p>在参数j中，操作符“:=”有两种使用方法：<br />
+a.左右等式的形式</p>
+
+<pre><code>DT[, c(&quot;colA&quot;, &quot;colB&quot;, ...) := list(valA, valB, ...)]
+
+# when you have only one column to assign to you 
+# can drop the quotes and list(), for convenience
+DT[, colA := valA]
+</code></pre>
+
+<p>b.函数形式</p>
+
+<pre><code>DT[, `:=`(colA = valA, # valA is assigned to colA
+      colB = valB, # valB is assigned to colB
+      ...
+)]
+</code></pre>
+
+<p>注意：</p>
+
+<pre><code>上面的两个例子只是用来说明使用的形式，并不是实际可以运行的代码示例。我们会在下一节中，用航班信息flight的data.table来举例说明。
+</code></pre>
+
+<p>说明：</p>
+
+<pre><code>* 形式(a)比较容易编码，特别是，事先不知道需要被赋值的列的时候。
+* 相对而言，形式(b)更加趁手，如果你愿意追加点注释😄。
+* 操作符“:=”没有返回值。
+* 既然参数j里面可以使用操作符“:=”，那么，就像上一讲中学习到的内容，我们可以和参数i和参数by一起，做些聚合的运算。
+</code></pre>
+
+<p>在上面两种形式里，注意我们没有把运算的结果赋值给一个变量。因为完全没必要。我们直接更新data.table。让我们通过一些例子来说明。<br />
+在接下来的教程里，我们对航班信息flight，这个data.table来示例。</p>
 
 <h2 id="2-通过引用添加-更新-删除列:e5b9ad2772afb60de67bb09a99ffa4e1">2. 通过引用添加／更新／删除列</h2>
 
