@@ -7,8 +7,131 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 22 Mar 2016 23:58:42 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 25 Mar 2016 20:00:38 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Shiny Server 安装步骤</title>
+      <link>http://youngspring1.github.io/post/2016-03-25-shinyserver/</link>
+      <pubDate>Fri, 25 Mar 2016 20:00:38 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016-03-25-shinyserver/</guid>
+      <description>
+
+&lt;p&gt;R语言非常适合用于统计相关的运算。但是在用户交互方面不够友好。&lt;br /&gt;
+Shiny Server是RStudio推出的，一个Web服务。它可以接受用户的输入，使用R语言进行计算，最终展示计算结果。这一切都在浏览器上完成。&lt;br /&gt;
+总之非常实用，现在整理下我自己的安装手册。&lt;/p&gt;
+
+&lt;h4 id=&#34;1-从代码安装r:c33352843d2370512fb8e3c681b7c165&#34;&gt;1.从代码安装R&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;./configure --prefix=/opt/r --enable-R-shlib 
+make 
+make install 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意1：PATH要设置这个文件，否则可能会找不到R ：/etc/profile&lt;br /&gt;
+注意2：可能依赖其他包比如fortran，你可能还需要执行下面这些命令。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install gcc-gfortran 
+yum install readline-devel 
+yum install libXt-devel 
+yum install gcc-c++ glibc-headers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-安装xvfb:c33352843d2370512fb8e3c681b7c165&#34;&gt;2.安装Xvfb&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install Xvfb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：绘制图形好像默认使用 X11，但是安装过程中遇到了各种麻烦，最后尝试了这个，能够正常显示。&lt;/p&gt;
+
+&lt;h4 id=&#34;3-安装shiny:c33352843d2370512fb8e3c681b7c165&#34;&gt;3.安装Shiny&lt;/h4&gt;
+
+&lt;h5 id=&#34;3-1-安装shiny:c33352843d2370512fb8e3c681b7c165&#34;&gt;3.1 安装Shiny&lt;/h5&gt;
+
+&lt;p&gt;R命令行下面安装Shiny的包。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;install.packages(&#39;shiny&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装过程中，会安装其他依赖的包。&lt;br /&gt;
+如果你跟我一样，服务器不能连网络，那就必须下载好压缩包，再传到服务器上，从本地安装。&lt;br /&gt;
+但是不在R命令行下，而是还要quit()退出来。&lt;br /&gt;
+安装的命令长这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;R CMD INSTALL XXXXX.tar.gz 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;3-2-安装shiny-server:c33352843d2370512fb8e3c681b7c165&#34;&gt;3.2 安装Shiny Server&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install --nogpgcheck shiny-server-1.4.2.786-rh5-x86_64.rpm 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;配置文件路径：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/shiny-server/shiny-server.conf 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你可以把shiny包里面自带的10个例子，都拷贝到shiny-server的目录下去。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp -R /opt/r/lib64/R/library/shiny/examples/* /srv/shiny-server/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;是的，你以后所有的APP都要在/srv/shiny-server/目录下，然后在浏览器中通过这样的方式来访问：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/目录名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;另外，启动／停止等命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;start shiny-server 
+stop shiny-server 
+restart shiny-server 
+status shiny-server 
+reload shiny-server #不中断服务的前提下 更新加载配置项
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这时可以看下首页：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/index.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;页面能够显示，但是绘图的部分好像报错了。&lt;/p&gt;
+
+&lt;h4 id=&#34;4-绘图引擎:c33352843d2370512fb8e3c681b7c165&#34;&gt;4.绘图引擎&lt;/h4&gt;
+
+&lt;h5 id=&#34;4-1-启动xvfb:c33352843d2370512fb8e3c681b7c165&#34;&gt;4.1 启动Xvfb&lt;/h5&gt;
+
+&lt;p&gt;各种泪流满面啊，九牛二虎啊。之前安装一堆东西，企图使用X11，会报错：can&amp;rsquo;t start PNG device。&lt;br /&gt;
+后来放弃X11，使用Xvfb。需要启动Xvfb。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Xvfb :3 -screen 1 1280x1024x24
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;4-1-设置:c33352843d2370512fb8e3c681b7c165&#34;&gt;4.1 设置&lt;/h5&gt;
+
+&lt;p&gt;ui.R需要加入下面这一行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sys.setenv(DISPLAY = &amp;quot;:3.1&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;访问示例试试：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/index.html 
+http://localhost:3838/01_hello/ 
+http://localhost:3838/02_text/
+http://localhost:3838/03_reactivity/
+http://localhost:3838/04_mpg/
+http://localhost:3838/05_sliders/
+http://localhost:3838/06_tabsets/
+http://localhost:3838/07_widgets/
+http://localhost:3838/08_html/
+http://localhost:3838/09_upload/
+http://localhost:3838/10_download/
+http://localhost:3838/11_timer/
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>data.table 教程3（翻译中）</title>
@@ -1844,187 +1967,6 @@ $ git merge origin/next
 4.&lt;a href=&#34;http://git-scm.com/book/zh/v2&#34;&gt;Git官方文档&lt;/a&gt;&lt;br /&gt;
 5.Git常用命令一览&lt;br /&gt;
 &lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160306-git-cmd.png&#34; alt=&#34;git-cmd&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>利用hugo搭建个人博客入门教程</title>
-      <link>http://youngspring1.github.io/post/2016-03-06-hugo/</link>
-      <pubDate>Sun, 06 Mar 2016 10:28:49 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016-03-06-hugo/</guid>
-      <description>
-
-&lt;h3 id=&#34;起因:c4d0ba6a52d2bffd88ff711ada3d2ff1&#34;&gt;起因&lt;/h3&gt;
-
-&lt;p&gt;之前看过腾讯工程师写的《Web全站工程师的自我修养》&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:c4d0ba6a52d2bffd88ff711ada3d2ff1:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:c4d0ba6a52d2bffd88ff711ada3d2ff1:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;一书，萌生了搭建一个博客的想法，用来记录学习记录和生活感受。先用免费的github，挂载静态页面试试吧。原来计划使用道听途说的Jekyll，然后一不小心看到了这篇文章&lt;a href=&#34;http://blog.coderzh.com/2015/08/29/hugo/&#34;&gt;http://blog.coderzh.com/2015/08/29/hugo/&lt;/a&gt;，各种好:&lt;br /&gt;
-1.只有一个二进制文件。&lt;br /&gt;
-2.可以将宇宙标准MarkDown格式的文章自动转换为静态网页。&lt;br /&gt;
-3.内置Web服务器，可以立即在本地查看修改结果。&lt;br /&gt;
-那么就用hugo&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:c4d0ba6a52d2bffd88ff711ada3d2ff1:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:c4d0ba6a52d2bffd88ff711ada3d2ff1:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;吧。有空再试试hexo&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:c4d0ba6a52d2bffd88ff711ada3d2ff1:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:c4d0ba6a52d2bffd88ff711ada3d2ff1:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
-
-&lt;h3 id=&#34;安装hugo:c4d0ba6a52d2bffd88ff711ada3d2ff1&#34;&gt;安装hugo&lt;/h3&gt;
-
-&lt;p&gt;我是在mac上通过tar压缩文件安装的。&lt;br /&gt;
-其他方法可以参考官方文档。&lt;br /&gt;
-1.下载&lt;br /&gt;
-&amp;emsp;下载地址：&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;https://github.com/spf13/hugo/releases&lt;/a&gt;&lt;br /&gt;
-&amp;emsp;我要的mac版，文件名长这样：hugo_X.YY_darwin_amd64.zip&lt;br /&gt;
-2.解压&lt;br /&gt;
-&amp;emsp;解压后是这样：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ls -l   
-total 31696
--rw-r--r--@ 1 username  staff     10480  2 28 21:38 LICENSE.md
--rw-r--r--@ 1 username  staff      7694  2 28 21:38 README.md
--rwxr-xr-x@ 1 username  staff  16201084  2 28 21:38 hugo_0.15_darwin_amd64
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;emsp;试一试：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ./hugo_0.15_darwin_amd64 version   
-Hugo Static Site Generator v0.15 BuildDate: 2016-02-28T21:38:32+08:00   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3.创建链接文件&lt;br /&gt;
-&amp;emsp;这么长的命令，用起来多不方便啊，我们简化一下。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ln -s /fullpath/fullpath/hugo_0.15_darwin_amd64 hugo
-$ ls -l
-total 31696
--rw-r--r--@ 1 username  staff     10480  2 28 21:38 LICENSE.md
--rw-r--r--@ 1 username  staff      7694  2 28 21:38 README.md
-lrwxr-xr-x  1 username  staff        54  2 28 22:05 hugo -&amp;gt; /fullpath/fullpath/hugo_0.15_darwin_amd64
--rwxr-xr-x@ 1 username  staff  16201084  2 28 21:38 hugo_0.15_darwin_amd64
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;emsp;亲测有效：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ./hugo version   
-Hugo Static Site Generator v0.15 BuildDate: 2016-02-28T21:38:32+08:00   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;4.加入PATH&lt;br /&gt;
-&amp;emsp;这还不够，我们要加到PATH里去。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ which hugo
-/fullpath/fullpath/hugo
-$ vi ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;emsp;加入这一行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;export PATH=$PATH:/fullpath/fullpath
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;emsp;这样你应该可以在任意位置运行hugo命令了：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo version   
-Hugo Static Site Generator v0.15 BuildDate: 2016-02-28T21:38:32+08:00   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;生成本地站点:c4d0ba6a52d2bffd88ff711ada3d2ff1&#34;&gt;生成本地站点&lt;/h3&gt;
-
-&lt;p&gt;安装好hugo之后，就可以很轻松地生成本地站点啦：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo new site mysite
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;hugo会在当前的目录下，生成mysite这个目录，cd进去，目录结构如下&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;archetypes/
-content/
-layouts/
-static/
-config.toml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;其中content是MarkDown文章目录，layouts存放的是网站的模版文件，static存放的是图片、css、js资源等。config.toml是网站的配置文件，你也可以换成yaml、json等。&lt;/p&gt;
-
-&lt;h3 id=&#34;创建文章:c4d0ba6a52d2bffd88ff711ada3d2ff1&#34;&gt;创建文章&lt;/h3&gt;
-
-&lt;p&gt;在mysite目录下，创建一个[关于]页面：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd mysite
-$ hugo new about.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;内容自己填呗。
-再创建一个文章页面：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo new post/2016-03-06-first.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;内容自己填。&lt;br /&gt;
-想看看效果么？等等，还需要导入个主题。&lt;/p&gt;
-
-&lt;h3 id=&#34;导入主题:c4d0ba6a52d2bffd88ff711ada3d2ff1&#34;&gt;导入主题&lt;/h3&gt;
-
-&lt;p&gt;还是在在mysite目录下，创建一个文件夹，我们随便clone一个主题下来。&lt;br /&gt;
-我在&lt;a href=&#34;https://themes.gohugo.io&#34;&gt;https://themes.gohugo.io&lt;/a&gt;上没有找到喜欢的主题，就直接拉了上面原文作者的主题。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ mkdir themes
-$ cd themes
-$ git clone https://github.com/coderzh/hugo-rapid-theme.git
-$ cd ..
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;（主题里面包含了作者的信息，如果需要使用，记得修改。）&lt;/p&gt;
-
-&lt;h3 id=&#34;调试:c4d0ba6a52d2bffd88ff711ada3d2ff1&#34;&gt;调试&lt;/h3&gt;
-
-&lt;p&gt;现在终于可以调试了。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo server --theme=hugo-rapid-theme --buildDrafts --watch
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;浏览器里打开：&lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;&lt;br /&gt;
-选项watch会让服务器自动检测文章的改动，自动刷新浏览器，非常方便。&lt;/p&gt;
-
-&lt;h3 id=&#34;发布:c4d0ba6a52d2bffd88ff711ada3d2ff1&#34;&gt;发布&lt;/h3&gt;
-
-&lt;p&gt;在本地自己偷着看有什么意思，发布到github上去吧。&lt;br /&gt;
-1.生成静态页面&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo --theme=hugo-rapid-theme --buildDrafts --baseUrl=&amp;quot;http://youngspring1.github.io&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;emsp;这里的url要替换成你自己的。&lt;br /&gt;
-&amp;emsp;所有的静态页面都会生成到public目录。&lt;/p&gt;
-
-&lt;p&gt;2.创建Repository&lt;br /&gt;
-&amp;emsp;在github上创建一个Repository，名为&amp;rdquo;youngspring1.github.io&amp;rdquo;。&lt;br /&gt;
-&amp;emsp;同样，不认识的名字要替换成你自己的。&lt;/p&gt;
-
-&lt;p&gt;3.提交&lt;br /&gt;
-&amp;emsp;把public目录下的内容，全部提交到刚刚创建的Repository中。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd public
-$ git init
-$ git remote add origin https://github.com/youngspring1/youngspring1.github.io.git
-$ git add -A
-$ git commit -m &amp;quot;first commit&amp;quot;
-$ git push -u origin master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;emsp;在浏览器中访问&lt;a href=&#34;http://youngspring1.github.io&#34;&gt;http://youngspring1.github.io&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;参考:c4d0ba6a52d2bffd88ff711ada3d2ff1&#34;&gt;参考&lt;/h3&gt;
-
-&lt;p&gt;原文作者&lt;a href=&#34;http://blog.coderzh.com&#34;&gt;coderzh&lt;/a&gt;搭建的中文的hugo站点：&lt;a href=&#34;http://www.gohugo.org/&#34;&gt;http://www.gohugo.org/&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:c4d0ba6a52d2bffd88ff711ada3d2ff1:1&#34;&gt;余果：&lt;a href=&#34;http://www.amazon.cn/Web全栈工程师的自我修养-余果/dp/B0141BI0D2/ref=sr_1_1?s=books&amp;amp;ie=UTF8&amp;amp;qid=1457233956&amp;amp;sr=1-1&#34;&gt;《Web全站工程师的自我修养》&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:c4d0ba6a52d2bffd88ff711ada3d2ff1:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:c4d0ba6a52d2bffd88ff711ada3d2ff1:2&#34;&gt;hugo主页：&lt;a href=&#34;https://gohugo.io&#34;&gt;https://gohugo.io&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:c4d0ba6a52d2bffd88ff711ada3d2ff1:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:c4d0ba6a52d2bffd88ff711ada3d2ff1:3&#34;&gt;hexo主页：&lt;a href=&#34;https://www.hexo.io&#34;&gt;https://www.hexo.io&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:c4d0ba6a52d2bffd88ff711ada3d2ff1:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
 </description>
     </item>
     
