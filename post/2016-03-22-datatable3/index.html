@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="xxx,">
-<meta name="description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a) What is a key? b) Set, get and use keys on a data.table">
+<meta name="description" content="目录： 1) data.table 介绍 2) 语义引用 3) 关键字、基于快速二进制搜索的subset 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a)">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="data.table 教程3（翻译中） - 行行重行行">
-<meta itemprop="description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a) What is a key? b) Set, get and use keys on a data.table">
+<meta itemprop="description" content="目录： 1) data.table 介绍 2) 语义引用 3) 关键字、基于快速二进制搜索的subset 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a)">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
 <meta property="og:title" content="data.table 教程3（翻译中） - 行行重行行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://youngspring1.github.io/post/2016-03-22-datatable3/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a) What is a key? b) Set, get and use keys on a data.table">
+<meta property="og:description" content="目录： 1) data.table 介绍 2) 语义引用 3) 关键字、基于快速二进制搜索的subset 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a)">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
 <meta name="twitter:title" content="data.table 教程3（翻译中） - 行行重行行">
-<meta name="twitter:description" content="目录： 1) data.table 介绍 2) 语义引用 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a) What is a key? b) Set, get and use keys on a data.table">
+<meta name="twitter:description" content="目录： 1) data.table 介绍 2) 语义引用 3) 关键字、基于快速二进制搜索的subset 4) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based subsets 4) Efficient reshaping using data.tables 5) Frequently asked questions 1. Keys a)">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
@@ -180,7 +180,7 @@
                   <h1 class="post-title">data.table 教程3（翻译中）</h1>
 
                   <p class="post-byline">
-                    by  · 2016年03月22日 · 142 Words ·
+                    by  · 2016年03月22日 · 155 Words ·
                     ~1min reading time |
 
                   </p>
@@ -195,7 +195,7 @@
 <p>目录：<br />
 1) <a href="http://youngspring1.github.io/post/2016-03-13-datatable1/">data.table 介绍</a><br />
 2) <a href="http://youngspring1.github.io/post/2016-03-21-datatable2/">语义引用</a><br />
-3) Keys and fast binary search based subsets<br />
+3) 关键字、基于快速二进制搜索的subset<br />
 4) Efficient reshaping using data.tables</p>
 
 <p>原文地址：<br />

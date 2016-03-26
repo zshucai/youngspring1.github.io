@@ -277,7 +277,7 @@ http://localhost:3838/11_timer/
 &lt;p&gt;目录：&lt;br /&gt;
 1) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-13-datatable1/&#34;&gt;data.table 介绍&lt;/a&gt;&lt;br /&gt;
 2) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;&lt;br /&gt;
-3) Keys and fast binary search based subsets&lt;br /&gt;
+3) 关键字、基于快速二进制搜索的subset&lt;br /&gt;
 4) Efficient reshaping using data.tables&lt;/p&gt;
 
 &lt;p&gt;原文地址：&lt;br /&gt;
@@ -356,7 +356,7 @@ http://localhost:3838/11_timer/
     </item>
     
     <item>
-      <title>data.table 教程2（翻译中）</title>
+      <title>data.table 教程2（校对中）</title>
       <link>http://youngspring1.github.io/post/2016-03-21-datatable2/</link>
       <pubDate>Mon, 21 Mar 2016 19:56:45 +0800</pubDate>
       
@@ -366,7 +366,7 @@ http://localhost:3838/11_timer/
 &lt;p&gt;目录：&lt;br /&gt;
 1) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-13-datatable1/&#34;&gt;data.table 介绍&lt;/a&gt;&lt;br /&gt;
 2) 语义引用&lt;br /&gt;
-3) Keys and fast binary search based subsets&lt;br /&gt;
+3) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-22-datatable3/&#34;&gt;关键字、基于快速二进制搜索的subset&lt;/a&gt;&lt;br /&gt;
 4) Efficient reshaping using data.tables&lt;/p&gt;
 
 &lt;p&gt;原文地址：&lt;br /&gt;
@@ -497,7 +497,7 @@ DT[, colA := valA]
 &lt;p&gt;在上面两种形式里，注意我们没有把运算的结果赋值给一个变量。因为完全没必要。我们直接更新data.table。让我们通过一些例子来说明。&lt;br /&gt;
 在接下来的教程里，我们对航班信息flight，这个data.table来示例。&lt;/p&gt;
 
-&lt;h2 id=&#34;2-通过引用添加-更新-删除列:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;2. 通过引用添加／更新／删除列&lt;/h2&gt;
+&lt;h2 id=&#34;2-添加-更新-删除列:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;2. 添加／更新／删除列&lt;/h2&gt;
 
 &lt;h4 id=&#34;a-添加列:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;a) 添加列&lt;/h4&gt;
 
@@ -550,9 +550,9 @@ flights[hour == 24L, hour := 0L]
 
 &lt;p&gt;说明：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;* 就像在上一讲中学习的一样，我们可以使用参数i 和 参数j里的操作符:=一起使用。
+&lt;pre&gt;&lt;code&gt;* 就像在上一讲中学习的一样，我们可以使用参数i 和 参数j里的操作符“:=”一起使用。
 * 只有满足了参数i 中指定的条件 hour == 24L 的那些列，它们的值会被替换成0。
-* 操作符:=没有返回值。有时候需要查看运行的结果，我们可以在查询语句的最后加一对方括号[]，来达到这个目的。
+* 操作符“:=”没有返回值。有时候需要查看运行的结果，我们可以在查询语句的最后加一对方括号[]，来达到这个目的。
 flights[hour == 24L, hour := 0L][]
 #         year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight
 #      1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1
@@ -589,23 +589,260 @@ flights[, sort(unique(hour))]
 
 &lt;h4 id=&#34;c-删除列:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;c) 删除列&lt;/h4&gt;
 
+&lt;p&gt;－删除 delay列&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flights[, c(&amp;quot;delay&amp;quot;) := NULL]
+head(flights)
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1    JFK
+# 2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
+# 3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21    JFK
+# 4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29    LGA
+# 5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117    JFK
+# 6: 2014     1   1     1824         4     2145         0         0      AA  N3DEAA    119    EWR
+#    dest air_time distance hour min    speed
+# 1:  LAX      359     2475    9  14 413.6490
+# 2:  LAX      363     2475   11  57 409.0909
+# 3:  LAX      351     2475   19   2 423.0769
+# 4:  PBI      157     1035    7  22 395.5414
+# 5:  LAX      350     2475   13  47 424.2857
+# 6:  LAX      339     2454   18  24 434.3363
+
+## or using the functional form
+# flights[, `:=`(delay = NULL)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* 将一列赋值为 NULL，就会删除那一列。删除立即生效。
+* 使用左右等式的形式的时候，除了指定列名，我们也可以指定列号。但还是忘记吧，指定列名是个好的编码习惯。
+* 为了方便，如果只需要删除一列，可以去掉 c(&amp;quot;&amp;quot;)，只指定列名，像这样：
+flights[, delay := NULL]
+这和上面的方法是等效的。
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h4 id=&#34;d-和分组:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;d) “:=”和分组&lt;/h4&gt;
+
+&lt;p&gt;我们已经在b)里面学习了如何跟参数i 一起使用，现在我们来学习如何跟参数by 一起使用。
+－如何追加一列，用来保存某对起飞／到达机场间的最快飞行速度&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flights[, max_speed := max(speed), by=.(origin, dest)]
+head(flights)
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1    JFK
+# 2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
+# 3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21    JFK
+# 4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29    LGA
+# 5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117    JFK
+# 6: 2014     1   1     1824         4     2145         0         0      AA  N3DEAA    119    EWR
+#    dest air_time distance hour min    speed max_speed
+# 1:  LAX      359     2475    9  14 413.6490  526.5957
+# 2:  LAX      363     2475   11  57 409.0909  526.5957
+# 3:  LAX      351     2475   19   2 423.0769  526.5957
+# 4:  PBI      157     1035    7  22 395.5414  517.5000
+# 5:  LAX      350     2475   13  47 424.2857  526.5957
+# 6:  LAX      339     2454   18  24 434.3363  518.4507
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* 我们用操作符“:=”追加了一列 max_speed。
+* 和上一讲学习到的内容一样，我们将所有数据进行分组。对于每组数据，计算最快速度。对于一对机场，这个最快速度是唯一的。循环复制这个值到一个list，直到跟该组数据的行数一样多。航班信息flights会被就地更新，不会因拷贝浪费内存空间。
+* 和上一讲学习到的内容一样，我们也可以对参数by指定一个字符型的向量，形式是这样：
+by = c(&amp;quot;origin&amp;quot;, &amp;quot;dest&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;e-和复数列:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;e) “:=”和复数列&lt;/h4&gt;
 
+&lt;p&gt;－如何再追加两列，用于保存每个月的最大起飞延误时间dep_delay 和到达延误时间arr_delay&lt;br /&gt;
+小提示：要用到上一讲学习到的 .SD&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;in_cols  = c(&amp;quot;dep_delay&amp;quot;, &amp;quot;arr_delay&amp;quot;)
+out_cols = c(&amp;quot;max_dep_delay&amp;quot;, &amp;quot;max_arr_delay&amp;quot;)
+flights[, c(out_cols) := lapply(.SD, max), by = month, .SDcols = in_cols]
+head(flights)
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1    JFK
+# 2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
+# 3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21    JFK
+# 4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29    LGA
+# 5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117    JFK
+# 6: 2014     1   1     1824         4     2145         0         0      AA  N3DEAA    119    EWR
+#    dest air_time distance hour min    speed max_speed max_dep_delay max_arr_delay
+# 1:  LAX      359     2475    9  14 413.6490  526.5957           973           996
+# 2:  LAX      363     2475   11  57 409.0909  526.5957           973           996
+# 3:  LAX      351     2475   19   2 423.0769  526.5957           973           996
+# 4:  PBI      157     1035    7  22 395.5414  517.5000           973           996
+# 5:  LAX      350     2475   13  47 424.2857  526.5957           973           996
+# 6:  LAX      339     2454   18  24 434.3363  518.4507           973           996
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* 为了更好的可读性，我们使用了左右等式的形式。我们事先保存了输入的列名到变量in_cols，作为 .SDcols的参数。我们还事先保存了输出的列名到变量out_cols，作为左边的表达式。
+* 注意一下，我们在c)里面讲过，如果只需要追加一列，那么可以省略双引号，只指定列名。但是这里我们需要指定 c(out_cols) 或者 (out_cols)。 
+* 左右等式的形式，允许我们操作复数的列。在右边的表达式里，为了对指定在 .SDcols 里的列计算最大值，我们使用了R的基础函数 lapply()。这些我们在上一讲中都学习过了。它返回有两个元素的list，包含每组的 dep_delay 和 arr_delay 这两列的最大值。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在进行下一节的学习之前，让我们删除刚刚追加的几列：speed, max_speed, max_dep_delay 和 max_arr_delay。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# RHS gets automatically recycled to length of LHS
+flights[, c(&amp;quot;speed&amp;quot;, &amp;quot;max_speed&amp;quot;, &amp;quot;max_dep_delay&amp;quot;, &amp;quot;max_arr_delay&amp;quot;) := NULL]
+head(flights)
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1    JFK
+# 2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
+# 3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21    JFK
+# 4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29    LGA
+# 5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117    JFK
+# 6: 2014     1   1     1824         4     2145         0         0      AA  N3DEAA    119    EWR
+#    dest air_time distance hour min
+# 1:  LAX      359     2475    9  14
+# 2:  LAX      363     2475   11  57
+# 3:  LAX      351     2475   19   2
+# 4:  PBI      157     1035    7  22
+# 5:  LAX      350     2475   13  47
+# 6:  LAX      339     2454   18  24
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;3-和copy:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;3. “:=”和copy()&lt;/h2&gt;
+
+&lt;p&gt;操作符“:=”会更新原数据。和我们之前学过的功能不同，有时候，我们希望更新原数据。但有时候，我们不想更新原数据，这种情况下，我们可以用函数 copy()。&lt;/p&gt;
 
 &lt;h4 id=&#34;a-的副作用:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;a) “:=”的副作用&lt;/h4&gt;
 
+&lt;p&gt;如果我们想创建一个函数，用于返回每个月的最快速度。但是此时，我们也想对 flights 追加一列 speed。可以像下面这样做：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foo &amp;lt;- function(DT) {
+  DT[, speed := distance / (air_time/60)]
+  DT[, .(max_speed = max(speed)), by=month]
+}
+ans = foo(flights)
+head(flights)
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1    JFK
+# 2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
+# 3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21    JFK
+# 4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29    LGA
+# 5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117    JFK
+# 6: 2014     1   1     1824         4     2145         0         0      AA  N3DEAA    119    EWR
+#    dest air_time distance hour min    speed
+# 1:  LAX      359     2475    9  14 413.6490
+# 2:  LAX      363     2475   11  57 409.0909
+# 3:  LAX      351     2475   19   2 423.0769
+# 4:  PBI      157     1035    7  22 395.5414
+# 5:  LAX      350     2475   13  47 424.2857
+# 6:  LAX      339     2454   18  24 434.3363
+head(ans)
+#    month max_speed
+# 1:     1  535.6425
+# 2:     2  535.6425
+# 3:     3  549.0756
+# 4:     4  585.6000
+# 5:     5  544.2857
+# 6:     6  608.5714
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* 注意一个新的列 speed 被追加到 flight 里了。这时因为我们用了操作符“:=”。既然 DT 和flights都指向内存中同一个对象，对 DT 的操作，也会对 flights 生效。
+* 返回值 ans 包含了每月的最快速度。
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h4 id=&#34;b-函数copy:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;b) 函数copy()&lt;/h4&gt;
 
+&lt;p&gt;在前面一节，我们利用了操作符“:=”的副作用来更新原数据。但是不会一直希望这样又是，我们希望给函数传递data.table参数，使用操作符“:=”的功能，但是不想改变原数据。我们可以用函数 copy() 来做到这一点。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;函数 copy() 对输入参数进行深度拷贝，因此对副本做的所有更新操作，都不会对原数据生效。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;函数 copy() 有两个不可或缺的特点：&lt;br /&gt;
+1.和前一节内容的情形相反，我们可能不希望传递的参数被修改。举个例子，考虑前一节中，我们不想修改 flights的内容。&lt;br /&gt;
+我们先删掉前一节中，追加的 speed列：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flights[, speed := NULL]   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在，我们可以像下面这样做：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foo &amp;lt;- function(DT) {
+  DT &amp;lt;- copy(DT)                             ## deep copy
+  DT[, speed := distance / (air_time/60)]    ## doesn&#39;t affect &#39;flights&#39;
+  DT[, .(max_speed = max(speed)), by=month]
+}
+ans &amp;lt;- foo(flights)
+head(flights)
+#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
+# 1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1    JFK
+# 2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
+# 3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21    JFK
+# 4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29    LGA
+# 5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117    JFK
+# 6: 2014     1   1     1824         4     2145         0         0      AA  N3DEAA    119    EWR
+#    dest air_time distance hour min
+# 1:  LAX      359     2475    9  14
+# 2:  LAX      363     2475   11  57
+# 3:  LAX      351     2475   19   2
+# 4:  PBI      157     1035    7  22
+# 5:  LAX      350     2475   13  47
+# 6:  LAX      339     2454   18  24
+head(ans)
+#    month max_speed
+# 1:     1  535.6425
+# 2:     2  535.6425
+# 3:     3  549.0756
+# 4:     4  585.6000
+# 5:     5  544.2857
+# 6:     6  608.5714
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;说明：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;* 使用函数 copy() 不会更新 flights。它现在不包含 speed列。
+* 返回值 ans 包含了每月的最快速度。
+然而，我们可以使用影子拷贝来代替深度拷贝，来大幅度提高这个操作的效率。事实上，我们希望在 Data.Table的V1.9.8的版本里提供这个功能。我们会在data.table的设计里面继续讨论这个内容。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考&lt;a href=&#34;https://github.com/Rdatatable/data.table/issues/617&#34;&gt;Copy-on-:= at column level, DT[,list(&amp;hellip;)] shallow copy and add cols to shallow(DT, cols)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.当我们将列名保存在变量里的时候，比如：DT_n = names(DT)，然后再对 DT 添加／更新／删除列，操作符“:=”也会更新变量 DT_n，除非我们运行 copy(names(DT))。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DT = data.table(x=1, y=2)
+DT_n = names(DT)
+DT_n
+# [1] &amp;quot;x&amp;quot; &amp;quot;y&amp;quot;
+
+## add a new column by reference
+DT[, z := 3]
+
+## DT_n also gets updated
+DT_n
+# [1] &amp;quot;x&amp;quot; &amp;quot;y&amp;quot; &amp;quot;z&amp;quot;
+
+## use `copy()`
+DT_n = copy(names(DT))
+DT[, w := 4]
+
+## DT_n doesn&#39;t get updated
+DT_n
+# [1] &amp;quot;x&amp;quot; &amp;quot;y&amp;quot; &amp;quot;z&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;总结:e5b9ad2772afb60de67bb09a99ffa4e1&#34;&gt;总结&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;操作符“:=”
+* 操作符“:=”用于添加／更新／删除列。
+* 我们也学习了如何跟参数i和参数by一起使用，就像在第一讲中学习的那样。同样，我们也可以使用 keyby，可以用方括号 [] 将操作连结起来，可以给参数by 指定表达式。
+* 我们可以利用操作符“:=”更新原数据，也可以用函数 copy() 来避免更新原数据。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;到目前为止，我们学习了好多参数j相关的知识，知道了参数i、参数j和参数by如何一起使用。下一讲[关键字、基于快速二进制搜索的subset]()，我们将注意力回到参数i上，来做一些通过关键字的超快速的排序。&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li id=&#34;fn:e5b9ad2772afb60de67bb09a99ffa4e1:1&#34;&gt;&lt;a href=&#34;http://r.789695.n4.nabble.com/speeding-up-perception-td3640920.html#a3646694&#34;&gt;TODO&lt;/a&gt;
+&lt;li id=&#34;fn:e5b9ad2772afb60de67bb09a99ffa4e1:1&#34;&gt;&lt;a href=&#34;http://r.789695.n4.nabble.com/speeding-up-perception-td3640920.html#a3646694&#34;&gt;Speeding up perception&lt;/a&gt;
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:e5b9ad2772afb60de67bb09a99ffa4e1:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li id=&#34;fn:e5b9ad2772afb60de67bb09a99ffa4e1:2&#34;&gt;&lt;a href=&#34;http://stackoverflow.com/questions/23898969/is-data-really-copied-four-times-in-rs-replacement-functions&#34;&gt;Is data really copied four times in R&amp;rsquo;s replacement functions?&lt;/a&gt;
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:e5b9ad2772afb60de67bb09a99ffa4e1:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
@@ -628,8 +865,8 @@ flights[, sort(unique(hour))]
 
 &lt;p&gt;目录：&lt;br /&gt;
 1) data.table 介绍&lt;br /&gt;
-2) Reference semantics&lt;br /&gt;
-3) Keys and fast binary search based subsets&lt;br /&gt;
+2) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;&lt;br /&gt;
+3) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-22-datatable3/&#34;&gt;关键字、基于快速二进制搜索的subset&lt;/a&gt;&lt;br /&gt;
 4) Efficient reshaping using data.tables&lt;/p&gt;
 
 &lt;p&gt;原文地址：&lt;br /&gt;
