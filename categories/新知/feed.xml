@@ -7,8 +7,136 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 25 Mar 2016 20:00:38 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 26 Mar 2016 08:08:31 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Shiny Server インストール手順</title>
+      <link>http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/</link>
+      <pubDate>Sat, 26 Mar 2016 08:08:31 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/</guid>
+      <description>
+
+&lt;p&gt;Rは、統計に対して、とても便利ですが、ユーザに向けインタフェースはそんなに良くないと思います。&lt;br /&gt;
+Shiny Serverは、Webサービスのように、ユーザの入力から、Rで計算して、ブラウザで結果を表示するサーバです。&lt;br /&gt;
+インストール手順は、下記の通りです。&lt;br /&gt;
+環境は、イントネットに接続できないCentOS 6.5 x64です。&lt;/p&gt;
+
+&lt;h4 id=&#34;1-ソースからrのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;1.ソースからRのインストール&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;./configure --prefix=/opt/r --enable-R-shlib 
+make 
+make install 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意1：PATHは、ファイル「/etc/profile」で設定してください。&lt;br /&gt;
+注意2：Rは、他のコンポに依頼します。下記のコマンドは、実行することが必要かもしれません。エラーメッセージにより確認してください。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install gcc-gfortran 
+yum install readline-devel 
+yum install libXt-devel 
+yum install gcc-c++ glibc-headers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-xvfbのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;2.Xvfbのインストール&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install Xvfb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;説明：絵の作るのは、デフォルトが X11ですが、いろいろな問題があります。最後、Xvfbになりました。&lt;/p&gt;
+
+&lt;h4 id=&#34;3-shinyのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;3.Shinyのインストール&lt;/h4&gt;
+
+&lt;h5 id=&#34;3-1-shiny-libのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;3.1 Shiny libのインストール&lt;/h5&gt;
+
+&lt;p&gt;Rのコンソールで、Shiny libをインストールします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;install.packages(&#39;shiny&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;他のlibに依頼しますが、もしサーバは、いんとねっとに接続できないなら、インストールファイルをダウンロードして、サーバに置いて、ファイルからインストールします。&lt;br /&gt;
+Rのコンソールから、quit()して、下記のようなコマンドを実行します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;R CMD INSTALL XXXXX.tar.gz 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;3-2-shiny-serverのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;3.2 Shiny Serverのインストール&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install --nogpgcheck shiny-server-1.4.2.786-rh5-x86_64.rpm 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;設定ファイルは、下記のパスです：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/shiny-server/shiny-server.conf 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;確認のために、Shiny libの10個の例を、shiny-serverのサーバディレクトリにコピーします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp -R /opt/r/lib64/R/library/shiny/examples/* /srv/shiny-server/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上記により、すべてのAPPは、ディレクトリ「/srv/shiny-server/」に置きます。そして、ブラウザでアクセスできます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/目录名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;それ以外、起動・停止コマンド：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;start shiny-server 
+stop shiny-server 
+restart shiny-server 
+status shiny-server 
+reload shiny-server #サービスを中止しないように、更新内容をロード
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ホーンページを確認しますか：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/index.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;画面を表示できますが、絵は誤りがありそうです。&lt;/p&gt;
+
+&lt;h4 id=&#34;4-絵の作り:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;4.絵の作り&lt;/h4&gt;
+
+&lt;h5 id=&#34;4-1-xvfbの起動:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;4.1 Xvfbの起動&lt;/h5&gt;
+
+&lt;p&gt;X11を使ったら、エラー「can&amp;rsquo;t start PNG device」になります。&lt;br /&gt;
+そのために、X11の代わりに，Xvfbを使います。&lt;br /&gt;
+Xvfbを起動します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Xvfb :3 -screen 1 1280x1024x24
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;4-1-設定:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;4.1 設定&lt;/h5&gt;
+
+&lt;p&gt;ui.Rには、下記の内容を追加します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sys.setenv(DISPLAY = &amp;quot;:3.1&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;例を確認しませんか。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/index.html 
+http://localhost:3838/01_hello/ 
+http://localhost:3838/02_text/
+http://localhost:3838/03_reactivity/
+http://localhost:3838/04_mpg/
+http://localhost:3838/05_sliders/
+http://localhost:3838/06_tabsets/
+http://localhost:3838/07_widgets/
+http://localhost:3838/08_html/
+http://localhost:3838/09_upload/
+http://localhost:3838/10_download/
+http://localhost:3838/11_timer/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参照：&lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server2/&#34;&gt;https://www.rstudio.com/products/shiny/shiny-server2/&lt;/a&gt;&lt;br /&gt;
+中国語版：&lt;a href=&#34;http://youngspring1.github.io/post/2016-03-25-shinyserver/&#34;&gt;http://youngspring1.github.io/post/2016-03-25-shinyserver/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Shiny Server 安装步骤</title>
@@ -130,6 +258,11 @@ http://localhost:3838/09_upload/
 http://localhost:3838/10_download/
 http://localhost:3838/11_timer/
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参照：&lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server2/&#34;&gt;https://www.rstudio.com/products/shiny/shiny-server2/&lt;/a&gt;&lt;br /&gt;
+日文版：&lt;a href=&#34;http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/&#34;&gt;http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

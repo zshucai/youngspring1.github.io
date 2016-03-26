@@ -7,8 +7,136 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 25 Mar 2016 20:00:38 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 26 Mar 2016 08:08:31 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Shiny Server インストール手順</title>
+      <link>http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/</link>
+      <pubDate>Sat, 26 Mar 2016 08:08:31 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/</guid>
+      <description>
+
+&lt;p&gt;Rは、統計に対して、とても便利ですが、ユーザに向けインタフェースはそんなに良くないと思います。&lt;br /&gt;
+Shiny Serverは、Webサービスのように、ユーザの入力から、Rで計算して、ブラウザで結果を表示するサーバです。&lt;br /&gt;
+インストール手順は、下記の通りです。&lt;br /&gt;
+環境は、イントネットに接続できないCentOS 6.5 x64です。&lt;/p&gt;
+
+&lt;h4 id=&#34;1-ソースからrのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;1.ソースからRのインストール&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;./configure --prefix=/opt/r --enable-R-shlib 
+make 
+make install 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意1：PATHは、ファイル「/etc/profile」で設定してください。&lt;br /&gt;
+注意2：Rは、他のコンポに依頼します。下記のコマンドは、実行することが必要かもしれません。エラーメッセージにより確認してください。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install gcc-gfortran 
+yum install readline-devel 
+yum install libXt-devel 
+yum install gcc-c++ glibc-headers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;2-xvfbのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;2.Xvfbのインストール&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install Xvfb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;説明：絵の作るのは、デフォルトが X11ですが、いろいろな問題があります。最後、Xvfbになりました。&lt;/p&gt;
+
+&lt;h4 id=&#34;3-shinyのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;3.Shinyのインストール&lt;/h4&gt;
+
+&lt;h5 id=&#34;3-1-shiny-libのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;3.1 Shiny libのインストール&lt;/h5&gt;
+
+&lt;p&gt;Rのコンソールで、Shiny libをインストールします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;install.packages(&#39;shiny&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;他のlibに依頼しますが、もしサーバは、いんとねっとに接続できないなら、インストールファイルをダウンロードして、サーバに置いて、ファイルからインストールします。&lt;br /&gt;
+Rのコンソールから、quit()して、下記のようなコマンドを実行します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;R CMD INSTALL XXXXX.tar.gz 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;3-2-shiny-serverのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;3.2 Shiny Serverのインストール&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install --nogpgcheck shiny-server-1.4.2.786-rh5-x86_64.rpm 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;設定ファイルは、下記のパスです：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/shiny-server/shiny-server.conf 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;確認のために、Shiny libの10個の例を、shiny-serverのサーバディレクトリにコピーします。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cp -R /opt/r/lib64/R/library/shiny/examples/* /srv/shiny-server/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上記により、すべてのAPPは、ディレクトリ「/srv/shiny-server/」に置きます。そして、ブラウザでアクセスできます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/目录名
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;それ以外、起動・停止コマンド：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;start shiny-server 
+stop shiny-server 
+restart shiny-server 
+status shiny-server 
+reload shiny-server #サービスを中止しないように、更新内容をロード
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ホーンページを確認しますか：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/index.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;画面を表示できますが、絵は誤りがありそうです。&lt;/p&gt;
+
+&lt;h4 id=&#34;4-絵の作り:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;4.絵の作り&lt;/h4&gt;
+
+&lt;h5 id=&#34;4-1-xvfbの起動:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;4.1 Xvfbの起動&lt;/h5&gt;
+
+&lt;p&gt;X11を使ったら、エラー「can&amp;rsquo;t start PNG device」になります。&lt;br /&gt;
+そのために、X11の代わりに，Xvfbを使います。&lt;br /&gt;
+Xvfbを起動します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Xvfb :3 -screen 1 1280x1024x24
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;4-1-設定:16be4caf9550ae37fbcf4bfe15c6e5b2&#34;&gt;4.1 設定&lt;/h5&gt;
+
+&lt;p&gt;ui.Rには、下記の内容を追加します。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sys.setenv(DISPLAY = &amp;quot;:3.1&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;例を確認しませんか。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;http://localhost:3838/index.html 
+http://localhost:3838/01_hello/ 
+http://localhost:3838/02_text/
+http://localhost:3838/03_reactivity/
+http://localhost:3838/04_mpg/
+http://localhost:3838/05_sliders/
+http://localhost:3838/06_tabsets/
+http://localhost:3838/07_widgets/
+http://localhost:3838/08_html/
+http://localhost:3838/09_upload/
+http://localhost:3838/10_download/
+http://localhost:3838/11_timer/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参照：&lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server2/&#34;&gt;https://www.rstudio.com/products/shiny/shiny-server2/&lt;/a&gt;&lt;br /&gt;
+中国語版：&lt;a href=&#34;http://youngspring1.github.io/post/2016-03-25-shinyserver/&#34;&gt;http://youngspring1.github.io/post/2016-03-25-shinyserver/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Shiny Server 安装步骤</title>
@@ -130,6 +258,11 @@ http://localhost:3838/09_upload/
 http://localhost:3838/10_download/
 http://localhost:3838/11_timer/
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参照：&lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server2/&#34;&gt;https://www.rstudio.com/products/shiny/shiny-server2/&lt;/a&gt;&lt;br /&gt;
+日文版：&lt;a href=&#34;http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/&#34;&gt;http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -1751,222 +1884,6 @@ Google这样的广告服务商，可以根据用户的信息，提供更加准�
 
 &lt;p&gt;亚马逊链接：&lt;a href=&#34;http://www.amazon.cn/gp/product/B0176RQ53A?ref_=s9_hps_bw_g14_i1&#34;&gt;必然&lt;/a&gt;&lt;br /&gt;
 &lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160306-the-inevitable.jpg&#34; alt=&#34;必然&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Git常用命令备忘</title>
-      <link>http://youngspring1.github.io/post/2016-03-06-git/</link>
-      <pubDate>Sun, 06 Mar 2016 13:53:07 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016-03-06-git/</guid>
-      <description>
-
-&lt;p&gt;不用git简直就是反人类啊。&lt;br /&gt;
-不过没有能力一下子把所有的命令都记住，先把常用的几个列下，具体的后面用到了再查。&lt;/p&gt;
-
-&lt;h2 id=&#34;示意图:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;示意图&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160306-git-map.png&#34; alt=&#34;git-map&#34; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;remote&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;repository&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;index&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;workspace&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;-图中的remote是远程仓库，而repository、index和workspace都是在你本地。&lt;br /&gt;
-remote还可以分为trunk repository和your own github repository。
-如果你觉得别人的工程很好，想在此基础上嫁接自己的开发，那么fork一下，就会到你自己的github工程列表中。这些remote都是有独立的地址的，比如git自己的代码，提供一个唯一的地址供大家fork：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;https://github.com/git/git.git   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;-图中的repository是本地仓库，如果这个本地仓库刚刚被初始化，还是空的，那么我们需要clone一下远程仓库。&lt;br /&gt;
-如果这个本地仓库是以前就创建好的，我们开发代码之前，应该取得（fetch）远程仓库remote的更新。&lt;/p&gt;
-
-&lt;p&gt;-图中的workspace是工作区，就是具体的代码文件。
--图中的index是暂存区，代码某个版本开发好后，需要add进index，就是告诉仓库，我修改了哪些文件，将会提交哪些文件。&lt;br /&gt;
-此时使用commit命令来提交文件。&lt;br /&gt;
-最后，把修改从本地仓库repository推送（push）到远程仓库（remote）。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-git-clone:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;1.git clone&lt;/h2&gt;
-
-&lt;p&gt;重要的事情在前面说，chone之前需要init！&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd proj-dir
-$ git init
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;clone命令会在本地主机生成一个目录，与远程主机的版本库同名。&lt;br /&gt;
-如果要指定不同的目录名，可以将目录名作为git clone命令的第二个参数。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git clone &amp;lt;版本库的网址&amp;gt;
-$ git clone &amp;lt;版本库的网址&amp;gt; &amp;lt;本地目录名&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;比如，克隆jQuery的版本库。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/jquery/jquery.git
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;clone支持HTTP(s)、SSH、Git、FTP等协议。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-git-remote:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;2.git remote&lt;/h2&gt;
-
-&lt;p&gt;git remote命令列出所有远程主机。&lt;br /&gt;
-克隆版本库的时候，所使用的远程主机自动被Git命名为origin。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git remote
-origin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;使用-v选项，可以参看远程主机的网址。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git remote -v
-origin  git@github.com:jquery/jquery.git (fetch)
-origin  git@github.com:jquery/jquery.git (push)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果想用其他的主机名，需要用git clone命令的-o选项指定。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git clone -o jQuery https://github.com/jquery/jquery.git
-$ git remote
-jQuery
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;3-git-fetch:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;3.git fetch&lt;/h2&gt;
-
-&lt;p&gt;如果远程仓库的代码有更新，我们需要将这些更新取到本地。&lt;br /&gt;
-通常建议在修改本地代码前做这件事。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git fetch &amp;lt;远程主机名&amp;gt;
-$ git fetch &amp;lt;远程主机名&amp;gt; &amp;lt;分支名&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果不指定分支名，则取回所有分支的更新。&lt;br /&gt;
-如果指定分支名，则仅取回指定分支的更新。&lt;/p&gt;
-
-&lt;p&gt;那么，我怎么知道取哪个分支？&lt;br /&gt;
-git branch命令的-r选项，可以用来查看远程分支，-a选项查看所有分支。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git branch -r
-origin/master
-
-$ git branch -a
-* master
-remotes/origin/master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上面的命令表示，本地主机的当前分支是master，远程分支是origin/master。&lt;/p&gt;
-
-&lt;p&gt;fetch只能从远程仓库取得代码，还没有合并到本地的代码中去。需要使用git merge命令或者git rebase命令，在本地分支上合并远程分支。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git merge origin/master
-# 或者
-$ git rebase origin/master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;可是可是，如果我不想合并到现在的分支上怎么办呢。可以使用git checkout命令创建一个新的分支。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git checkout -b newBrach origin/master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上面命令表示，在origin/master的基础上，创建一个新分支。&lt;/p&gt;
-
-&lt;h2 id=&#34;4-git-pull:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;4.git pull&lt;/h2&gt;
-
-&lt;p&gt;取回远程主机某个分支的更新，并且与本地的指定分支合并。
-同最开始的图上看，是不是相当于fetch＋checkout？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git pull &amp;lt;远程主机名&amp;gt; &amp;lt;远程分支名&amp;gt;:&amp;lt;本地分支名&amp;gt;
-$ git pull origin next:master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;表示取回origin主机的next分支，与本地的master分支合并。&lt;br /&gt;
-如果远程分支是与当前分支合并，则冒号后面的部分可以省略。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git pull origin next
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;也就是先做git fetch，再做git merge。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git fetch origin
-$ git merge origin/next
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;5-git-add:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;5.git add&lt;/h2&gt;
-
-&lt;p&gt;把修改信息添加到index暂存区。
-添加所有文件：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git add -A
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;添加指定文件到暂存区：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git add &amp;lt;文件1&amp;gt; &amp;lt;文件2&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;也可以指定文件夹：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git add &amp;lt;文件夹&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;删除文件，并且将删除信息也添加到暂存区：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git rm &amp;lt;文件1&amp;gt; &amp;lt;文件2&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;重命名，并且将重命名信息也添加到暂存区：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git mv &amp;lt;原文件名&amp;gt; &amp;lt;新文件名&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;6-git-commit:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;6.git commit&lt;/h2&gt;
-
-&lt;p&gt;把暂存区的修改，提交到仓库：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git commit -m &amp;quot;信息&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;原则上是，每一个原子修改，都作一次提交。&lt;/p&gt;
-
-&lt;h2 id=&#34;7-git-push:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;7.git push&lt;/h2&gt;
-
-&lt;p&gt;将本地分支的更新，推送到远程主机。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt;   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;通常本地分支名和远程分支名都同名，可以省略远程分支名。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;表示将本地的master分支推送到origin主机的master分支。&lt;/p&gt;
-
-&lt;h2 id=&#34;其他:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;其他&lt;/h2&gt;
-
-&lt;p&gt;显示暂存区和工作区的差异：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git diff  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;显示有变更的文件：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git status
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;参考:d71c3921adf591fdd23ac81ec6f69f8c&#34;&gt;参考&lt;/h2&gt;
-
-&lt;p&gt;1.阮一峰  &lt;a href=&#34;http://www.ruanyifeng.com/blog/2014/06/git_remote.html&#34;&gt;Git远程操作详解&lt;/a&gt;&lt;br /&gt;
-2.阮一峰  &lt;a href=&#34;http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html?utm_source=tool.lu&#34;&gt;常用 Git 命令清单&lt;/a&gt;&lt;br /&gt;
-3.廖雪峰  &lt;a href=&#34;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&#34;&gt;Git教程&lt;/a&gt;&lt;br /&gt;
-4.&lt;a href=&#34;http://git-scm.com/book/zh/v2&#34;&gt;Git官方文档&lt;/a&gt;&lt;br /&gt;
-5.Git常用命令一览&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160306-git-cmd.png&#34; alt=&#34;git-cmd&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
