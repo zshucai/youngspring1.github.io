@@ -7,8 +7,49 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 26 Mar 2016 08:44:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Mar 2016 21:53:14 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>软件随想录</title>
+      <link>http://youngspring1.github.io/post/2016-03-27-joe-on-soft/</link>
+      <pubDate>Sun, 27 Mar 2016 21:53:14 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016-03-27-joe-on-soft/</guid>
+      <description>
+
+&lt;p&gt;这周看了一本很有意思的书，《软件随想录》，其实有两卷，是StackOverflow的创始人和CEO发表的blog文集。&lt;br /&gt;
+不管是程序员，还是跟程序员打交道的人，都可以读一读，一定会很有收获。&lt;/p&gt;
+
+&lt;p&gt;我就不抄书了，谈谈我自己在工作中的一些感想吧。&lt;/p&gt;
+
+&lt;h4 id=&#34;1-面试题:24c5794b69f59acc2f6fcd7edde119c4&#34;&gt;1.面试题&lt;/h4&gt;
+
+&lt;p&gt;给小朋友面试的时候，公司会给一些题库，里面有好多经典的面试题，我严重怀疑面试的学生已经背得滚瓜烂熟了，反正基本上都能很快的答上来。但是要是出个笔试题，让他们手写几行（我以为）简单的代码，一天下来十几个人竟然没有一个能完全做对的。&lt;br /&gt;
+我常常想，这些面试题有什么用？工作中基本不会用到，实在有一些细节的知识点，用的时候再查资料就可以了。&lt;br /&gt;
+听上去没什么不对的，也许这就是马路上好多IT培训广告的原因，也许这就是公司招近好多不合格的“野生程序员”的原因。&lt;br /&gt;
+今天看了书才知道，上学时候学习的那些基础课，不是让我们在日后的工作中使用的，而是提前做一次筛选，提醒那些不适合做程序员的人知难而退；然后磨炼留下的人，将他们提高到一个高度，这样以后再做工作上的事，就游刃有余了。&lt;/p&gt;
+
+&lt;p&gt;补充一个学习理念：&lt;br /&gt;
+当你小学三年级的时候，会觉得题目很难；但是当你高中的时候，会觉得小学的题目都很简单。那么，先将自己提升到高中的水平，和那些小学生一起，做小学生的题目。嗯，你一定能够碾压你的竞争对手。&lt;/p&gt;
+
+&lt;h4 id=&#34;2-成长:24c5794b69f59acc2f6fcd7edde119c4&#34;&gt;2.成长&lt;/h4&gt;
+
+&lt;p&gt;刚刚进公司的时候，有“总结－分享－成长”这样的氛围。比如，做项目到一定的阶段，大家会各自总结在这过程中，做得好的不好的地方，分析原因、提出对策，然后在下一次类似的机会中实践；一个人学习了新的知识点，一定会形成文档，下次别人遇到了问题，直接去问他或者看文档，有时还会组织分享会来讲解；如此这般，很容易感受到自身的成长。&lt;br /&gt;
+而现在，大家都分散着做各自的项目，几乎没有时间和渠道交流。离职率也很高，各自学习自己感兴趣的东西。这也导致完全无心来培养一个新手，反正培养出来了也是要走的。哼哼。&lt;/p&gt;
+
+&lt;h4 id=&#34;3-是geek还是农民工:24c5794b69f59acc2f6fcd7edde119c4&#34;&gt;3.是geek还是农民工&lt;/h4&gt;
+
+&lt;p&gt;和程序员以外的人交流，噢，简直没法交流啊。就连本来应该懂一点技术的产品经理，也是拿各种不相关的词汇生搬硬套，并且妄图做技术上的决策。业务部的人，简直把程序员当成实现他们需求的工具，而且常常会想用1块钱的成本做10块钱的事，还觉得只值5毛钱。哼哼。&lt;br /&gt;
+所以理想的情况，还是待在geek文化比较强烈的公司吧。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;亚马逊链接：&lt;br /&gt;
+&lt;a href=&#34;http://www.amazon.cn/图书/dp/B00WDTQU8M?ie=UTF8&amp;amp;psc=1&amp;amp;ref_=oh_aui_detailpage_o00_s00&#34;&gt;软件随想录 I&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.amazon.cn/图书/dp/B00WFT32FY?ie=UTF8&amp;amp;psc=1&amp;amp;ref_=oh_aui_detailpage_o00_s00&#34;&gt;软件随想录 II&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>转：如何不做多任务工作 — 更简单理智地去工作</title>
@@ -2706,20 +2747,6 @@ typeof是R语言特有的，返回一个R的对象的类型。（哎呀，解释
 &lt;p&gt;G30 丝绸之路：兰州－武威－张掖－酒泉－瓜洲：1000km&lt;br /&gt;
 S314 瓜洲－敦煌：120km&lt;br /&gt;
 G215-G315-G25 敦煌－青海湖－兰州&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>20160306 碎碎念</title>
-      <link>http://youngspring1.github.io/post/2016-03-06-ssn/</link>
-      <pubDate>Sun, 06 Mar 2016 15:04:54 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016-03-06-ssn/</guid>
-      <description>&lt;p&gt;我有一个小侄子，吃饭时必须要拿iPad播放光头强，才能吃得下。&lt;br /&gt;
-我以为只有小孩才会这样。&lt;br /&gt;
-结果现在发现所有人吃饭都看着手机。&lt;br /&gt;
-简直和筷子一样不可或缺。&lt;br /&gt;
-下次我给大家表演一下，吃饭without手机。&lt;/p&gt;
 </description>
     </item>
     
