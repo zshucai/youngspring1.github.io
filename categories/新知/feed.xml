@@ -1448,7 +1448,7 @@ DT_n
 * 我们可以利用操作符“:=”更新原数据，也可以用函数 copy() 来避免更新原数据。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;到目前为止，我们学习了好多参数j相关的知识，知道了参数i、参数j和参数by如何一起使用。下一讲[主键、基于二分法搜索的subset]()，我们将注意力回到参数i上，来做一些通过主键的超快速的排序。&lt;/p&gt;
+&lt;p&gt;到目前为止，我们学习了好多参数j相关的知识，知道了参数i、参数j和参数by如何一起使用。下一讲&lt;a href=&#34;http://youngspring1.github.io/post/2016-03-22-datatable3/&#34;&gt;主键、基于二分法搜索的subset&lt;/a&gt;，我们将注意力回到参数i上，来做一些通过主键的超快速的排序。&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
