@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="R,">
-<meta name="description" content="MIT课程 15.071x 第二单元的学习记录。 Linear Regression 第二单元的主题是线性回归。 理论 一元线性回归公式： 其中x是自变量independent variable，y">
+<meta name="description" content="MIT课程 15.071x 第二单元的学习记录。 Linear Regression 第二单元的主题是线性回归。 1.理论 一元线性回归公式： 其中x是自变量independent variable">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="R语言笔记02 - 行行重行行">
-<meta itemprop="description" content="MIT课程 15.071x 第二单元的学习记录。 Linear Regression 第二单元的主题是线性回归。 理论 一元线性回归公式： 其中x是自变量independent variable，y">
+<meta itemprop="description" content="MIT课程 15.071x 第二单元的学习记录。 Linear Regression 第二单元的主题是线性回归。 1.理论 一元线性回归公式： 其中x是自变量independent variable">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
 <meta property="og:title" content="R语言笔记02 - 行行重行行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-04-23-R02/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="MIT课程 15.071x 第二单元的学习记录。 Linear Regression 第二单元的主题是线性回归。 理论 一元线性回归公式： 其中x是自变量independent variable，y">
+<meta property="og:description" content="MIT课程 15.071x 第二单元的学习记录。 Linear Regression 第二单元的主题是线性回归。 1.理论 一元线性回归公式： 其中x是自变量independent variable">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
 <meta name="twitter:title" content="R语言笔记02 - 行行重行行">
-<meta name="twitter:description" content="MIT课程 15.071x 第二单元的学习记录。 Linear Regression 第二单元的主题是线性回归。 理论 一元线性回归公式： 其中x是自变量independent variable，y">
+<meta name="twitter:description" content="MIT课程 15.071x 第二单元的学习记录。 Linear Regression 第二单元的主题是线性回归。 1.理论 一元线性回归公式： 其中x是自变量independent variable">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
@@ -97,7 +97,7 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="http://youngspring1.github.io/categories/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">R语言笔记</a>
+          <a rel="nofollow" href="http://youngspring1.github.io/categories/r%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">r语言笔记</a>
         </li>
         
         
@@ -192,7 +192,7 @@
                   <h1 class="post-title">R语言笔记02</h1>
 
                   <p class="post-byline">
-                    by  · 2016年04月23日 · 1196 Words ·
+                    by  · 2016年04月23日 · 1195 Words ·
                     ~3min reading time |
 
                   </p>
@@ -212,11 +212,11 @@
 
 <p>第二单元的主题是线性回归。</p>
 
-<h3 id="理论:efa3f4364b4acd6454b77ef89af35a47">理论</h3>
+<h3 id="1-理论:efa3f4364b4acd6454b77ef89af35a47">1.理论</h3>
 
 <p>一元线性回归公式：</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?y^i = beta_0 + beta_1x^i + epsilon^i" alt="table" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?y^i={beta}_0+beta_1x^i+epsilon^i" alt="formula" /></p>
 
 <p>其中x是自变量independent variable，y是因变量dependent variable。<br />
 beta是相关系数coefficient，epsilon是误差error。</p>
@@ -226,7 +226,7 @@ beta是相关系数coefficient，epsilon是误差error。</p>
 <p>1.SSE（sum of squared errors）<br />
 注意这里的误差是相对于最优解的。</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?SSE = sum_{i=1}^{n}epsilon_i^2" alt="table" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?SSE = sum_{i=1}^{n}epsilon_i^2" alt="formula" /></p>
 
 <p>2.SST （total sum of square）<br />
 公式同上。但这里的误差是相对于baseline的。baseline是因变量的平均值。<br />
@@ -234,23 +234,23 @@ beta是相关系数coefficient，epsilon是误差error。</p>
 
 <p>3.RMSE（root mean square error）</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?RMSE = sqrtfrac{SSE}{n}" alt="table" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?RMSE = sqrtfrac{SSE}{n}" alt="formula" /></p>
 
 <p>4.R平方</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?R^2 = 1 - frac{SSE}{SST}" alt="table" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?R^2 = 1 - frac{SSE}{SST}" alt="formula" /></p>
 
 <p>R平方越接近1越好。</p>
 
 <p>多元线性回归公式：</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?y^i = beta_0 + beta_1x_1^i + beta_2x_2^i + ldots + beta_nx_n^i + epsilon^i" alt="table" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?y^i = beta_0 + beta_1x_1^i + beta_2x_2^i + ldots + beta_nx_n^i + epsilon^i" alt="formula" /></p>
 
 <pre><code>所有数据分析，都要经历 training－test－predict 这三个过程。
 在接下来的例子中，我们介绍 建模－评估 这前两个过程。
 </code></pre>
 
-<h3 id="建立回归模型:efa3f4364b4acd6454b77ef89af35a47">建立回归模型</h3>
+<h3 id="2-建立回归模型:efa3f4364b4acd6454b77ef89af35a47">2.建立回归模型</h3>
 
 <p>建模使用lm()函数。<br />
 DF是保存学习数据的data.frame。</p>
@@ -290,14 +290,14 @@ Coefficients表示系数，就是公式里面的beta。<br />
 Estimate的第一行是常数beta0，第二行是第一个自变量的系数beta1，第三行是第二个自变量的系数beta2，后面类推。<br />
 t value越大越好</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?{t value} = frac{Estimate}{Std. Error}" alt="table" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?{t value} = frac{Estimate}{Std. Error}" alt="formula" /></p>
 
 <p>Pr(&gt;|t|) 和t value相反，越小越好。<br />
 最后一列星星越多越好。<br />
 三短横下面这行解释了星星的含义。<br />
 Multiple R-squared就是R平方，越接近1越准确。</p>
 
-<h3 id="评估:efa3f4364b4acd6454b77ef89af35a47">评估</h3>
+<h3 id="3-评估:efa3f4364b4acd6454b77ef89af35a47">3.评估</h3>
 
 <p>对于刚过简历的模型，我们使用测试数据来评估一下准确度。<br />
 model就是上文建立的模型。<br />
@@ -308,7 +308,7 @@ DFTest是测试数据，它的结构和上文的DF一样。</p>
 
 <p>这个命令的返回值是 DFTest$Price 的<strong>预测</strong>结果。你可以跟 DFTest$Price 的<strong>实际</strong>结果相比较，计算SSE、RMSE、R平方等等来衡量对测试数据的预测的准确性。</p>
 
-<h3 id="correlation:efa3f4364b4acd6454b77ef89af35a47">Correlation</h3>
+<h3 id="4-correlation:efa3f4364b4acd6454b77ef89af35a47">4.Correlation</h3>
 
 <p>线性相关性</p>
 
@@ -319,7 +319,7 @@ cor(DF)
 
 <p>返回值是斜率。</p>
 
-<h3 id="补充知识-棒球统计术语:efa3f4364b4acd6454b77ef89af35a47">补充知识－棒球统计术语</h3>
+<h3 id="补充知识a-棒球统计术语:efa3f4364b4acd6454b77ef89af35a47">补充知识A－棒球统计术语</h3>
 
 <p>完全不懂棒球啊，一开始摸不着头脑。</p>
 
@@ -377,7 +377,7 @@ cor(DF)
 </tbody>
 </table>
 
-<h3 id="补充知识-篮球统计术语:efa3f4364b4acd6454b77ef89af35a47">补充知识－篮球统计术语</h3>
+<h3 id="补充知识b-篮球统计术语:efa3f4364b4acd6454b77ef89af35a47">补充知识B－篮球统计术语</h3>
 
 <p>年轻时看NBA，好歹知道一点。</p>
 
@@ -598,7 +598,7 @@ cor(DF)
           </li>
         
           <li class="cat-item cat-item-1">
-            <a rel="nofollow" href="http://youngspring1.github.io/categories/R%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">R语言笔记</a>
+            <a rel="nofollow" href="http://youngspring1.github.io/categories/r%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/">r语言笔记</a>
           </li>
         
       </ul>
