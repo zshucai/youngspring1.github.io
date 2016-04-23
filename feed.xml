@@ -7,8 +7,361 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 08 Apr 2016 13:00:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 23 Apr 2016 15:19:39 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R语言笔记02</title>
+      <link>http://youngspring1.github.io/post/2016/2016-04-23-R02/</link>
+      <pubDate>Sat, 23 Apr 2016 15:19:39 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-04-23-R02/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第二单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;linear-regression:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;Linear Regression&lt;/h2&gt;
+
+&lt;p&gt;第二单元的主题是线性回归。&lt;/p&gt;
+
+&lt;h3 id=&#34;理论:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;理论&lt;/h3&gt;
+
+&lt;p&gt;一元线性回归公式：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?y^i = beta_0 + beta_1x^i + epsilon^i&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其中x是自变量independent variable，y是因变量dependent variable。&lt;br /&gt;
+beta是相关系数coefficient，epsilon是误差error。&lt;/p&gt;
+
+&lt;p&gt;为了判断线性回归的效果，我们有如下检验标准：&lt;/p&gt;
+
+&lt;p&gt;1.SSE（sum of squared errors）&lt;br /&gt;
+注意这里的误差是相对于最优解的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?SSE = sum_{i=1}^{n}epsilon_i^2&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.SST （total sum of square）&lt;br /&gt;
+公式同上。但这里的误差是相对于baseline的。baseline是因变量的平均值。&lt;br /&gt;
+所以有 0 &amp;lt;= SSE &amp;lt;= SST 。&lt;/p&gt;
+
+&lt;p&gt;3.RMSE（root mean square error）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?RMSE = sqrtfrac{SSE}{n}&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.R平方&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?R^2 = 1 - frac{SSE}{SST}&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;R平方越接近1越好。&lt;/p&gt;
+
+&lt;p&gt;多元线性回归公式：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?y^i = beta_0 + beta_1x_1^i + beta_2x_2^i + ldots + beta_nx_n^i + epsilon^i&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;所有数据分析，都要经历 training－test－predict 这三个过程。
+在接下来的例子中，我们介绍 建模－评估 这前两个过程。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;建立回归模型:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;建立回归模型&lt;/h3&gt;
+
+&lt;p&gt;建模使用lm()函数。&lt;br /&gt;
+DF是保存学习数据的data.frame。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;model = lm(y ~ x1 + x2 + ... +xn, data = DF)
+# 误差 model$residuals
+SSE = sum(model$residuals^2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;随便看个结果吧&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; summary(model)
+
+Call:
+lm(formula = Price ~ HarvestRain + WinterRain, data = wine)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.0933 -0.3222 -0.1012  0.3871  1.1877 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+(Intercept)  7.865e+00  6.616e-01  11.888 4.76e-11 ***
+HarvestRain -4.971e-03  1.601e-03  -3.105  0.00516 ** 
+WinterRain  -9.848e-05  9.007e-04  -0.109  0.91392    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5611 on 22 degrees of freedom
+Multiple R-squared:  0.3177,    Adjusted R-squared:  0.2557 
+F-statistic: 5.122 on 2 and 22 DF,  p-value: 0.01492
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Call表示建模使用的语句。&lt;br /&gt;
+Residuals表示误差。&lt;br /&gt;
+Coefficients表示系数，就是公式里面的beta。&lt;br /&gt;
+Estimate的第一行是常数beta0，第二行是第一个自变量的系数beta1，第三行是第二个自变量的系数beta2，后面类推。&lt;br /&gt;
+t value越大越好&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?{t value} = frac{Estimate}{Std. Error}&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pr(&amp;gt;|t|) 和t value相反，越小越好。&lt;br /&gt;
+最后一列星星越多越好。&lt;br /&gt;
+三短横下面这行解释了星星的含义。&lt;br /&gt;
+Multiple R-squared就是R平方，越接近1越准确。&lt;/p&gt;
+
+&lt;h3 id=&#34;评估:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;评估&lt;/h3&gt;
+
+&lt;p&gt;对于刚过简历的模型，我们使用测试数据来评估一下准确度。&lt;br /&gt;
+model就是上文建立的模型。&lt;br /&gt;
+DFTest是测试数据，它的结构和上文的DF一样。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;predict(model, newdata = DFTest)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个命令的返回值是 DFTest$Price 的&lt;strong&gt;预测&lt;/strong&gt;结果。你可以跟 DFTest$Price 的&lt;strong&gt;实际&lt;/strong&gt;结果相比较，计算SSE、RMSE、R平方等等来衡量对测试数据的预测的准确性。&lt;/p&gt;
+
+&lt;h3 id=&#34;correlation:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;Correlation&lt;/h3&gt;
+
+&lt;p&gt;线性相关性&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cor(var1, var2)
+# 也可以考察整个DF中，每两列的线性相关性
+cor(DF)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;返回值是斜率。&lt;/p&gt;
+
+&lt;h3 id=&#34;补充知识-棒球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识－棒球统计术语&lt;/h3&gt;
+
+&lt;p&gt;完全不懂棒球啊，一开始摸不着头脑。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;缩写&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;原文&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;中文&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;RS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Run Scores&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;跑分，得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;RA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Run Allowed&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失分，对手得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OBP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;On-Base Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;上垒率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OOBP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent On-Base Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对手上垒率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;SLG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Slugging Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;长打率，击中率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OSLG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent Slugging Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对手长打率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;BA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Batting Avarage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;平均成功率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;补充知识-篮球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识－篮球统计术语&lt;/h3&gt;
+
+&lt;p&gt;年轻时看NBA，好歹知道一点。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;缩写&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;原文&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;中文&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;PTS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;oppPTS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失分，对手得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Field Goals (success)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FGA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Field Goals Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X2P&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2 Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2分球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X2PA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2 Points Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2分球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X3P&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3 Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3分球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X3PA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3 Points Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3分球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FT&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Free Throw&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;罚球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FTA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Free Throw Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;发球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;ORB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Offensive Rebounds&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;前场篮板，进攻篮板&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;DRB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Defensive Rebounds&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;后场篮板，防守篮板&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;AST&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Assists&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;助攻&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;STL&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Steals&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抢断&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;BLK&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Blocks&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;盖帽&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;TOV&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Turnovers&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;注：X2P列，原始数据列名是2P。由于R不支持数字开头的列名／变量，读取CSV文件的时候，会在原列名2P前加个X，从而变成 X2P。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R语言笔记01</title>
+      <link>http://youngspring1.github.io/post/2016/2016-04-18-R01/</link>
+      <pubDate>Mon, 18 Apr 2016 19:55:25 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-04-18-R01/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第一单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;r语言入门:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;R语言入门&lt;/h2&gt;
+
+&lt;p&gt;R语言入门只讲了一些常用的操作。相对于动辄花一本书来讲这些，真是相当简约。但其实足够了，其他操作，需要的时候再查嘛。&lt;br /&gt;
+数据分析的四要素：data、models、decisions、value&lt;/p&gt;
+
+&lt;h3 id=&#34;简单使用:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;简单使用&lt;/h3&gt;
+
+&lt;p&gt;?func&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;帮助
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ls()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;显示当前的临时变量
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;getwd()
+setwd()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;获取／设置当前目录
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dir()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;显示当前文件夹下的文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据结构:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;数据结构&lt;/h3&gt;
+
+&lt;p&gt;向量概念&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;所有的操作都是对向量的每个元素实施的
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;seq&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;自动生成序列
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;data.frame&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>data.table 教程5（校对中）</title>
@@ -446,10 +799,10 @@ DT.c2
     
     <item>
       <title>data.table 教程4（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016-04-02-datatable4/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-04-02-datatable4/</link>
       <pubDate>Sat, 02 Apr 2016 07:38:11 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-04-02-datatable4/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-04-02-datatable4/</guid>
       <description>
 
 &lt;p&gt;目录：&lt;br /&gt;
@@ -874,10 +1227,10 @@ system.time(dt[x %in% 1989:2012])
     
     <item>
       <title>为什么程序员要写功能设计书</title>
-      <link>http://youngspring1.github.io/post/2016-03-30-write-fd/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-30-write-fd/</link>
       <pubDate>Wed, 30 Mar 2016 21:19:46 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-30-write-fd/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-30-write-fd/</guid>
       <description>
 
 &lt;p&gt;续上篇，还是阅读了《软件随想录》之后，希望把以前的思考再总结一下。&lt;/p&gt;
@@ -993,10 +1346,10 @@ system.time(dt[x %in% 1989:2012])
     
     <item>
       <title>软件随想录</title>
-      <link>http://youngspring1.github.io/post/2016-03-27-joe-on-soft/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-27-joe-on-soft/</link>
       <pubDate>Sun, 27 Mar 2016 21:53:14 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-27-joe-on-soft/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-27-joe-on-soft/</guid>
       <description>
 
 &lt;p&gt;这周看了一本很有意思的书，《软件随想录》，其实有两卷，是StackOverflow的创始人和CEO发表的blog文集。&lt;br /&gt;
@@ -1034,10 +1387,10 @@ system.time(dt[x %in% 1989:2012])
     
     <item>
       <title>转：如何不做多任务工作 — 更简单理智地去工作</title>
-      <link>http://youngspring1.github.io/post/2016-03-26-work-simpler/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-26-work-simpler/</link>
       <pubDate>Sat, 26 Mar 2016 08:44:24 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-26-work-simpler/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-26-work-simpler/</guid>
       <description>&lt;p&gt;转帖评论：&lt;/p&gt;
 
 &lt;p&gt;没有所谓的多任务处理。&lt;br /&gt;
@@ -1114,10 +1467,10 @@ CPU也是一个个任务分时间段单独执行，或者在独立的核心上�
     
     <item>
       <title>Shiny Server インストール手順</title>
-      <link>http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-26-shinyserver-jp/</link>
       <pubDate>Sat, 26 Mar 2016 08:08:31 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-26-shinyserver-jp/</guid>
       <description>
 
 &lt;p&gt;Rは、統計に対して、とても便利ですが、ユーザに向けインタフェースはそんなに良くないと思います。&lt;br /&gt;
@@ -1242,10 +1595,10 @@ http://localhost:3838/11_timer/
     
     <item>
       <title>Shiny Server 安装步骤</title>
-      <link>http://youngspring1.github.io/post/2016-03-25-shinyserver/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-25-shinyserver/</link>
       <pubDate>Fri, 25 Mar 2016 20:00:38 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-25-shinyserver/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-25-shinyserver/</guid>
       <description>
 
 &lt;p&gt;R语言非常适合用于统计相关的运算。但是在用户交互方面不够友好。&lt;br /&gt;
@@ -1370,10 +1723,10 @@ http://localhost:3838/11_timer/
     
     <item>
       <title>data.table 教程3（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016-03-22-datatable3/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-22-datatable3/</link>
       <pubDate>Tue, 22 Mar 2016 23:58:42 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-22-datatable3/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-22-datatable3/</guid>
       <description>
 
 &lt;p&gt;目录：&lt;br /&gt;
@@ -2036,10 +2389,10 @@ identical(ans1$val, ans2$val)
     
     <item>
       <title>R语言入门教程1（编写中）</title>
-      <link>http://youngspring1.github.io/post/2016-03-22-R1/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-22-R1/</link>
       <pubDate>Tue, 22 Mar 2016 23:20:42 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-22-R1/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-22-R1/</guid>
       <description>
 
 &lt;p&gt;最近用R语言改写一个现有的小工具，把学到的东西简单总结下。&lt;/p&gt;
@@ -2068,10 +2421,10 @@ identical(ans1$val, ans2$val)
     
     <item>
       <title>data.table 教程2（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016-03-21-datatable2/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-21-datatable2/</link>
       <pubDate>Mon, 21 Mar 2016 19:56:45 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-21-datatable2/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-21-datatable2/</guid>
       <description>
 
 &lt;p&gt;目录：&lt;br /&gt;
@@ -2569,10 +2922,10 @@ DT_n
     
     <item>
       <title>单车一周旅行计划</title>
-      <link>http://youngspring1.github.io/post/2016-03-20-bike/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-20-bike/</link>
       <pubDate>Sun, 20 Mar 2016 22:10:24 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-20-bike/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-20-bike/</guid>
       <description>&lt;p&gt;D1：南京&amp;ndash;溧阳市  110km&lt;/p&gt;
 
 &lt;p&gt;很容易&lt;/p&gt;
@@ -2605,10 +2958,10 @@ DT_n
     
     <item>
       <title>转：某T的职级系统</title>
-      <link>http://youngspring1.github.io/post/2016-03-15-career/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-15-career/</link>
       <pubDate>Tue, 15 Mar 2016 22:51:30 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-15-career/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-15-career/</guid>
       <description>&lt;p&gt;原文链接：&lt;a href=&#34;http://www.cyzone.cn/a/20140828/262150.html&#34;&gt;http://www.cyzone.cn/a/20140828/262150.html&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;腾讯的职级系统有26个职业通道，如果你是一个一张白纸只有素质没有任何职业能力的毕业生，可以从这个26个通道，比如行政、财务、设计、运维、开发、运营、产品…….的任何一个1-1级开始，修炼，打怪升级，直到千万年薪。如同一个完整的人生指引。&lt;/p&gt;
@@ -2646,883 +2999,6 @@ DT_n
 &lt;p&gt;所以，人会在哪个层级呆着，度过一生，其实都是因为吃不了其他层级的苦。其实发展个人才气，在动作层呆着，是人生最舒适的选择。&lt;/p&gt;
 
 &lt;p&gt;不过那些以才子自居的人，创业往往格外困难，因为在整个创业的战略确定到达成的过程里，最不值钱的，也就是才气。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>演化</title>
-      <link>http://youngspring1.github.io/post/2016-03-15-evalution/</link>
-      <pubDate>Tue, 15 Mar 2016 22:11:49 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016-03-15-evalution/</guid>
-      <description>&lt;p&gt;自古登堡以来，书籍因为其“不变”的特质，象征着稳定、专注、权威；而电子时代，amazon可以很方便地更新我手中kindle中的内容。&lt;br /&gt;
-这是一个一直在变化的时代，我们也不用等待准备好了，才去做某件事情。&lt;br /&gt;
-我们一直处在演化的过程中。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>data.table 教程1（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016-03-13-datatable1/</link>
-      <pubDate>Sun, 13 Mar 2016 18:57:40 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016-03-13-datatable1/</guid>
-      <description>
-
-&lt;p&gt;最近使用data.table这个增强包，来计算数据的聚合信息，比sql语句简单明了不是一点半点，于是想把data.table的资料翻译出来。&lt;/p&gt;
-
-&lt;p&gt;目录：&lt;br /&gt;
-1) data.table 介绍&lt;br /&gt;
-2) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;&lt;br /&gt;
-3) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-22-datatable3/&#34;&gt;主键、基于二分法搜索的subset&lt;/a&gt;&lt;br /&gt;
-4) [二次索引和自动索引]()&lt;br /&gt;
-5) Efficient reshaping using data.tables&lt;/p&gt;
-
-&lt;p&gt;原文地址：&lt;br /&gt;
-1) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html&#34;&gt;Introduction to data.table&lt;/a&gt;&lt;br /&gt;
-2) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reference-semantics.html&#34;&gt;Reference semantics&lt;/a&gt;&lt;br /&gt;
-3) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-keys-fast-subset.html&#34;&gt;Keys and fast binary search based subsets&lt;/a&gt;&lt;br /&gt;
-4) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-secondary-indices-and-auto-indexing.html&#34;&gt;Secondary indices and auto indexing&lt;/a&gt;&lt;br /&gt;
-5) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reshape.html&#34;&gt;Efficient reshaping using data.tables&lt;/a&gt;&lt;br /&gt;
-6) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-faq.html&#34;&gt;Frequently asked questions&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;本教程介绍data.table的语法，大概的形式，如何subset行，如何按列select／compute，如何分组聚合。熟悉data.frame的数据结构是有帮助的，不过不熟悉也没关系。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;使用data-table分析数据:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;使用data.table分析数据&lt;/h2&gt;
-
-&lt;p&gt;支持操作数据的功能，例如subset、group、update、join等。&lt;br /&gt;
-这些功能可以让我们：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 通过简洁一致的语法，实行想要的操作，达到目的。
-* 从一系列函数到最终的分析，都没有将所有的操作都对应到函数的负担。能够流畅地执行分析。
-* 精确地知道每步操作所需要的数据，内部自动优化操作，在运行速度和内存开销两方面都很有效果。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table就是干这事儿的。我们通过这一系列教程，说明这些功能。&lt;/p&gt;
-
-&lt;h2 id=&#34;数据:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;数据&lt;/h2&gt;
-
-&lt;p&gt;在这个教程中，我们使用&lt;a href=&#34;https://github.com/arunsrinivasan/flights/wiki/NYC-Flights-2014-data&#34;&gt;NYC-flights14&lt;/a&gt;的数据。它包含了2014年纽约机场发出的所有航班信息。这份数据只有2014年1月到10月是公开的。&lt;br /&gt;
-我们可以使用data.table的fread()函数，用下面的方式，快速直接读取航班数据：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flights &amp;lt;- fread(&amp;quot;https://raw.githubusercontent.com/wiki/arunsrinivasan/    flights/NYCflights14/flights14.csv&amp;quot;)
-flights
-#         year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight
-#      1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1
-#      2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3
-#      3: 2014     1   1     1902         2     2224         9         0      AA  N327AA     21
-#      4: 2014     1   1      722        -8     1014       -26         0      AA  N3EHAA     29
-#      5: 2014     1   1     1347         2     1706         1         0      AA  N319AA    117
-#     ---                                                                                      
-# 253312: 2014    10  31     1459         1     1747       -30         0      UA  N23708   1744
-# 253313: 2014    10  31      854        -5     1147       -14         0      UA  N33132   1758
-# 253314: 2014    10  31     1102        -8     1311        16         0      MQ  N827MQ   3591
-# 253315: 2014    10  31     1106        -4     1325        15         0      MQ  N511MQ   3592
-# 253316: 2014    10  31      824        -5     1045         1         0      MQ  N813MQ   3599
-#         origin dest air_time distance hour min
-#      1:    JFK  LAX      359     2475    9  14
-#      2:    JFK  LAX      363     2475   11  57
-#      3:    JFK  LAX      351     2475   19   2
-#      4:    LGA  PBI      157     1035    7  22
-#      5:    JFK  LAX      350     2475   13  47
-#     ---                                       
-# 253312:    LGA  IAH      201     1416   14  59
-# 253313:    EWR  IAH      189     1400    8  54
-# 253314:    LGA  RDU       83      431   11   2
-# 253315:    LGA  DTW       75      502   11   6
-# 253316:    LGA  SDF      110      659    8  24
-dim(flights)
-# [1] 253316     17
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;既然整个教程我们都会使用这份数据，那你不妨先下载到你的电脑上，然后每次使用的时候再读取。&lt;/p&gt;
-
-&lt;h2 id=&#34;介绍:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;介绍&lt;/h2&gt;
-
-&lt;p&gt;在本章中，我们会学习下面两点：&lt;br /&gt;
-1. 基础 － 什么是data.table，它的形式，如何subset行，如何select列，如何按列进行运算。&lt;br /&gt;
-2. 聚合 － 按组聚合的效果。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-基础:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;1.基础&lt;/h2&gt;
-
-&lt;h4 id=&#34;a-什么是data-table:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;a) 什么是data.table&lt;/h4&gt;
-
-&lt;p&gt;data.table是R语言的一个包，它是对data.frames的增强。在上文（读取航班）“数据”的部分，我们通过函数fread()创建了一个data.table。我们也可以通过函数data.table()创建一个data.table，比如这样：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT = data.table(ID = c(&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;c&amp;quot;), a = 1:6, b = 7:12, c=13:18)
-DT
-#    ID a  b  c
-# 1:  b 1  7 13
-# 2:  b 2  8 14
-# 3:  b 3  9 15
-# 4:  a 4 10 16
-# 5:  a 5 11 17
-# 6:  c 6 12 18
-class(DT$ID)
-# [1] &amp;quot;character&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;我们也可以通过as.data.table()将已经存在的对象转化成data.table。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;注意：
-* 不同于data.frames，字符型的列，不会被自动转化成因子。
-* 行号后面有个冒号，用于隔开第一列的内容。
-* 如果数据的条目超过了全局选项datatable.print.nrows所定义的数值（默认是100条），那么只会输出数据最开头和最末尾的5行。就如同上文（读取航班）“数据”的部分。
-
-getOption(&amp;quot;datatable.print.nrows&amp;quot;)
-# [1] 100
-
-* data.table不能设置行的名称。我们会在第三讲中说明原因。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;b-形式-data-table增强了什么:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;b) 形式－data.table增强了什么&lt;/h4&gt;
-
-&lt;p&gt;和data.frame相反，我们能做的可不仅仅局限于subset行或者select列。首先介绍下data.table的语法，如下所示：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT[i, j, by]
-
-##   R:      i                 j        by
-## SQL:  where   select | update  group by
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果你有SQL语句的基础，那么你应该能马上明白data.table的语法。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;语法是：
-对于DT这个data.table，使用 i 来subset行，然后计算 j ，最后用 by 分组。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;c-subset行:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;c) subset行&lt;/h4&gt;
-
-&lt;p&gt;－ 获取六月份所有从&amp;rdquo;JFK&amp;rdquo;机场起飞的航班&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L]
-head(ans)
-#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
-# 1: 2014     6   1      851        -9     1205        -5         0      AA  N787AA      1    JFK
-# 2: 2014     6   1     1220       -10     1522       -13         0      AA  N795AA      3    JFK
-# 3: 2014     6   1      718        18     1014        -1         0      AA  N784AA      9    JFK
-# 4: 2014     6   1     1024        -6     1314       -16         0      AA  N791AA     19    JFK
-# 5: 2014     6   1     1841        -4     2125       -45         0      AA  N790AA     21    JFK
-# 6: 2014     6   1     1454        -6     1757       -23         0      AA  N785AA    117    JFK
-#    dest air_time distance hour min
-# 1:  LAX      324     2475    8  51
-# 2:  LAX      329     2475   12  20
-# 3:  LAX      326     2475    7  18
-# 4:  LAX      320     2475   10  24
-# 5:  LAX      326     2475   18  41
-# 6:  LAX      329     2475   14  54
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 通过data.frame的frame？，列可以像变量一样被引用。因此，我们不需要加上 flights$ 前缀，比如 flights$dest 和 flights$month，而是直接简单地引用 dest 和 month这两列。
-* 满足 origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L 这两个条件的行会被抽出出来。既然我们没有指定其他的条件，一个包含原数据里面所有列的data.table会被返回。
-* 语法里面[i,j,k]的逗号不是必须的，当然如果指定了逗号，比如 flights[dest == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L, ] 也是没问题的。但在data.frame里面，逗号却是必须的。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 获取 flights 开头的两行&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[1:2]
-ans
-#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
-# 1: 2014     1   1      914        14     1238        13         0      AA  N338AA      1    JFK
-# 2: 2014     1   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
-#    dest air_time distance hour min
-# 1:  LAX      359     2475    9  14
-# 2:  LAX      363     2475   11  57
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们没有指定任何条件。行的索引已经自动提供给参数 i 了。因此，我们得到一个包含原数据 flight 里所有列的data.table（for 这些行的索引？）。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 排序（先按 origin列 的升序，再按 dest 的降序排列）
-我们可以通过R语言的基础函数 order() 来完成这个功能。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[order(origin, -dest)]
-head(ans)
-#    year month day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
-# 1: 2014     1   5      836         6     1151        49         0      EV  N12175   4419    EWR
-# 2: 2014     1   6      833         7     1111        13         0      EV  N24128   4419    EWR
-# 3: 2014     1   7      811        -6     1035       -13         0      EV  N12142   4419    EWR
-# 4: 2014     1   8      810        -7     1036       -12         0      EV  N11193   4419    EWR
-# 5: 2014     1   9      833        16     1055         7         0      EV  N14198   4419    EWR
-# 6: 2014     1  13      923        66     1154        66         0      EV  N12157   4419    EWR
-#    dest air_time distance hour min
-# 1:  XNA      195     1131    8  36
-# 2:  XNA      190     1131    8  33
-# 3:  XNA      179     1131    8  11
-# 4:  XNA      184     1131    8  10
-# 5:  XNA      181     1131    8  33
-# 6:  XNA      188     1131    9  23
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;内置的 order() 函数
-* 我们可以对一个字符型的列，使用减号“-”，来实现降序排列。
-* 另外，函数 order() 其实调用了data.table的快速基数排序函数 forder()，它比 base::order 快很多。这是一个说明它们基本区别的例子：
-
-odt = data.table(col=sample(1e7))
-(t1 &amp;lt;- system.time(ans1 &amp;lt;- odt[base::order(col)]))  ## uses order from base R
-#    user  system elapsed 
-#   8.610   0.056   8.708
-(t2 &amp;lt;- system.time(ans2 &amp;lt;- odt[order(col)]))        ## uses data.table&#39;s forder
-#    user  system elapsed 
-#   0.526   0.024   0.553
-(identical(ans1, ans2))
-# [1] TRUE
-
-order() 比 base::order 大约快了16倍。我们会在data.table的内部教程中讨论data.table快速排序的更多细节。
-* 因此，使用我们熟悉的函数，就可以显著地提高分析效率。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;d-select列:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;d) select列&lt;/h4&gt;
-
-&lt;p&gt;－ 选取 arr_delay 列，返回值是向量&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, arr_delay]
-head(ans)
-# [1]  13  13   9 -26   1   0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 既然列可以作为变量被引用，我们可以直接引用我们想选取的列。
-* 既然我们想选取所有的行，我们毋需指定参数 i。
-* 返回了所有行的 arr_delay 列。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 选取 arr_delay 列，返回值是data.table&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, list(arr_delay)]
-head(ans)
-#    arr_delay
-# 1:        13
-# 2:        13
-# 3:         9
-# 4:       -26
-# 5:         1
-# 6:         0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们用 list() 把列名 arr_delay 包围起来，它可以确保返回值是data.table。正如前面一个例子，如果不这样做，返回值就是一个向量。
-* data.table也允许用 .() 来包围列名，它是 list() 的别名，它们的效果是同样的。教程后面会使用 .() 来说明。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注意：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;只要参数 j 返回一个list，这个list的每一个元素都会被转换成结果data.table的一列。你马上就会发现，这个功能是多么强大。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 选取 arr_delay 列和 dep_delay 列&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, .(arr_delay, dep_delay)]
-head(ans)
-#    arr_delay dep_delay
-# 1:        13        14
-# 2:        13        -3
-# 3:         9         2
-# 4:       -26        -8
-# 5:         1         2
-# 6:         0         4
-
-## alternatively
-# ans &amp;lt;- flights[, list(arr_delay, dep_delay)]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 使用 .() 或者 list() 都可以。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 选取 arr_delay 列和 dep_delay 列，并把列名改为 delay_arr 和 delay_dep
-既然 .() 是 list() 的别名，那么我们可以在创建 list 的时候对列命名。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, .(delay_arr = arr_delay, delay_dep = dep_delay)]
-head(ans)
-#    delay_arr delay_dep
-# 1:        13        14
-# 2:        13        -3
-# 3:         9         2
-# 4:       -26        -8
-# 5:         1         2
-# 6:         0         4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;就是这样。&lt;/p&gt;
-
-&lt;h4 id=&#34;e-在参数j里运算:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;e) 在参数j里运算&lt;/h4&gt;
-
-&lt;p&gt;－ 有多少航班完全没有延误&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, sum((arr_delay + dep_delay) &amp;lt; 0)]
-ans
-# [1] 141814
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;刚刚发生了什么？
-* 参数 j 能做的，可不只是选取列这么简单，它能处理表达式，比如对列进行计算。这没什么大惊小怪的，因为列可以作为变量被引用嘛。所以，我们可以对这些变量调用函数。我们刚刚就是对两列求和(sum)了。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;f-在参数i里选取-在参数j里运算:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;f) 在参数i里选取，在参数j里运算&lt;/h4&gt;
-
-&lt;p&gt;－ 在六月份，从&amp;rdquo;JFK&amp;rdquo;机场起飞的航班中，计算起飞和到达的平均延误时间&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L, 
-           .(m_arr=mean(arr_delay), m_dep=mean(dep_delay))]
-ans
-#       m_arr    m_dep
-# 1: 5.839349 9.807884
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们首先在i参数里，找到所有符合 origin (机场)是&amp;quot;JFK&amp;quot;，并且 month (月份)是 6 这样条件的行。此时，我们还没有subset整个data.table。
-* 现在，我们看看参数j，它只使用了两列。我们需要分别计算这两列的平均值 mean()。这个时候，我们才subset那些符合i参数里条件的列，然后计算它们的平均值。
-因为这三个参数（i，j和by）都被指定在同一个方括号中，data.table能同时接受这三个参数，并在计算之前，选取最优的计算方法，而不是分步骤计算。所以，我们可以避免对整个data.table计算，同时，在计算速度和内存使用量这两方面，取得最优的效果。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 在六月份，从&amp;rdquo;JFK&amp;rdquo;机场起飞的航班一共有多少&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L, length(dest)]
-ans
-# [1] 8422
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;函数 length() 需要一个参数。我们只需要知道，结果里有多少行数据。我们可以使用任何一列作为函数 length() 的参数。&lt;br /&gt;
-这一类的操作特别频繁，特别是在下一节里，当我们需要分组的时候，会讲到这个特别的符号 .N。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;特别的符号 .N 
-.N 是一个内建的变量，它表示当前的分组中，对象的数目。在下一节，当它和 by 一起使用的时候，我们会发现它特别有用。还没有涉及到分组的时候，它只是简单地返回行的数目。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;所以，我们可以用 .N 来完成这个任务：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L, .N]
-ans
-# [1] 8422
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 再说一遍，首先在i参数里，找到所有符合 origin (机场)是&amp;quot;JFK&amp;quot;，并且 month (月份)是 6 这样条件的行。   
-* 在参数j里，我们只指定了 .N，其他什么也没指定。所以实际上我们什么也没做。我们只是返回了符合条件的行的数目（就是行的 length长度）。   
-* 注意，我们没有用 list() 或者 .() 包围 .N，所以返回值是个向量。
-我们也可以这样完成这个任务 nrow(flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L])。但是，这会从整个data.table里面subset符合条件的行，然后用 nrow() 返回行的数目，这是没有必要的，而且效率低下。我们会在 data.table的设计 这个教程里面说明这一点和其他的优化方法。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;g-太棒了-但我应该如何用参数j里面的名字引用列-就像在data-frame那样:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;g) 太棒了！但我应该如何用参数j里面的名字引用列（就像在data.frame那样）&lt;/h4&gt;
-
-&lt;p&gt;你可以使用 with = FALSE 来引用列名。&lt;br /&gt;
-－ 用data.frame的方式，选取 arr_delay 和 dep_delay 两列&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, c(&amp;quot;arr_delay&amp;quot;, &amp;quot;dep_delay&amp;quot;), with=FALSE]
-head(ans)
-#    arr_delay dep_delay
-# 1:        13        14
-# 2:        13        -3
-# 3:         9         2
-# 4:       -26        -8
-# 5:         1         2
-# 6:         0         4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这个参数叫做 with，是根据 R里面的函数 with() 演变而来的。假设你有一个data.frame叫做 DF，想要subset所有符合 x&amp;gt;1 的行。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DF = data.frame(x = c(1,1,1,2,2,3,3,3), y = 1:8)
-
-## (1) normal way
-DF[DF$x &amp;gt; 1, ] # data.frame needs that &#39;,&#39; as well
-#   x y
-# 4 2 4
-# 5 2 5
-# 6 3 6
-# 7 3 7
-# 8 3 8
-
-## (2) using with
-DF[with(DF, x &amp;gt; 1), ]
-#   x y
-# 4 2 4
-# 5 2 5
-# 6 3 6
-# 7 3 7
-# 8 3 8
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 在上面的 (2) using with里面，使用 with()，我们像变量一样使用DF的x列。
-因此，在data.table里，我们设置 with=FALSE，使得我们不能再像变量一样引用列了，这被保存在“data.frame mode”中。
-* 我们也可以使用 - 或者 ! 来排除列。比如：
-## not run
-
-# returns all columns except arr_delay and dep_delay
-ans &amp;lt;- flights[, !c(&amp;quot;arr_delay&amp;quot;, &amp;quot;dep_delay&amp;quot;), with=FALSE]
-# or
-ans &amp;lt;- flights[, -c(&amp;quot;arr_delay&amp;quot;, &amp;quot;dep_delay&amp;quot;), with=FALSE]
-
-* R语言从V1.9.5版开始，可以指定开始和结束的列名，比如通过指定 year:day 来选择前三列。
-## not run
-
-# returns year,month and day
-ans &amp;lt;- flights[, year:day, with=FALSE]
-# returns day, month and year
-ans &amp;lt;- flights[, day:year, with=FALSE]
-# returns all columns except year, month and day
-ans &amp;lt;- flights[, -(year:day), with=FALSE]
-ans &amp;lt;- flights[, !(year:day), with=FALSE]
-
-这在交互式的工作中特别方便。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;with=FALSE 是data.table的默认值，因为我们可以通过参数j表达式，来做更多的事，特别是接下来一节我们要讲到的，和 by 的联合。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-聚合:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;2.聚合&lt;/h2&gt;
-
-&lt;p&gt;在前面一节，我们已经了解了参数i和j，知道了data.table的基本语法。在这一节，我们学习如何跟 by 相结合，做一些分组的操作。先来看看几个例子。&lt;/p&gt;
-
-&lt;h4 id=&#34;a-用by分组:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;a) 用by分组&lt;/h4&gt;
-
-&lt;p&gt;－ 如何获取每个机场起飞的航班数&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, .(.N), by=.(origin)]
-ans
-#    origin     N
-# 1:    JFK 81483
-# 2:    LGA 84433
-# 3:    EWR 87400
-
-## or equivalently using a character vector in &#39;by&#39;
-# ans &amp;lt;- flights[, .(.N), by=&amp;quot;origin&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们知道 .N 表示当前的分组中，对象的数目。先按照 origin 列分组，再用 .N 获取每组的数目。
-* 通过 head(flights)，我们可以看到结果里面，机场是按照“JFK”, “LGA” 然后 “EWR” 的顺序排列的。原始数据里，被分组的那一列变量的顺序，也体现在结果里面。   
-* 既然我们没有在参数j里面指定列名，那这一列就自然是 N 了。
-* by 也接受一个包含列名的字符向量作为参数。这在写代码的时候特别有用，比如设计一个函数，它的参数是要被分组的列。
-* 当参数j和by里面只有一列，我们可以省略 .()，这实在很方便。刚刚的任务我们可以这样做：
-ans &amp;lt;- flights[, .N, by=origin]
-ans
-#    origin     N
-# 1:    JFK 81483
-# 2:    LGA 84433
-# 3:    EWR 87400
-
-只要允许，我们就会使用这种方便的形式。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 如何获取美航（carrier code代码是“AA”）在每个机场起飞的航班数
-航空公司代码“AA”代表美航。每个航空公司的代码都是唯一的。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;, .N, by=origin]
-ans
-#    origin     N
-# 1:    JFK 11923
-# 2:    LGA 11730
-# 3:    EWR  2649
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们首先通过参数i，指定表达式 carrier == &amp;quot;AA&amp;quot;，选取符合条件的行。
-* 对于这些行，我们再按 origin 分组，获取每组的数目。再次声明，实际上没有列被重新创建，因为参数j表达式不需要获取列，因此在计算速度和内存使用量这两方面，取得最优的效果。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 如何获取美航在所有机场的起／降的数目&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;, .N, by=.(origin,dest)]
-head(ans)
-#    origin dest    N
-# 1:    JFK  LAX 3387
-# 2:    LGA  PBI  245
-# 3:    EWR  LAX   62
-# 4:    JFK  MIA 1876
-# 5:    JFK  SEA  298
-# 6:    EWR  MIA  848
-
-## or equivalently using a character vector in &#39;by&#39;
-# ans &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;, .N, by=c(&amp;quot;origin&amp;quot;, &amp;quot;dest&amp;quot;)]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 参数by 可以接受多个列。我们可以指定所有我们想分组的列。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 如何获取美航在所有机场的起／降的平均延误时间&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;, 
-    .(mean(arr_delay), mean(dep_delay)), 
-    by=.(origin, dest, month)]
-ans
-#      origin dest month         V1         V2
-#   1:    JFK  LAX     1   6.590361 14.2289157
-#   2:    LGA  PBI     1  -7.758621  0.3103448
-#   3:    EWR  LAX     1   1.366667  7.5000000
-#   4:    JFK  MIA     1  15.720670 18.7430168
-#   5:    JFK  SEA     1  14.357143 30.7500000
-#  ---                                        
-# 196:    LGA  MIA    10  -6.251799 -1.4208633
-# 197:    JFK  MIA    10  -1.880184  6.6774194
-# 198:    EWR  PHX    10  -3.032258 -4.2903226
-# 199:    JFK  MCO    10 -10.048387 -1.6129032
-# 200:    JFK  DCA    10  16.483871 15.5161290
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们没有在参数j表达式中指定列名，它们会自动命名为(V1, V2)。    * 再次声明，原数据里面的顺序，会反映在结果中。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;可是，如果我们想让结果按照 origin, dest 和 month 排序呢？&lt;/p&gt;
-
-&lt;h4 id=&#34;b-参数keyby:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;b) 参数keyby&lt;/h4&gt;
-
-&lt;p&gt;data.table本身就被设计成能保持原数据的顺序。在一些情况下，必须保持原来的顺序。但是，有时我们希望自动根据分组的变量排序。&lt;/p&gt;
-
-&lt;p&gt;－ 如何按照分组的变量排序&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;, 
-    .(mean(arr_delay), mean(dep_delay)), 
-    keyby=.(origin, dest, month)]
-ans
-#      origin dest month         V1         V2
-#   1:    EWR  DFW     1   6.427673 10.0125786
-#   2:    EWR  DFW     2  10.536765 11.3455882
-#   3:    EWR  DFW     3  12.865031  8.0797546
-#   4:    EWR  DFW     4  17.792683 12.9207317
-#   5:    EWR  DFW     5  18.487805 18.6829268
-#  ---                                        
-# 196:    LGA  PBI     1  -7.758621  0.3103448
-# 197:    LGA  PBI     2  -7.865385  2.4038462
-# 198:    LGA  PBI     3  -5.754098  3.0327869
-# 199:    LGA  PBI     4 -13.966667 -4.7333333
-# 200:    LGA  PBI     5 -10.357143 -6.8571429
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们做的，只是把 by 改为了 keyby。这会自动的将结果按照升序排列。注意 keyby() 在完成操作后生效，例如，在计算结果后再排序。   
-keys：实际上 keyby 做的不只是排序。它在排序之后，设置一个叫做sorted的属性。我们会在下一教程学习更多关于 keys的内容。   
-现在，你需要知道的，就是使用 keyby 自动排序。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;c-chaining表达式:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;c) chaining表达式&lt;/h4&gt;
-
-&lt;p&gt;让我们再来考虑下“获取美航在所有机场的起／降的数目”的问题。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;, .N, by = .(origin, dest)]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 如何让 ans 按origin的升序、按dest的降序排列
-我们可以将中间结果保存为一个临时变量，再对这个变量使用 order(origin, -dest) 排序。这看上去还挺简洁明了的。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- ans[order(origin, -dest)]
-head(ans)
-#    origin dest    N
-# 1:    EWR  PHX  121
-# 2:    EWR  MIA  848
-# 3:    EWR  LAX   62
-# 4:    EWR  DFW 1618
-# 5:    JFK  STT  229
-# 6:    JFK  SJU  690
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 回忆一下，我们在函数 order()中，对一个字符型的列使用 &amp;quot;-&amp;quot; 来降序排列。由于data.table的内部查询优化(internal query optimisation)，这样做是可行的。
-* 再回忆一下 order(...)已经通过data.table内部的快速基数排序函数 forder()优化过了。那么，我们可以继续使用熟悉的R的基础函数，而不是考虑使用data.table提供的速度快内存消耗少的排序方法。我们会在data.table internals的教程中说明更多细节。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;但是这么做会生成一个临时变量，然后再修改这个临时变量。其实我们可以通过添加chaining表达式，避免生成临时变量。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;, .N, by=.(origin, dest)][order(origin, -dest)]
-head(ans, 10)
-#     origin dest    N
-#  1:    EWR  PHX  121
-#  2:    EWR  MIA  848
-#  3:    EWR  LAX   62
-#  4:    EWR  DFW 1618
-#  5:    JFK  STT  229
-#  6:    JFK  SJU  690
-#  7:    JFK  SFO 1312
-#  8:    JFK  SEA  298
-#  9:    JFK  SAN  299
-# 10:    JFK  ORD  432
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们可以一个接一个地添加表达式，做一系列操作，就像这样：DT[...][...][...]。
-* 或者你可以换行写：
-DT[...
- ][...
- ][...
- ]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;d-by表达式:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;d) by表达式&lt;/h4&gt;
-
-&lt;p&gt;－ 参数by也可以接受表达式吗？还是只能指定列&lt;br /&gt;
-当然可以接受表达式。举个例子，如果我们想要知道，有多少航班起飞延误但却提前／准时到达的，有多少航班起飞和到达都延误了……&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, .N, .(dep_delay&amp;gt;0, arr_delay&amp;gt;0)]
-ans
-#    dep_delay arr_delay      N
-# 1:      TRUE      TRUE  72836
-# 2:     FALSE      TRUE  34583
-# 3:     FALSE     FALSE 119304
-# 4:      TRUE     FALSE  26593
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 最后一行，满足 dep_delay &amp;gt; 0 = TRUE 且 arr_delay &amp;gt; 0 = FALSE 的条件。我们知道有26593次航班起飞延误但却提前／准时到达了。
-* 注意，我们没有在by表达式里面指定任何列名。然而结果里面，列名还是自动的生成了。
-* 我们可以在表达式里面指定其他的列，比如：DT[, .N, by=.(a, b&amp;gt;0)]。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;e-在参数j里面指定多个列:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;e) 在参数j里面指定多个列&lt;/h4&gt;
-
-&lt;p&gt;－ 必须分别对每列指定 mean() 函数吗
-当然不必分别对每列输入 mean(myCol) 了。要是我们有100列要计算平均值，不就惨了吗。&lt;br /&gt;
-如何高效地计算呢。记不记得这个小贴士-“只要参数j 返回一个list，这个list的每一个元素都会被转换成结果data.table的一列。”假设我们分组的时候，可以像变量一样，引用每个分组的数据，那么就可以循环对所有的列应用函数 lapply() ，而不需要学习新的函数。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;特殊的语法 .SD:
-data.table提供一个特殊的语法，形式是 .SD。它是 Subset of Data 的缩写。它自身就是一个data.table，包含通过by 分组后的每一组。
-回忆一下，一个data.table本质上是一个list，它们的列包含的元素个数都相同（其实就是行数）。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;让我们用之前的一个data.table DT来看看 .SD 是如何使用的。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT
-#    ID a  b  c
-# 1:  b 1  7 13
-# 2:  b 2  8 14
-# 3:  b 3  9 15
-# 4:  a 4 10 16
-# 5:  a 5 11 17
-# 6:  c 6 12 18
-
-DT[, print(.SD), by=ID]
-#    a b  c
-# 1: 1 7 13
-# 2: 2 8 14
-# 3: 3 9 15
-#    a  b  c
-# 1: 4 10 16
-# 2: 5 11 17
-#    a  b  c
-# 1: 6 12 18
-# Empty data.table (0 rows) of 1 col: ID
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* .SD 包含除了分组依据的那一列以外的所有列。
-* 返回值依旧保持了原数据的顺序。首先打印出来的是 ID=“b” 的数据，然后是 ID=“a” 的，最后是  ID=“c” 的。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;为了对复数的列进行计算，我们可以简单地使用函数 lapply()。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT[, lapply(.SD, mean), by=ID]
-#    ID   a    b    c
-# 1:  b 2.0  8.0 14.0
-# 2:  a 4.5 10.5 16.5
-# 3:  c 6.0 12.0 18.0 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* .SD 分别包含了ID是 a、b、c的所有行，它们分别对应了各自的组。我们应用函数 lapply() 对每列计算平均值。
-* 每一组返回包含三个平均数的list，这些构成了最终返回的data.table。
-* 既然函数 lapply() 返回 list，我们就不需要在外面多加 .() 了。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;差不多可以了，再补充一点。在 flights 这个 data.table里面，我们执行计算 arr_delay 和 dep_delay 这两列的平均值。但是，.SD 默认包含用于分组的所有列的平均值。&lt;/p&gt;
-
-&lt;p&gt;－如何指定希望计算平均值的列&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.SDcols
-使用参数 .SDcols。它接受列名或者列索引。比如，.SDcols = c(&amp;quot;arr_delay&amp;quot;, &amp;quot;dep_delay&amp;quot;)能确保.SD之包含 arr_delay 和 dep_delay 这两列。
-和 with = FALSE 一样，我们也可以使用 - 或者 ! 来移除列。比如，我们指定 !(colA:colB) 或者 -(colA:colB)表示移除从 colA 到 colB 的所有列。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;现在让我们试着用 .SD 和 .SDcols 来获取 arr_delay 和 dep_delay 这两列的平均值，并且按照 origin, dest 和 month 来分组。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;flights[carrier == &amp;quot;AA&amp;quot;,                     ## Only on trips with carrier &amp;quot;AA&amp;quot;
-        lapply(.SD, mean),                   ## compute the mean
-        by=.(origin, dest, month),           ## for every &#39;origin,dest,month&#39;
-        .SDcols=c(&amp;quot;arr_delay&amp;quot;, &amp;quot;dep_delay&amp;quot;)] ## for just those specified in .SDcols
-#      origin dest month  arr_delay  dep_delay
-#   1:    JFK  LAX     1   6.590361 14.2289157
-#   2:    LGA  PBI     1  -7.758621  0.3103448
-#   3:    EWR  LAX     1   1.366667  7.5000000
-#   4:    JFK  MIA     1  15.720670 18.7430168
-#   5:    JFK  SEA     1  14.357143 30.7500000
-#  ---                                        
-# 196:    LGA  MIA    10  -6.251799 -1.4208633
-# 197:    JFK  MIA    10  -1.880184  6.6774194
-# 198:    EWR  PHX    10  -3.032258 -4.2903226
-# 199:    JFK  MCO    10 -10.048387 -1.6129032
-# 200:    JFK  DCA    10  16.483871 15.5161290
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;f-对每组subset-sd:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;f) 对每组subset .SD&lt;/h4&gt;
-
-&lt;p&gt;－ 如何返回每个月的前两行&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ans &amp;lt;- flights[, head(.SD, 2), by=month]
-head(ans)
-#    month year day dep_time dep_delay arr_time arr_delay cancelled carrier tailnum flight origin
-# 1:     1 2014   1      914        14     1238        13         0      AA  N338AA      1    JFK
-# 2:     1 2014   1     1157        -3     1523        13         0      AA  N335AA      3    JFK
-# 3:     2 2014   1      859        -1     1226         1         0      AA  N783AA      1    JFK
-# 4:     2 2014   1     1155        -5     1528         3         0      AA  N784AA      3    JFK
-# 5:     3 2014   1      849       -11     1306        36         0      AA  N784AA      1    JFK
-# 6:     3 2014   1     1157        -3     1529        14         0      AA  N787AA      3    JFK
-#    dest air_time distance hour min
-# 1:  LAX      359     2475    9  14
-# 2:  LAX      363     2475   11  57
-# 3:  LAX      358     2475    8  59
-# 4:  LAX      358     2475   11  55
-# 5:  LAX      375     2475    8  49
-# 6:  LAX      368     2475   11  57
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* .SD 包含了每组的所有行。我们可以简单的subset各组数据的前两行。
-* 对每组数据，head(.SD, 2)返回的data.table同时也是个list。所以不需要用 .() 包围起来。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;g-为什么参数j这么灵活:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;g) 为什么参数j这么灵活&lt;/h4&gt;
-
-&lt;p&gt;这样，我们有了符合R语言风格的语法，我们也使用R语言里面既存的函数定义，而不是定义新的函数。我们用教程一开始创建的DT来说明。&lt;/p&gt;
-
-&lt;p&gt;－如何保存按照ID分组后数据中的 a列和 b列 的信息&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT
-#    ID a  b  c
-# 1:  b 1  7 13
-# 2:  b 2  8 14
-# 3:  b 3  9 15
-# 4:  a 4 10 16
-# 5:  a 5 11 17
-# 6:  c 6 12 18
-
-DT[, .(val = c(a,b)), by=ID]
-#     ID val
-#  1:  b   1
-#  2:  b   2
-#  3:  b   3
-#  4:  b   7
-#  5:  b   8
-#  6:  b   9
-#  7:  a   4
-#  8:  a   5
-#  9:  a  10
-# 10:  a  11
-# 11:  c   6
-# 12:  c  12
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 就这样，不需要特殊的语法。我们需要知道的，就是用函数 c() 指定需要连结的向量。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－ 如何将刚刚的数据，作为一列返回&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT[, .(val = list(c(a,b))), by=ID]
-#    ID         val
-# 1:  b 1,2,3,7,8,9
-# 2:  a  4, 5,10,11
-# 3:  c        6,12
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 我们首先用 c(a,b) 连结了每组的值，然后用 list() 包围起来。那么对于每组数据，我们返回一个所有连结后的值的 list。
-* 注意，那些逗号都是用来辅助显示的。一个list中的元素可以包含任何对象。在这个例子里，每个元素是一个向量，它们的长度都不相同。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一旦你对参数j的用法产生了兴趣，你会发现语法是多么强大。理解这些的一个有效的方法就是，在 print() 的帮助下，多多使用。&lt;br /&gt;
-例如：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;## (1) look at the difference between
-DT[, print(c(a,b)), by=ID]
-# [1] 1 2 3 7 8 9
-# [1]  4  5 10 11
-# [1]  6 12
-# Empty data.table (0 rows) of 1 col: ID
-
-## (2) and
-DT[, print(list(c(a,b))), by=ID]
-# [[1]]
-# [1] 1 2 3 7 8 9
-# 
-# [[1]]
-# [1]  4  5 10 11
-# 
-# [[1]]
-# [1]  6 12
-# Empty data.table (0 rows) of 1 col: ID
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在(1)里面，每组返回一个向量，它们的长度分别是6，4，2.但是(2)里面，每组返回一个长度都为1的list，它们的第一个元素包含了长度为6，4，2的向量。因此，(1)的结果的长度是6+4+2=12，(2)的结果的长度是1+1+1=3。&lt;/p&gt;
-
-&lt;h2 id=&#34;总结:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;data.table的语法形式是：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT[i, j, by]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;指定参数i：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 类似于data.frame，我们可以subset行，除非不需要重复地使用 DT$，既然我们能将列当做变量来引用。 
-* 我们可以使用order()排序。为了得到更快速的效果，order()函数内部使用了data.table的快速排序。 
-我们可以通过参数i做更多的事，得到更快速的选取和连结。我们可以在教程“Keys and fast binary search based subsets”和“Joins and rolling joins”中学到这些。 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;指定参数j：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 以data.table的形式选取列：DT[, .(colA, colB)]。
-* 以data.frame的形式选取列：DT[, c(&amp;quot;colA&amp;quot;, &amp;quot;colB&amp;quot;), with=FALSE]。
-* 按列进行计算：DT[, .(sum(colA), mean(colB))]。
-* 如果需要：DT[, .(sA =sum(colA), mB = mean(colB))]。
-* 和i共同使用：DT[colA &amp;gt; value, sum(colB)]。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;指定参数by：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* 通过by，我们可以指定列，或者列名，甚至表达式，进行分组。参数j可以很灵活地配置参数i和by实现强大的功能。
-* by可以指定多个列，也可以指定表达式。
-* 我们可以用 keyby，对分组的结果自动排序。
-* 我们可以在参数j中指定 .SD 和 .SDcols，对复数的列进行操作。例如：   
-  1.把函数fun 应用到所有 .SDcols指定的列上，同时对参数by指定的列进行分组：DT[, lapply(.SD, fun), by=., .SDcols=...]。 
-  2.返回每组册前两行：DT[, head(.SD, 2), by=.]。
-  3.三个参数联合使用：DT[col &amp;gt; val, head(.SD, 1), by=.]。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;小提示：&lt;br /&gt;
-只要j返回一个list，这个list的每个元素都会是结果data.table的一列。&lt;/p&gt;
-
-&lt;p&gt;下一讲，我们学习如何用reference来add／update／delete某一列，如何通过i和by合并它们。&lt;/p&gt;
 </description>
     </item>
     

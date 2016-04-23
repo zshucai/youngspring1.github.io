@@ -367,10 +367,10 @@ DT.c2
     
     <item>
       <title>data.table 教程4（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016-04-02-datatable4/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-04-02-datatable4/</link>
       <pubDate>Sat, 02 Apr 2016 07:38:11 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-04-02-datatable4/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-04-02-datatable4/</guid>
       <description>
 
 &lt;p&gt;目录：&lt;br /&gt;
@@ -795,10 +795,10 @@ system.time(dt[x %in% 1989:2012])
     
     <item>
       <title>data.table 教程3（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016-03-22-datatable3/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-22-datatable3/</link>
       <pubDate>Tue, 22 Mar 2016 23:58:42 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-22-datatable3/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-22-datatable3/</guid>
       <description>
 
 &lt;p&gt;目录：&lt;br /&gt;
@@ -1461,10 +1461,10 @@ identical(ans1$val, ans2$val)
     
     <item>
       <title>data.table 教程2（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016-03-21-datatable2/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-21-datatable2/</link>
       <pubDate>Mon, 21 Mar 2016 19:56:45 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-21-datatable2/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-21-datatable2/</guid>
       <description>
 
 &lt;p&gt;目录：&lt;br /&gt;
@@ -1962,10 +1962,10 @@ DT_n
     
     <item>
       <title>data.table 教程1（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016-03-13-datatable1/</link>
+      <link>http://youngspring1.github.io/post/2016/2016-03-13-datatable1/</link>
       <pubDate>Sun, 13 Mar 2016 18:57:40 +0800</pubDate>
       
-      <guid>http://youngspring1.github.io/post/2016-03-13-datatable1/</guid>
+      <guid>http://youngspring1.github.io/post/2016/2016-03-13-datatable1/</guid>
       <description>
 
 &lt;p&gt;最近使用data.table这个增强包，来计算数据的聚合信息，比sql语句简单明了不是一点半点，于是想把data.table的资料翻译出来。&lt;/p&gt;

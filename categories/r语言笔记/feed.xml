@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R语言笔记 on 行行重行行</title>
+    <link>http://youngspring1.github.io/categories/r%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in R语言笔记 on 行行重行行</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 23 Apr 2016 15:19:39 +0800</lastBuildDate>
+    <atom:link href="http://youngspring1.github.io/categories/r%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R语言笔记02</title>
+      <link>http://youngspring1.github.io/post/2016/2016-04-23-R02/</link>
+      <pubDate>Sat, 23 Apr 2016 15:19:39 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-04-23-R02/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第二单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;linear-regression:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;Linear Regression&lt;/h2&gt;
+
+&lt;p&gt;第二单元的主题是线性回归。&lt;/p&gt;
+
+&lt;h3 id=&#34;理论:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;理论&lt;/h3&gt;
+
+&lt;p&gt;一元线性回归公式：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?y^i = beta_0 + beta_1x^i + epsilon^i&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其中x是自变量independent variable，y是因变量dependent variable。&lt;br /&gt;
+beta是相关系数coefficient，epsilon是误差error。&lt;/p&gt;
+
+&lt;p&gt;为了判断线性回归的效果，我们有如下检验标准：&lt;/p&gt;
+
+&lt;p&gt;1.SSE（sum of squared errors）&lt;br /&gt;
+注意这里的误差是相对于最优解的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?SSE = sum_{i=1}^{n}epsilon_i^2&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.SST （total sum of square）&lt;br /&gt;
+公式同上。但这里的误差是相对于baseline的。baseline是因变量的平均值。&lt;br /&gt;
+所以有 0 &amp;lt;= SSE &amp;lt;= SST 。&lt;/p&gt;
+
+&lt;p&gt;3.RMSE（root mean square error）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?RMSE = sqrtfrac{SSE}{n}&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.R平方&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?R^2 = 1 - frac{SSE}{SST}&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;R平方越接近1越好。&lt;/p&gt;
+
+&lt;p&gt;多元线性回归公式：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?y^i = beta_0 + beta_1x_1^i + beta_2x_2^i + ldots + beta_nx_n^i + epsilon^i&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;所有数据分析，都要经历 training－test－predict 这三个过程。
+在接下来的例子中，我们介绍 建模－评估 这前两个过程。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;建立回归模型:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;建立回归模型&lt;/h3&gt;
+
+&lt;p&gt;建模使用lm()函数。&lt;br /&gt;
+DF是保存学习数据的data.frame。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;model = lm(y ~ x1 + x2 + ... +xn, data = DF)
+# 误差 model$residuals
+SSE = sum(model$residuals^2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;随便看个结果吧&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; summary(model)
+
+Call:
+lm(formula = Price ~ HarvestRain + WinterRain, data = wine)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.0933 -0.3222 -0.1012  0.3871  1.1877 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+(Intercept)  7.865e+00  6.616e-01  11.888 4.76e-11 ***
+HarvestRain -4.971e-03  1.601e-03  -3.105  0.00516 ** 
+WinterRain  -9.848e-05  9.007e-04  -0.109  0.91392    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5611 on 22 degrees of freedom
+Multiple R-squared:  0.3177,    Adjusted R-squared:  0.2557 
+F-statistic: 5.122 on 2 and 22 DF,  p-value: 0.01492
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Call表示建模使用的语句。&lt;br /&gt;
+Residuals表示误差。&lt;br /&gt;
+Coefficients表示系数，就是公式里面的beta。&lt;br /&gt;
+Estimate的第一行是常数beta0，第二行是第一个自变量的系数beta1，第三行是第二个自变量的系数beta2，后面类推。&lt;br /&gt;
+t value越大越好&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?{t value} = frac{Estimate}{Std. Error}&#34; alt=&#34;table&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pr(&amp;gt;|t|) 和t value相反，越小越好。&lt;br /&gt;
+最后一列星星越多越好。&lt;br /&gt;
+三短横下面这行解释了星星的含义。&lt;br /&gt;
+Multiple R-squared就是R平方，越接近1越准确。&lt;/p&gt;
+
+&lt;h3 id=&#34;评估:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;评估&lt;/h3&gt;
+
+&lt;p&gt;对于刚过简历的模型，我们使用测试数据来评估一下准确度。&lt;br /&gt;
+model就是上文建立的模型。&lt;br /&gt;
+DFTest是测试数据，它的结构和上文的DF一样。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;predict(model, newdata = DFTest)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个命令的返回值是 DFTest$Price 的&lt;strong&gt;预测&lt;/strong&gt;结果。你可以跟 DFTest$Price 的&lt;strong&gt;实际&lt;/strong&gt;结果相比较，计算SSE、RMSE、R平方等等来衡量对测试数据的预测的准确性。&lt;/p&gt;
+
+&lt;h3 id=&#34;correlation:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;Correlation&lt;/h3&gt;
+
+&lt;p&gt;线性相关性&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cor(var1, var2)
+# 也可以考察整个DF中，每两列的线性相关性
+cor(DF)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;返回值是斜率。&lt;/p&gt;
+
+&lt;h3 id=&#34;补充知识-棒球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识－棒球统计术语&lt;/h3&gt;
+
+&lt;p&gt;完全不懂棒球啊，一开始摸不着头脑。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;缩写&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;原文&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;中文&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;RS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Run Scores&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;跑分，得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;RA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Run Allowed&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失分，对手得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OBP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;On-Base Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;上垒率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OOBP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent On-Base Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对手上垒率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;SLG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Slugging Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;长打率，击中率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OSLG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent Slugging Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对手长打率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;BA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Batting Avarage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;平均成功率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;补充知识-篮球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识－篮球统计术语&lt;/h3&gt;
+
+&lt;p&gt;年轻时看NBA，好歹知道一点。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;缩写&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;原文&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;中文&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;PTS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;oppPTS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失分，对手得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Field Goals (success)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FGA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Field Goals Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X2P&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2 Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2分球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X2PA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2 Points Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2分球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X3P&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3 Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3分球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X3PA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3 Points Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3分球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FT&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Free Throw&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;罚球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FTA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Free Throw Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;发球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;ORB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Offensive Rebounds&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;前场篮板，进攻篮板&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;DRB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Defensive Rebounds&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;后场篮板，防守篮板&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;AST&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Assists&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;助攻&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;STL&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Steals&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抢断&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;BLK&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Blocks&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;盖帽&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;TOV&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Turnovers&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;注：X2P列，原始数据列名是2P。由于R不支持数字开头的列名／变量，读取CSV文件的时候，会在原列名2P前加个X，从而变成 X2P。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R语言笔记01</title>
+      <link>http://youngspring1.github.io/post/2016/2016-04-18-R01/</link>
+      <pubDate>Mon, 18 Apr 2016 19:55:25 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-04-18-R01/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第一单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;r语言入门:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;R语言入门&lt;/h2&gt;
+
+&lt;p&gt;R语言入门只讲了一些常用的操作。相对于动辄花一本书来讲这些，真是相当简约。但其实足够了，其他操作，需要的时候再查嘛。&lt;br /&gt;
+数据分析的四要素：data、models、decisions、value&lt;/p&gt;
+
+&lt;h3 id=&#34;简单使用:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;简单使用&lt;/h3&gt;
+
+&lt;p&gt;?func&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;帮助
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ls()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;显示当前的临时变量
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;getwd()
+setwd()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;获取／设置当前目录
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dir()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;显示当前文件夹下的文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据结构:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;数据结构&lt;/h3&gt;
+
+&lt;p&gt;向量概念&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;所有的操作都是对向量的每个元素实施的
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;seq&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;自动生成序列
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;data.frame&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

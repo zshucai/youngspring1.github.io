@@ -12,40 +12,38 @@
         }
     }
   </script>
-  <title>读书 - 行行重行行</title>
+  <title>Shiny Server インストール手順 - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<meta name="description" content="读书">
+<meta name="keywords" content="xxx,">
+<meta name="description" content="Rは、統計に対して、とても便利ですが、ユーザに向けインタフェースはそんなに良くないと思います。 Shiny Serverは、Webサービスのように、ユー">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="读书 - 行行重行行">
-<meta itemprop="description" content="读书">
+<meta itemprop="name" content="Shiny Server インストール手順 - 行行重行行">
+<meta itemprop="description" content="Rは、統計に対して、とても便利ですが、ユーザに向けインタフェースはそんなに良くないと思います。 Shiny Serverは、Webサービスのように、ユー">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="读书 - 行行重行行" />
+<meta property="og:title" content="Shiny Server インストール手順 - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/categories/E8AFBBE4B9A6/" />
+<meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-03-26-shinyserver-jp/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="读书">
+<meta property="og:description" content="Rは、統計に対して、とても便利ですが、ユーザに向けインタフェースはそんなに良くないと思います。 Shiny Serverは、Webサービスのように、ユー">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="读书 - 行行重行行">
-<meta name="twitter:description" content="读书">
+<meta name="twitter:title" content="Shiny Server インストール手順 - 行行重行行">
+<meta name="twitter:description" content="Rは、統計に対して、とても便利ですが、ユーザに向けインタフェースはそんなに良くないと思います。 Shiny Serverは、Webサービスのように、ユー">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/categories/E8AFBBE4B9A6/">
-  <link rel='shortlink' href="http://youngspring1.github.io/categories/E8AFBBE4B9A6/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/post/2016/2016-03-26-shinyserver-jp/">
+  <link rel='shortlink' href="http://youngspring1.github.io/post/2016/2016-03-26-shinyserver-jp/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
- <link href="http://youngspring1.github.io//feed.xml" rel="alternate" type="application/rss+xml" title="行行重行行" />
-
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" id="human-style-css2" href="http://youngspring1.github.io/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" id="responsive-css" href="http://youngspring1.github.io/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
@@ -65,8 +63,7 @@
 
 </head>
 
-<body class="archive category col-3cm full-width topbar-enabled chrome">
-
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
   <header id="header">
 
@@ -173,93 +170,177 @@
         <div class="main-inner group">
           <section class="content">
             <div class="page-title pad group">
-              <h1><i class="fa fa-folder-open"></i>Category: <span>读书</span></h1>
+              <ul class="meta-single group">
+                
+                <li class="category">
+                  <a href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/" rel="category tag">新知</a>
+                </li>
+                
+              </ul>
             </div>
+
             <div class="pad group">
+
+              <article
+                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                <div class="post-inner group">
+
+                  <h1 class="post-title">Shiny Server インストール手順</h1>
+
+                  <p class="post-byline">
+                    by  · 2016年03月26日 · 1025 Words ·
+                    ~3min reading time |
+
+                  </p>
+
+                  <div class="clear"></div>
+
+                  <div class="entry">
+                    <div class="entry-inner">
+                      
+                      
+
+<p>Rは、統計に対して、とても便利ですが、ユーザに向けインタフェースはそんなに良くないと思います。<br />
+Shiny Serverは、Webサービスのように、ユーザの入力から、Rで計算して、ブラウザで結果を表示するサーバです。<br />
+インストール手順は、下記の通りです。<br />
+環境は、イントネットに接続できないCentOS 6.5 x64です。</p>
+
+<h4 id="1-ソースからrのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2">1.ソースからRのインストール</h4>
+
+<pre><code>./configure --prefix=/opt/r --enable-R-shlib 
+make 
+make install 
+</code></pre>
+
+<p>注意1：PATHは、ファイル「/etc/profile」で設定してください。<br />
+注意2：Rは、他のコンポに依頼します。下記のコマンドは、実行することが必要かもしれません。エラーメッセージにより確認してください。</p>
+
+<pre><code>yum install gcc-gfortran 
+yum install readline-devel 
+yum install libXt-devel 
+yum install gcc-c++ glibc-headers
+</code></pre>
+
+<h4 id="2-xvfbのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2">2.Xvfbのインストール</h4>
+
+<pre><code>yum install Xvfb
+</code></pre>
+
+<p>説明：絵の作るのは、デフォルトが X11ですが、いろいろな問題があります。最後、Xvfbになりました。</p>
+
+<h4 id="3-shinyのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2">3.Shinyのインストール</h4>
+
+<h5 id="3-1-shiny-libのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2">3.1 Shiny libのインストール</h5>
+
+<p>Rのコンソールで、Shiny libをインストールします。</p>
+
+<pre><code>install.packages('shiny')
+</code></pre>
+
+<p>他のlibに依頼しますが、もしサーバは、いんとねっとに接続できないなら、インストールファイルをダウンロードして、サーバに置いて、ファイルからインストールします。<br />
+Rのコンソールから、quit()して、下記のようなコマンドを実行します。</p>
+
+<pre><code>R CMD INSTALL XXXXX.tar.gz 
+</code></pre>
+
+<h5 id="3-2-shiny-serverのインストール:16be4caf9550ae37fbcf4bfe15c6e5b2">3.2 Shiny Serverのインストール</h5>
+
+<pre><code>yum install --nogpgcheck shiny-server-1.4.2.786-rh5-x86_64.rpm 
+</code></pre>
+
+<p>設定ファイルは、下記のパスです：</p>
+
+<pre><code>/etc/shiny-server/shiny-server.conf 
+</code></pre>
+
+<p>確認のために、Shiny libの10個の例を、shiny-serverのサーバディレクトリにコピーします。</p>
+
+<pre><code>cp -R /opt/r/lib64/R/library/shiny/examples/* /srv/shiny-server/
+</code></pre>
+
+<p>上記により、すべてのAPPは、ディレクトリ「/srv/shiny-server/」に置きます。そして、ブラウザでアクセスできます。</p>
+
+<pre><code>http://localhost:3838/目录名
+</code></pre>
+
+<p>それ以外、起動・停止コマンド：</p>
+
+<pre><code>start shiny-server 
+stop shiny-server 
+restart shiny-server 
+status shiny-server 
+reload shiny-server #サービスを中止しないように、更新内容をロード
+</code></pre>
+
+<p>ホーンページを確認しますか：</p>
+
+<pre><code>http://localhost:3838/index.html
+</code></pre>
+
+<p>画面を表示できますが、絵は誤りがありそうです。</p>
+
+<h4 id="4-絵の作り:16be4caf9550ae37fbcf4bfe15c6e5b2">4.絵の作り</h4>
+
+<h5 id="4-1-xvfbの起動:16be4caf9550ae37fbcf4bfe15c6e5b2">4.1 Xvfbの起動</h5>
+
+<p>X11を使ったら、エラー「can&rsquo;t start PNG device」になります。<br />
+そのために、X11の代わりに，Xvfbを使います。<br />
+Xvfbを起動します。</p>
+
+<pre><code>Xvfb :3 -screen 1 1280x1024x24
+</code></pre>
+
+<h5 id="4-1-設定:16be4caf9550ae37fbcf4bfe15c6e5b2">4.1 設定</h5>
+
+<p>ui.Rには、下記の内容を追加します。</p>
+
+<pre><code>Sys.setenv(DISPLAY = &quot;:3.1&quot;)
+</code></pre>
+
+<p>例を確認しませんか。</p>
+
+<pre><code>http://localhost:3838/index.html 
+http://localhost:3838/01_hello/ 
+http://localhost:3838/02_text/
+http://localhost:3838/03_reactivity/
+http://localhost:3838/04_mpg/
+http://localhost:3838/05_sliders/
+http://localhost:3838/06_tabsets/
+http://localhost:3838/07_widgets/
+http://localhost:3838/08_html/
+http://localhost:3838/09_upload/
+http://localhost:3838/10_download/
+http://localhost:3838/11_timer/
+</code></pre>
+
+<hr />
+
+<p>参照：<a href="https://www.rstudio.com/products/shiny/shiny-server2/">https://www.rstudio.com/products/shiny/shiny-server2/</a><br />
+中国語版：<a href="http://youngspring1.github.io/post/2016-03-25-shinyserver/">http://youngspring1.github.io/post/2016-03-25-shinyserver/</a></p>
+
+                      
+                    </div>
+                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+
+                        <div>
+
+                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016/2016-03-26-shinyserver-jp/">http://youngspring1.github.io/post/2016/2016-03-26-shinyserver-jp/</a>
+                            <br />
+                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                  
+
+                </div>
+                
+              </article>
               
-                
-                
-                
+              <div class="clear"></div>
               
-              <div class="post-list group">
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年04月07日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-04-07-human-task-switches/" rel="bookmark" title="转：任务切换有害论">转：任务切换有害论</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月30日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-03-30-write-fd/" rel="bookmark" title="为什么程序员要写功能设计书">为什么程序员要写功能设计书</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月27日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-03-27-joe-on-soft/" rel="bookmark" title="软件随想录">软件随想录</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月12日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-03-12-designer/" rel="bookmark" title="写给大家看的设计书">写给大家看的设计书</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-  <div class="post-row">
-    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
-  <div class="post-inner post-hover">
-    <div class="post-meta group">
-  <p class="post-date">2016年03月06日</p>
-  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-03-06-inevitable/" rel="bookmark" title="必然">必然</a></p>
-</div>
-
-  </div>
-  
-</article>
-
-
-  </div>
-  
-</div>
-
+              
+              
             </div>
           </section>
           <div class="sidebar s1">
@@ -293,6 +374,26 @@
 
 </div>
 
+    <ul class="post-nav group">
+      <li class="next">
+        
+        <a href="http://youngspring1.github.io/post/2016/2016-03-25-shinyserver/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>Shiny Server 安装步骤</span>
+        </a>
+        
+      </li>
+      <li class="previous">
+        
+        <a href="http://youngspring1.github.io/post/2016/2016-03-26-work-simpler/" rel="prev">
+          <i class="fa fa-chevron-left"></i>
+          <strong>Previous Post</strong>
+          <span>转：如何不做多任务工作 — 更简单理智地去工作</span>
+        </a>
+        
+      </li>
+    </ul>
     <div id="search-2" class="widget widget_search"><h3>Search</h3>
       <form method="get" class="searchform themeform" action="https://www.google.com/search">
         <div>
@@ -301,6 +402,7 @@
       </form>
     </div>
   </div>
+  
 </div>
 
           <div class="sidebar s2">
