@@ -192,8 +192,8 @@
                   <h1 class="post-title">R语言笔记02</h1>
 
                   <p class="post-byline">
-                    by  · 2016年04月23日 · 1195 Words ·
-                    ~3min reading time |
+                    by  · 2016年04月23日 · 1581 Words ·
+                    ~4min reading time |
 
                   </p>
 
@@ -250,12 +250,43 @@ beta是相关系数coefficient，epsilon是误差error。</p>
 在接下来的例子中，我们介绍 建模－评估 这前两个过程。
 </code></pre>
 
+<p>relative error = ( observed value - estimated value ) / observed value</p>
+
+<h5 id="2-0-事前整理:efa3f4364b4acd6454b77ef89af35a47">2.0 事前整理</h5>
+
+<p>2.0.1 去除空值</p>
+
+<pre><code># 如果数据中包含空值
+DF ＝ na.omit(DF)
+</code></pre>
+
+<p>2.0.2 reference level<br />
+有些列时字符型的，它们无法进行计算。<br />
+如果某列的因子不算多，我们可以把这一列变换成多个可以用于计算的列。</p>
+
+<pre><code># 假设DF$colr有因子 &quot;Red&quot;4次, &quot;Blue&quot;3次, &quot;Yellow&quot;2次
+DF$colr = relevel(DF$colr, &quot;red&quot;)
+
+# 效果是，DF$colr 这一列不见了
+# 增加了两列 DF$colrBlue 和 DF$colrYellow
+# 原先 DF$colr == &quot;Red&quot; 的那些行，它们 colrBlue 和 colrYellow 的值都是0
+# 原先 DF$colr == &quot;Blue&quot; 的那些行，它们 colrBlue=1, colrYellow=0
+# 原先 DF$colr == &quot;Yellow&quot; 的那些行，它们 colrBlue=0, colrYellow=1
+</code></pre>
+
 <h3 id="2-建立回归模型:efa3f4364b4acd6454b77ef89af35a47">2.建立回归模型</h3>
 
 <p>建模使用lm()函数。<br />
 DF是保存学习数据的data.frame。</p>
 
 <pre><code>model = lm(y ~ x1 + x2 + ... +xn, data = DF)
+# y不要写成 DF$y
+# x1也不要写成 DF$x1
+# 否则，后面做预测predict()的时候，DFTest代入会报warning
+
+# 除了y列以外所有列
+model = lm(y ~ ., data = DF)
+
 # 误差 model$residuals
 SSE = sum(model$residuals^2)
 </code></pre>
@@ -303,10 +334,15 @@ Multiple R-squared就是R平方，越接近1越准确。</p>
 model就是上文建立的模型。<br />
 DFTest是测试数据，它的结构和上文的DF一样。</p>
 
-<pre><code>predict(model, newdata = DFTest)
+<pre><code>predict = predict(model, newdata = DFTest)
 </code></pre>
 
 <p>这个命令的返回值是 DFTest$Price 的<strong>预测</strong>结果。你可以跟 DFTest$Price 的<strong>实际</strong>结果相比较，计算SSE、RMSE、R平方等等来衡量对测试数据的预测的准确性。</p>
+
+<pre><code>SSE = sum( (DFTest$Price - predict)^2 )
+SST = sum( (DFTest$Price - mean(DF$Price)^2 )
+R2 = 1 - SSE/SST
+</code></pre>
 
 <h3 id="4-correlation:efa3f4364b4acd6454b77ef89af35a47">4.Correlation</h3>
 
@@ -490,6 +526,16 @@ cor(DF)
 </table>
 
 <p>注：X2P列，原始数据列名是2P。由于R不支持数字开头的列名／变量，读取CSV文件的时候，会在原列名2P前加个X，从而变成 X2P。</p>
+
+<h3 id="补充知识c-滞后序列:efa3f4364b4acd6454b77ef89af35a47">补充知识C－滞后序列</h3>
+
+<p>函数lag，用于生成滞后/偏移序列？</p>
+
+<pre><code>lag(x, k = 1, ...)
+# k &lt; 0, previous observations   
+# k &gt; 0, future observations
+# na.pad=TRUE, add missing values
+</code></pre>
 
                       
                     </div>
