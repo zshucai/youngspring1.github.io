@@ -192,7 +192,7 @@
                   <h1 class="post-title">R语言笔记02</h1>
 
                   <p class="post-byline">
-                    by  · 2016年04月23日 · 1581 Words ·
+                    by  · 2016年04月23日 · 1589 Words ·
                     ~4min reading time |
 
                   </p>
@@ -216,7 +216,7 @@
 
 <p>一元线性回归公式：</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?y^i={beta}_0+beta_1x^i+epsilon^i" alt="formula" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?y^i=\beta_0+\beta_1x^i+\epsilon^i" alt="formula" /></p>
 
 <p>其中x是自变量independent variable，y是因变量dependent variable。<br />
 beta是相关系数coefficient，epsilon是误差error。</p>
@@ -226,7 +226,7 @@ beta是相关系数coefficient，epsilon是误差error。</p>
 <p>1.SSE（sum of squared errors）<br />
 注意这里的误差是相对于最优解的。</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?SSE = sum_{i=1}^{n}epsilon_i^2" alt="formula" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?SSE = \sum_{i=1}^{n}\epsilon_i^2" alt="formula" /></p>
 
 <p>2.SST （total sum of square）<br />
 公式同上。但这里的误差是相对于baseline的。baseline是因变量的平均值。<br />
@@ -234,23 +234,25 @@ beta是相关系数coefficient，epsilon是误差error。</p>
 
 <p>3.RMSE（root mean square error）</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?RMSE = sqrtfrac{SSE}{n}" alt="formula" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?RMSE = \sqrt\frac{SSE}{n}" alt="formula" /></p>
 
 <p>4.R平方</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?R^2 = 1 - frac{SSE}{SST}" alt="formula" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?R^2 = 1 - \frac{SSE}{SST}" alt="formula" /></p>
 
 <p>R平方越接近1越好。</p>
 
 <p>多元线性回归公式：</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?y^i = beta_0 + beta_1x_1^i + beta_2x_2^i + ldots + beta_nx_n^i + epsilon^i" alt="formula" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?y^i = \beta_0 + \beta_1x_1^i + \beta_2x_2^i + \ldots + \beta_nx_n^i + \epsilon^i" alt="formula" /></p>
 
 <pre><code>所有数据分析，都要经历 training－test－predict 这三个过程。
 在接下来的例子中，我们介绍 建模－评估 这前两个过程。
 </code></pre>
 
-<p>relative error = ( observed value - estimated value ) / observed value</p>
+<p>补充一个relative error的公式：</p>
+
+<p><img src="http://latex.codecogs.com/svg.latex?relative\;error =  \frac{observed\;value - estimated\,value}{observed\;value}" alt="formula" /></p>
 
 <h5 id="2-0-事前整理:efa3f4364b4acd6454b77ef89af35a47">2.0 事前整理</h5>
 
@@ -321,7 +323,7 @@ Coefficients表示系数，就是公式里面的beta。<br />
 Estimate的第一行是常数beta0，第二行是第一个自变量的系数beta1，第三行是第二个自变量的系数beta2，后面类推。<br />
 t value越大越好</p>
 
-<p><img src="http://latex.codecogs.com/svg.latex?{t value} = frac{Estimate}{Std. Error}" alt="formula" /></p>
+<p><img src="http://latex.codecogs.com/svg.latex?{t\,value} = \frac{Estimate}{Std. Error}" alt="formula" /></p>
 
 <p>Pr(&gt;|t|) 和t value相反，越小越好。<br />
 最后一列星星越多越好。<br />
