@@ -38,12 +38,12 @@ beta是相关系数coefficient，epsilon是误差error。&lt;/p&gt;
 &lt;p&gt;为了判断线性回归的效果，我们有如下检验标准：&lt;/p&gt;
 
 &lt;p&gt;1.SSE（sum of squared errors）&lt;br /&gt;
-注意这里的误差是相对于最优解的。&lt;/p&gt;
+注意这里的误差是实际值相对于预测值的。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?SSE = \sum_{i=1}^{n}\epsilon_i^2&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;2.SST （total sum of square）&lt;br /&gt;
-公式同上。但这里的误差是相对于baseline的。baseline是因变量的平均值。&lt;br /&gt;
+公式同上。但这里的误差是实际值相对于baseline的。baseline是因变量的平均值。&lt;br /&gt;
 所以有 0 &amp;lt;= SSE &amp;lt;= SST 。&lt;/p&gt;
 
 &lt;p&gt;3.RMSE（root mean square error）&lt;/p&gt;
@@ -170,6 +170,8 @@ cor(DF)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;返回值是斜率。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;建立线性回归模型的时候，应该去掉相关性比较高的列。&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;补充知识a-棒球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识A－棒球统计术语&lt;/h3&gt;
 

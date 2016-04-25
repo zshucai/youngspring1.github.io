@@ -192,7 +192,7 @@
                   <h1 class="post-title">R语言笔记02</h1>
 
                   <p class="post-byline">
-                    by  · 2016年04月23日 · 1589 Words ·
+                    by  · 2016年04月23日 · 1620 Words ·
                     ~4min reading time |
 
                   </p>
@@ -224,12 +224,12 @@ beta是相关系数coefficient，epsilon是误差error。</p>
 <p>为了判断线性回归的效果，我们有如下检验标准：</p>
 
 <p>1.SSE（sum of squared errors）<br />
-注意这里的误差是相对于最优解的。</p>
+注意这里的误差是实际值相对于预测值的。</p>
 
 <p><img src="http://latex.codecogs.com/svg.latex?SSE = \sum_{i=1}^{n}\epsilon_i^2" alt="formula" /></p>
 
 <p>2.SST （total sum of square）<br />
-公式同上。但这里的误差是相对于baseline的。baseline是因变量的平均值。<br />
+公式同上。但这里的误差是实际值相对于baseline的。baseline是因变量的平均值。<br />
 所以有 0 &lt;= SSE &lt;= SST 。</p>
 
 <p>3.RMSE（root mean square error）</p>
@@ -356,6 +356,8 @@ cor(DF)
 </code></pre>
 
 <p>返回值是斜率。</p>
+
+<p><strong>建立线性回归模型的时候，应该去掉相关性比较高的列。</strong></p>
 
 <h3 id="补充知识a-棒球统计术语:efa3f4364b4acd6454b77ef89af35a47">补充知识A－棒球统计术语</h3>
 
