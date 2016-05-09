@@ -7,8 +7,115 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 23 Apr 2016 15:19:39 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Apr 2016 11:52:13 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R语言笔记03</title>
+      <link>http://youngspring1.github.io/post/2016/2016-04-26-R03/</link>
+      <pubDate>Tue, 26 Apr 2016 11:52:13 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-04-26-R03/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第三单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;logistic-regression:2842374fb15231f36230fc5afd744bb4&#34;&gt;Logistic Regression&lt;/h2&gt;
+
+&lt;p&gt;第三单元的主题是指数回归。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-理论:2842374fb15231f36230fc5afd744bb4&#34;&gt;1.理论&lt;/h3&gt;
+
+&lt;h4 id=&#34;指数回归:2842374fb15231f36230fc5afd744bb4&#34;&gt;指数回归&lt;/h4&gt;
+
+&lt;p&gt;指数回归用于因变量y是二进制的情况，也就是说，y的取值只有1或者0。&lt;br /&gt;
+y=1的概率：&lt;br /&gt;
+&lt;img src=&#34;http://latex.codecogs.com/svg.latex?P(y=1)=\frac{1}{1+e^{-{(\beta_0 +\beta_1x_1+\beta_2x_2+\ldots+\beta_nx_n+\epsilon)}}}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;y=1的概率与y＝0的概率的比值：&lt;br /&gt;
+&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=\frac{P(y=1)}{P(y=0)}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=\frac{P(y=1)}{1-P(y=1)}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=e^{\beta_0 +\beta_1x_1+\beta_2x_2+\ldots+\beta_nx_n+\epsilon}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;混淆矩阵-confusion-matrix:2842374fb15231f36230fc5afd744bb4&#34;&gt;混淆矩阵（confusion matrix）&lt;/h4&gt;
+
+&lt;p&gt;有阈值t，&lt;br /&gt;
+如果P(y=1)&amp;gt;=t，则预测y=1。&lt;br /&gt;
+如果P(y=1)&amp;gt;=t，则预测y=0。&lt;/p&gt;
+
+&lt;p&gt;对于预测结果，我们得到矩阵&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;predict y=0&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;predict y=1&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;actual y=0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;TN (True  Nagative)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;FP (False Positive)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;actual y=1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;FN (False Nagative)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;TP (True  Positive)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;根据矩阵中的值，我们可以计算指数回归的一些指标：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?accuracy=\frac{TN+TP}{N}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
+&lt;img src=&#34;http://latex.codecogs.com/svg.latex?specificity=\frac{TN}{TN+FP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
+&lt;img src=&#34;http://latex.codecogs.com/svg.latex?sensitivity=\frac{TP}{FN+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;roc曲线:2842374fb15231f36230fc5afd744bb4&#34;&gt;ROC曲线&lt;/h4&gt;
+
+&lt;p&gt;y轴的指标就是sensitivity，所以也叫 True positive rate。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?sensitivity=\frac{TP}{FN+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
+x轴的指标是 1-specificity，所以也叫 False positive rate。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?1-sensitivity=\frac{FP}{TN+FP}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;阈值就在这条曲线上。
+&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160509-ROC.png&#34; alt=&#34;ROC Curve&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;auc值:2842374fb15231f36230fc5afd744bb4&#34;&gt;AUC值&lt;/h4&gt;
+
+&lt;p&gt;AUC值就是ROC曲线的积分，即曲线下方的面积。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-建立回归模型:2842374fb15231f36230fc5afd744bb4&#34;&gt;2.建立回归模型&lt;/h3&gt;
+
+&lt;h3 id=&#34;3-评估:2842374fb15231f36230fc5afd744bb4&#34;&gt;3.评估&lt;/h3&gt;
+
+&lt;h3 id=&#34;附录a:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录A&lt;/h3&gt;
+
+&lt;h3 id=&#34;附录b:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录B&lt;/h3&gt;
+
+&lt;p&gt;set.seed()
+split&lt;/p&gt;
+
+&lt;p&gt;caTools&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;spl = sample(1:nrow(data), size=0.7 * nrow(data))
+train = data[spl,]
+test = data[-spl,]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;附录c:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录C&lt;/h3&gt;
+</description>
+    </item>
     
     <item>
       <title>R语言笔记02</title>
@@ -3115,52 +3222,6 @@ DT_n
 &lt;p&gt;D6：十字镇&amp;ndash;南京  137km&lt;/p&gt;
 
 &lt;p&gt;容易&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>转：某T的职级系统</title>
-      <link>http://youngspring1.github.io/post/2016/2016-03-15-career/</link>
-      <pubDate>Tue, 15 Mar 2016 22:51:30 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-03-15-career/</guid>
-      <description>&lt;p&gt;原文链接：&lt;a href=&#34;http://www.cyzone.cn/a/20140828/262150.html&#34;&gt;http://www.cyzone.cn/a/20140828/262150.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;腾讯的职级系统有26个职业通道，如果你是一个一张白纸只有素质没有任何职业能力的毕业生，可以从这个26个通道，比如行政、财务、设计、运维、开发、运营、产品…….的任何一个1-1级开始，修炼，打怪升级，直到千万年薪。如同一个完整的人生指引。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;横轴是26个职业通道，专业技能各不相同，纵轴是4个大层级。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;以下是按照我的理解来写了。(直接抄原文会被企鹅摔着打的)。&lt;/p&gt;
-
-&lt;p&gt;我觉得腾讯的职业四大层级，几乎就是人生发展的四大层级。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;第一层是动作执行层、第二层是任务执行层、第三层是战略管理层、第四层是战略决策层。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;先说动作执行层。一个企业最多的就是这个层面的员工。或者每个人初入职场，都是从练好一个动作开始。比如，画原型，写代码，写稿子……&lt;/p&gt;
-
-&lt;p&gt;而腾讯对动作执行层的要求是：按照品质要求，完成动作、优化效率。注意，没有品质要求的动作，毫无意义。用户体验的不是产品而是品质感。就像你去一个川餐馆吃鱼香肉丝，你感受到的是这家鱼香肉丝的品质。大厨的工作不单是保证把菜炒出来，更是要保证菜品在一个什么样的品质感里。所以麦当劳的桌子永远擦的干净，同样的人在另外一个餐馆未必达到这种清洁标准。因为麦当劳不是要求把桌子擦了，而是清晰地要求达到什么样的清洁品质。&lt;/p&gt;
-
-&lt;p&gt;达成品质要求之后，在谈完成动作与优化效率。&lt;/p&gt;
-
-&lt;p&gt;任务执行层。就是要把分配的任务及指标，拆解成动作。由不同人组合完成，或者一个团队次序完成。需要在整个过程中，控制人心，安排动作序列，并配置风险，保证完成任务，达成指标。几乎所有铁血创业者都是从这个层级冒出来的。&lt;/p&gt;
-
-&lt;p&gt;战略管理层。就是大家永远不理解的那批副总。带兄弟痛快淋漓干活的都是总监。而副总，心累。他们需要根据战略决策，确定任务优先级，配置资源，鼓舞士气。保证战略方向不偏差。&lt;/p&gt;
-
-&lt;p&gt;而最高的战略决策层，几乎就是个CEO的活。他需要有前瞻，推动相关资源方做出战略决策，并且获取战略资源。就像亮剑里的李云龙。在除了自己，什么都没有的情况，他可以沟通，说服。一个队伍打没了，马上再拉起一个队伍。只要他还要打下去。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;四个层级的核心工作不同，对人的特性的核心需求也不同。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;在动作执行层，才气很重要。&lt;/p&gt;
-
-&lt;p&gt;在任务执行层，责任心，执行力的价值，远大于才气。甚至需要放弃自己的才气，把时间交给众多的兄弟，才能实现任务的完成。&lt;/p&gt;
-
-&lt;p&gt;而一个人能否达到战略管理层，核心要考核的是：心力。心力是什么?就是无止无尽操心的能力。资源永远有限，战略常常在变，兄弟都是亲的，永远没人满意。所以，一堆人拉我去当副总，我都谢谢了。因为自己清楚，心力真心不足啊～&lt;/p&gt;
-
-&lt;p&gt;战略决策层。愿力。其实我在《决策》那篇文章中谈过愿力的问题。没有愿景支撑的决策都是机会主义。一个人如果心中没有愿，那真是谁都帮不了他。看上去再大都是纸老虎。&lt;/p&gt;
-
-&lt;p&gt;所以，人会在哪个层级呆着，度过一生，其实都是因为吃不了其他层级的苦。其实发展个人才气，在动作层呆着，是人生最舒适的选择。&lt;/p&gt;
-
-&lt;p&gt;不过那些以才子自居的人，创业往往格外困难，因为在整个创业的战略确定到达成的过程里，最不值钱的，也就是才气。&lt;/p&gt;
 </description>
     </item>
     

@@ -7,8 +7,115 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 23 Apr 2016 15:19:39 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Apr 2016 11:52:13 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/categories/r%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R语言笔记03</title>
+      <link>http://youngspring1.github.io/post/2016/2016-04-26-R03/</link>
+      <pubDate>Tue, 26 Apr 2016 11:52:13 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-04-26-R03/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第三单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;logistic-regression:2842374fb15231f36230fc5afd744bb4&#34;&gt;Logistic Regression&lt;/h2&gt;
+
+&lt;p&gt;第三单元的主题是指数回归。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-理论:2842374fb15231f36230fc5afd744bb4&#34;&gt;1.理论&lt;/h3&gt;
+
+&lt;h4 id=&#34;指数回归:2842374fb15231f36230fc5afd744bb4&#34;&gt;指数回归&lt;/h4&gt;
+
+&lt;p&gt;指数回归用于因变量y是二进制的情况，也就是说，y的取值只有1或者0。&lt;br /&gt;
+y=1的概率：&lt;br /&gt;
+&lt;img src=&#34;http://latex.codecogs.com/svg.latex?P(y=1)=\frac{1}{1+e^{-{(\beta_0 +\beta_1x_1+\beta_2x_2+\ldots+\beta_nx_n+\epsilon)}}}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;y=1的概率与y＝0的概率的比值：&lt;br /&gt;
+&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=\frac{P(y=1)}{P(y=0)}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=\frac{P(y=1)}{1-P(y=1)}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=e^{\beta_0 +\beta_1x_1+\beta_2x_2+\ldots+\beta_nx_n+\epsilon}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;混淆矩阵-confusion-matrix:2842374fb15231f36230fc5afd744bb4&#34;&gt;混淆矩阵（confusion matrix）&lt;/h4&gt;
+
+&lt;p&gt;有阈值t，&lt;br /&gt;
+如果P(y=1)&amp;gt;=t，则预测y=1。&lt;br /&gt;
+如果P(y=1)&amp;gt;=t，则预测y=0。&lt;/p&gt;
+
+&lt;p&gt;对于预测结果，我们得到矩阵&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;predict y=0&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;predict y=1&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;actual y=0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;TN (True  Nagative)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;FP (False Positive)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;actual y=1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;FN (False Nagative)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;TP (True  Positive)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;根据矩阵中的值，我们可以计算指数回归的一些指标：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?accuracy=\frac{TN+TP}{N}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
+&lt;img src=&#34;http://latex.codecogs.com/svg.latex?specificity=\frac{TN}{TN+FP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
+&lt;img src=&#34;http://latex.codecogs.com/svg.latex?sensitivity=\frac{TP}{FN+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;roc曲线:2842374fb15231f36230fc5afd744bb4&#34;&gt;ROC曲线&lt;/h4&gt;
+
+&lt;p&gt;y轴的指标就是sensitivity，所以也叫 True positive rate。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?sensitivity=\frac{TP}{FN+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
+x轴的指标是 1-specificity，所以也叫 False positive rate。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?1-sensitivity=\frac{FP}{TN+FP}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;阈值就在这条曲线上。
+&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160509-ROC.png&#34; alt=&#34;ROC Curve&#34; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;auc值:2842374fb15231f36230fc5afd744bb4&#34;&gt;AUC值&lt;/h4&gt;
+
+&lt;p&gt;AUC值就是ROC曲线的积分，即曲线下方的面积。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-建立回归模型:2842374fb15231f36230fc5afd744bb4&#34;&gt;2.建立回归模型&lt;/h3&gt;
+
+&lt;h3 id=&#34;3-评估:2842374fb15231f36230fc5afd744bb4&#34;&gt;3.评估&lt;/h3&gt;
+
+&lt;h3 id=&#34;附录a:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录A&lt;/h3&gt;
+
+&lt;h3 id=&#34;附录b:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录B&lt;/h3&gt;
+
+&lt;p&gt;set.seed()
+split&lt;/p&gt;
+
+&lt;p&gt;caTools&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;spl = sample(1:nrow(data), size=0.7 * nrow(data))
+train = data[spl,]
+test = data[-spl,]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;附录c:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录C&lt;/h3&gt;
+</description>
+    </item>
     
     <item>
       <title>R语言笔记02</title>
