@@ -7,8 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 10 May 2016 23:16:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 May 2016 23:20:31 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>后人看到的历史，和实际发生的</title>
+      <link>http://youngspring1.github.io/post/2016/2016-05-10-zuozhuan/</link>
+      <pubDate>Tue, 10 May 2016 23:20:31 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-05-10-zuozhuan/</guid>
+      <description>&lt;p&gt;眼前：漫游在《左传》的世界&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>2016五月 西安洛阳行记</title>
@@ -2744,38 +2754,6 @@ identical(ans1$val, ans2$val)
 &lt;p&gt;我们大概不需要用主键来进行聚合的操作，除非数据了极其巨大，使得我们需要重复地做很多次subset，这就会让效果变得很醒目。&lt;br /&gt;
 然而，当连结两个data.table的时候，设置主键是必要的。这是下一讲的主题。&lt;br /&gt;
 我们会详细讲解根据主键列来连结两个data.table。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>R语言入门教程1（编写中）</title>
-      <link>http://youngspring1.github.io/post/2016/2016-03-22-R1/</link>
-      <pubDate>Tue, 22 Mar 2016 23:20:42 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-03-22-R1/</guid>
-      <description>
-
-&lt;p&gt;最近用R语言改写一个现有的小工具，把学到的东西简单总结下。&lt;/p&gt;
-
-&lt;p&gt;目录：&lt;br /&gt;
-1) 数据结构&lt;br /&gt;
-2) 输入输出&lt;br /&gt;
-3) 图形初步&lt;br /&gt;
-4) 基本数据管理&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;教程1介绍R语言中常用的几种数据结构。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-向量:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;1.向量&lt;/h2&gt;
-
-&lt;h2 id=&#34;2-矩阵:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;2.矩阵&lt;/h2&gt;
-
-&lt;h2 id=&#34;3-数组:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;3.数组&lt;/h2&gt;
-
-&lt;h2 id=&#34;4-数据框:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;4.数据框&lt;/h2&gt;
-
-&lt;h2 id=&#34;5-列表:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;5.列表&lt;/h2&gt;
 </description>
     </item>
     
