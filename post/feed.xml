@@ -7,8 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 26 Apr 2016 11:52:13 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 May 2016 19:44:08 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R语言笔记04</title>
+      <link>http://youngspring1.github.io/post/2016/2016-05-10-R04/</link>
+      <pubDate>Tue, 10 May 2016 19:44:08 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-05-10-R04/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第四单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;tree:0257109cd77173fde404dfe977de0c33&#34;&gt;Tree&lt;/h2&gt;
+
+&lt;p&gt;第四单元的主题是回归树。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-理论:0257109cd77173fde404dfe977de0c33&#34;&gt;1.理论&lt;/h3&gt;
+
+&lt;h4 id=&#34;xxx:0257109cd77173fde404dfe977de0c33&#34;&gt;xxx&lt;/h4&gt;
+</description>
+    </item>
     
     <item>
       <title>R语言笔记03</title>
@@ -44,8 +66,8 @@ y=1的概率：&lt;br /&gt;
 &lt;h4 id=&#34;混淆矩阵-confusion-matrix:2842374fb15231f36230fc5afd744bb4&#34;&gt;混淆矩阵（confusion matrix）&lt;/h4&gt;
 
 &lt;p&gt;有阈值t，&lt;br /&gt;
-如果P(y=1)&amp;gt;=t，则预测y=1。&lt;br /&gt;
-如果P(y=1)&amp;gt;=t，则预测y=0。&lt;/p&gt;
+如果P(y=1) &amp;gt;=t，则预测y=1。&lt;br /&gt;
+如果P(y=1) &amp;lt; t，则预测y=0。&lt;/p&gt;
 
 &lt;p&gt;对于预测结果，我们得到矩阵&lt;/p&gt;
 
@@ -81,39 +103,89 @@ y=1的概率：&lt;br /&gt;
 
 &lt;h4 id=&#34;roc曲线:2842374fb15231f36230fc5afd744bb4&#34;&gt;ROC曲线&lt;/h4&gt;
 
-&lt;p&gt;y轴的指标就是sensitivity，所以也叫 True positive rate。&lt;/p&gt;
+&lt;p&gt;ROC曲线 (Receiver Operator Characteristic curve)可以指导我们如何选取阈值t。
+y轴的指标是 sensitivity，所以也叫 True positive rate。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?sensitivity=\frac{TP}{FN+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
 x轴的指标是 1-specificity，所以也叫 False positive rate。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?1-sensitivity=\frac{FP}{TN+FP}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;阈值就在这条曲线上。
+&lt;p&gt;每取一个阈值t，则计算相对应的 TPR 和 FPR，在坐标里标出这个点，就形成ROC曲线。&lt;br /&gt;
 &lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160509-ROC.png&#34; alt=&#34;ROC Curve&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如图所示，&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;t=0时，我们预测所有的y=1，即TPR=1，FPR=1，对应的坐标是(1,1)   
+t=1时，我们预测所有的y=0，即TPR=0，FPR=0，对应的坐标是(0,0)   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这就是曲线的两个端点。&lt;/p&gt;
 
 &lt;h4 id=&#34;auc值:2842374fb15231f36230fc5afd744bb4&#34;&gt;AUC值&lt;/h4&gt;
 
-&lt;p&gt;AUC值就是ROC曲线的积分，即曲线下方的面积。&lt;/p&gt;
+&lt;p&gt;AUC（Area Under Curve）被定义为ROC曲线下的面积，显然这个面积的数值不会大于1。又由于ROC曲线一般都处于y=x这条直线的上方，所以AUC的取值范围在0.5和1之间。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-建立回归模型:2842374fb15231f36230fc5afd744bb4&#34;&gt;2.建立回归模型&lt;/h3&gt;
 
-&lt;h3 id=&#34;3-评估:2842374fb15231f36230fc5afd744bb4&#34;&gt;3.评估&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 建立模型
+# Top10作为因变量，其他所有的列都作为自变量
+SongsLog1 = glm(Top10 ~ ., data=SongsTrain, family=binomial)
 
-&lt;h3 id=&#34;附录a:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录A&lt;/h3&gt;
-
-&lt;h3 id=&#34;附录b:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录B&lt;/h3&gt;
-
-&lt;p&gt;set.seed()
-split&lt;/p&gt;
-
-&lt;p&gt;caTools&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;spl = sample(1:nrow(data), size=0.7 * nrow(data))
-train = data[spl,]
-test = data[-spl,]
+# Top10作为因变量，除了loudness以外的所有列都作为自变量
+SongsLog2 = glm(Top10 ~ . - loudness, data=SongsTrain, family=binomial)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;附录c:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录C&lt;/h3&gt;
+&lt;h3 id=&#34;3-评估:2842374fb15231f36230fc5afd744bb4&#34;&gt;3.评估&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;# 预测
+testPredict = predict(SongsLog3, newdata=SongsTest, type=&amp;quot;response&amp;quot;)
+
+# 生成混淆矩阵
+table(SongsTest$Top10, testPredict &amp;gt;= 0.45)
+
+# 生成ROC曲线
+library(ROCR)
+pred = prediction(predictions, test$violator)
+perf = performance(pred, &amp;quot;tpr&amp;quot;, &amp;quot;fpr&amp;quot;)
+plot(perf)
+
+# 加点颜色和坐标点
+plot(perf, colorize=TRUE, print.cutoffs.at=seq(0,1,0.1), text.adj=c(-0.2,1.7))
+
+# 计算AUC值
+as.numeric(performance(pred, &amp;quot;auc&amp;quot;)@y.values)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;附录a-分割train和test的方法一:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录A 分割train和test的方法一&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;library(caTools)
+set.seed(144)
+
+split = sample.split(parole$violator, SplitRatio = 0.7)
+train = subset(parole, split == TRUE)
+test = subset(parole, split == FALSE)
+# 特别注意：每次运行出来的结果是不一样的
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;也可以这样做：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;library(caTools)
+set.seed(144)
+
+split = sample(1:nrow(data), size=0.7 * nrow(data))
+train = data[split,]
+test = data[-split,]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;附录b-补充缺失数据:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录B 补充缺失数据&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;library(mice)
+set.seed(144)
+vars.for.imputation = setdiff(names(loans), &amp;quot;not.fully.paid&amp;quot;)
+imputed = complete(mice(loans[vars.for.imputation]))
+loans[vars.for.imputation] = imputed
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -3186,42 +3258,6 @@ DT_n
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:e5b9ad2772afb60de67bb09a99ffa4e1:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>单车一周旅行计划</title>
-      <link>http://youngspring1.github.io/post/2016/2016-03-20-bike/</link>
-      <pubDate>Sun, 20 Mar 2016 22:10:24 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-03-20-bike/</guid>
-      <description>&lt;p&gt;D1：南京&amp;ndash;溧阳市  110km&lt;/p&gt;
-
-&lt;p&gt;很容易&lt;/p&gt;
-
-&lt;p&gt;D2：溧阳市&amp;ndash;安吉县 115km&lt;/p&gt;
-
-&lt;p&gt;容易&lt;/p&gt;
-
-&lt;p&gt;D3：安吉县&amp;ndash;太阳镇  105km&lt;/p&gt;
-
-&lt;p&gt;如果走天荒坪，爬山，难&lt;/p&gt;
-
-&lt;p&gt;如果绕过西天目，中等&lt;/p&gt;
-
-&lt;p&gt;D4：太阳镇&amp;ndash;岛石镇 103km&lt;/p&gt;
-
-&lt;p&gt;翻山，华浪线，难&lt;/p&gt;
-
-&lt;p&gt;D5：岛石镇&amp;ndash;十字镇 130km&lt;/p&gt;
-
-&lt;p&gt;走南极，宁国，中等&lt;/p&gt;
-
-&lt;p&gt;（可以考虑走荆州公路提高难度）&lt;/p&gt;
-
-&lt;p&gt;D6：十字镇&amp;ndash;南京  137km&lt;/p&gt;
-
-&lt;p&gt;容易&lt;/p&gt;
 </description>
     </item>
     
