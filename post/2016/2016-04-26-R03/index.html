@@ -192,7 +192,7 @@
                   <h1 class="post-title">R语言笔记03</h1>
 
                   <p class="post-byline">
-                    by  · 2016年04月26日 · 789 Words ·
+                    by  · 2016年04月26日 · 822 Words ·
                     ~2min reading time |
 
                   </p>
@@ -265,6 +265,15 @@ y=1的概率：<br />
 <img src="http://latex.codecogs.com/svg.latex?specificity=\frac{TN}{TN+FP}" alt="formula" /><br />
 <img src="http://latex.codecogs.com/svg.latex?sensitivity=\frac{TP}{FN+TP}" alt="formula" /></p>
 
+<p>补充概念：<br />
+适合率<br />
+<img src="http://latex.codecogs.com/svg.latex?precision=\frac{TP}{FP+TP}" alt="formula" /><br />
+再现率<br />
+<img src="http://latex.codecogs.com/svg.latex?recall=tpr=\frac{TP}{FN+TP}" alt="formula" /><br />
+F值（F-measure）<br />
+<img src="http://latex.codecogs.com/svg.latex?F-measure=\frac{2*precision*recall}{precision+recall}" alt="formula" /><br />
+F值越高，性能越好</p>
+
 <h4 id="roc曲线:2842374fb15231f36230fc5afd744bb4">ROC曲线</h4>
 
 <p>ROC曲线 (Receiver Operator Characteristic curve)可以指导我们如何选取阈值t。
@@ -310,7 +319,7 @@ table(SongsTest$Top10, testPredict &gt;= 0.45)
 
 # 生成ROC曲线
 library(ROCR)
-pred = prediction(predictions, test$violator)
+pred = prediction(testPredict, test$violator)
 perf = performance(pred, &quot;tpr&quot;, &quot;fpr&quot;)
 plot(perf)
 
