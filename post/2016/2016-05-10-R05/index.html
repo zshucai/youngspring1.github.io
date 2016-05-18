@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="R,">
-<meta name="description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 指数回归">
+<meta name="description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 Bag of Words 一段文本，可以看作是多个单词的集合。 统计这些单词的特征，可以归纳">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="R语言笔记05 - 行行重行行">
-<meta itemprop="description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 指数回归">
+<meta itemprop="description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 Bag of Words 一段文本，可以看作是多个单词的集合。 统计这些单词的特征，可以归纳">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
 <meta property="og:title" content="R语言笔记05 - 行行重行行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-05-10-R05/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 指数回归">
+<meta property="og:description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 Bag of Words 一段文本，可以看作是多个单词的集合。 统计这些单词的特征，可以归纳">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
 <meta name="twitter:title" content="R语言笔记05 - 行行重行行">
-<meta name="twitter:description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 指数回归">
+<meta name="twitter:description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 Bag of Words 一段文本，可以看作是多个单词的集合。 统计这些单词的特征，可以归纳">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
@@ -192,8 +192,8 @@
                   <h1 class="post-title">R语言笔记05</h1>
 
                   <p class="post-byline">
-                    by  · 2016年05月14日 · 39 Words ·
-                    ~1min reading time |
+                    by  · 2016年05月14日 · 1156 Words ·
+                    ~3min reading time |
 
                   </p>
 
@@ -214,7 +214,171 @@
 
 <h3 id="1-理论:d5c69e163a15a2e5f9829d2828e73190">1.理论</h3>
 
-<h4 id="指数回归:d5c69e163a15a2e5f9829d2828e73190">指数回归</h4>
+<h4 id="bag-of-words:d5c69e163a15a2e5f9829d2828e73190">Bag of Words</h4>
+
+<p>一段文本，可以看作是多个单词的集合。<br />
+统计这些单词的特征，可以归纳文本的倾向。</p>
+
+<p>首先，我们需要对文本进行下面这几步预处理：</p>
+
+<ol>
+<li>clean up irregularities(统一大小写)</li>
+<li>remove punctuations(去掉标点或者特殊符号)</li>
+<li>remove stop words(去掉the／who／is／do这些单词)</li>
+<li>stemming(获取词干，也就是去除动词变形，比如agrued，agrues，agruing，都变成agru)</li>
+</ol>
+
+<p>然后，我们统计文本中剩下这些单词的出现次数，生成一个矩阵，类似这样的格式：</p>
+
+<table>
+<thead>
+<tr>
+<th>text num</th>
+<th>word1</th>
+<th>word2</th>
+<th>word3</th>
+<th>&hellip;</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>text1</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td>&hellip;</td>
+</tr>
+
+<tr>
+<td>text2</td>
+<td>0</td>
+<td>3</td>
+<td>4</td>
+<td>&hellip;</td>
+</tr>
+
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+
+<p>在实际中，生成的矩阵是个稀疏矩阵（有很多0），我们只选取出现次数比较多的，忽略那些不常见的单词。<br />
+比如选取至少出现过20次的单词，其他的忽略。<br />
+这样的矩阵，每列的列名就是自变量，矩阵的值就用做自变量的取值。</p>
+
+<p>最后，手动添加一列，作为因变量，这样就可以根据这些单词的出现次数，预测因变量的取值了。<br />
+所以，这一列因变量的数值如何定义，它的实际意义是什么，其实是比较复杂的。</p>
+
+<p>在课程的例子中，它定义了&rdquo;好感度&rdquo;，并且只有下面五种取值，{-2,-1,0,1,2}，最终要建立模型预测哪些文本暗示发推的人对苹果公司很没有好感（好感度是－2）。最终发现，文本中含有&rdquo;hate&rdquo;,&ldquo;wtf&rdquo;的情况，推主对苹果公司很没有好感。😄</p>
+
+<h4 id="ibm-watson:d5c69e163a15a2e5f9829d2828e73190">IBM Watson</h4>
+
+<p>Watson的工作步骤是这样的：</p>
+
+<ol>
+<li>Find LAT
+首先得搞明白问题是什么，也就是要找到问题的LAT(Lexial Answer Type)。
+问题&rdquo;Mozart&rsquo;s last and perhaps most powerful symphony shares its name with this planet.&ldquo;的LAT是&rdquo;this planet&rdquo;，因为把答案&rdquo;Jupiter&rdquo;替换进原来的句子，
+&ldquo;Mozart&rsquo;s last and perhaps most powerful symphony shares its name with Jupiter&rdquo;
+仍然是说得通的。</li>
+<li>Generate Hypothesis
+在数据库中搜索上百个候选答案，替换掉LAT，生成很多假说。</li>
+<li>Score Hypothesis
+对每个假说，进行文本搜索，可以将搜索的到的结果数目作为评分。</li>
+<li>Rank Hypothesis
+对评分进行排序，选取评分最高的那个作为答案。</li>
+</ol>
+
+<h3 id="2-建模和评估:d5c69e163a15a2e5f9829d2828e73190">2.建模和评估</h3>
+
+<p>预处理</p>
+
+<pre><code># Read in the data
+tweets = read.csv(&quot;tweets.csv&quot;, stringsAsFactors=FALSE)
+
+# Create dependent variable
+tweets$Negative = as.factor(tweets$Avg &lt;= -1)
+
+# Install new packages
+install.packages(&quot;tm&quot;)
+library(tm)
+install.packages(&quot;SnowballC&quot;)
+library(SnowballC)
+
+# Create corpus
+corpus = Corpus(VectorSource(tweets$Tweet))
+
+# Convert to lower-case
+corpus = tm_map(corpus, tolower)
+corpus = tm_map(corpus, PlainTextDocument)
+
+# Remove punctuation
+corpus = tm_map(corpus, removePunctuation)
+
+# Remove stopwords and apple
+corpus = tm_map(corpus, removeWords, c(&quot;apple&quot;, stopwords(&quot;english&quot;)))
+
+# Stem document 
+corpus = tm_map(corpus, stemDocument)
+</code></pre>
+
+<p>统计，生成单词出现次数的矩阵</p>
+
+<pre><code># Create matrix
+frequencies = DocumentTermMatrix(corpus)
+
+# Look at matrix 
+inspect(frequencies[1000:1005,505:515])
+
+# Check for sparsity
+# 找出出现次数至少有20次的单词
+findFreqTerms(frequencies, lowfreq=20)
+
+# 忽略99.5%的稀疏数据，只选取0.5%作为有效数据
+# Remove sparse terms 
+sparse = removeSparseTerms(frequencies, 0.995)
+
+# Convert to a data frame
+tweetsSparse = as.data.frame(as.matrix(sparse))
+# Make all variable names R-friendly
+colnames(tweetsSparse) = make.names(colnames(tweetsSparse))
+
+# Add dependent variable
+tweetsSparse$Negative = tweets$Negative
+</code></pre>
+
+<p>建模和评估</p>
+
+<pre><code># Split the data
+library(caTools)
+set.seed(123)
+split = sample.split(tweetsSparse$Negative, SplitRatio = 0.7)
+trainSparse = subset(tweetsSparse, split==TRUE)
+testSparse = subset(tweetsSparse, split==FALSE)
+
+# Build a CART model
+library(rpart)
+library(rpart.plot)
+tweetCART = rpart(Negative ~ ., data=trainSparse, method=&quot;class&quot;)
+# Evaluate the performance of the model
+predictCART = predict(tweetCART, newdata=testSparse, type=&quot;class&quot;)
+table(testSparse$Negative, predictCART)
+
+
+# Random forest model
+library(randomForest)
+set.seed(123)
+tweetRF = randomForest(Negative ~ ., data=trainSparse)
+# Make predictions:
+predictRF = predict(tweetRF, newdata=testSparse)
+table(testSparse$Negative, predictRF)
+</code></pre>
 
                       
                     </div>

@@ -192,7 +192,7 @@
                   <h1 class="post-title">R语言笔记04</h1>
 
                   <p class="post-byline">
-                    by  · 2016年05月10日 · 1897 Words ·
+                    by  · 2016年05月10日 · 1932 Words ·
                     ~4min reading time |
 
                   </p>
@@ -277,8 +277,17 @@ minbucket越小，分组越多，split越多。</p>
 我们测试每个分割方法下，参数每一个可能的取值，计算这个取值对应的预测精度，绘制曲线。<br />
 曲线的X轴是参数的取值，Y轴是预测精度，这样可以很容易找到参数的最佳取值。</p>
 
-<p>像R平方一样，我们也定义了一个概念 CP(complexity parameter) 用来观测效果。<br />
+<h6 id="cp:0257109cd77173fde404dfe977de0c33">CP</h6>
+
+<p>像R平方一样，我们也定义了一个概念 cp(complexity parameter) 用来观测效果。<br />
 cp越小，决策树越大(over fitting)。</p>
+
+<p><img src="http://latex.codecogs.com/svg.latex?s = splits" alt="formula" /><br />
+<img src="http://latex.codecogs.com/svg.latex?lambda = penalty\;error" alt="formula" /><br />
+<img src="http://latex.codecogs.com/svg.latex?\sum_{leaves}(RSS\;at\;each\;leaf) + lambda*s" alt="formula" /><br />
+<img src="http://latex.codecogs.com/svg.latex?cp = \frac{lambda}{RSS(no\;splits)}" alt="formula" /><br />
+cp越大，分母越小，tree越小。<br />
+cp越小，分母越大，tree越大。</p>
 
 <h3 id="2-建模和评估:0257109cd77173fde404dfe977de0c33">2.建模和评估</h3>
 
