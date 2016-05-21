@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>R语言笔记05 - 行行重行行</title>
+  <title>R语言笔记06 - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="R,">
-<meta name="description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 Bag of Words 一段文本，可以看作是多个单词的集合。 统计这些单词的特征，可以归纳">
+<meta name="description" content="MIT课程 15.071x 第六单元的学习记录。 Clustering 第三单元的主题是集群。它用来找到数据内的相似性。 1.理论 Recommendation Systems Collaborative filtering: 过滤出用户间的共同特征／相似性。只使用了用">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="R语言笔记05 - 行行重行行">
-<meta itemprop="description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 Bag of Words 一段文本，可以看作是多个单词的集合。 统计这些单词的特征，可以归纳">
+<meta itemprop="name" content="R语言笔记06 - 行行重行行">
+<meta itemprop="description" content="MIT课程 15.071x 第六单元的学习记录。 Clustering 第三单元的主题是集群。它用来找到数据内的相似性。 1.理论 Recommendation Systems Collaborative filtering: 过滤出用户间的共同特征／相似性。只使用了用">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="R语言笔记05 - 行行重行行" />
+<meta property="og:title" content="R语言笔记06 - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-05-10-R05/" />
+<meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-05-18-R06/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 Bag of Words 一段文本，可以看作是多个单词的集合。 统计这些单词的特征，可以归纳">
+<meta property="og:description" content="MIT课程 15.071x 第六单元的学习记录。 Clustering 第三单元的主题是集群。它用来找到数据内的相似性。 1.理论 Recommendation Systems Collaborative filtering: 过滤出用户间的共同特征／相似性。只使用了用">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="R语言笔记05 - 行行重行行">
-<meta name="twitter:description" content="MIT课程 15.071x 第五单元的学习记录。 Text Analytics 第三单元的主题是文本分析。 1.理论 Bag of Words 一段文本，可以看作是多个单词的集合。 统计这些单词的特征，可以归纳">
+<meta name="twitter:title" content="R语言笔记06 - 行行重行行">
+<meta name="twitter:description" content="MIT课程 15.071x 第六单元的学习记录。 Clustering 第三单元的主题是集群。它用来找到数据内的相似性。 1.理论 Recommendation Systems Collaborative filtering: 过滤出用户间的共同特征／相似性。只使用了用">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/post/2016/2016-05-10-R05/">
-  <link rel='shortlink' href="http://youngspring1.github.io/post/2016/2016-05-10-R05/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/post/2016/2016-05-18-R06/">
+  <link rel='shortlink' href="http://youngspring1.github.io/post/2016/2016-05-18-R06/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -189,11 +189,11 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">R语言笔记05</h1>
+                  <h1 class="post-title">R语言笔记06</h1>
 
                   <p class="post-byline">
-                    by  · 2016年05月14日 · 1167 Words ·
-                    ~3min reading time |
+                    by  · 2016年05月18日 · 852 Words ·
+                    ~2min reading time |
 
                   </p>
 
@@ -204,181 +204,140 @@
                       
                       
 
-<p>MIT课程 <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info">15.071x</a> 第五单元的学习记录。</p>
+<p>MIT课程 <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info">15.071x</a> 第六单元的学习记录。</p>
 
 <hr />
 
-<h2 id="text-analytics:d5c69e163a15a2e5f9829d2828e73190">Text Analytics</h2>
+<h2 id="clustering:98d5e9e5464c079d1b4ca9841cba7675">Clustering</h2>
 
-<p>第三单元的主题是文本分析。</p>
+<p>第三单元的主题是集群。它用来找到数据内的相似性。</p>
 
-<h3 id="1-理论:d5c69e163a15a2e5f9829d2828e73190">1.理论</h3>
+<h3 id="1-理论:98d5e9e5464c079d1b4ca9841cba7675">1.理论</h3>
 
-<h4 id="bag-of-words:d5c69e163a15a2e5f9829d2828e73190">Bag of Words</h4>
+<h4 id="recommendation-systems:98d5e9e5464c079d1b4ca9841cba7675">Recommendation Systems</h4>
 
-<p>一段文本，可以看作是多个单词的集合。<br />
-统计这些单词的特征，可以归纳文本的倾向。</p>
+<p>Collaborative filtering:<br />
+过滤出用户间的共同特征／相似性。只使用了用户信息，跟电影内容本身无关。</p>
 
-<p>首先，我们需要对文本进行下面这几步预处理：</p>
+<p>Content filtering:<br />
+利用电影本身的信息，过滤出有共同导演／演员／类别的电影。跟其他用户无关。</p>
 
-<ol>
-<li>clean up irregularities(统一大小写)</li>
-<li>remove punctuations(去掉标点或者特殊符号)</li>
-<li>remove stop words(去掉the／who／is／do这些单词)</li>
-<li>stemming(获取词干，也就是去除动词变形，比如agrued，agrues，agruing，都变成agru)</li>
-</ol>
+<h4 id="clustering-1:98d5e9e5464c079d1b4ca9841cba7675">clustering</h4>
 
-<p>然后，我们统计文本中剩下这些单词的出现次数，生成一个矩阵，类似这样的格式：</p>
+<p>clustering 集群是一种非监督学习，&rdquo;unsupervised learning&rdquo;，将有共同特征的数据分在同一组。</p>
 
-<table>
-<thead>
-<tr>
-<th>text num</th>
-<th>word1</th>
-<th>word2</th>
-<th>word3</th>
-<th>&hellip;</th>
-</tr>
-</thead>
+<h6 id="hierarchical-clustering:98d5e9e5464c079d1b4ca9841cba7675">Hierarchical clustering</h6>
 
-<tbody>
-<tr>
-<td>text1</td>
-<td>2</td>
-<td>5</td>
-<td>0</td>
-<td>&hellip;</td>
-</tr>
-
-<tr>
-<td>text2</td>
-<td>0</td>
-<td>3</td>
-<td>4</td>
-<td>&hellip;</td>
-</tr>
-
-<tr>
-<td>&hellip;</td>
-<td>&hellip;</td>
-<td>&hellip;</td>
-<td>&hellip;</td>
-<td>&hellip;</td>
-</tr>
-</tbody>
-</table>
-
-<p>在实际中，生成的矩阵是个稀疏矩阵（有很多0），我们只选取出现次数比较多的，忽略那些不常见的单词。<br />
-比如选取至少出现过20次的单词，其他的忽略。<br />
-这样的矩阵，每列的列名就是自变量，矩阵的值就用做自变量的取值。</p>
-
-<p>最后，手动添加一列，作为因变量，这样就可以根据这些单词的出现次数，预测因变量的取值了。<br />
-所以，这一列因变量的数值如何定义，它的实际意义是什么，其实是比较复杂的。</p>
-
-<p>在课程的例子中，它定义了&rdquo;好感度&rdquo;，并且只有下面五种取值，{-2,-1,0,1,2}，最终要建立模型预测哪些文本暗示发推的人对苹果公司很没有好感（好感度是－2）。最终发现，文本中含有&rdquo;hate&rdquo;,&ldquo;wtf&rdquo;的情况，推主对苹果公司很没有好感。😄</p>
-
-<h4 id="ibm-watson:d5c69e163a15a2e5f9829d2828e73190">IBM Watson</h4>
-
-<p>Watson的工作步骤是这样的：</p>
+<p>Hierarchical clustering的步骤：</p>
 
 <ol>
-<li>Find LAT<br />
-首先得搞明白问题是什么，也就是要找到问题的LAT(Lexial Answer Type)。
-问题&rdquo;Mozart&rsquo;s last and perhaps most powerful symphony shares its name with this planet.&ldquo;的LAT是&rdquo;this planet&rdquo;，因为把答案&rdquo;Jupiter&rdquo;替换进原来的句子，
-&ldquo;Mozart&rsquo;s last and perhaps most powerful symphony shares its name with Jupiter&rdquo;
-仍然是说得通的。</li>
-<li>Generate Hypothesis<br />
-在数据库中搜索上百个候选答案，替换掉LAT，生成很多假说。</li>
-<li>Score Hypothesis<br />
-对每个假说，进行文本搜索，可以将搜索的到的结果数目作为评分。</li>
-<li>Rank Hypothesis<br />
-对评分进行排序，选取评分最高的那个作为答案。</li>
+<li>计算距离</li>
+<li>生成集群</li>
+<li>生成cutree</li>
 </ol>
 
-<h3 id="2-建模和评估:d5c69e163a15a2e5f9829d2828e73190">2.建模和评估</h3>
+<p>注意1:计算距离时，有可能造成内存溢出。计算每两点间的距离，得到的结果是n*(n-1)/2个，我们需要保存这个结果，如果n很大，保存结果的矩阵也很大，可能会导致内存溢出。<br />
+注意2:计算距离的三种方法：<br />
+Euclidean distance：点与点之间的欧几里得距离<br />
+Manhattan Distance：绝对值之和<br />
+Maximum Coordinate：偏离最严重的点</p>
 
-<p>预处理</p>
+<h6 id="k-means-clustering:98d5e9e5464c079d1b4ca9841cba7675">K-means clustering</h6>
 
-<pre><code># Read in the data
-# 不要把文本转化为因子
-tweets = read.csv(&quot;tweets.csv&quot;, stringsAsFactors=FALSE)
+<p>K-means clustering的步骤：</p>
 
-# Create dependent variable
-tweets$Negative = as.factor(tweets$Avg &lt;= -1)
+<ol>
+<li>指定集群数目k</li>
+<li>随机分配所有的点</li>
+<li>计算每个集群的中心点</li>
+<li>计算每个点到这些中心点的距离，选择最近的，重新分配点到离他最近的集群</li>
+<li>重新计算每个集群的中心点</li>
+<li>重复4和5多次，直到没有提升</li>
+</ol>
 
-# Install new packages
-install.packages(&quot;tm&quot;)
-library(tm)
-install.packages(&quot;SnowballC&quot;)
-library(SnowballC)
+<p>注意：centroid distance 集群中所有点的平均值间的距离。</p>
 
-# Create corpus
-corpus = Corpus(VectorSource(tweets$Tweet))
+<h4 id="normalize:98d5e9e5464c079d1b4ca9841cba7675">normalize</h4>
 
-# Convert to lower-case
-corpus = tm_map(corpus, tolower)
-corpus = tm_map(corpus, PlainTextDocument)
+<p>如果不同列的数值不是同样的数量级，那么运算后较小的值可能会被忽略，所以需要调整到同样的数量级。</p>
 
-# Remove punctuation
-corpus = tm_map(corpus, removePunctuation)
-
-# Remove stopwords and apple
-corpus = tm_map(corpus, removeWords, c(&quot;apple&quot;, stopwords(&quot;english&quot;)))
-
-# Stem document 
-corpus = tm_map(corpus, stemDocument)
+<pre><code>library(caret)
+preproc = preProcess(airlines)
+airlinesNorm = predict(preproc, airlines)
 </code></pre>
 
-<p>统计，生成单词出现次数的矩阵</p>
+<p>效果就是，所有列的平均值都是0。</p>
 
-<pre><code># Create matrix
-frequencies = DocumentTermMatrix(corpus)
+<h3 id="2-建模和评估:98d5e9e5464c079d1b4ca9841cba7675">2.建模和评估</h3>
 
-# Look at matrix 
-inspect(frequencies[1000:1005,505:515])
+<h4 id="hierarchical-clustering-1:98d5e9e5464c079d1b4ca9841cba7675">Hierarchical clustering</h4>
 
-# Check for sparsity
-# 找出出现次数至少有20次的单词
-findFreqTerms(frequencies, lowfreq=20)
+<pre><code># After following the steps in the video, load the data into R
+movies = read.table(&quot;movieLens.txt&quot;, header=FALSE, sep=&quot;|&quot;,quote=&quot;\&quot;&quot;)
+# Add column names
+colnames(movies) = c(&quot;ID&quot;, &quot;Title&quot;, &quot;ReleaseDate&quot;, &quot;VideoReleaseDate&quot;, &quot;IMDB&quot;, &quot;Unknown&quot;, &quot;Action&quot;, &quot;Adventure&quot;, &quot;Animation&quot;, &quot;Childrens&quot;, &quot;Comedy&quot;, &quot;Crime&quot;, &quot;Documentary&quot;, &quot;Drama&quot;, &quot;Fantasy&quot;, &quot;FilmNoir&quot;, &quot;Horror&quot;, &quot;Musical&quot;, &quot;Mystery&quot;, &quot;Romance&quot;, &quot;SciFi&quot;, &quot;Thriller&quot;, &quot;War&quot;, &quot;Western&quot;)
+# Remove unnecessary variables
+movies$ID = NULL
+movies$ReleaseDate = NULL
+movies$VideoReleaseDate = NULL
+movies$IMDB = NULL
+# Remove duplicates
+movies = unique(movies)
 
-# 忽略99.5%的稀疏数据，只选取0.5%作为有效数据
-# Remove sparse terms 
-sparse = removeSparseTerms(frequencies, 0.995)
+# Compute distances
+distances = dist(movies[2:20], method = &quot;euclidean&quot;)
 
-# Convert to a data frame
-tweetsSparse = as.data.frame(as.matrix(sparse))
-# Make all variable names R-friendly
-colnames(tweetsSparse) = make.names(colnames(tweetsSparse))
+# Hierarchical clustering
+# clusterMovies = hclust(distances, method = &quot;ward&quot;) 
+clusterMovies = hclust(distances, method = &quot;ward.D&quot;)
 
-# Add dependent variable
-tweetsSparse$Negative = tweets$Negative
+# Plot the dendrogram
+plot(clusterMovies)
+
+# Assign points to clusters
+clusterGroups = cutree(clusterMovies, k = 10)
+# Create a new data set with just the movies from cluster 2
+cluster2 = subset(movies, clusterGroups==2)
 </code></pre>
 
-<p>建模和评估</p>
+<h4 id="k-means-clustering-1:98d5e9e5464c079d1b4ca9841cba7675">K-means clustering</h4>
 
-<pre><code># Split the data
-library(caTools)
-set.seed(123)
-split = sample.split(tweetsSparse$Negative, SplitRatio = 0.7)
-trainSparse = subset(tweetsSparse, split==TRUE)
-testSparse = subset(tweetsSparse, split==FALSE)
+<pre><code>healthy = read.csv(&quot;healthy.csv&quot;, header=FALSE)
+# 注意
+# data.frame-&gt;matrix-&gt;vector 变成一个2500的vector
+# data.frame-&gt;vector 还是一个50*50的data.frame
+healthyMatrix = as.matrix(healthy)
+healthyVector = as.vector(healthyMatrix)
 
-# Build a CART model
-library(rpart)
-library(rpart.plot)
-tweetCART = rpart(Negative ~ ., data=trainSparse, method=&quot;class&quot;)
-# Evaluate the performance of the model
-predictCART = predict(tweetCART, newdata=testSparse, type=&quot;class&quot;)
-table(testSparse$Negative, predictCART)
+# Specify number of clusters
+k = 5
+# Run k-means
+set.seed(1)
+KMC = kmeans(healthyVector, centers = k, iter.max = 1000)
 
+# Extract clusters
+healthyClusters = KMC$cluster
 
-# Random forest model
-library(randomForest)
-set.seed(123)
-tweetRF = randomForest(Negative ~ ., data=trainSparse)
-# Make predictions:
-predictRF = predict(tweetRF, newdata=testSparse)
-table(testSparse$Negative, predictRF)
+# Plot the image with the clusters
+dim(healthyClusters) = c(nrow(healthyMatrix), ncol(healthyMatrix))
+
+image(healthyClusters, axes = FALSE, col=rainbow(k))
+
+# Apply to a test image
+tumor = read.csv(&quot;tumor.csv&quot;, header=FALSE)
+tumorMatrix = as.matrix(tumor)
+tumorVector = as.vector(tumorMatrix)
+
+# Apply clusters from before to new image, using the flexclust package
+# kcca K-Centroids Cluster Analysis
+install.packages(&quot;flexclust&quot;)
+library(flexclust)
+KMC.kcca = as.kcca(KMC, healthyVector)
+tumorClusters = predict(KMC.kcca, newdata = tumorVector)
+
+# Visualize the clusters
+dim(tumorClusters) = c(nrow(tumorMatrix), ncol(tumorMatrix))
+image(tumorClusters, axes = FALSE, col=rainbow(k))
 </code></pre>
 
                       
@@ -387,7 +346,7 @@ table(testSparse$Negative, predictRF)
 
                         <div>
 
-                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016/2016-05-10-R05/">http://youngspring1.github.io/post/2016/2016-05-10-R05/</a>
+                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016/2016-05-18-R06/">http://youngspring1.github.io/post/2016/2016-05-18-R06/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -440,20 +399,14 @@ table(testSparse$Negative, predictRF)
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://youngspring1.github.io/post/2016/2016-05-10-zuozhuan/" rel="next">
+        <a href="http://youngspring1.github.io/post/2016/2016-05-10-R05/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>后人看到的历史，和实际发生的</span>
+          <span>R语言笔记05</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://youngspring1.github.io/post/2016/2016-05-18-R06/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>R语言笔记06</span>
-        </a>
         
       </li>
     </ul>
