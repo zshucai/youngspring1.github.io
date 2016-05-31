@@ -7,8 +7,288 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 18 May 2016 16:40:09 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 24 May 2016 09:18:29 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R语言笔记07</title>
+      <link>http://youngspring1.github.io/post/2016/2016-05-24-R07/</link>
+      <pubDate>Tue, 24 May 2016 09:18:29 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-05-24-R07/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第七单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;visualization:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;Visualization&lt;/h2&gt;
+
+&lt;p&gt;第七单元的主题是可视化。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-简介:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;1.简介&lt;/h3&gt;
+
+&lt;p&gt;plot和ggplot2的比较&lt;br /&gt;
+plot：只有简单的点和线，不容易添加其他元素。&lt;br /&gt;
+ggplot2：引入图层，很容易添加其他元素&lt;/p&gt;
+
+&lt;h4 id=&#34;ggplot2:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;ggplot2&lt;/h4&gt;
+
+&lt;p&gt;ggplot2三要素：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Data&lt;br /&gt;
+数据，使用data.frame。&lt;/li&gt;
+&lt;li&gt;Aesthetic mapping&lt;br /&gt;
+指定如何将 data.frame里的变量映射到图形属性上。比如，颜色，形状，比例，x／y坐标，分组等等。&lt;/li&gt;
+&lt;li&gt;Geometric objects&lt;br /&gt;
+决定数据以什么样的形式显示。比如，点，线，箱线图，条形图，多边形等等。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;结合下面这条命令，参数WHO就是提供数据的data.frame，参数aes()就是Aesthetic mapping，后面用加号连结的类似geom_point()就是Geometric objects。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 形式
+# ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
+# 例子
+ggplot(WHO, aes(x = GNI, y = FertilityRate, color = Region)) + geom_point()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ase()即可以作为ggplot()的参数，又可以作为geom_XXXX()的参数&lt;/p&gt;
+
+&lt;h4 id=&#34;aesthetic-mapping:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;Aesthetic mapping&lt;/h4&gt;
+
+&lt;p&gt;坐标相关&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aes(x, y, xmin, xmax, ymin, ymax, xend, yend)
+# 当然就是x，y坐标分别指定data.frame的某一列
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：坐标相关的，一般作为ggplot()的参数，其他的都可以作为geom()的参数。&lt;/p&gt;
+
+&lt;h4 id=&#34;geometric-objects:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;Geometric objects&lt;/h4&gt;
+
+&lt;p&gt;颜色相关&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aes(colour, fill, alpha)
+# colour 颜色
+# fill   填充指标，data.frame的某一列。也类似于分类，比如该列有两个因子，那么会用两种不同的颜色填充
+# alpha  透明度，0到1之间的小数
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;分组相关&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aes(group)
+# group 分组指标，可以指定为1，那所有数据都在1组。也可以指定data.frame的某一列
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;形态相关&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;aes(linetype, size, shape)
+# linetype 即lty，线段的类型
+# size     点的大小，线的粗细。指定整数数值。
+# shape    图形的类型
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;图形的类型，即geom_point(shape = n)中n的取值&lt;br /&gt;
+&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160524-shapes.png&#34; alt=&#34;shapes&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;线段的类型，即geom_point(lty = n)中n的取值&lt;br /&gt;
+&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160524-line-types.png&#34; alt=&#34;line-types&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;描绘形状&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;geom_point()  点
+geom_line()   线
+geom_tile()   条形图
+geom_bar()    直方图
+geom_ploygen()多边形
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：
+binwidth = 5 :粒度？&lt;br /&gt;
+geom_bar(stat=&amp;ldquo;identity&amp;rdquo;) :use the value of the y variable as is&lt;br /&gt;
+geom_histogram(position = &amp;ldquo;identity&amp;rdquo;) :not to stack the histograms&lt;/p&gt;
+
+&lt;h3 id=&#34;2-实战:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;2.实战&lt;/h3&gt;
+
+&lt;h4 id=&#34;绘图:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;绘图&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;# Read in data
+WHO = read.csv(&amp;quot;WHO.csv&amp;quot;)
+str(WHO)
+
+# Plot from Week 1
+plot(WHO$GNI, WHO$FertilityRate)
+
+# Let&#39;s redo this using ggplot 
+# Install and load the ggplot2 library:
+install.packages(&amp;quot;ggplot2&amp;quot;)
+library(ggplot2)
+
+# Create the ggplot object with the data and the aesthetic mapping:
+scatterplot = ggplot(WHO, aes(x = GNI, y = FertilityRate))
+
+# Add the geom_point geometry
+scatterplot + geom_point()
+
+# Make a line graph instead:
+scatterplot + geom_line()
+
+# Switch back to our points:
+scatterplot + geom_point()
+
+# Redo the plot with blue triangles instead of circles:
+scatterplot + geom_point(color = &amp;quot;blue&amp;quot;, size = 3, shape = 17) 
+
+# Another option:
+scatterplot + geom_point(color = &amp;quot;darkred&amp;quot;, size = 3, shape = 8) 
+
+# Add a title to the plot:
+scatterplot + geom_point(colour = &amp;quot;blue&amp;quot;, size = 3, shape = 17) + ggtitle(&amp;quot;Fertility Rate vs. Gross National Income&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;分组:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;分组&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;# 因子，以颜色区分  
+# Color the points by region: 
+ggplot(WHO, aes(x = GNI, y = FertilityRate, color = Region)) + geom_point()
+
+# 数值，以颜色深浅区分
+# Color the points according to life expectancy:
+ggplot(WHO, aes(x = GNI, y = FertilityRate, color = LifeExpectancy)) + geom_point()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;拟合:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;拟合&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;# Is the fertility rate of a country was a good predictor of the percentage of the population under 15?
+ggplot(WHO, aes(x = FertilityRate, y = Under15)) + geom_point()
+
+# Let&#39;s try a log transformation:
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point()
+
+# Simple linear regression model to predict the percentage of the population under 15, using the log of the fertility rate:
+mod = lm(Under15 ~ log(FertilityRate), data = WHO)
+summary(mod)
+
+# Add this regression line to our plot:
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point() +  stat_smooth(method = &amp;quot;lm&amp;quot;)
+
+# 99% confidence interval
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point() + stat_smooth(method = &amp;quot;lm&amp;quot;, level = 0.99)
+
+# No confidence interval in the plot
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point() + stat_smooth(method = &amp;quot;lm&amp;quot;, se = FALSE)
+
+# Change the color of the regression line:
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point() + stat_smooth(method = &amp;quot;lm&amp;quot;, colour = &amp;quot;orange&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;热力图:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;热力图&lt;/h4&gt;
+
+&lt;p&gt;热力图（数据越多颜色越深）的效果，依靠scale_fill_gradient()来实现，可以通过low和high指定深浅区域的颜色，然后自动形成渐变效果。旁边的图例通过参数guide = &amp;ldquo;legend&amp;rdquo;来指定。&lt;br /&gt;
+最终的命令如下，如何生成数据的，就不啰嗦了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Change the color scheme
+ggplot(DayHourCounts, aes(x = Hour, y = Var1)) + geom_tile(aes(fill = Freq)) + scale_fill_gradient(name=&amp;quot;Total MV Thefts&amp;quot;, low=&amp;quot;white&amp;quot;, high=&amp;quot;red&amp;quot;) + theme(axis.title.y = element_blank())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;地理热力图:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;地理热力图&lt;/h4&gt;
+
+&lt;p&gt;顾名思义，地理热力图就是在地图上显示热力图。&lt;br /&gt;
+包map内置了美国地图、世界地图、法国地图、意大利地图等。地图的原理跟图片类似，图片就是按照某个粒度分成很多个像素点，然后保存像素点的颜色信息；地图就是按照经纬度分成很多点，保存每个点的信息（比如这个点位于哪个州，这样就形成一个美国地图）。
+对比刚才的 ggplot() + geom_tile() + scale_fill_gradient()&lt;br /&gt;
+我们现在使用 ggmap() + geom_point() + scale_fill_gradient()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Install and load two new packages:
+install.packages(&amp;quot;maps&amp;quot;)
+install.packages(&amp;quot;ggmap&amp;quot;)
+library(maps)
+library(ggmap)
+
+# Load a map of Chicago into R:
+chicago = get_map(location = &amp;quot;chicago&amp;quot;, zoom = 11)
+
+# Look at the map
+ggmap(chicago)
+
+# Plot the first 100 motor vehicle thefts:
+ggmap(chicago) + geom_point(data = mvt[1:100,], aes(x = Longitude, y = Latitude))
+
+# Round our latitude and longitude to 2 digits of accuracy, and create a crime counts data frame for each area:
+LatLonCounts = as.data.frame(table(round(mvt$Longitude,2), round(mvt$Latitude,2)))
+
+str(LatLonCounts)
+
+# Convert our Longitude and Latitude variable to numbers:
+LatLonCounts$Long = as.numeric(as.character(LatLonCounts$Var1))
+LatLonCounts$Lat = as.numeric(as.character(LatLonCounts$Var2))
+
+# Plot these points on our map:
+ggmap(chicago) + geom_point(data = LatLonCounts, aes(x = Long, y = Lat, color = Freq, size=Freq))
+
+# Change the color scheme:
+ggmap(chicago) + geom_point(data = LatLonCounts, aes(x = Long, y = Lat, color = Freq, size=Freq)) + scale_colour_gradient(low=&amp;quot;yellow&amp;quot;, high=&amp;quot;red&amp;quot;)
+
+# We can also use the geom_tile geometry
+ggmap(chicago) + geom_tile(data = LatLonCounts, aes(x = Long, y = Lat, alpha = Freq), fill=&amp;quot;red&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;保存:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;保存&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;# Save our plot:
+fertilityGNIplot = scatterplot + geom_point(colour = &amp;quot;blue&amp;quot;, size = 3, shape = 17) + ggtitle(&amp;quot;Fertility Rate vs. Gross National Income&amp;quot;)
+pdf(&amp;quot;MyPlot.pdf&amp;quot;)
+print(fertilityGNIplot)
+dev.off()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;附录:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;附录&lt;/h3&gt;
+
+&lt;h6 id=&#34;r中星期的显示:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;R中星期的显示&lt;/h6&gt;
+
+&lt;p&gt;在中文系统上，weekdays()返回的结果是 “星期二 星期六 星期日 星期三 星期四 星期五 星期一”，如果希望输出的结果是“Friday    Monday  Saturday    Sunday  Thursday   Tuesday Wednesday”，应该怎么做？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Convert the Date variable to a format that R will recognize:
+mvt$Date = strptime(mvt$Date, format=&amp;quot;%m/%d/%y %H:%M&amp;quot;)
+mvt$Weekday = weekdays(mvt$Date)
+
+table(mvt$Weekday)
+星期二 星期六 星期日 星期三 星期四 星期五 星期一 
+26791  27118  26316  27416  27319  29284  27397 
+
+Sys.getlocale()
+&amp;quot;zh_CN.UTF-8/zh_CN.UTF-8/zh_CN.UTF-8/C/zh_CN.UTF-8/zh_CN.UTF-8&amp;quot;
+Sys.setlocale(&amp;quot;LC_TIME&amp;quot;, &amp;quot;en_US.UTF-8&amp;quot;)
+&amp;quot;en_US&amp;quot;
+Sys.getlocale()
+&amp;quot;zh_CN.UTF-8/zh_CN.UTF-8/zh_CN.UTF-8/C/en_US.UTF-8/zh_CN.UTF-8&amp;quot;
+
+table(mvt$Weekday)
+Friday    Monday  Saturday    Sunday  Thursday   Tuesday Wednesday 
+29284     27397     27118     26316     27319     26791     27416
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;另外注意到，不管是中文还是英文，都是按照字母表顺序排列的，不是按照实际中有意义的顺序排列的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;WeekdayCounts = as.data.frame(table(mvt$Weekday))
+WeekdayCounts$Var1 = factor(WeekdayCounts$Var1, ordered=TRUE, levels=c(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;, &amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;,&amp;quot;Saturday&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h6 id=&#34;factor转数字:8f9383a8559e56d2b013b78edf4886b3&#34;&gt;factor转数字&lt;/h6&gt;
+
+&lt;p&gt;先把factor转成character，再转成数字&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Convert the second variable, Var2, to numbers and call it Hour:
+DayHourCounts$Hour = as.numeric(as.character(DayHourCounts$Var2))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参考：&lt;br /&gt;
+&lt;a href=&#34;http://www.cookbook-r.com/Graphs/Shapes_and_line_types/&#34;&gt;形状和线段的类型&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://www.cookbook-r.com/Graphs/Colors_(ggplot2)&#34;&gt;颜色&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>R语言笔记06</title>
@@ -24,7 +304,7 @@
 
 &lt;h2 id=&#34;clustering:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;Clustering&lt;/h2&gt;
 
-&lt;p&gt;第三单元的主题是集群。它用来找到数据内的相似性。&lt;/p&gt;
+&lt;p&gt;第六单元的主题是集群。它用来找到数据内的相似性。&lt;/p&gt;
 
 &lt;h3 id=&#34;1-理论:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;1.理论&lt;/h3&gt;
 
@@ -170,7 +450,7 @@ image(tumorClusters, axes = FALSE, col=rainbow(k))
 
 &lt;h2 id=&#34;text-analytics:d5c69e163a15a2e5f9829d2828e73190&#34;&gt;Text Analytics&lt;/h2&gt;
 
-&lt;p&gt;第三单元的主题是文本分析。&lt;/p&gt;
+&lt;p&gt;第五单元的主题是文本分析。&lt;/p&gt;
 
 &lt;h3 id=&#34;1-理论:d5c69e163a15a2e5f9829d2828e73190&#34;&gt;1.理论&lt;/h3&gt;
 
@@ -2936,38 +3216,6 @@ identical(ans1$val, ans2$val)
 &lt;p&gt;我们大概不需要用主键来进行聚合的操作，除非数据了极其巨大，使得我们需要重复地做很多次subset，这就会让效果变得很醒目。&lt;br /&gt;
 然而，当连结两个data.table的时候，设置主键是必要的。这是下一讲的主题。&lt;br /&gt;
 我们会详细讲解根据主键列来连结两个data.table。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>R语言入门教程1（编写中）</title>
-      <link>http://youngspring1.github.io/post/2016/2016-03-22-R1/</link>
-      <pubDate>Tue, 22 Mar 2016 23:20:42 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-03-22-R1/</guid>
-      <description>
-
-&lt;p&gt;最近用R语言改写一个现有的小工具，把学到的东西简单总结下。&lt;/p&gt;
-
-&lt;p&gt;目录：&lt;br /&gt;
-1) 数据结构&lt;br /&gt;
-2) 输入输出&lt;br /&gt;
-3) 图形初步&lt;br /&gt;
-4) 基本数据管理&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;教程1介绍R语言中常用的几种数据结构。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-向量:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;1.向量&lt;/h2&gt;
-
-&lt;h2 id=&#34;2-矩阵:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;2.矩阵&lt;/h2&gt;
-
-&lt;h2 id=&#34;3-数组:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;3.数组&lt;/h2&gt;
-
-&lt;h2 id=&#34;4-数据框:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;4.数据框&lt;/h2&gt;
-
-&lt;h2 id=&#34;5-列表:42c22e7d6c4eed432ecfe282fd334b8f&#34;&gt;5.列表&lt;/h2&gt;
 </description>
     </item>
     

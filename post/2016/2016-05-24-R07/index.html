@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>R语言笔记06 - 行行重行行</title>
+  <title>R语言笔记07 - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="R,">
-<meta name="description" content="MIT课程 15.071x 第六单元的学习记录。 Clustering 第六单元的主题是集群。它用来找到数据内的相似性。 1.理论 Recommendation Systems Collaborative filtering: 过滤出用户间的共同特征／相似性。只使用了用">
+<meta name="description" content="MIT课程 15.071x 第七单元的学习记录。 Visualization 第七单元的主题是可视化。 1.简介 plot和ggplot2的比较 plot：只有简单的点和线，不容易添加其他元">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="R语言笔记06 - 行行重行行">
-<meta itemprop="description" content="MIT课程 15.071x 第六单元的学习记录。 Clustering 第六单元的主题是集群。它用来找到数据内的相似性。 1.理论 Recommendation Systems Collaborative filtering: 过滤出用户间的共同特征／相似性。只使用了用">
+<meta itemprop="name" content="R语言笔记07 - 行行重行行">
+<meta itemprop="description" content="MIT课程 15.071x 第七单元的学习记录。 Visualization 第七单元的主题是可视化。 1.简介 plot和ggplot2的比较 plot：只有简单的点和线，不容易添加其他元">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="R语言笔记06 - 行行重行行" />
+<meta property="og:title" content="R语言笔记07 - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-05-18-R06/" />
+<meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-05-24-R07/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="MIT课程 15.071x 第六单元的学习记录。 Clustering 第六单元的主题是集群。它用来找到数据内的相似性。 1.理论 Recommendation Systems Collaborative filtering: 过滤出用户间的共同特征／相似性。只使用了用">
+<meta property="og:description" content="MIT课程 15.071x 第七单元的学习记录。 Visualization 第七单元的主题是可视化。 1.简介 plot和ggplot2的比较 plot：只有简单的点和线，不容易添加其他元">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="R语言笔记06 - 行行重行行">
-<meta name="twitter:description" content="MIT课程 15.071x 第六单元的学习记录。 Clustering 第六单元的主题是集群。它用来找到数据内的相似性。 1.理论 Recommendation Systems Collaborative filtering: 过滤出用户间的共同特征／相似性。只使用了用">
+<meta name="twitter:title" content="R语言笔记07 - 行行重行行">
+<meta name="twitter:description" content="MIT课程 15.071x 第七单元的学习记录。 Visualization 第七单元的主题是可视化。 1.简介 plot和ggplot2的比较 plot：只有简单的点和线，不容易添加其他元">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/post/2016/2016-05-18-R06/">
-  <link rel='shortlink' href="http://youngspring1.github.io/post/2016/2016-05-18-R06/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/post/2016/2016-05-24-R07/">
+  <link rel='shortlink' href="http://youngspring1.github.io/post/2016/2016-05-24-R07/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -189,11 +189,11 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">R语言笔记06</h1>
+                  <h1 class="post-title">R语言笔记07</h1>
 
                   <p class="post-byline">
-                    by  · 2016年05月18日 · 852 Words ·
-                    ~2min reading time |
+                    by  · 2016年05月24日 · 1935 Words ·
+                    ~4min reading time |
 
                   </p>
 
@@ -204,141 +204,275 @@
                       
                       
 
-<p>MIT课程 <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info">15.071x</a> 第六单元的学习记录。</p>
+<p>MIT课程 <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info">15.071x</a> 第七单元的学习记录。</p>
 
 <hr />
 
-<h2 id="clustering:98d5e9e5464c079d1b4ca9841cba7675">Clustering</h2>
+<h2 id="visualization:8f9383a8559e56d2b013b78edf4886b3">Visualization</h2>
 
-<p>第六单元的主题是集群。它用来找到数据内的相似性。</p>
+<p>第七单元的主题是可视化。</p>
 
-<h3 id="1-理论:98d5e9e5464c079d1b4ca9841cba7675">1.理论</h3>
+<h3 id="1-简介:8f9383a8559e56d2b013b78edf4886b3">1.简介</h3>
 
-<h4 id="recommendation-systems:98d5e9e5464c079d1b4ca9841cba7675">Recommendation Systems</h4>
+<p>plot和ggplot2的比较<br />
+plot：只有简单的点和线，不容易添加其他元素。<br />
+ggplot2：引入图层，很容易添加其他元素</p>
 
-<p>Collaborative filtering:<br />
-过滤出用户间的共同特征／相似性。只使用了用户信息，跟电影内容本身无关。</p>
+<h4 id="ggplot2:8f9383a8559e56d2b013b78edf4886b3">ggplot2</h4>
 
-<p>Content filtering:<br />
-利用电影本身的信息，过滤出有共同导演／演员／类别的电影。跟其他用户无关。</p>
-
-<h4 id="clustering-1:98d5e9e5464c079d1b4ca9841cba7675">clustering</h4>
-
-<p>clustering 集群是一种非监督学习，&rdquo;unsupervised learning&rdquo;，将有共同特征的数据分在同一组。</p>
-
-<h6 id="hierarchical-clustering:98d5e9e5464c079d1b4ca9841cba7675">Hierarchical clustering</h6>
-
-<p>Hierarchical clustering的步骤：</p>
+<p>ggplot2三要素：</p>
 
 <ol>
-<li>计算距离</li>
-<li>生成集群</li>
-<li>生成cutree</li>
+<li>Data<br />
+数据，使用data.frame。</li>
+<li>Aesthetic mapping<br />
+指定如何将 data.frame里的变量映射到图形属性上。比如，颜色，形状，比例，x／y坐标，分组等等。</li>
+<li>Geometric objects<br />
+决定数据以什么样的形式显示。比如，点，线，箱线图，条形图，多边形等等。</li>
 </ol>
 
-<p>注意1:计算距离时，有可能造成内存溢出。计算每两点间的距离，得到的结果是n*(n-1)/2个，我们需要保存这个结果，如果n很大，保存结果的矩阵也很大，可能会导致内存溢出。<br />
-注意2:计算距离的三种方法：<br />
-Euclidean distance：点与点之间的欧几里得距离<br />
-Manhattan Distance：绝对值之和<br />
-Maximum Coordinate：偏离最严重的点</p>
+<p>结合下面这条命令，参数WHO就是提供数据的data.frame，参数aes()就是Aesthetic mapping，后面用加号连结的类似geom_point()就是Geometric objects。</p>
 
-<h6 id="k-means-clustering:98d5e9e5464c079d1b4ca9841cba7675">K-means clustering</h6>
-
-<p>K-means clustering的步骤：</p>
-
-<ol>
-<li>指定集群数目k</li>
-<li>随机分配所有的点</li>
-<li>计算每个集群的中心点</li>
-<li>计算每个点到这些中心点的距离，选择最近的，重新分配点到离他最近的集群</li>
-<li>重新计算每个集群的中心点</li>
-<li>重复4和5多次，直到没有提升</li>
-</ol>
-
-<p>注意：centroid distance 集群中所有点的平均值间的距离。</p>
-
-<h4 id="normalize:98d5e9e5464c079d1b4ca9841cba7675">normalize</h4>
-
-<p>如果不同列的数值不是同样的数量级，那么运算后较小的值可能会被忽略，所以需要调整到同样的数量级。</p>
-
-<pre><code>library(caret)
-preproc = preProcess(airlines)
-airlinesNorm = predict(preproc, airlines)
+<pre><code># 形式
+# ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
+# 例子
+ggplot(WHO, aes(x = GNI, y = FertilityRate, color = Region)) + geom_point()
 </code></pre>
 
-<p>效果就是，所有列的平均值都是0。</p>
+<p>ase()即可以作为ggplot()的参数，又可以作为geom_XXXX()的参数</p>
 
-<h3 id="2-建模和评估:98d5e9e5464c079d1b4ca9841cba7675">2.建模和评估</h3>
+<h4 id="aesthetic-mapping:8f9383a8559e56d2b013b78edf4886b3">Aesthetic mapping</h4>
 
-<h4 id="hierarchical-clustering-1:98d5e9e5464c079d1b4ca9841cba7675">Hierarchical clustering</h4>
+<p>坐标相关</p>
 
-<pre><code># After following the steps in the video, load the data into R
-movies = read.table(&quot;movieLens.txt&quot;, header=FALSE, sep=&quot;|&quot;,quote=&quot;\&quot;&quot;)
-# Add column names
-colnames(movies) = c(&quot;ID&quot;, &quot;Title&quot;, &quot;ReleaseDate&quot;, &quot;VideoReleaseDate&quot;, &quot;IMDB&quot;, &quot;Unknown&quot;, &quot;Action&quot;, &quot;Adventure&quot;, &quot;Animation&quot;, &quot;Childrens&quot;, &quot;Comedy&quot;, &quot;Crime&quot;, &quot;Documentary&quot;, &quot;Drama&quot;, &quot;Fantasy&quot;, &quot;FilmNoir&quot;, &quot;Horror&quot;, &quot;Musical&quot;, &quot;Mystery&quot;, &quot;Romance&quot;, &quot;SciFi&quot;, &quot;Thriller&quot;, &quot;War&quot;, &quot;Western&quot;)
-# Remove unnecessary variables
-movies$ID = NULL
-movies$ReleaseDate = NULL
-movies$VideoReleaseDate = NULL
-movies$IMDB = NULL
-# Remove duplicates
-movies = unique(movies)
-
-# Compute distances
-distances = dist(movies[2:20], method = &quot;euclidean&quot;)
-
-# Hierarchical clustering
-# clusterMovies = hclust(distances, method = &quot;ward&quot;) 
-clusterMovies = hclust(distances, method = &quot;ward.D&quot;)
-
-# Plot the dendrogram
-plot(clusterMovies)
-
-# Assign points to clusters
-clusterGroups = cutree(clusterMovies, k = 10)
-# Create a new data set with just the movies from cluster 2
-cluster2 = subset(movies, clusterGroups==2)
+<pre><code>aes(x, y, xmin, xmax, ymin, ymax, xend, yend)
+# 当然就是x，y坐标分别指定data.frame的某一列
 </code></pre>
 
-<h4 id="k-means-clustering-1:98d5e9e5464c079d1b4ca9841cba7675">K-means clustering</h4>
+<p>注：坐标相关的，一般作为ggplot()的参数，其他的都可以作为geom()的参数。</p>
 
-<pre><code>healthy = read.csv(&quot;healthy.csv&quot;, header=FALSE)
-# 注意
-# data.frame-&gt;matrix-&gt;vector 变成一个2500的vector
-# data.frame-&gt;vector 还是一个50*50的data.frame
-healthyMatrix = as.matrix(healthy)
-healthyVector = as.vector(healthyMatrix)
+<h4 id="geometric-objects:8f9383a8559e56d2b013b78edf4886b3">Geometric objects</h4>
 
-# Specify number of clusters
-k = 5
-# Run k-means
-set.seed(1)
-KMC = kmeans(healthyVector, centers = k, iter.max = 1000)
+<p>颜色相关</p>
 
-# Extract clusters
-healthyClusters = KMC$cluster
-
-# Plot the image with the clusters
-dim(healthyClusters) = c(nrow(healthyMatrix), ncol(healthyMatrix))
-
-image(healthyClusters, axes = FALSE, col=rainbow(k))
-
-# Apply to a test image
-tumor = read.csv(&quot;tumor.csv&quot;, header=FALSE)
-tumorMatrix = as.matrix(tumor)
-tumorVector = as.vector(tumorMatrix)
-
-# Apply clusters from before to new image, using the flexclust package
-# kcca K-Centroids Cluster Analysis
-install.packages(&quot;flexclust&quot;)
-library(flexclust)
-KMC.kcca = as.kcca(KMC, healthyVector)
-tumorClusters = predict(KMC.kcca, newdata = tumorVector)
-
-# Visualize the clusters
-dim(tumorClusters) = c(nrow(tumorMatrix), ncol(tumorMatrix))
-image(tumorClusters, axes = FALSE, col=rainbow(k))
+<pre><code>aes(colour, fill, alpha)
+# colour 颜色
+# fill   填充指标，data.frame的某一列。也类似于分类，比如该列有两个因子，那么会用两种不同的颜色填充
+# alpha  透明度，0到1之间的小数
 </code></pre>
+
+<p>分组相关</p>
+
+<pre><code>aes(group)
+# group 分组指标，可以指定为1，那所有数据都在1组。也可以指定data.frame的某一列
+</code></pre>
+
+<p>形态相关</p>
+
+<pre><code>aes(linetype, size, shape)
+# linetype 即lty，线段的类型
+# size     点的大小，线的粗细。指定整数数值。
+# shape    图形的类型
+</code></pre>
+
+<p>图形的类型，即geom_point(shape = n)中n的取值<br />
+<img src="http://7xrjai.com1.z0.glb.clouddn.com/20160524-shapes.png" alt="shapes" /></p>
+
+<p>线段的类型，即geom_point(lty = n)中n的取值<br />
+<img src="http://7xrjai.com1.z0.glb.clouddn.com/20160524-line-types.png" alt="line-types" /></p>
+
+<p>描绘形状</p>
+
+<pre><code>geom_point()  点
+geom_line()   线
+geom_tile()   条形图
+geom_bar()    直方图
+geom_ploygen()多边形
+</code></pre>
+
+<p>注：
+binwidth = 5 :粒度？<br />
+geom_bar(stat=&ldquo;identity&rdquo;) :use the value of the y variable as is<br />
+geom_histogram(position = &ldquo;identity&rdquo;) :not to stack the histograms</p>
+
+<h3 id="2-实战:8f9383a8559e56d2b013b78edf4886b3">2.实战</h3>
+
+<h4 id="绘图:8f9383a8559e56d2b013b78edf4886b3">绘图</h4>
+
+<pre><code># Read in data
+WHO = read.csv(&quot;WHO.csv&quot;)
+str(WHO)
+
+# Plot from Week 1
+plot(WHO$GNI, WHO$FertilityRate)
+
+# Let's redo this using ggplot 
+# Install and load the ggplot2 library:
+install.packages(&quot;ggplot2&quot;)
+library(ggplot2)
+
+# Create the ggplot object with the data and the aesthetic mapping:
+scatterplot = ggplot(WHO, aes(x = GNI, y = FertilityRate))
+
+# Add the geom_point geometry
+scatterplot + geom_point()
+
+# Make a line graph instead:
+scatterplot + geom_line()
+
+# Switch back to our points:
+scatterplot + geom_point()
+
+# Redo the plot with blue triangles instead of circles:
+scatterplot + geom_point(color = &quot;blue&quot;, size = 3, shape = 17) 
+
+# Another option:
+scatterplot + geom_point(color = &quot;darkred&quot;, size = 3, shape = 8) 
+
+# Add a title to the plot:
+scatterplot + geom_point(colour = &quot;blue&quot;, size = 3, shape = 17) + ggtitle(&quot;Fertility Rate vs. Gross National Income&quot;)
+</code></pre>
+
+<h4 id="分组:8f9383a8559e56d2b013b78edf4886b3">分组</h4>
+
+<pre><code># 因子，以颜色区分  
+# Color the points by region: 
+ggplot(WHO, aes(x = GNI, y = FertilityRate, color = Region)) + geom_point()
+
+# 数值，以颜色深浅区分
+# Color the points according to life expectancy:
+ggplot(WHO, aes(x = GNI, y = FertilityRate, color = LifeExpectancy)) + geom_point()
+</code></pre>
+
+<h4 id="拟合:8f9383a8559e56d2b013b78edf4886b3">拟合</h4>
+
+<pre><code># Is the fertility rate of a country was a good predictor of the percentage of the population under 15?
+ggplot(WHO, aes(x = FertilityRate, y = Under15)) + geom_point()
+
+# Let's try a log transformation:
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point()
+
+# Simple linear regression model to predict the percentage of the population under 15, using the log of the fertility rate:
+mod = lm(Under15 ~ log(FertilityRate), data = WHO)
+summary(mod)
+
+# Add this regression line to our plot:
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point() +  stat_smooth(method = &quot;lm&quot;)
+
+# 99% confidence interval
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point() + stat_smooth(method = &quot;lm&quot;, level = 0.99)
+
+# No confidence interval in the plot
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point() + stat_smooth(method = &quot;lm&quot;, se = FALSE)
+
+# Change the color of the regression line:
+ggplot(WHO, aes(x = log(FertilityRate), y = Under15)) + geom_point() + stat_smooth(method = &quot;lm&quot;, colour = &quot;orange&quot;)
+</code></pre>
+
+<h4 id="热力图:8f9383a8559e56d2b013b78edf4886b3">热力图</h4>
+
+<p>热力图（数据越多颜色越深）的效果，依靠scale_fill_gradient()来实现，可以通过low和high指定深浅区域的颜色，然后自动形成渐变效果。旁边的图例通过参数guide = &ldquo;legend&rdquo;来指定。<br />
+最终的命令如下，如何生成数据的，就不啰嗦了。</p>
+
+<pre><code># Change the color scheme
+ggplot(DayHourCounts, aes(x = Hour, y = Var1)) + geom_tile(aes(fill = Freq)) + scale_fill_gradient(name=&quot;Total MV Thefts&quot;, low=&quot;white&quot;, high=&quot;red&quot;) + theme(axis.title.y = element_blank())
+</code></pre>
+
+<h4 id="地理热力图:8f9383a8559e56d2b013b78edf4886b3">地理热力图</h4>
+
+<p>顾名思义，地理热力图就是在地图上显示热力图。<br />
+包map内置了美国地图、世界地图、法国地图、意大利地图等。地图的原理跟图片类似，图片就是按照某个粒度分成很多个像素点，然后保存像素点的颜色信息；地图就是按照经纬度分成很多点，保存每个点的信息（比如这个点位于哪个州，这样就形成一个美国地图）。
+对比刚才的 ggplot() + geom_tile() + scale_fill_gradient()<br />
+我们现在使用 ggmap() + geom_point() + scale_fill_gradient()</p>
+
+<pre><code># Install and load two new packages:
+install.packages(&quot;maps&quot;)
+install.packages(&quot;ggmap&quot;)
+library(maps)
+library(ggmap)
+
+# Load a map of Chicago into R:
+chicago = get_map(location = &quot;chicago&quot;, zoom = 11)
+
+# Look at the map
+ggmap(chicago)
+
+# Plot the first 100 motor vehicle thefts:
+ggmap(chicago) + geom_point(data = mvt[1:100,], aes(x = Longitude, y = Latitude))
+
+# Round our latitude and longitude to 2 digits of accuracy, and create a crime counts data frame for each area:
+LatLonCounts = as.data.frame(table(round(mvt$Longitude,2), round(mvt$Latitude,2)))
+
+str(LatLonCounts)
+
+# Convert our Longitude and Latitude variable to numbers:
+LatLonCounts$Long = as.numeric(as.character(LatLonCounts$Var1))
+LatLonCounts$Lat = as.numeric(as.character(LatLonCounts$Var2))
+
+# Plot these points on our map:
+ggmap(chicago) + geom_point(data = LatLonCounts, aes(x = Long, y = Lat, color = Freq, size=Freq))
+
+# Change the color scheme:
+ggmap(chicago) + geom_point(data = LatLonCounts, aes(x = Long, y = Lat, color = Freq, size=Freq)) + scale_colour_gradient(low=&quot;yellow&quot;, high=&quot;red&quot;)
+
+# We can also use the geom_tile geometry
+ggmap(chicago) + geom_tile(data = LatLonCounts, aes(x = Long, y = Lat, alpha = Freq), fill=&quot;red&quot;)
+</code></pre>
+
+<h4 id="保存:8f9383a8559e56d2b013b78edf4886b3">保存</h4>
+
+<pre><code># Save our plot:
+fertilityGNIplot = scatterplot + geom_point(colour = &quot;blue&quot;, size = 3, shape = 17) + ggtitle(&quot;Fertility Rate vs. Gross National Income&quot;)
+pdf(&quot;MyPlot.pdf&quot;)
+print(fertilityGNIplot)
+dev.off()
+</code></pre>
+
+<h3 id="附录:8f9383a8559e56d2b013b78edf4886b3">附录</h3>
+
+<h6 id="r中星期的显示:8f9383a8559e56d2b013b78edf4886b3">R中星期的显示</h6>
+
+<p>在中文系统上，weekdays()返回的结果是 “星期二 星期六 星期日 星期三 星期四 星期五 星期一”，如果希望输出的结果是“Friday    Monday  Saturday    Sunday  Thursday   Tuesday Wednesday”，应该怎么做？</p>
+
+<pre><code># Convert the Date variable to a format that R will recognize:
+mvt$Date = strptime(mvt$Date, format=&quot;%m/%d/%y %H:%M&quot;)
+mvt$Weekday = weekdays(mvt$Date)
+
+table(mvt$Weekday)
+星期二 星期六 星期日 星期三 星期四 星期五 星期一 
+26791  27118  26316  27416  27319  29284  27397 
+
+Sys.getlocale()
+&quot;zh_CN.UTF-8/zh_CN.UTF-8/zh_CN.UTF-8/C/zh_CN.UTF-8/zh_CN.UTF-8&quot;
+Sys.setlocale(&quot;LC_TIME&quot;, &quot;en_US.UTF-8&quot;)
+&quot;en_US&quot;
+Sys.getlocale()
+&quot;zh_CN.UTF-8/zh_CN.UTF-8/zh_CN.UTF-8/C/en_US.UTF-8/zh_CN.UTF-8&quot;
+
+table(mvt$Weekday)
+Friday    Monday  Saturday    Sunday  Thursday   Tuesday Wednesday 
+29284     27397     27118     26316     27319     26791     27416
+</code></pre>
+
+<p>另外注意到，不管是中文还是英文，都是按照字母表顺序排列的，不是按照实际中有意义的顺序排列的。</p>
+
+<pre><code>WeekdayCounts = as.data.frame(table(mvt$Weekday))
+WeekdayCounts$Var1 = factor(WeekdayCounts$Var1, ordered=TRUE, levels=c(&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;,&quot;Saturday&quot;))
+</code></pre>
+
+<h6 id="factor转数字:8f9383a8559e56d2b013b78edf4886b3">factor转数字</h6>
+
+<p>先把factor转成character，再转成数字</p>
+
+<pre><code># Convert the second variable, Var2, to numbers and call it Hour:
+DayHourCounts$Hour = as.numeric(as.character(DayHourCounts$Var2))
+</code></pre>
+
+<hr />
+
+<p>参考：<br />
+<a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/">形状和线段的类型</a><br />
+<a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)">颜色</a></p>
 
                       
                     </div>
@@ -346,7 +480,7 @@ image(tumorClusters, axes = FALSE, col=rainbow(k))
 
                         <div>
 
-                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016/2016-05-18-R06/">http://youngspring1.github.io/post/2016/2016-05-18-R06/</a>
+                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016/2016-05-24-R07/">http://youngspring1.github.io/post/2016/2016-05-24-R07/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -399,20 +533,14 @@ image(tumorClusters, axes = FALSE, col=rainbow(k))
     <ul class="post-nav group">
       <li class="next">
         
-        <a href="http://youngspring1.github.io/post/2016/2016-05-10-R05/" rel="next">
+        <a href="http://youngspring1.github.io/post/2016/2016-05-18-R06/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>R语言笔记05</span>
+          <span>R语言笔记06</span>
         </a>
         
       </li>
       <li class="previous">
-        
-        <a href="http://youngspring1.github.io/post/2016/2016-05-24-R07/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>R语言笔记07</span>
-        </a>
         
       </li>
     </ul>
