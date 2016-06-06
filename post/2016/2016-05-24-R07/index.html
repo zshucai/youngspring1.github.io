@@ -192,8 +192,8 @@
                   <h1 class="post-title">R语言笔记07</h1>
 
                   <p class="post-byline">
-                    by  · 2016年05月24日 · 1935 Words ·
-                    ~4min reading time |
+                    by  · 2016年05月24日 · 2274 Words ·
+                    ~5min reading time |
 
                   </p>
 
@@ -290,7 +290,7 @@ geom_bar()    直方图
 geom_ploygen()多边形
 </code></pre>
 
-<p>注：
+<p>注：<br />
 binwidth = 5 :粒度？<br />
 geom_bar(stat=&ldquo;identity&rdquo;) :use the value of the y variable as is<br />
 geom_histogram(position = &ldquo;identity&rdquo;) :not to stack the histograms</p>
@@ -417,6 +417,63 @@ ggmap(chicago) + geom_point(data = LatLonCounts, aes(x = Long, y = Lat, color = 
 
 # We can also use the geom_tile geometry
 ggmap(chicago) + geom_tile(data = LatLonCounts, aes(x = Long, y = Lat, alpha = Freq), fill=&quot;red&quot;)
+</code></pre>
+
+<h4 id="云图:8f9383a8559e56d2b013b78edf4886b3">云图</h4>
+
+<pre><code># 先准备下数据，我们需要很多单词。
+# 跟文本处理类似，依旧使用tweets推文，只是我们这次不抽取词干。
+library(tm)
+tweets = read.csv(&quot;tweets.csv&quot;, stringsAsFactors=FALSE)
+corpus = Corpus(VectorSource(tweets$Tweet))
+corpus = tm_map(corpus, tolower)
+corpus = tm_map(corpus, PlainTextDocument)
+corpus = tm_map(corpus, removePunctuation)
+corpus = tm_map(corpus, removeWords, stopwords(&quot;english&quot;))
+frequencies = DocumentTermMatrix(corpus)
+allTweets = as.data.frame(as.matrix(frequencies))
+
+# 我们需要的单词就是列名
+colnames(allTweets)
+# 我们需要的另一个指标是单词的频率
+colSums(allTweets)
+
+# 现在加载wordcloud这个包
+library(wordcloud)
+wordcloud(colnames(allTweets), colSums(allTweets), scale=c(2, .25))
+
+# 参数 scale 指定了文字的大小
+# scale=c(2, .25) 表示出现频率最高的单词，显示的字号为2，出现频率最小的单词，显示的字号为0.25
+wordcloud(colnames(allTweets), colSums(allTweets))
+# 等效于
+wordcloud(colnames(allTweets), colSums(allTweets), scale=c(4, 0.5))
+
+# min.freq
+# 只显示出现频率大于指定值的单词
+
+# max.words
+# 最多只显示指定数目的单词
+
+# random.order == FALSE
+# 最先显示出现频率最高的单词
+
+# rot.per = 0.5
+# 有一半的单词垂直显示。默认值是0.1。
+
+# random.color == TRUE
+# 使用随机颜色
+</code></pre>
+
+<p>颜色<br />
+包RColorBrewer支持下面这些调色板，可以输入 display.brewer.all() 看到下面这张图。<br />
+<img src="http://7xrjai.com1.z0.glb.clouddn.com/20160606-brewer.all.png" alt="brewer.all" /></p>
+
+<pre><code>ibrary(RColorBrewer)
+display.brewer.all()
+
+# 像这样使用
+colors=brewer.pal(9, &quot;Blues&quot;)[5:9]
+wordcloud(colnames(allTweets), colSums(allTweets), colors)
 </code></pre>
 
 <h4 id="保存:8f9383a8559e56d2b013b78edf4886b3">保存</h4>
