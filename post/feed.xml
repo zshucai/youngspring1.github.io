@@ -7,8 +7,177 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 17 Jun 2016 21:22:08 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jun 2016 22:43:57 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>一张图看懂开源软件许可证区别</title>
+      <link>http://youngspring1.github.io/post/2016/2016-06-21-lisence/</link>
+      <pubDate>Tue, 21 Jun 2016 22:43:57 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-06-21-lisence/</guid>
+      <description>&lt;p&gt;妈妈再也不担心非法使用别人的代码了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160621-OPLicenses2.jpg&#34; alt=&#34;开源软件许可证区别&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 06 20 R10</title>
+      <link>http://youngspring1.github.io/post/2016/2016-06-20-R10/</link>
+      <pubDate>Mon, 20 Jun 2016 09:10:39 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-06-20-R10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2016 06 20 R09</title>
+      <link>http://youngspring1.github.io/post/2016/2016-06-20-R09/</link>
+      <pubDate>Mon, 20 Jun 2016 09:10:24 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-06-20-R09/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R语言笔记08</title>
+      <link>http://youngspring1.github.io/post/2016/2016-06-19-R08/</link>
+      <pubDate>Sun, 19 Jun 2016 09:28:58 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-06-19-R08/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第八单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;linear-optimization:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;Linear Optimization&lt;/h2&gt;
+
+&lt;p&gt;第八单元的主题是线性优化。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-简介:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;1.简介&lt;/h3&gt;
+
+&lt;p&gt;线性优化，其实是用Excel／LibreOffice求解一个简单的多元1次多项式的最大值。&lt;br /&gt;
+使用LibreOffice是这样做的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在单元格中填写多项式和约束条件。&lt;/li&gt;
+&lt;li&gt;选取Tools-&amp;gt;Solver，指定多项式，以及各种约束条件，当然也要选择［Linear Solver］这个方法。&lt;/li&gt;
+&lt;li&gt;点击［Solve］就可以得到结果啦。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;sensitivity analysis：结果是如何随数据（变量／约束条件）的变化而变化的。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-实战:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;2.实战&lt;/h3&gt;
+
+&lt;p&gt;当然，用R也能解决这样的问题。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 先安装pkg
+install.packages(&amp;quot;lpSolveAPI&amp;quot;)
+library(lpSolveAPI)
+
+# 创建模型
+# 说明：
+# 第一个参数是约束条件的个数。
+# one capacity constraint: 载客量有一个最大值（飞机座位数）
+# two demand constraints : 每种票价的数目（regular seats／discount seats）都有一个最大值
+# 所以这个参数的取值是3
+# 第二个参数是变量的个数。
+# decision variables : 我们有两种票价（regular seats／discount seats）
+# 所以这个参数的取值是2
+
+AirlineSimple = make.lp(3,2)
+# 创建出来的AirlineSimple是这样子的：
+Model name: 
+            C1    C2         
+Minimize     0     0         
+R1           0     0  free  0
+R2           0     0  free  0
+R3           0     0  free  0
+Kind       Std   Std         
+Type      Real  Real         
+Upper      Inf   Inf         
+Lower        0     0         
+
+# 那下面我们就来指定多项式和约束条件
+# 最终的效果是这样的：
+# max         617*R + 238*D
+# subject to    1*R +   1*D &amp;lt;= 166
+#               1*R +   0*D &amp;lt;= 100
+#               0*R +   1*D &amp;lt;= 150  
+
+# 特别注意：执行顺序，set.objfn()不能放在前面，我被坑了。。。
+# 指定约束条件（跟效果竖着对比着看）
+set.column(AirlineSimple, 1, c(1,1,0))
+set.column(AirlineSimple, 2, c(1,0,1))
+set.constr.type(AirlineSimple, c(&amp;quot;&amp;lt;=&amp;quot;,&amp;quot;&amp;lt;=&amp;quot;,&amp;quot;&amp;lt;=&amp;quot;))
+set.rhs(AirlineSimple, c(166,100,150))
+# 指定两个变量的参数
+set.objfn(AirlineSimple, c(617,238))
+# 默认的是最小值，我们改为最大值
+lp.control(AirlineSimple,sense=&#39;max&#39;)
+
+# 这样就创建好了：
+Model name: 
+            C1    C2         
+Maximize   617   238         
+R1           1     1  &amp;lt;=  166
+R2           1     0  &amp;lt;=  100
+R3           0     1  &amp;lt;=  150
+Kind       Std   Std         
+Type      Real  Real         
+Upper      Inf   Inf         
+Lower        0     0
+
+# 变量的取值是上面最后两行Upper和Lower，可以通过函数set.bounds()来修改
+
+# 现在可以来运行了
+# 如果正确运行，返回值是0
+solve(AirlineSimple)
+# 查看取得的最大值
+get.objective(AirlineSimple)
+# 查看取最大值时，两个变量的取值
+get.variables(AirlineSimple)
+
+# JFK 从DFW中转，到LAX的场景
+# 有8个约束条件，6个变量：
+AirlineConnecting = make.lp(8,6)
+set.column(AirlineConnecting, 1, c(1,1,1,0,0,0,0,0))
+set.column(AirlineConnecting, 2, c(1,1,0,1,0,0,0,0))
+set.column(AirlineConnecting, 3, c(1,0,0,0,1,0,0,0))
+set.column(AirlineConnecting, 4, c(1,0,0,0,0,1,0,0))
+set.column(AirlineConnecting, 5, c(0,1,0,0,0,0,1,0))
+set.column(AirlineConnecting, 6, c(0,1,0,0,0,0,0,1))
+set.constr.type(AirlineConnecting, rep(&amp;quot;&amp;lt;=&amp;quot;,8))
+set.rhs(AirlineConnecting, c(166,166,80,120,75,100,60,110))
+set.objfn(AirlineConnecting, c(428,190,642,224,512,190))
+lp.control(AirlineConnecting,sense=&#39;max&#39;)
+
+# 模型稍微有点大
+Model name: 
+        C1    C2    C3    C4    C5    C6         
+Maximize   428   190   642   224   512   190         
+R1           1     1     1     1     0     0  &amp;lt;=  166
+R2           1     1     0     0     1     1  &amp;lt;=  166
+R3           1     0     0     0     0     0  &amp;lt;=   80
+R4           0     1     0     0     0     0  &amp;lt;=  120
+R5           0     0     1     0     0     0  &amp;lt;=   75
+R6           0     0     0     1     0     0  &amp;lt;=  100
+R7           0     0     0     0     1     0  &amp;lt;=   60
+R8           0     0     0     0     0     1  &amp;lt;=  110
+Kind       Std   Std   Std   Std   Std   Std         
+Type      Real  Real  Real  Real  Real  Real         
+Upper      Inf   Inf   Inf   Inf   Inf   Inf         
+Lower        0     0     0     0     0     0
+
+
+solve(AirlineConnecting)
+get.objective(AirlineConnecting)
+get.variables(AirlineConnecting)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>乌托邦</title>
@@ -1252,955 +1421,6 @@ vars.for.imputation = setdiff(names(loans), &amp;quot;not.fully.paid&amp;quot;)
 imputed = complete(mice(loans[vars.for.imputation]))
 loans[vars.for.imputation] = imputed
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>R语言笔记02</title>
-      <link>http://youngspring1.github.io/post/2016/2016-04-23-R02/</link>
-      <pubDate>Sat, 23 Apr 2016 15:19:39 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-04-23-R02/</guid>
-      <description>
-
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第二单元的学习记录。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;linear-regression:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;Linear Regression&lt;/h2&gt;
-
-&lt;p&gt;第二单元的主题是线性回归。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-理论:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;1.理论&lt;/h3&gt;
-
-&lt;p&gt;一元线性回归公式：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?y^i=\beta_0+\beta_1x^i+\epsilon^i&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;其中x是自变量independent variable，y是因变量dependent variable。&lt;br /&gt;
-beta是相关系数coefficient，epsilon是误差error。&lt;/p&gt;
-
-&lt;p&gt;为了判断线性回归的效果，我们有如下检验标准：&lt;/p&gt;
-
-&lt;p&gt;1.SSE（sum of squared errors）&lt;br /&gt;
-注意这里的误差是实际值相对于预测值的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?SSE = \sum_{i=1}^{n}\epsilon_i^2&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2.SST （total sum of square）&lt;br /&gt;
-公式同上。但这里的误差是实际值相对于baseline的。baseline是因变量的平均值。&lt;br /&gt;
-所以有 0 &amp;lt;= SSE &amp;lt;= SST 。&lt;/p&gt;
-
-&lt;p&gt;3.RMSE（root mean square error）&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?RMSE = \sqrt\frac{SSE}{n}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4.R平方&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?R^2 = 1 - \frac{SSE}{SST}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;R平方越接近1越好。&lt;/p&gt;
-
-&lt;p&gt;多元线性回归公式：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?y^i = \beta_0 + \beta_1x_1^i + \beta_2x_2^i + \ldots + \beta_nx_n^i + \epsilon^i&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;所有数据分析，都要经历 training－test－predict 这三个过程。
-在接下来的例子中，我们介绍 建模－评估 这前两个过程。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;补充一个relative error的公式：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?relative\;error =  \frac{observed\;value - estimated\,value}{observed\;value}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;2-0-事前整理:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;2.0 事前整理&lt;/h5&gt;
-
-&lt;p&gt;2.0.1 去除空值&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# 如果数据中包含空值
-DF ＝ na.omit(DF)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;2.0.2 reference level&lt;br /&gt;
-有些列时字符型的，它们无法进行计算。&lt;br /&gt;
-如果某列的因子不算多，我们可以把这一列变换成多个可以用于计算的列。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# 假设DF$colr有因子 &amp;quot;Red&amp;quot;4次, &amp;quot;Blue&amp;quot;3次, &amp;quot;Yellow&amp;quot;2次
-DF$colr = relevel(DF$colr, &amp;quot;red&amp;quot;)
-
-# 效果是，DF$colr 这一列不见了
-# 增加了两列 DF$colrBlue 和 DF$colrYellow
-# 原先 DF$colr == &amp;quot;Red&amp;quot; 的那些行，它们 colrBlue 和 colrYellow 的值都是0
-# 原先 DF$colr == &amp;quot;Blue&amp;quot; 的那些行，它们 colrBlue=1, colrYellow=0
-# 原先 DF$colr == &amp;quot;Yellow&amp;quot; 的那些行，它们 colrBlue=0, colrYellow=1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;2-建立回归模型:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;2.建立回归模型&lt;/h3&gt;
-
-&lt;p&gt;建模使用lm()函数。&lt;br /&gt;
-DF是保存学习数据的data.frame。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;model = lm(y ~ x1 + x2 + ... +xn, data = DF)
-# y不要写成 DF$y
-# x1也不要写成 DF$x1
-# 否则，后面做预测predict()的时候，DFTest代入会报warning
-
-# 除了y列以外所有列
-model = lm(y ~ ., data = DF)
-
-# 误差 model$residuals
-SSE = sum(model$residuals^2)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;随便看个结果吧&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt; summary(model)
-
-Call:
-lm(formula = Price ~ HarvestRain + WinterRain, data = wine)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--1.0933 -0.3222 -0.1012  0.3871  1.1877 
-
-Coefficients:
-              Estimate Std. Error t value Pr(&amp;gt;|t|)    
-(Intercept)  7.865e+00  6.616e-01  11.888 4.76e-11 ***
-HarvestRain -4.971e-03  1.601e-03  -3.105  0.00516 ** 
-WinterRain  -9.848e-05  9.007e-04  -0.109  0.91392    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.5611 on 22 degrees of freedom
-Multiple R-squared:  0.3177,    Adjusted R-squared:  0.2557 
-F-statistic: 5.122 on 2 and 22 DF,  p-value: 0.01492
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Call表示建模使用的语句。&lt;br /&gt;
-Residuals表示误差。&lt;br /&gt;
-Coefficients表示系数，就是公式里面的beta。&lt;br /&gt;
-Estimate的第一行是常数beta0，第二行是第一个自变量的系数beta1，第三行是第二个自变量的系数beta2，后面类推。&lt;br /&gt;
-t value越大越好&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?{t\,value} = \frac{Estimate}{Std. Error}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Pr(&amp;gt;|t|) 和t value相反，越小越好。&lt;br /&gt;
-最后一列星星越多越好。&lt;br /&gt;
-三短横下面这行解释了星星的含义。&lt;br /&gt;
-Multiple R-squared就是R平方，越接近1越准确。&lt;/p&gt;
-
-&lt;h3 id=&#34;3-评估:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;3.评估&lt;/h3&gt;
-
-&lt;p&gt;对于刚过简历的模型，我们使用测试数据来评估一下准确度。&lt;br /&gt;
-model就是上文建立的模型。&lt;br /&gt;
-DFTest是测试数据，它的结构和上文的DF一样。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;predict = predict(model, newdata = DFTest)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这个命令的返回值是 DFTest$Price 的&lt;strong&gt;预测&lt;/strong&gt;结果。你可以跟 DFTest$Price 的&lt;strong&gt;实际&lt;/strong&gt;结果相比较，计算SSE、RMSE、R平方等等来衡量对测试数据的预测的准确性。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;SSE = sum( (DFTest$Price - predict)^2 )
-SST = sum( (DFTest$Price - mean(DF$Price)^2 )
-R2 = 1 - SSE/SST
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;4-correlation:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;4.Correlation&lt;/h3&gt;
-
-&lt;p&gt;线性相关性&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cor(var1, var2)
-# 也可以考察整个DF中，每两列的线性相关性
-cor(DF)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;返回值是斜率。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;建立线性回归模型的时候，应该去掉相关性比较高的列。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;补充知识a-棒球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识A－棒球统计术语&lt;/h3&gt;
-
-&lt;p&gt;完全不懂棒球啊，一开始摸不着头脑。&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;缩写&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;原文&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;中文&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;RS&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Run Scores&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;跑分，得分&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;RA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Run Allowed&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;失分，对手得分&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;OBP&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;On-Base Percentage&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;上垒率&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;OOBP&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Opponent On-Base Percentage&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;对手上垒率&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;SLG&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Slugging Percentage&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;长打率，击中率&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;OSLG&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Opponent Slugging Percentage&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;对手长打率&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;BA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Batting Avarage&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;平均成功率&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&#34;补充知识b-篮球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识B－篮球统计术语&lt;/h3&gt;
-
-&lt;p&gt;年轻时看NBA，好歹知道一点。&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;缩写&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;原文&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;中文&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;PTS&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Points&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;得分&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;oppPTS&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Opponent Points&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;失分，对手得分&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;FG&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Field Goals (success)&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;进球数&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;FGA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Field Goals Attempted&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;出手次数&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;X2P&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2 Points&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2分球进球数&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;X2PA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2 Points Attempted&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2分球出手次数&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;X3P&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3 Points&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3分球进球数&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;X3PA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3 Points Attempted&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3分球出手次数&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;FT&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Free Throw&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;罚球进球数&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;FTA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Free Throw Attempted&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;发球出手次数&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;ORB&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Offensive Rebounds&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;前场篮板，进攻篮板&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;DRB&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Defensive Rebounds&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;后场篮板，防守篮板&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;AST&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Assists&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;助攻&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;STL&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Steals&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;抢断&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;BLK&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Blocks&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;盖帽&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;TOV&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Turnovers&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;失误&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;注：X2P列，原始数据列名是2P。由于R不支持数字开头的列名／变量，读取CSV文件的时候，会在原列名2P前加个X，从而变成 X2P。&lt;/p&gt;
-
-&lt;h3 id=&#34;补充知识c-滞后序列:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识C－滞后序列&lt;/h3&gt;
-
-&lt;p&gt;函数lag，用于生成滞后/偏移序列？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;lag(x, k = 1, ...)
-# k &amp;lt; 0, previous observations   
-# k &amp;gt; 0, future observations
-# na.pad=TRUE, add missing values
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>R语言笔记01</title>
-      <link>http://youngspring1.github.io/post/2016/2016-04-18-R01/</link>
-      <pubDate>Mon, 18 Apr 2016 19:55:25 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-04-18-R01/</guid>
-      <description>
-
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第一单元的学习记录。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;r语言入门:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;R语言入门&lt;/h2&gt;
-
-&lt;p&gt;R语言入门只讲了一些常用的操作。相对于动辄花一本书来讲这些，真是相当简约。但其实足够了，其他操作，需要的时候再查嘛。&lt;br /&gt;
-数据分析的四要素：data、models、decisions、value&lt;/p&gt;
-
-&lt;h3 id=&#34;简单使用:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;简单使用&lt;/h3&gt;
-
-&lt;p&gt;帮助：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;?func
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;显示当前的临时变量：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ls()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;获取／设置当前目录：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;getwd()
-setwd()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;显示当前文件夹下的文件：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dir()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;数据结构:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;数据结构&lt;/h3&gt;
-
-&lt;p&gt;向量概念：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;所有的操作都是对向量的每个元素实施的
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;data.frame：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;observation：行
-variable   ：列，data.frame是按照列存储的
-rbind()合并两个data.frame
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;序列：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;自动生成序列seq()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;获取数据:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;获取数据&lt;/h3&gt;
-
-&lt;p&gt;读取CSV文件：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DF = read.csv(&amp;quot;file_path&amp;quot;)
-# 返回值是data.frame
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;查看DF的基本信息：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;str(DF)
-# DF的结构信息。行和列的数目，列名、列的类型、列的数据举例。
-
-summary(DF)
-# 每列的最大值、最小值、中位数、平均数、1/4值、3/4值，以及是否包含空值。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;写入CSV文件：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;write.csv(DF, &amp;quot;file_path&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;从内存中删除变量：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;rm(DF)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;数据操作:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;数据操作&lt;/h3&gt;
-
-&lt;p&gt;选取一部分数据：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;subset( DF, 条件1 &amp;amp; 条件2 ｜ 条件3)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;按照列名选取3列：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DF[c(var1, var2, var3)]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;选取1，3，5列：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DF[c(1, 3, 5)]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;计算平均值和标准差：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mean(DF$var)
-sd(DF$var)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;返回最大值／最小值的位置(index)：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;which.max(DF$var)
-which.min(DF$var)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;返回行数：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;nrow(DF)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;绘图:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;绘图&lt;/h3&gt;
-
-&lt;p&gt;直方图，反映&lt;strong&gt;一列&lt;/strong&gt;数据的分布情况：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hist(DF$var, xlim = c(1, 100), breaks = 100)
-# xlim 限定范围
-# breaks x轴的精确度。注意是针对原始数据的，不是对限定后的
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;箱型图：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;boxplot(DF$var1 ~ DF$var2, xlab = &amp;quot;x-label&amp;quot;, ylab = &amp;quot;y-label&amp;quot;, main = &amp;quot;title&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;点阵图：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;plot(......, col = &amp;quot;red&amp;quot;)
-line(......, col = &amp;quot;blue&amp;quot;) # 在原先的基础上再加一条
-
-函数jitter() # 对于有很多重合的点阵图，先用jitter偏移一点，这样看上去效果好很多
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;其他共通的参数：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;col = &amp;quot;red&amp;quot;
-type = &amp;quot;line&amp;quot; # 可以指定1，2，3，4，5
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;聚合:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;聚合&lt;/h3&gt;
-
-&lt;p&gt;分组：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;table(DF$var1)
-# var1列中，每种数据的数量的统计
-table(DF$var1, DF$var2)
-# var1和var2列中，每种数据的数量的交叉统计
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;分组计算：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tapply(DF$var1, DF$var2, func)
-# DF$var1, 原始数据
-# DF$var2, 分组依据
-# func, 要应用的函数
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>data.table 教程5（校对中）</title>
-      <link>http://youngspring1.github.io/post/2016/2016-04-08-datatable5/</link>
-      <pubDate>Fri, 08 Apr 2016 13:00:57 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-04-08-datatable5/</guid>
-      <description>
-
-&lt;p&gt;目录：&lt;br /&gt;
-1) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-13-datatable1/&#34;&gt;data.table 介绍&lt;/a&gt;&lt;br /&gt;
-2) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;&lt;br /&gt;
-3) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-22-datatable3/&#34;&gt;主键、基于快速二分法搜索的subset&lt;/a&gt;&lt;br /&gt;
-4) &lt;a href=&#34;http://youngspring1.github.io/post/2016-04-02-datatable4/&#34;&gt;二级索引和自动索引&lt;/a&gt;&lt;br /&gt;
-5) 有效的数据拆分和合并&lt;/p&gt;
-
-&lt;p&gt;原文地址：&lt;br /&gt;
-1) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html&#34;&gt;Introduction to data.table&lt;/a&gt;&lt;br /&gt;
-2) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reference-semantics.html&#34;&gt;Reference semantics&lt;/a&gt;&lt;br /&gt;
-3) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-keys-fast-subset.html&#34;&gt;Keys and fast binary search based subsets&lt;/a&gt;&lt;br /&gt;
-4) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-secondary-indices-and-auto-indexing.html&#34;&gt;Secondary indices and auto indexing&lt;/a&gt;&lt;br /&gt;
-5) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reshape.html&#34;&gt;Efficient reshaping using data.tables&lt;/a&gt;&lt;br /&gt;
-6) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-faq.html&#34;&gt;Frequently asked questions&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;有效的数据拆分和合并:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;有效的数据拆分和合并&lt;/h1&gt;
-
-&lt;p&gt;这一讲我们学习reshaping函数 melt 和 dcast 原本的用法，以及从R语言 v1.9.6版以后，函数 melt 和 dcast 新扩展的功能（它们能操作多个列）。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;数据:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;数据&lt;/h2&gt;
-
-&lt;p&gt;我们在讲解的时候直接加载数据。&lt;/p&gt;
-
-&lt;h2 id=&#34;介绍:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;介绍&lt;/h2&gt;
-
-&lt;p&gt;data.table的函数melt 和 dcast 是增强包&lt;a href=&#34;https://cran.r-project.org/web/packages/reshape2/index.html&#34;&gt;reshape2&lt;/a&gt;里同名函数的扩展。&lt;br /&gt;
-在这一讲，我们会：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;首先，简单看一下原先的函数 melt 和 dcast，它们是如何reshaping一个data.table。&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;然后，了解一下当前的功能是如何变得冗长而且低效。&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;最后，学习一下改进之后的函数 melt 和 dcast 如何同时处理多个列。&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;扩展后的功能符合data.table的设计哲学：运行高效，语法简明。&lt;/p&gt;
-
-&lt;p&gt;注意：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;从R语言 v1.9.6版以后，你再也不需要加载增强包 reshape2 了，只需要加载 data.table。如果你已经加载了 reshape2 来处理矩阵或者data.frame，那么一定要确保在这之后再加载 data.table。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;1-原生的melt-dcast:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;1.原生的melt／dcast&lt;/h2&gt;
-
-&lt;h4 id=&#34;a-函数melt:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;a) 函数melt&lt;/h4&gt;
-
-&lt;p&gt;假设我们有下面这样的data.table：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT = fread(&amp;quot;melt_default.csv&amp;quot;)
-DT
-#    family_id age_mother dob_child1 dob_child2 dob_child3
-# 1:         1         30 1998-11-26 2000-01-29         NA
-# 2:         2         27 1996-06-22         NA         NA
-# 3:         3         26 2002-07-11 2004-04-05 2007-09-02
-# 4:         4         32 2004-10-10 2009-08-27 2012-07-21
-# 5:         5         29 2000-12-05 2005-02-28         NA
-## dob stands for date of birth.
-
-str(DT)
-# Classes &#39;data.table&#39; and &#39;data.frame&#39;:    5 obs. of  5 variables:
-#  $ family_id : int  1 2 3 4 5
-#  $ age_mother: int  30 27 26 32 29
-#  $ dob_child1: chr  &amp;quot;1998-11-26&amp;quot; &amp;quot;1996-06-22&amp;quot; &amp;quot;2002-07-11&amp;quot; &amp;quot;2004-10-10&amp;quot; ...
-#  $ dob_child2: chr  &amp;quot;2000-01-29&amp;quot; NA &amp;quot;2004-04-05&amp;quot; &amp;quot;2009-08-27&amp;quot; ...
-#  $ dob_child3: chr  NA NA &amp;quot;2007-09-02&amp;quot; &amp;quot;2012-07-21&amp;quot; ...
-#  - attr(*, &amp;quot;.internal.selfref&amp;quot;)=&amp;lt;externalptr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－转化DT，使得每个小孩的出生信息都独占一条数据&lt;br /&gt;
-我们可以对函数 melt() 指定参数 id.vars 和 measure.vars 来实现&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT.m1 = melt(DT, id.vars = c(&amp;quot;family_id&amp;quot;, &amp;quot;age_mother&amp;quot;),
-        measure.vars = c(&amp;quot;dob_child1&amp;quot;, &amp;quot;dob_child2&amp;quot;, &amp;quot;dob_child3&amp;quot;))
-DT.m1
-#     family_id age_mother   variable      value
-#  1:         1         30 dob_child1 1998-11-26
-#  2:         2         27 dob_child1 1996-06-22
-#  3:         3         26 dob_child1 2002-07-11
-#  4:         4         32 dob_child1 2004-10-10
-#  5:         5         29 dob_child1 2000-12-05
-#  6:         1         30 dob_child2 2000-01-29
-#  7:         2         27 dob_child2         NA
-#  8:         3         26 dob_child2 2004-04-05
-#  9:         4         32 dob_child2 2009-08-27
-# 10:         5         29 dob_child2 2005-02-28
-# 11:         1         30 dob_child3         NA
-# 12:         2         27 dob_child3         NA
-# 13:         3         26 dob_child3 2007-09-02
-# 14:         4         32 dob_child3 2012-07-21
-# 15:         5         29 dob_child3         NA
-str(DT.m1)
-# Classes &#39;data.table&#39; and &#39;data.frame&#39;:    15 obs. of  4 variables:
-#  $ family_id : int  1 2 3 4 5 1 2 3 4 5 ...
-#  $ age_mother: int  30 27 26 32 29 30 27 26 32 29 ...
-#  $ variable  : Factor w/ 3 levels &amp;quot;dob_child1&amp;quot;,&amp;quot;dob_child2&amp;quot;,..: 1 1 1 1 1 2 2 2 2 2 ...
-#  $ value     : chr  &amp;quot;1998-11-26&amp;quot; &amp;quot;1996-06-22&amp;quot; &amp;quot;2002-07-11&amp;quot; &amp;quot;2004-10-10&amp;quot; ...
-#  - attr(*, &amp;quot;.internal.selfref&amp;quot;)=&amp;lt;externalptr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;参数 measure.vars 指定了想要拆分（或合并）的列。&lt;/li&gt;
-&lt;li&gt;我们也可以指定索引而不是列名。&lt;/li&gt;
-&lt;li&gt;默认的，variable列是 factor（因子）类型的。如果你想返回一个字符型的向量，可以将参数 variable.factor 设为 FALSE。参数 variable.factor 是data.table的函数melt() 里独有的，增强包reshape2 里面没有这个参数。&lt;/li&gt;
-&lt;li&gt;默认的，转化果的列被自动命名为 variable 和 value。&lt;/li&gt;
-&lt;li&gt;在结果里，函数melt() 保持了原来列的属性。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;－分别将 variable列和 value列重命名为 child 和 dob&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT.m1 = melt(DT, measure.vars = c(&amp;quot;dob_child1&amp;quot;, &amp;quot;dob_child2&amp;quot;, &amp;quot;dob_child3&amp;quot;),
-           variable.name = &amp;quot;child&amp;quot;, value.name = &amp;quot;dob&amp;quot;)
-DT.m1
-#     family_id age_mother      child        dob
-#  1:         1         30 dob_child1 1998-11-26
-#  2:         2         27 dob_child1 1996-06-22
-#  3:         3         26 dob_child1 2002-07-11
-#  4:         4         32 dob_child1 2004-10-10
-#  5:         5         29 dob_child1 2000-12-05
-#  6:         1         30 dob_child2 2000-01-29
-#  7:         2         27 dob_child2         NA
-#  8:         3         26 dob_child2 2004-04-05
-#  9:         4         32 dob_child2 2009-08-27
-# 10:         5         29 dob_child2 2005-02-28
-# 11:         1         30 dob_child3         NA
-# 12:         2         27 dob_child3         NA
-# 13:         3         26 dob_child3 2007-09-02
-# 14:         4         32 dob_child3 2012-07-21
-# 15:         5         29 dob_child3         NA
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;默认的，参数id.vars 或 measure.vars 中的一个省略了，剩余的列自动被赋值给省略的那个参数。&lt;/li&gt;
-&lt;li&gt;如果参数id.vars 和 measure.vars 都没有指定，所有不是numberic／integer／logical的列都会被赋值给 id.vars。另外，系统还会输出一条警告消息，提示那些列被认为是 id.vars。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;b-函数cast:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;b) 函数cast&lt;/h4&gt;
-
-&lt;p&gt;在前面一节，我们知道如何分拆数据。这一节，我们学习相反的操作。&lt;br /&gt;
-－如何将刚刚分拆的 DT.m 还原成 DT&lt;br /&gt;
-也就是，我们想把每个家庭／母亲的所有小孩，都合并到同一行里。我们可以像下面这样使用函数 dcast()。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dcast(DT.m1, family_id + age_mother ~ child, value.var = &amp;quot;dob&amp;quot;)
-#    family_id age_mother dob_child1 dob_child2 dob_child3
-# 1:         1         30 1998-11-26 2000-01-29         NA
-# 2:         2         27 1996-06-22         NA         NA
-# 3:         3         26 2002-07-11 2004-04-05 2007-09-02
-# 4:         4         32 2004-10-10 2009-08-27 2012-07-21
-# 5:         5         29 2000-12-05 2005-02-28         NA
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;函数 dcast() 使用了操作符“~”，左边是作为 id.vars 的列，右边是作为 measure.vars 的列。&lt;/li&gt;
-&lt;li&gt;参数 value.var 指定了需要被分拆扩张的列。&lt;/li&gt;
-&lt;li&gt;函数 dcast() 也会在结果中尽量保持原来的属性。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;－对于 DT.m，如何知道每个家庭有几个小孩&lt;br /&gt;
-可以给函数 dcast() 的参数 fun.aggregate 传递一个函数。当操作符“~”不方便指定列名的时候，这个功能特别有用。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dcast(DT.m1, family_id ~ ., fun.agg = function(x) sum(!is.na(x)), value.var = &amp;quot;dob&amp;quot;)
-#    family_id .
-# 1:         1 2
-# 2:         2 1
-# 3:         3 3
-# 4:         4 3
-# 5:         5 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;输入 ?dcast 可以查看其他参数和例子的说明。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-原生的melt-dcast的局限:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;2.原生的melt／dcast的局限&lt;/h2&gt;
-
-&lt;p&gt;到目前为止，我们学习了函数 melt 和 dcast 的功能，它们是基于增强包 reshape2 的。但是因为使用了data.table的内部机制（快速排序，二分法搜索等），所以能有效地对data.table实行。&lt;br /&gt;
-然而，也有一些情况，我们想做的操作无法写得很简洁。比如，考虑下面这个data.table：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT = fread(&amp;quot;melt_enhanced.csv&amp;quot;)
-DT
-#    family_id age_mother dob_child1 dob_child2 dob_child3 gender_child1 gender_child2 gender_child3
-# 1:         1         30 1998-11-26 2000-01-29         NA             1             2            NA
-# 2:         2         27 1996-06-22         NA         NA             2            NA            NA
-# 3:         3         26 2002-07-11 2004-04-05 2007-09-02             2             2             1
-# 4:         4         32 2004-10-10 2009-08-27 2012-07-21             1             1             1
-# 5:         5         29 2000-12-05 2005-02-28         NA             2             1            NA
-## 1 = female, 2 = male
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果你想用我们到目前为止学过的知识，将每个孩子的 dob 和 gender 合并到一行中，得这样做：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT.m1 = melt(DT, id = c(&amp;quot;family_id&amp;quot;, &amp;quot;age_mother&amp;quot;))
-# Warning in melt.data.table(DT, id = c(&amp;quot;family_id&amp;quot;, &amp;quot;age_mother&amp;quot;)): &#39;measure.vars&#39; [dob_child1,
-# dob_child2, dob_child3, gender_child1, gender_child2, gender_child3] are not all of the same
-# type. By order of hierarchy, the molten data value column will be of type &#39;character&#39;. All measure
-# variables not of type &#39;character&#39; will be coerced to. Check DETAILS in ?melt.data.table for more on
-# coercion.
-DT.m1[, c(&amp;quot;variable&amp;quot;, &amp;quot;child&amp;quot;) := tstrsplit(variable, &amp;quot;_&amp;quot;, fixed = TRUE)]
-DT.c1 = dcast(DT.m1, family_id + age_mother + child ~ variable, value.var = &amp;quot;value&amp;quot;)
-DT.c1
-#     family_id age_mother  child        dob gender
-#  1:         1         30 child1 1998-11-26      1
-#  2:         1         30 child2 2000-01-29      2
-#  3:         1         30 child3         NA     NA
-#  4:         2         27 child1 1996-06-22      2
-#  5:         2         27 child2         NA     NA
-#  6:         2         27 child3         NA     NA
-#  7:         3         26 child1 2002-07-11      2
-#  8:         3         26 child2 2004-04-05      2
-#  9:         3         26 child3 2007-09-02      1
-# 10:         4         32 child1 2004-10-10      1
-# 11:         4         32 child2 2009-08-27      1
-# 12:         4         32 child3 2012-07-21      1
-# 13:         5         29 child1 2000-12-05      2
-# 14:         5         29 child2 2005-02-28      1
-# 15:         5         29 child3         NA     NA
-
-str(DT.c1) ## gender column is character type now!
-# Classes &#39;data.table&#39; and &#39;data.frame&#39;:    15 obs. of  5 variables:
-#  $ family_id : int  1 1 1 2 2 2 3 3 3 4 ...
-#  $ age_mother: int  30 30 30 27 27 27 26 26 26 32 ...
-#  $ child     : chr  &amp;quot;child1&amp;quot; &amp;quot;child2&amp;quot; &amp;quot;child3&amp;quot; &amp;quot;child1&amp;quot; ...
-#  $ dob       : chr  &amp;quot;1998-11-26&amp;quot; &amp;quot;2000-01-29&amp;quot; NA &amp;quot;1996-06-22&amp;quot; ...
-#  $ gender    : chr  &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; NA &amp;quot;2&amp;quot; ...
-#  - attr(*, &amp;quot;.internal.selfref&amp;quot;)=&amp;lt;externalptr&amp;gt; 
-#  - attr(*, &amp;quot;sorted&amp;quot;)= chr  &amp;quot;family_id&amp;quot; &amp;quot;age_mother&amp;quot; &amp;quot;child&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;问题：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;我们想做的是，分别将每个孩子的 dob 和 gender 合并到一行。但是我们先把所有的东西都拆分开了，再将它们合并。很容易看出，这太过迂回和低效了。
-类似的，想想你的壁橱里有4架子的衣服，你想把第1架和第2架的衣服全都放到第1架上，把第3架和第4架的衣服全都放到第3架上。我们刚刚做的事情，就像把4架衣服都放一起，再分开放到第1架和第3架上！&lt;/li&gt;
-&lt;li&gt;需要被整合的列可能是不同的类型，在这个例子里面，是字符型和整型。使用函数melt 的时候，这些列被硬塞到结果里面，正如str(DT.c1)的警告消息所提示的，gender列被转化成了字符型。&lt;/li&gt;
-&lt;li&gt;我们将variable拆分成了两列，因此额外多了一列，这样做的目的真是非常模糊。我们这么做是因为下一步我们需要转化这一列。&lt;/li&gt;
-&lt;li&gt;最后，我们整合了数据。但是问题是我们引入很多操作。特别是，必须要计算等式中变量的顺序，代价太大。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;事实上，base::reshape 有简单的写法来实现这个操作。它非常有用，而且经常被低估。你应该试试！&lt;/p&gt;
-
-&lt;h2 id=&#34;3-增强的新功能:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;3.增强的新功能&lt;/h2&gt;
-
-&lt;h4 id=&#34;a-增强的melt:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;a) 增强的melt&lt;/h4&gt;
-
-&lt;p&gt;既然我们希望简单地实现同样的操作，我们实现了一个额外的功能，这样就可以同时操作多个列。&lt;br /&gt;
-－用函数melt 同时拆分多个列&lt;br /&gt;
-这个办法很简单。我们给参数 measure.vars 传递一个列表，这个列表的每个元素包含需要被合并的列。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;colA = paste(&amp;quot;dob_child&amp;quot;, 1:3, sep = &amp;quot;&amp;quot;)
-colB = paste(&amp;quot;gender_child&amp;quot;, 1:3, sep = &amp;quot;&amp;quot;)
-DT.m2 = melt(DT, measure = list(colA, colB), value.name = c(&amp;quot;dob&amp;quot;, &amp;quot;gender&amp;quot;))
-DT.m2
-#     family_id age_mother variable        dob gender
-#  1:         1         30        1 1998-11-26      1
-#  2:         2         27        1 1996-06-22      2
-#  3:         3         26        1 2002-07-11      2
-#  4:         4         32        1 2004-10-10      1
-#  5:         5         29        1 2000-12-05      2
-#  6:         1         30        2 2000-01-29      2
-#  7:         2         27        2         NA     NA
-#  8:         3         26        2 2004-04-05      2
-#  9:         4         32        2 2009-08-27      1
-# 10:         5         29        2 2005-02-28      1
-# 11:         1         30        3         NA     NA
-# 12:         2         27        3         NA     NA
-# 13:         3         26        3 2007-09-02      1
-# 14:         4         32        3 2012-07-21      1
-# 15:         5         29        3         NA     NA
-
-str(DT.m2) ## col type is preserved
-# Classes &#39;data.table&#39; and &#39;data.frame&#39;:    15 obs. of  5 variables:
-#  $ family_id : int  1 2 3 4 5 1 2 3 4 5 ...
-#  $ age_mother: int  30 27 26 32 29 30 27 26 32 29 ...
-#  $ variable  : Factor w/ 3 levels &amp;quot;1&amp;quot;,&amp;quot;2&amp;quot;,&amp;quot;3&amp;quot;: 1 1 1 1 1 2 2 2 2 2 ...
-#  $ dob       : chr  &amp;quot;1998-11-26&amp;quot; &amp;quot;1996-06-22&amp;quot; &amp;quot;2002-07-11&amp;quot; &amp;quot;2004-10-10&amp;quot; ...
-#  $ gender    : int  1 2 2 1 2 2 NA 2 1 1 ...
-#  - attr(*, &amp;quot;.internal.selfref&amp;quot;)=&amp;lt;externalptr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;－函数 patterns()&lt;br /&gt;
-通常，我们想整合的这些列的列名都有共通的格式。我们可以用函数patterns()指定正则表达式，让语法更简洁。上面的操作还可以这样写：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;DT.m2 = melt(DT, measure = patterns(&amp;quot;^dob&amp;quot;, &amp;quot;^gender&amp;quot;), value.name = c(&amp;quot;dob&amp;quot;, &amp;quot;gender&amp;quot;))
-DT.m2
-#     family_id age_mother variable        dob gender
-#  1:         1         30        1 1998-11-26      1
-#  2:         2         27        1 1996-06-22      2
-#  3:         3         26        1 2002-07-11      2
-#  4:         4         32        1 2004-10-10      1
-#  5:         5         29        1 2000-12-05      2
-#  6:         1         30        2 2000-01-29      2
-#  7:         2         27        2         NA     NA
-#  8:         3         26        2 2004-04-05      2
-#  9:         4         32        2 2009-08-27      1
-# 10:         5         29        2 2005-02-28      1
-# 11:         1         30        3         NA     NA
-# 12:         2         27        3         NA     NA
-# 13:         3         26        3 2007-09-02      1
-# 14:         4         32        3 2012-07-21      1
-# 15:         5         29        3         NA     NA
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;就是这样！&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;如果需要，我们可以去掉 variable列。&lt;/li&gt;
-&lt;li&gt;这个功能是用C实现的，因此效率高，节省内存，而且简洁。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;b-增强的dcast:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;b) 增强的dcast&lt;/h4&gt;
-
-&lt;p&gt;非常好！现在我们可以同时拆分多个列了。现在我们如何将上面的 DT.m2 再恢复成原来的样子呢？&lt;br /&gt;
-如果我们使用原生的函数dcast()，我们需要做两次，然后将结果合并在一起。但是这样做太麻烦，一点也不简洁和有效。&lt;br /&gt;
-－同时合并多个 value.vars&lt;br /&gt;
-我们可以对函数dcast()指定多个 value.var参数，这样操作就在内部进行，而且高效。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;## new &#39;cast&#39; functionality - multiple value.vars
-DT.c2 = dcast(DT.m2, family_id + age_mother ~ variable, value.var = c(&amp;quot;dob&amp;quot;, &amp;quot;gender&amp;quot;))
-DT.c2
-#    family_id age_mother      dob_1      dob_2      dob_3 gender_1 gender_2 gender_3
-# 1:         1         30 1998-11-26 2000-01-29         NA        1        2       NA
-# 2:         2         27 1996-06-22         NA         NA        2       NA       NA
-# 3:         3         26 2002-07-11 2004-04-05 2007-09-02        2        2        1
-# 4:         4         32 2004-10-10 2009-08-27 2012-07-21        1        1        1
-# 5:         5         29 2000-12-05 2005-02-28         NA        2        1       NA
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;在结果中，原先的属性会尽量保持。&lt;/li&gt;
-&lt;li&gt;所有的事情都在内部高效处理。快速并且节省内存。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;参数fun.aggregate可以指定多个函数：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;你可以给函数dcast()的参数fun.aggregate可以指定多个函数。详细内容请执行 ?dcast 来查看示例。
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>转：任务切换有害论</title>
-      <link>http://youngspring1.github.io/post/2016/2016-04-07-human-task-switches/</link>
-      <pubDate>Thu, 07 Apr 2016 22:31:55 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-04-07-human-task-switches/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;书摘，来自《软件随想录》，Joel Spolsky&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;在管理一个程序团队时，第一件要学的事就是任务配置(task allocation)要正确。「任务配置」只是把事情分给大家做的夸大说法。用希伯来文的普通话来说就是「倒文件」(因为你会把文件倒在某人身上)。有些事情做得对会得到不可思议的生产力利益，决定哪些文件要倒在谁身上就是其中之一。反过来没做好的话可能就会陷入麻烦的状况，没有人能做好何任何事情而且大家都抱怨「在这里什么事都做不起来。」&lt;/p&gt;
-
-&lt;p&gt;由于这是个针对程序员的网站，我要拿个程序设计问题让你的脑袋动一动暖暖身。&lt;/p&gt;
-
-&lt;p&gt;假设你有A和B两件运算要做。每一件都需10秒的CPU时间。现在你有一颗CPU，为了简化问题，所以工作序列中没有其他东西。&lt;/p&gt;
-
-&lt;p&gt;在我们的CPU中可以选择是否用多工处理。所以你可以先做好一件再做另一件。&lt;/p&gt;
-
-&lt;h5 id=&#34;循序处理:adf6769e1c0a1dd908086b693a0d7412&#34;&gt;循序处理&lt;/h5&gt;
-
-&lt;p&gt;运算A&lt;br /&gt;
-1   2   3   4   5   6   7   8   9   10&lt;br /&gt;
-运算B&lt;br /&gt;
-11  12  13  14  15  16  17  18  19  20&lt;/p&gt;
-
-&lt;p&gt;也可以使用多工方式。如果用多工的话可以假设这颗特别的CPU每个工作每次可以执行一秒，而且工作切换完全不花时间。&lt;/p&gt;
-
-&lt;h5 id=&#34;多工处理:adf6769e1c0a1dd908086b693a0d7412&#34;&gt;多工处理&lt;/h5&gt;
-
-&lt;p&gt;运算A&lt;br /&gt;
-1   3   5   7   9   11  13  15  17  19&lt;br /&gt;
-运算B&lt;br /&gt;
-2   4   6   8   10  12  14  16  18  20&lt;/p&gt;
-
-&lt;p&gt;你会选哪一种方式呢？大部份人的直觉反应都认为多工比较好。不管哪一种状况，都得等20秒才能两件运算都完成。不过可以想想单就各件运算来说要多久才有结果。&lt;/p&gt;
-
-&lt;p&gt;在两种状况下，运算B(标成蓝色)都要20秒才得到结果。不过运算A的结果在多工时需要19秒。可是循序时就只要10秒就好了。&lt;/p&gt;
-
-&lt;p&gt;换句话来说在这个安排好的例子中，循序处理的每件运算的平均时间比多工处理少(15秒对19.5秒)。(事实上这例子也并不是真的那么假 - 它是源于Jared在工作上必须解决的一个真实问题。)&lt;/p&gt;
-
-&lt;p&gt;方法  运算A花的时间 运算B花的时间 平均&lt;br /&gt;
-循序处理    10秒 20秒 15&lt;br /&gt;
-多工处理    19秒 20秒 19.5&lt;/p&gt;
-
-&lt;p&gt;我刚刚说过「工作切换完全不花时间」。其实在真的CPU中工作切换是需要一点点时间的，基本上要足够储存CPU暂存器的状态并载入其他工作的CPU暂存器。实际上这短到几乎可以忽略。不过为了让生活更多乐趣，让我们假设工作切换需要半秒。现在情况变得更糟了：&lt;/p&gt;
-
-&lt;p&gt;方法  运算A花的时间 运算B花的时间 平均&lt;br /&gt;
-循序处理    10秒 20秒 + 1次工作切换 = 20.5秒    15.25&lt;br /&gt;
-多工处理    19秒 + 18次工作切换 = 28秒 20秒 + 19次工作切换 = 29.5秒   28.75&lt;/p&gt;
-
-&lt;p&gt;现在呢，虽然我知道这有点蠢，不过就算为了让我高兴一下，想想如果工作切换需要一分钟拿如何？&lt;/p&gt;
-
-&lt;p&gt;方法  运算A花的时间 运算B花的时间 平均&lt;br /&gt;
-循序处理    10秒 20秒 + 1次工作切换 = 80秒  45秒&lt;br /&gt;
-多工处理    19秒 + 18次工作切换 = 1099秒   20秒 + 19次工作切换 = 1160秒   几近19分钟!!&lt;/p&gt;
-
-&lt;p&gt;工作切换用的时间愈长，多工处理的代价愈大。&lt;/p&gt;
-
-&lt;p&gt;这件事本身不怎么新奇，不是吗？不久大概就会有些白痴气愤地写信指控我「反对」多工处理了。他们会质问我：「你真的想要回到那种得先结束WordPerfect才能执行Lotus 1-2-3的DOS时代吗？」&lt;/p&gt;
-
-&lt;p&gt;不过那并不是我的意思。我只是想要你同意，在这类例子中：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;循序处理会让结果平均上比较快得到，而且&lt;/li&gt;
-&lt;li&gt;工作切换需要愈久，多工处理所付的代价就愈大。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;够了，别管CPU了，来管管人吧，这有趣多了。这里的重点在于管理「程序员」时，工作切换会需要很长很长的时间。因为程序设计这种工作必须同时在脑袋里记很多东西。另外记住的东西愈多，写程序时生产力愈高。用全速写程序的程序员脑里随时都会记住无数的事情：变量名称，数据结构，重要的API，写过常要用到的辅助函数名称，甚至存放源代码的次目录名称，一切东西都要记住。如果你把程序员送到克利特岛去度假三星期，他所有东西通通都会忘掉。人脑似乎会把东西移出短期RAM，改存到永远都读不回来的备份磁带上。&lt;/p&gt;
-
-&lt;p&gt;要多久呢？嗯，我的软件公司最近放下手头上在做的事(开发一套代号CityDesk的软件产品)，花了三星期去帮助某个客户处理一个紧急状况。当我们回到办公室时，感觉好像要另外三星期才能回复全速制作CityDesk。&lt;/p&gt;
-
-&lt;p&gt;就个人层次来说，你曾经注意过某件事吗？叫某人做一个工作可以做得很好，可是如果给他两个工作，他会把其中一个做好却忽略另一个，不然就是两件工作都做得很慢，慢到你觉得懒鬼都比他勤劳。这是因为程序设计的工作就是需要很长的切换时间。就我自己来说，当我需要同时完成两个程序设计项目时，切换时间大概要六个小时。以一天八小时来看，等于说多工处理把我的生产力降到每天只剩二小时。真令人沮丧啊。&lt;/p&gt;
-
-&lt;p&gt;同样的道理，如果你给某人两件工作，应该要感谢他们只做一件工作而放弃另一件，因为这样能做好更多的事，而且平均上也能更快完成工作。事实上这一切的重点就是绝对不要让人同时做一件以上的事。请确定你有明白它的意思。好的经理人会认为自己的责任是消除障碍，好让大家都能专注在一件事情并把它真的完成。遇到紧急状况时，请先想想能不能自己处理掉，真的不行再丢给深陷在项目中的程序员吧。&lt;/p&gt;
 </description>
     </item>
     

@@ -7,8 +7,147 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 24 May 2016 09:18:29 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jun 2016 09:28:58 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/categories/r%E8%AF%AD%E8%A8%80%E7%AC%94%E8%AE%B0/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>R语言笔记08</title>
+      <link>http://youngspring1.github.io/post/2016/2016-06-19-R08/</link>
+      <pubDate>Sun, 19 Jun 2016 09:28:58 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-06-19-R08/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第八单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;linear-optimization:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;Linear Optimization&lt;/h2&gt;
+
+&lt;p&gt;第八单元的主题是线性优化。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-简介:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;1.简介&lt;/h3&gt;
+
+&lt;p&gt;线性优化，其实是用Excel／LibreOffice求解一个简单的多元1次多项式的最大值。&lt;br /&gt;
+使用LibreOffice是这样做的：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在单元格中填写多项式和约束条件。&lt;/li&gt;
+&lt;li&gt;选取Tools-&amp;gt;Solver，指定多项式，以及各种约束条件，当然也要选择［Linear Solver］这个方法。&lt;/li&gt;
+&lt;li&gt;点击［Solve］就可以得到结果啦。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;sensitivity analysis：结果是如何随数据（变量／约束条件）的变化而变化的。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-实战:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;2.实战&lt;/h3&gt;
+
+&lt;p&gt;当然，用R也能解决这样的问题。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 先安装pkg
+install.packages(&amp;quot;lpSolveAPI&amp;quot;)
+library(lpSolveAPI)
+
+# 创建模型
+# 说明：
+# 第一个参数是约束条件的个数。
+# one capacity constraint: 载客量有一个最大值（飞机座位数）
+# two demand constraints : 每种票价的数目（regular seats／discount seats）都有一个最大值
+# 所以这个参数的取值是3
+# 第二个参数是变量的个数。
+# decision variables : 我们有两种票价（regular seats／discount seats）
+# 所以这个参数的取值是2
+
+AirlineSimple = make.lp(3,2)
+# 创建出来的AirlineSimple是这样子的：
+Model name: 
+            C1    C2         
+Minimize     0     0         
+R1           0     0  free  0
+R2           0     0  free  0
+R3           0     0  free  0
+Kind       Std   Std         
+Type      Real  Real         
+Upper      Inf   Inf         
+Lower        0     0         
+
+# 那下面我们就来指定多项式和约束条件
+# 最终的效果是这样的：
+# max         617*R + 238*D
+# subject to    1*R +   1*D &amp;lt;= 166
+#               1*R +   0*D &amp;lt;= 100
+#               0*R +   1*D &amp;lt;= 150  
+
+# 特别注意：执行顺序，set.objfn()不能放在前面，我被坑了。。。
+# 指定约束条件（跟效果竖着对比着看）
+set.column(AirlineSimple, 1, c(1,1,0))
+set.column(AirlineSimple, 2, c(1,0,1))
+set.constr.type(AirlineSimple, c(&amp;quot;&amp;lt;=&amp;quot;,&amp;quot;&amp;lt;=&amp;quot;,&amp;quot;&amp;lt;=&amp;quot;))
+set.rhs(AirlineSimple, c(166,100,150))
+# 指定两个变量的参数
+set.objfn(AirlineSimple, c(617,238))
+# 默认的是最小值，我们改为最大值
+lp.control(AirlineSimple,sense=&#39;max&#39;)
+
+# 这样就创建好了：
+Model name: 
+            C1    C2         
+Maximize   617   238         
+R1           1     1  &amp;lt;=  166
+R2           1     0  &amp;lt;=  100
+R3           0     1  &amp;lt;=  150
+Kind       Std   Std         
+Type      Real  Real         
+Upper      Inf   Inf         
+Lower        0     0
+
+# 变量的取值是上面最后两行Upper和Lower，可以通过函数set.bounds()来修改
+
+# 现在可以来运行了
+# 如果正确运行，返回值是0
+solve(AirlineSimple)
+# 查看取得的最大值
+get.objective(AirlineSimple)
+# 查看取最大值时，两个变量的取值
+get.variables(AirlineSimple)
+
+# JFK 从DFW中转，到LAX的场景
+# 有8个约束条件，6个变量：
+AirlineConnecting = make.lp(8,6)
+set.column(AirlineConnecting, 1, c(1,1,1,0,0,0,0,0))
+set.column(AirlineConnecting, 2, c(1,1,0,1,0,0,0,0))
+set.column(AirlineConnecting, 3, c(1,0,0,0,1,0,0,0))
+set.column(AirlineConnecting, 4, c(1,0,0,0,0,1,0,0))
+set.column(AirlineConnecting, 5, c(0,1,0,0,0,0,1,0))
+set.column(AirlineConnecting, 6, c(0,1,0,0,0,0,0,1))
+set.constr.type(AirlineConnecting, rep(&amp;quot;&amp;lt;=&amp;quot;,8))
+set.rhs(AirlineConnecting, c(166,166,80,120,75,100,60,110))
+set.objfn(AirlineConnecting, c(428,190,642,224,512,190))
+lp.control(AirlineConnecting,sense=&#39;max&#39;)
+
+# 模型稍微有点大
+Model name: 
+        C1    C2    C3    C4    C5    C6         
+Maximize   428   190   642   224   512   190         
+R1           1     1     1     1     0     0  &amp;lt;=  166
+R2           1     1     0     0     1     1  &amp;lt;=  166
+R3           1     0     0     0     0     0  &amp;lt;=   80
+R4           0     1     0     0     0     0  &amp;lt;=  120
+R5           0     0     1     0     0     0  &amp;lt;=   75
+R6           0     0     0     1     0     0  &amp;lt;=  100
+R7           0     0     0     0     1     0  &amp;lt;=   60
+R8           0     0     0     0     0     1  &amp;lt;=  110
+Kind       Std   Std   Std   Std   Std   Std         
+Type      Real  Real  Real  Real  Real  Real         
+Upper      Inf   Inf   Inf   Inf   Inf   Inf         
+Lower        0     0     0     0     0     0
+
+
+solve(AirlineConnecting)
+get.objective(AirlineConnecting)
+get.variables(AirlineConnecting)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>R语言笔记07</title>
