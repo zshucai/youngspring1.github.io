@@ -1925,31 +1925,29 @@ table(DF$var1, DF$var2)
     </item>
     
     <item>
-      <title>data.table 教程5（校对中）</title>
+      <title>data.table 教程5－数据拆分和合并</title>
       <link>http://youngspring1.github.io/post/2016/2016-04-08-datatable5/</link>
       <pubDate>Fri, 08 Apr 2016 13:00:57 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-04-08-datatable5/</guid>
       <description>
 
-&lt;p&gt;目录：&lt;br /&gt;
-1) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-13-datatable1/&#34;&gt;data.table 介绍&lt;/a&gt;&lt;br /&gt;
-2) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;&lt;br /&gt;
-3) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-22-datatable3/&#34;&gt;主键、基于快速二分法搜索的subset&lt;/a&gt;&lt;br /&gt;
-4) &lt;a href=&#34;http://youngspring1.github.io/post/2016-04-02-datatable4/&#34;&gt;二级索引和自动索引&lt;/a&gt;&lt;br /&gt;
-5) 有效的数据拆分和合并&lt;/p&gt;
+&lt;p&gt;目录：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-03-13-datatable1/&#34;&gt;data.table 介绍&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-03-22-datatable3/&#34;&gt;主键、基于二分法搜索的subset&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-04-02-datatable4/&#34;&gt;二次索引和自动索引&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-04-08-datatable5/&#34;&gt;数据拆分和合并&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;原文地址：&lt;br /&gt;
-1) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html&#34;&gt;Introduction to data.table&lt;/a&gt;&lt;br /&gt;
-2) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reference-semantics.html&#34;&gt;Reference semantics&lt;/a&gt;&lt;br /&gt;
-3) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-keys-fast-subset.html&#34;&gt;Keys and fast binary search based subsets&lt;/a&gt;&lt;br /&gt;
-4) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-secondary-indices-and-auto-indexing.html&#34;&gt;Secondary indices and auto indexing&lt;/a&gt;&lt;br /&gt;
-5) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reshape.html&#34;&gt;Efficient reshaping using data.tables&lt;/a&gt;&lt;br /&gt;
-6) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-faq.html&#34;&gt;Frequently asked questions&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://github.com/Rdatatable/data.table/wiki/Getting-started&#34;&gt;data.table/wiki/Getting-started&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&#34;有效的数据拆分和合并:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;有效的数据拆分和合并&lt;/h1&gt;
+&lt;h1 id=&#34;数据拆分和合并:8a0e17190d0dbfa1c06f28f3c1a1fd66&#34;&gt;数据拆分和合并&lt;/h1&gt;
 
 &lt;p&gt;这一讲我们学习reshaping函数 melt 和 dcast 原本的用法，以及从R语言 v1.9.6版以后，函数 melt 和 dcast 新扩展的功能（它们能操作多个列）。&lt;/p&gt;
 
@@ -2280,27 +2278,25 @@ DT.c2
     </item>
     
     <item>
-      <title>data.table 教程4（校对中）</title>
+      <title>data.table 教程4－二级索引和自动索引</title>
       <link>http://youngspring1.github.io/post/2016/2016-04-02-datatable4/</link>
       <pubDate>Sat, 02 Apr 2016 07:38:11 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-04-02-datatable4/</guid>
       <description>
 
-&lt;p&gt;目录：&lt;br /&gt;
-1) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-13-datatable1/&#34;&gt;data.table 介绍&lt;/a&gt;&lt;br /&gt;
-2) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;&lt;br /&gt;
-3) &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-22-datatable3/&#34;&gt;主键、基于快速二分法搜索的subset&lt;/a&gt;&lt;br /&gt;
-4) 二级索引和自动索引&lt;br /&gt;
-5) Efficient reshaping using data.tables&lt;/p&gt;
+&lt;p&gt;目录：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-03-13-datatable1/&#34;&gt;data.table 介绍&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-03-22-datatable3/&#34;&gt;主键、基于二分法搜索的subset&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-04-02-datatable4/&#34;&gt;二次索引和自动索引&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-04-08-datatable5/&#34;&gt;数据拆分和合并&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;原文地址：&lt;br /&gt;
-1) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html&#34;&gt;Introduction to data.table&lt;/a&gt;&lt;br /&gt;
-2) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reference-semantics.html&#34;&gt;Reference semantics&lt;/a&gt;&lt;br /&gt;
-3) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-keys-fast-subset.html&#34;&gt;Keys and fast binary search based subsets&lt;/a&gt;&lt;br /&gt;
-4) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-secondary-indices-and-auto-indexing.html&#34;&gt;Secondary indices and auto indexing&lt;/a&gt;&lt;br /&gt;
-5) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reshape.html&#34;&gt;Efficient reshaping using data.tables&lt;/a&gt;&lt;br /&gt;
-6) &lt;a href=&#34;https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-faq.html&#34;&gt;Frequently asked questions&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://github.com/Rdatatable/data.table/wiki/Getting-started&#34;&gt;data.table/wiki/Getting-started&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 

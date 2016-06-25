@@ -12,30 +12,30 @@
         }
     }
   </script>
-  <title>data.table 教程3（校对中） - 行行重行行</title>
+  <title>data.table 教程3－主键、基于二分法搜索的subset - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="R data.table,">
-<meta name="description" content="目录： 1) data.table 介绍 2) 语义引用 3) 主键、基于快速二分法搜索的subset 4) [二次索引和自动索引]() 5) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based">
+<meta name="description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 本教程主要提供给那些已经熟悉data.ta">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="data.table 教程3（校对中） - 行行重行行">
-<meta itemprop="description" content="目录： 1) data.table 介绍 2) 语义引用 3) 主键、基于快速二分法搜索的subset 4) [二次索引和自动索引]() 5) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based">
+<meta itemprop="name" content="data.table 教程3－主键、基于二分法搜索的subset - 行行重行行">
+<meta itemprop="description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 本教程主要提供给那些已经熟悉data.ta">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="data.table 教程3（校对中） - 行行重行行" />
+<meta property="og:title" content="data.table 教程3－主键、基于二分法搜索的subset - 行行重行行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-03-22-datatable3/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="目录： 1) data.table 介绍 2) 语义引用 3) 主键、基于快速二分法搜索的subset 4) [二次索引和自动索引]() 5) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based">
+<meta property="og:description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 本教程主要提供给那些已经熟悉data.ta">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="data.table 教程3（校对中） - 行行重行行">
-<meta name="twitter:description" content="目录： 1) data.table 介绍 2) 语义引用 3) 主键、基于快速二分法搜索的subset 4) [二次索引和自动索引]() 5) Efficient reshaping using data.tables 原文地址： 1) Introduction to data.table 2) Reference semantics 3) Keys and fast binary search based">
+<meta name="twitter:title" content="data.table 教程3－主键、基于二分法搜索的subset - 行行重行行">
+<meta name="twitter:description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 本教程主要提供给那些已经熟悉data.ta">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
@@ -189,10 +189,10 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">data.table 教程3（校对中）</h1>
+                  <h1 class="post-title">data.table 教程3－主键、基于二分法搜索的subset</h1>
 
                   <p class="post-byline">
-                    by  · 2016年03月22日 · 7735 Words ·
+                    by  · 2016年03月22日 · 7638 Words ·
                     ~16min reading time |
 
                   </p>
@@ -204,20 +204,18 @@
                       
                       
 
-<p>目录：<br />
-1) <a href="http://youngspring1.github.io/post/2016-03-13-datatable1/">data.table 介绍</a><br />
-2) <a href="http://youngspring1.github.io/post/2016-03-21-datatable2/">语义引用</a><br />
-3) 主键、基于快速二分法搜索的subset<br />
-4) [二次索引和自动索引]()<br />
-5) Efficient reshaping using data.tables</p>
+<p>目录：</p>
+
+<ol>
+<li><a href="http://youngspring1.github.io/post/2016/2016-03-13-datatable1/">data.table 介绍</a><br /></li>
+<li><a href="http://youngspring1.github.io/post/2016/2016-03-21-datatable2/">语义引用</a><br /></li>
+<li><a href="http://youngspring1.github.io/post/2016/2016-03-22-datatable3/">主键、基于二分法搜索的subset</a><br /></li>
+<li><a href="http://youngspring1.github.io/post/2016/2016-04-02-datatable4/">二次索引和自动索引</a><br /></li>
+<li><a href="http://youngspring1.github.io/post/2016/2016-04-08-datatable5/">数据拆分和合并</a><br /></li>
+</ol>
 
 <p>原文地址：<br />
-1) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-intro-vignette.html">Introduction to data.table</a><br />
-2) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reference-semantics.html">Reference semantics</a><br />
-3) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-keys-fast-subset.html">Keys and fast binary search based subsets</a><br />
-4) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-secondary-indices-and-auto-indexing.html">Secondary indices and auto indexing</a><br />
-5) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-reshape.html">Efficient reshaping using data.tables</a><br />
-6) <a href="https://rawgit.com/wiki/Rdatatable/data.table/vignettes/datatable-faq.html">Frequently asked questions</a></p>
+<a href="https://github.com/Rdatatable/data.table/wiki/Getting-started">data.table/wiki/Getting-started</a></p>
 
 <hr />
 
@@ -922,7 +920,7 @@ identical(ans1$val, ans2$val)
         <a href="http://youngspring1.github.io/post/2016/2016-03-21-datatable2/" rel="next">
           <i class="fa fa-chevron-right"></i>
           <strong>Next post</strong>
-          <span>data.table 教程2（校对中）</span>
+          <span>data.table 教程2－语义引用</span>
         </a>
         
       </li>
