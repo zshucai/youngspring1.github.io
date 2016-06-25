@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="R,">
-<meta name="description" content="我们来看看，MIT课程 15.071x 里面，收集的数据是从何而来的。">
+<meta name="description" content="汇总了一下，MIT课程 15.071x 里面，收集到的数据，以及它们的来源。 你也可以在 这个页面 下载到所有跟课程相关的CSV数据、课件、R脚本。 Unit1 WHO的世界">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="R语言笔记10－数据收集 - 行行重行行">
-<meta itemprop="description" content="我们来看看，MIT课程 15.071x 里面，收集的数据是从何而来的。">
+<meta itemprop="description" content="汇总了一下，MIT课程 15.071x 里面，收集到的数据，以及它们的来源。 你也可以在 这个页面 下载到所有跟课程相关的CSV数据、课件、R脚本。 Unit1 WHO的世界">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
 <meta property="og:title" content="R语言笔记10－数据收集 - 行行重行行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-06-20-R10/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="我们来看看，MIT课程 15.071x 里面，收集的数据是从何而来的。">
+<meta property="og:description" content="汇总了一下，MIT课程 15.071x 里面，收集到的数据，以及它们的来源。 你也可以在 这个页面 下载到所有跟课程相关的CSV数据、课件、R脚本。 Unit1 WHO的世界">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
 <meta name="twitter:title" content="R语言笔记10－数据收集 - 行行重行行">
-<meta name="twitter:description" content="我们来看看，MIT课程 15.071x 里面，收集的数据是从何而来的。">
+<meta name="twitter:description" content="汇总了一下，MIT课程 15.071x 里面，收集到的数据，以及它们的来源。 你也可以在 这个页面 下载到所有跟课程相关的CSV数据、课件、R脚本。 Unit1 WHO的世界">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
@@ -192,8 +192,8 @@
                   <h1 class="post-title">R语言笔记10－数据收集</h1>
 
                   <p class="post-byline">
-                    by  · 2016年06月20日 · 27 Words ·
-                    ~1min reading time |
+                    by  · 2016年06月20日 · 1060 Words ·
+                    ~3min reading time |
 
                   </p>
 
@@ -202,9 +202,157 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p>我们来看看，MIT课程 <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info">15.071x</a> 里面，收集的数据是从何而来的。</p>
+                      
 
-<hr />
+<p>汇总了一下，MIT课程 <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info">15.071x</a> 里面，收集到的数据，以及它们的来源。<br />
+你也可以在 <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/a36e4c3815534ee5965d96974a0ec06a/">这个页面</a> 下载到所有跟课程相关的CSV数据、课件、R脚本。</p>
+
+<h3 id="unit1:7d081d68d33a6cb2f2159d016a647e43">Unit1</h3>
+
+<ul>
+<li><p>WHO的世界健康数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/WHO.csv">WHO.csv</a><br />
+来自 <a href="http://apps.who.int/gho/data/node.main">Global Health Observatory Data Repository</a><br />
+可以按照主题、分类、指标、国家来获取。</p></li>
+
+<li><p>USDA的食物数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/USDA.csv">USDA.csv</a><br />
+数据来自 <a href="https://ndb.nal.usda.gov">USDA National Nutrient Database for Standard Reference</a></p></li>
+
+<li><p>芝加哥的犯罪数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/mvtWeek1.csv">mvtWeek1.csv</a><br />
+数据由FBI统计，由<a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2">cityofchicago</a>公开</p></li>
+
+<li><p>New York Stock Exchange (NYSE)的股价数据<br />
+IBM历史股价 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/IBMStock.csv">IBMStock.csv</a><br />
+通用电气历史股价 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/GEStock.csv">GEStock.csv</a><br />
+宝洁历史股价 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/ProcterGambleStock.csv">ProcterGambleStock.csv</a><br />
+可口可乐历史股价 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/CocaColaStock.csv">CocaColaStock.csv</a><br />
+波恩历史股价 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/BoeingStock.csv">BoeingStock.csv</a><br />
+数据来自 <a href="http://www.infochimps.com">infochimps</a></p></li>
+
+<li><p>美国人口普查数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/CPSData.csv">CPSData.csv</a><br />
+数据来自 <a href="http://thedataweb.rm.census.gov/ftp/cps_ftp.html">Current Population Survey (CPS)</a><br />
+另付CPSData里面的地区代码 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/MetroAreaCodes.csv">MetroAreaCodes.csv</a> 和 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/CountryCodes.csv">CountryCodes.csv</a></p></li>
+</ul>
+
+<h3 id="unit2:7d081d68d33a6cb2f2159d016a647e43">Unit2</h3>
+
+<ul>
+<li><p>影响酒价格的因素<br />
+<a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/wine.csv">wine.csv</a> 和 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/wine_test.csv">wine_test.csv</a><br />
+来自研究论文 <a href="http://www.liquidasset.com/winedata.html">Liquid Assets</a></p></li>
+
+<li><p>棒球比赛数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/baseball.csv">baseball.csv</a><br />
+来自 <a href="http://www.baseball-reference.com">baseball-reference</a></p></li>
+
+<li><p>篮球比赛数据<br />
+<a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/NBA_train.csv">NBA_train.csv</a> 和 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/NBA_test.csv">NBA_test.csv</a><br />
+来自 <a href="http://www.basketball-reference.com">basketball-reference</a></p></li>
+
+<li><p>1983-2008全球气候变化状况 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/climate_change.csv">climate_change.csv</a><br />
+其中，温度(Temp)数据来自 <a href="http://www.cru.uea.ac.uk/cru/data/temperature/">Climatic Research Unit at the University of East Anglia</a><br />
+大气成分(CO2, N2O, CH4, CFC.11, CFC.12)数据来自 <a href="http://www.esrl.noaa.gov/gmd/ccgg/data-products.html">ESRL/NOAA Global Monitoring Division</a><br />
+颗粒物(Aerosols)数据来自 <a href="http://data.giss.nasa.gov/modelforce/strataer/">Godard Institute for Space Studies at NASA</a><br />
+TSI(total solar irradiance)数据来自 <a href="http://solarisheppa.geomar.de/solarisheppa/cmip5">SOLARIS-HEPPA project website</a><br />
+multivariate El Nino Southern Oscillation index (MEI)数据来自 <a href="http://www.esrl.noaa.gov/psd/enso/mei/table.html">ESRL/NOAA Physical Sciences Division</a></p></li>
+
+<li><p>The Programme for International Student Assessment (PISA)国际留学生评价程序<br />
+<a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/pisa2009train.csv">pisa2009train.csv</a> 和 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/pisa2009test.csv">pisa2009test.csv</a><br />
+这些数据来自美国国家教育统计中心的文件 <a href="http://nces.ed.gov/pubsearch/pubsinfo.asp?pubid=2011038">2009 PISA Public-Use Data Files</a>。<br />
+注意，使用这些数据的时候，你要遵守 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/NCES_Data_Use_Agreement.txt"> NCES data use agreement</a>。</p></li>
+
+<li><p>流感趋势数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/FluTrain.csv">FluTrain.csv</a><br />
+我们可以使用 <a href="http://www.google.com/trends/">Google Trends</a> 来观察人们都在搜索什么内容。如果搜索流感信息的人很多，那么可能就要爆发流感啦！是否真的爆发流感呢，<a href="http://www.cdc.gov/flu/weekly/fluactivitysurv.htm">U.S. Centers for Disease Control and Prevention</a>会公开influenza-like illness (ILI)这样的信息。</p></li>
+
+<li><p>美国各州信息<br />
+<a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/statedata.csv">statedata.csv</a></p></li>
+
+<li><p>现代汽车 Hyundai Elantra 在美国的销售状况<br />
+<a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/elantra.csv">elantra.csv</a></p></li>
+</ul>
+
+<h3 id="unit3:7d081d68d33a6cb2f2159d016a647e43">Unit3</h3>
+
+<ul>
+<li><p>病人信息 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/framingham.csv">framingham.csv</a><br />
+数据来自这项研究 <a href="https://biolincc.nhlbi.nih.gov/static/studies/teaching/framdoc.pdf">BioLINCC</a></p></li>
+
+<li><p>总统大选数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/PollingData.csv">PollingData.csv</a><br />
+上面的CSV可能有些问题，你也许想使用这份处理过后的 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/PollingData_Imputed.csv">PollingData_Imputed.csv</a><br />
+数据来自 <a href="http://www.realclearpolitics.com">RealClearPolitics</a></p></li>
+
+<li><p>流行歌曲数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/songs.csv">songs.csv</a><br />
+数据来自 <a href="https://en.wikipedia.org/wiki/Billboard_Hot_100">Wikipedia</a>, <a href="http://www.billboard.com">Billboard.com</a>, 和 <a href="http://echonest.com">EchoNest</a>。</p></li>
+
+<li><p>罪犯假释数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/parole.csv">parole.csv</a><br />
+数据来自 <a href="http://www.icpsr.umich.edu/icpsrweb/NACJD/series/38/studies/26521?archive=NACJD&amp;sortBy=7">United States 2004 National Corrections Reporting Program</a></p></li>
+
+<li><p>借款人信用数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/loans.csv">loans.csv</a><br />
+数据来自 <a href="https://www.lendingclub.com/info/download-data.action">LendingClub</a></p></li>
+</ul>
+
+<h3 id="unit4:7d081d68d33a6cb2f2159d016a647e43">Unit4</h3>
+
+<ul>
+<li><p>美国最高法院斯蒂文森大法官判例数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/stevens.csv">stevens.csv</a><br />
+数据来自 <a href="http://wusct.wustl.edu/data.php">Supreme Court Forecasting Project</a></p></li>
+
+<li><p>病人信息 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/ClaimsData.csv.zip">ClaimsData.csv.zip</a>（这个有点大，解压后17M，慎重下载）<br />
+数据来自 <a href="https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/SynPUFs/DE_Syn_PUF.html">DE-SynPUF dataset</a></p></li>
+
+<li><p>波士顿房价数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/boston.csv">boston.csv</a><br />
+数据来自 <a href="http://archive.ics.uci.edu/ml/datasets/Housing">UCI Machine Learning Repository</a></p></li>
+
+<li><p>投票动机数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/gerber.csv">gerber.csv</a><br />
+数据来自研究项目 <a href="http://web.calstatela.edu/faculty/blawson/gerber%20green%20larimer%202008.pdf">2008 research paper</a></p></li>
+
+<li><p>字母识别数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/letters_ABPR.csv">letters_ABPR.csv</a><br />
+数据来自 <a href="http://archive.ics.uci.edu/ml/datasets/Letter+Recognition">UCI Machine Learning Repository</a></p></li>
+
+<li><p>人口普查数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/census.csv">census.csv</a><br />
+数据来自 <a href="http://archive.ics.uci.edu/ml/datasets/Adult">UCI Machine Learning Repository</a></p></li>
+</ul>
+
+<h3 id="unit5:7d081d68d33a6cb2f2159d016a647e43">Unit5</h3>
+
+<ul>
+<li><p>邮件数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/energy_bids.csv">energy_bids.csv</a><br />
+数据来自 <a href="http://trec-legal.umiacs.umd.edu">TREC Legal Track</a></p></li>
+
+<li><p>wiki页面<a href="https://en.wikipedia.org/wiki/Language">Language</a>的编辑日志 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/wiki.csv">wiki.csv</a></p></li>
+
+<li><p>医院处方数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/clinical_trial.csv">clinical_trial.csv</a><br />
+数据来自 <a href="http://www.ncbi.nlm.nih.gov/pubmed">Pubmed</a></p></li>
+
+<li><p>垃圾邮件数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/emails.csv">emails.csv</a></p></li>
+</ul>
+
+<h3 id="unit6:7d081d68d33a6cb2f2159d016a647e43">Unit6</h3>
+
+<ul>
+<li><p><a href="http://files.grouplens.org/datasets/movielens/ml-100k/u.item">电影信息页面</a><br />
+你需要自己保存和解析。</p></li>
+
+<li><p>单词出现频率数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/dailykos.csv">dailykos.csv</a><br />
+数据来自 <a href="https://www.dailykos.com">Daily Kos</a></p></li>
+
+<li><p>航空旅客里程数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/AirlinesCluster.csv">AirlinesCluster.csv</a><br />
+数据来自书籍 <a href="http://www.dataminingbook.com">Data Mining for Business Intelligence</a></p></li>
+
+<li><p>股票涨跌数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/StocksCluster.csv">StocksCluster.csv</a><br />
+数据来自 <a href="http://www.infochimps.com/datasets/nasdaq-exchange-daily-1970-2010-open-close-high-low-and-volume">infochimps</a></p></li>
+</ul>
+
+<h3 id="unit7:7d081d68d33a6cb2f2159d016a647e43">Unit7</h3>
+
+<ul>
+<li><p>罪犯地点数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/mvt.csv">mvt.csv</a><br />
+数据来自 <a href="http://gis.chicagopolice.org">芝加哥警察局</a></p></li>
+
+<li><p>谋杀案件数据 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/murders.csv">murders.csv</a><br />
+数据由FBI统计，公开于<a href="https://en.wikipedia.org/wiki/Gun_violence_in_the_United_States_by_state">WIKI</a></p></li>
+
+<li><p>MIT留学生信息 <a href="https://d37djvu3ytnwxt.cloudfront.net/asset-v1:MITx+15.071x_3+1T2016+type@asset+block/intlall.csv">intlall.csv</a><br />
+数据来自 <a href="http://web.mit.edu/iso/">MIT International Students Office</a></p></li>
+</ul>
 
                       
                     </div>
