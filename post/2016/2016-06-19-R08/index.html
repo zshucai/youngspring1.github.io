@@ -12,30 +12,30 @@
         }
     }
   </script>
-  <title>R语言笔记08 - 行行重行行</title>
+  <title>R语言笔记08－线性优化 - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="R,">
-<meta name="description" content="MIT课程 15.071x 第八单元的学习记录。 Linear Optimization 第八单元的主题是线性优化。 1.简介 线性优化，其实是用Excel／LibreOffice求解一个简单的多元">
+<meta name="description" content="MIT课程 15.071x 第八单元的学习记录。 Linear Optimization 第八单元的主题是线性优化。 1.理论 线性优化 线性优化，其实是用Excel／LibreOffice求解一个简">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="R语言笔记08 - 行行重行行">
-<meta itemprop="description" content="MIT课程 15.071x 第八单元的学习记录。 Linear Optimization 第八单元的主题是线性优化。 1.简介 线性优化，其实是用Excel／LibreOffice求解一个简单的多元">
+<meta itemprop="name" content="R语言笔记08－线性优化 - 行行重行行">
+<meta itemprop="description" content="MIT课程 15.071x 第八单元的学习记录。 Linear Optimization 第八单元的主题是线性优化。 1.理论 线性优化 线性优化，其实是用Excel／LibreOffice求解一个简">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="R语言笔记08 - 行行重行行" />
+<meta property="og:title" content="R语言笔记08－线性优化 - 行行重行行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-06-19-R08/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="MIT课程 15.071x 第八单元的学习记录。 Linear Optimization 第八单元的主题是线性优化。 1.简介 线性优化，其实是用Excel／LibreOffice求解一个简单的多元">
+<meta property="og:description" content="MIT课程 15.071x 第八单元的学习记录。 Linear Optimization 第八单元的主题是线性优化。 1.理论 线性优化 线性优化，其实是用Excel／LibreOffice求解一个简">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="R语言笔记08 - 行行重行行">
-<meta name="twitter:description" content="MIT课程 15.071x 第八单元的学习记录。 Linear Optimization 第八单元的主题是线性优化。 1.简介 线性优化，其实是用Excel／LibreOffice求解一个简单的多元">
+<meta name="twitter:title" content="R语言笔记08－线性优化 - 行行重行行">
+<meta name="twitter:description" content="MIT课程 15.071x 第八单元的学习记录。 Linear Optimization 第八单元的主题是线性优化。 1.理论 线性优化 线性优化，其实是用Excel／LibreOffice求解一个简">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
@@ -189,11 +189,11 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">R语言笔记08</h1>
+                  <h1 class="post-title">R语言笔记08－线性优化</h1>
 
                   <p class="post-byline">
-                    by  · 2016年06月19日 · 944 Words ·
-                    ~2min reading time |
+                    by  · 2016年06月19日 · 1210 Words ·
+                    ~3min reading time |
 
                   </p>
 
@@ -212,7 +212,9 @@
 
 <p>第八单元的主题是线性优化。</p>
 
-<h3 id="1-简介:b27ba36c9adad52060ae60e72a6ed77d">1.简介</h3>
+<h3 id="1-理论:b27ba36c9adad52060ae60e72a6ed77d">1.理论</h3>
+
+<h4 id="线性优化:b27ba36c9adad52060ae60e72a6ed77d">线性优化</h4>
 
 <p>线性优化，其实是用Excel／LibreOffice求解一个简单的多元1次多项式的最大值。<br />
 使用LibreOffice是这样做的：</p>
@@ -223,7 +225,18 @@
 <li>点击［Solve］就可以得到结果啦。</li>
 </ol>
 
-<p>sensitivity analysis：结果是如何随数据（变量／约束条件）的变化而变化的。</p>
+<p>在Excel中，需要在<code>option</code> - <code>addin</code> - <code>Excel addin</code> 选择加载<code>solver addin</code>，这样才会在data菜单栏中显示出<code>solver</code>按钮。</p>
+
+<h4 id="sensitivity-analysis:b27ba36c9adad52060ae60e72a6ed77d">sensitivity analysis</h4>
+
+<p>sensitivity analysis用来展示，结果是如何随数据（变量／约束条件）的变化而变化的。<br />
+shadow prices：表示当需求增加时，将（总量增加量／需求增量）的值定义为影子价格。<br />
+<img src="http://7xrjai.com1.z0.glb.clouddn.com/20160624-R08-sensitive.png" alt="sensitivity analysis" />
+如图，纵坐标和横坐标表示两种不同的需求。暗红色阴影表示可能的取值范围。<br />
+如果不断提高需求R，从100到125到150，影子价格都保持不变；但是如果需求提高到170，影子价格就会发生变化。<br />
+如果不短提高需求D，从150到100，影子价格都为0，总量也不变。</p>
+
+<p>影子价格有可能在需求增加的一个范围内保持不变。也有可能一直为0。</p>
 
 <h3 id="2-实战:b27ba36c9adad52060ae60e72a6ed77d">2.实战</h3>
 
@@ -327,7 +340,6 @@ Type      Real  Real  Real  Real  Real  Real
 Upper      Inf   Inf   Inf   Inf   Inf   Inf         
 Lower        0     0     0     0     0     0
 
-
 solve(AirlineConnecting)
 get.objective(AirlineConnecting)
 get.variables(AirlineConnecting)
@@ -404,7 +416,7 @@ get.variables(AirlineConnecting)
         <a href="http://youngspring1.github.io/post/2016/2016-06-20-R09/" rel="prev">
           <i class="fa fa-chevron-left"></i>
           <strong>Previous Post</strong>
-          <span>2016 06 20 R09</span>
+          <span>R语言笔记09－整数优化</span>
         </a>
         
       </li>

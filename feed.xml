@@ -23,25 +23,49 @@
     </item>
     
     <item>
-      <title>2016 06 20 R10</title>
+      <title>R语言笔记10－数据收集</title>
       <link>http://youngspring1.github.io/post/2016/2016-06-20-R10/</link>
       <pubDate>Mon, 20 Jun 2016 09:10:39 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-06-20-R10/</guid>
-      <description></description>
+      <description>&lt;p&gt;我们来看看，MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 里面，收集的数据是从何而来的。&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
     </item>
     
     <item>
-      <title>2016 06 20 R09</title>
+      <title>R语言笔记09－整数优化</title>
       <link>http://youngspring1.github.io/post/2016/2016-06-20-R09/</link>
       <pubDate>Mon, 20 Jun 2016 09:10:24 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-06-20-R09/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第九单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;integer-optimization:2434367f671f708106a85f2a67d5fdf5&#34;&gt;Integer Optimization&lt;/h2&gt;
+
+&lt;p&gt;第九单元的主题是整数优化。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-理论:2434367f671f708106a85f2a67d5fdf5&#34;&gt;1.理论&lt;/h3&gt;
+
+&lt;h4 id=&#34;整数优化:2434367f671f708106a85f2a67d5fdf5&#34;&gt;整数优化&lt;/h4&gt;
+
+&lt;p&gt;整数优化，即所有解都是整数。&lt;br /&gt;
+它们有可能是0或者1。这适用于回答是Yes／No的情况。&lt;br /&gt;
+它们有可能是1，2，3……这适用于回答是具体的数值的情况。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-实战:2434367f671f708106a85f2a67d5fdf5&#34;&gt;2.实战&lt;/h3&gt;
+
+&lt;p&gt;做法和线性优化是一样的。只是在条件里面要加一个Integer／Binary的限制。所以就不细讲了。&lt;/p&gt;
+</description>
     </item>
     
     <item>
-      <title>R语言笔记08</title>
+      <title>R语言笔记08－线性优化</title>
       <link>http://youngspring1.github.io/post/2016/2016-06-19-R08/</link>
       <pubDate>Sun, 19 Jun 2016 09:28:58 +0800</pubDate>
       
@@ -56,7 +80,9 @@
 
 &lt;p&gt;第八单元的主题是线性优化。&lt;/p&gt;
 
-&lt;h3 id=&#34;1-简介:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;1.简介&lt;/h3&gt;
+&lt;h3 id=&#34;1-理论:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;1.理论&lt;/h3&gt;
+
+&lt;h4 id=&#34;线性优化:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;线性优化&lt;/h4&gt;
 
 &lt;p&gt;线性优化，其实是用Excel／LibreOffice求解一个简单的多元1次多项式的最大值。&lt;br /&gt;
 使用LibreOffice是这样做的：&lt;/p&gt;
@@ -67,7 +93,18 @@
 &lt;li&gt;点击［Solve］就可以得到结果啦。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;sensitivity analysis：结果是如何随数据（变量／约束条件）的变化而变化的。&lt;/p&gt;
+&lt;p&gt;在Excel中，需要在&lt;code&gt;option&lt;/code&gt; - &lt;code&gt;addin&lt;/code&gt; - &lt;code&gt;Excel addin&lt;/code&gt; 选择加载&lt;code&gt;solver addin&lt;/code&gt;，这样才会在data菜单栏中显示出&lt;code&gt;solver&lt;/code&gt;按钮。&lt;/p&gt;
+
+&lt;h4 id=&#34;sensitivity-analysis:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;sensitivity analysis&lt;/h4&gt;
+
+&lt;p&gt;sensitivity analysis用来展示，结果是如何随数据（变量／约束条件）的变化而变化的。&lt;br /&gt;
+shadow prices：表示当需求增加时，将（总量增加量／需求增量）的值定义为影子价格。&lt;br /&gt;
+&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160624-R08-sensitive.png&#34; alt=&#34;sensitivity analysis&#34; /&gt;
+如图，纵坐标和横坐标表示两种不同的需求。暗红色阴影表示可能的取值范围。&lt;br /&gt;
+如果不断提高需求R，从100到125到150，影子价格都保持不变；但是如果需求提高到170，影子价格就会发生变化。&lt;br /&gt;
+如果不短提高需求D，从150到100，影子价格都为0，总量也不变。&lt;/p&gt;
+
+&lt;p&gt;影子价格有可能在需求增加的一个范围内保持不变。也有可能一直为0。&lt;/p&gt;
 
 &lt;h3 id=&#34;2-实战:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;2.实战&lt;/h3&gt;
 
@@ -170,7 +207,6 @@ Kind       Std   Std   Std   Std   Std   Std
 Type      Real  Real  Real  Real  Real  Real         
 Upper      Inf   Inf   Inf   Inf   Inf   Inf         
 Lower        0     0     0     0     0     0
-
 
 solve(AirlineConnecting)
 get.objective(AirlineConnecting)
