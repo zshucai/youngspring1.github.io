@@ -1985,15 +1985,15 @@ DT_n
 
 &lt;h2 id=&#34;使用data-table分析数据:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;使用data.table分析数据&lt;/h2&gt;
 
-&lt;p&gt;支持操作数据的功能，例如subset、group、update、join等。&lt;br /&gt;
-这些功能可以让我们：&lt;/p&gt;
+&lt;p&gt;操作数据的功能，例如subset、group、update、join等都有内在的关联。&lt;br /&gt;
+保持这些关联的操作可以：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;* 通过简洁一致的语法，实行想要的操作，达到目的。
 * 从一系列函数到最终的分析，都没有将所有的操作都对应到函数的负担。能够流畅地执行分析。
 * 精确地知道每步操作所需要的数据，内部自动优化操作，在运行速度和内存开销两方面都很有效果。
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table就是干这事儿的。我们通过这一系列教程，说明这些功能。&lt;/p&gt;
+&lt;p&gt;简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table被设计出来就是为了完成这样的事情。我们通过这一系列教程，说明这些功能。&lt;/p&gt;
 
 &lt;h2 id=&#34;数据:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;数据&lt;/h2&gt;
 
@@ -2034,9 +2034,12 @@ dim(flights)
 
 &lt;h2 id=&#34;介绍:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;介绍&lt;/h2&gt;
 
-&lt;p&gt;在本章中，我们会学习下面两点：&lt;br /&gt;
-1. 基础 － 什么是data.table，它的形式，如何subset行，如何select列，如何按列进行运算。&lt;br /&gt;
-2. 聚合 － 按组聚合的效果。&lt;/p&gt;
+&lt;p&gt;在本章中，我们会学习下面两点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;基础 － 什么是data.table，它的形式，如何subset行，如何select列，如何按列进行运算。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;聚合 － 按组聚合的效果。&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h2 id=&#34;1-基础:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;1.基础&lt;/h2&gt;
 
@@ -2059,16 +2062,16 @@ class(DT$ID)
 
 &lt;p&gt;我们也可以通过as.data.table()将已经存在的对象转化成data.table。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;注意：
-* 不同于data.frames，字符型的列，不会被自动转化成因子。
-* 行号后面有个冒号，用于隔开第一列的内容。
-* 如果数据的条目超过了全局选项datatable.print.nrows所定义的数值（默认是100条），那么只会输出数据最开头和最末尾的5行。就如同上文（读取航班）“数据”的部分。
+&lt;p&gt;注意：&lt;/p&gt;
 
-getOption(&amp;quot;datatable.print.nrows&amp;quot;)
-# [1] 100
-
-* data.table不能设置行的名称。我们会在第三讲中说明原因。
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;不同于data.frames，字符型的列，不会被自动转化成因子。&lt;/li&gt;
+&lt;li&gt;行号后面有个冒号，用于隔开第一列的内容。&lt;/li&gt;
+&lt;li&gt;如果数据的条目超过了全局选项datatable.print.nrows所定义的数值（默认是100条），那么只会输出数据最开头和最末尾的5行。就如同上文（读取航班）“数据”的部分。&lt;br /&gt;
+&lt;code&gt;getOption(&amp;quot;datatable.print.nrows&amp;quot;)&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;# [1] 100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;data.table不能设置行的名称。我们会在第三讲中说明原因。&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&#34;b-形式-data-table增强了什么:3d5b18c834d19c525ed890cfd64b400c&#34;&gt;b) 形式－data.table增强了什么&lt;/h4&gt;
 

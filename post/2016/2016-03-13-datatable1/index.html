@@ -192,7 +192,7 @@
                   <h1 class="post-title">data.table 教程1－data.table 介绍</h1>
 
                   <p class="post-byline">
-                    by  · 2016年03月13日 · 9549 Words ·
+                    by  · 2016年03月13日 · 9559 Words ·
                     ~20min reading time |
 
                   </p>
@@ -229,15 +229,15 @@
 
 <h2 id="使用data-table分析数据:3d5b18c834d19c525ed890cfd64b400c">使用data.table分析数据</h2>
 
-<p>支持操作数据的功能，例如subset、group、update、join等。<br />
-这些功能可以让我们：</p>
+<p>操作数据的功能，例如subset、group、update、join等都有内在的关联。<br />
+保持这些关联的操作可以：</p>
 
 <pre><code>* 通过简洁一致的语法，实行想要的操作，达到目的。
 * 从一系列函数到最终的分析，都没有将所有的操作都对应到函数的负担。能够流畅地执行分析。
 * 精确地知道每步操作所需要的数据，内部自动优化操作，在运行速度和内存开销两方面都很有效果。
 </code></pre>
 
-<p>简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table就是干这事儿的。我们通过这一系列教程，说明这些功能。</p>
+<p>简要的讲，如果你对减小计算复杂度和计算时间有着迫切的需求，那么这个package就是为你量身打造的。data.table被设计出来就是为了完成这样的事情。我们通过这一系列教程，说明这些功能。</p>
 
 <h2 id="数据:3d5b18c834d19c525ed890cfd64b400c">数据</h2>
 
@@ -278,9 +278,12 @@ dim(flights)
 
 <h2 id="介绍:3d5b18c834d19c525ed890cfd64b400c">介绍</h2>
 
-<p>在本章中，我们会学习下面两点：<br />
-1. 基础 － 什么是data.table，它的形式，如何subset行，如何select列，如何按列进行运算。<br />
-2. 聚合 － 按组聚合的效果。</p>
+<p>在本章中，我们会学习下面两点：</p>
+
+<ol>
+<li>基础 － 什么是data.table，它的形式，如何subset行，如何select列，如何按列进行运算。<br /></li>
+<li>聚合 － 按组聚合的效果。</li>
+</ol>
 
 <h2 id="1-基础:3d5b18c834d19c525ed890cfd64b400c">1.基础</h2>
 
@@ -303,16 +306,16 @@ class(DT$ID)
 
 <p>我们也可以通过as.data.table()将已经存在的对象转化成data.table。</p>
 
-<pre><code>注意：
-* 不同于data.frames，字符型的列，不会被自动转化成因子。
-* 行号后面有个冒号，用于隔开第一列的内容。
-* 如果数据的条目超过了全局选项datatable.print.nrows所定义的数值（默认是100条），那么只会输出数据最开头和最末尾的5行。就如同上文（读取航班）“数据”的部分。
+<p>注意：</p>
 
-getOption(&quot;datatable.print.nrows&quot;)
-# [1] 100
-
-* data.table不能设置行的名称。我们会在第三讲中说明原因。
-</code></pre>
+<ul>
+<li>不同于data.frames，字符型的列，不会被自动转化成因子。</li>
+<li>行号后面有个冒号，用于隔开第一列的内容。</li>
+<li>如果数据的条目超过了全局选项datatable.print.nrows所定义的数值（默认是100条），那么只会输出数据最开头和最末尾的5行。就如同上文（读取航班）“数据”的部分。<br />
+<code>getOption(&quot;datatable.print.nrows&quot;)</code><br />
+<code># [1] 100</code></li>
+<li>data.table不能设置行的名称。我们会在第三讲中说明原因。</li>
+</ul>
 
 <h4 id="b-形式-data-table增强了什么:3d5b18c834d19c525ed890cfd64b400c">b) 形式－data.table增强了什么</h4>
 
