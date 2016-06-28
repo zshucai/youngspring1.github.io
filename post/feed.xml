@@ -23,14 +23,14 @@
     </item>
     
     <item>
-      <title>R语言笔记10－数据收集</title>
+      <title>MIT:The Analytics Edge 笔记10－数据收集</title>
       <link>http://youngspring1.github.io/post/2016/2016-06-20-R10/</link>
       <pubDate>Mon, 20 Jun 2016 09:10:39 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-06-20-R10/</guid>
       <description>
 
-&lt;p&gt;汇总了一下，MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 里面，收集到的数据，以及它们的来源。&lt;br /&gt;
+&lt;p&gt;汇总了一下，MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 里面，收集到的数据，以及它们的来源。&lt;br /&gt;
 你也可以在 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/a36e4c3815534ee5965d96974a0ec06a/&#34;&gt;这个页面&lt;/a&gt; 下载到所有跟课程相关的CSV数据、课件、R脚本。&lt;/p&gt;
 
 &lt;h3 id=&#34;unit1:7d081d68d33a6cb2f2159d016a647e43&#34;&gt;Unit1&lt;/h3&gt;
@@ -183,14 +183,14 @@ multivariate El Nino Southern Oscillation index (MEI)数据来自 &lt;a href=&#3
     </item>
     
     <item>
-      <title>R语言笔记09－整数优化</title>
+      <title>MIT:The Analytics Edge 笔记09－整数优化</title>
       <link>http://youngspring1.github.io/post/2016/2016-06-20-R09/</link>
       <pubDate>Mon, 20 Jun 2016 09:10:24 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-06-20-R09/</guid>
       <description>
 
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第九单元的学习记录。&lt;/p&gt;
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第九单元的学习记录。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -213,14 +213,14 @@ multivariate El Nino Southern Oscillation index (MEI)数据来自 &lt;a href=&#3
     </item>
     
     <item>
-      <title>R语言笔记08－线性优化</title>
+      <title>MIT:The Analytics Edge 笔记08－线性优化</title>
       <link>http://youngspring1.github.io/post/2016/2016-06-19-R08/</link>
       <pubDate>Sun, 19 Jun 2016 09:28:58 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-06-19-R08/</guid>
       <description>
 
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第八单元的学习记录。&lt;/p&gt;
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第八单元的学习记录。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -504,14 +504,14 @@ get.variables(AirlineConnecting)
     </item>
     
     <item>
-      <title>R语言笔记07－可视化</title>
+      <title>MIT:The Analytics Edge 笔记07－可视化</title>
       <link>http://youngspring1.github.io/post/2016/2016-05-24-R07/</link>
       <pubDate>Tue, 24 May 2016 09:18:29 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-05-24-R07/</guid>
       <description>
 
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第七单元的学习记录。&lt;/p&gt;
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第七单元的学习记录。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -841,14 +841,14 @@ DayHourCounts$Hour = as.numeric(as.character(DayHourCounts$Var2))
     </item>
     
     <item>
-      <title>R语言笔记06－集群</title>
+      <title>MIT:The Analytics Edge 笔记06－集群</title>
       <link>http://youngspring1.github.io/post/2016/2016-05-18-R06/</link>
       <pubDate>Wed, 18 May 2016 16:40:09 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-05-18-R06/</guid>
       <description>
 
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第六单元的学习记录。&lt;/p&gt;
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第六单元的学习记录。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -987,14 +987,14 @@ image(tumorClusters, axes = FALSE, col=rainbow(k))
     </item>
     
     <item>
-      <title>R语言笔记05－文本分析</title>
+      <title>MIT:The Analytics Edge 笔记05－文本分析</title>
       <link>http://youngspring1.github.io/post/2016/2016-05-10-R05/</link>
       <pubDate>Sat, 14 May 2016 23:19:28 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-05-10-R05/</guid>
       <description>
 
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第五单元的学习记录。&lt;/p&gt;
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第五单元的学习记录。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -1233,14 +1233,14 @@ table(testSparse$Negative, predictRF)
     </item>
     
     <item>
-      <title>R语言笔记04－决策树和随机森林</title>
+      <title>MIT:The Analytics Edge 笔记04－决策树和随机森林</title>
       <link>http://youngspring1.github.io/post/2016/2016-05-10-R04/</link>
       <pubDate>Tue, 10 May 2016 19:44:08 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-05-10-R04/</guid>
       <description>
 
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第四单元的学习记录。&lt;/p&gt;
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第四单元的学习记录。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -1443,14 +1443,14 @@ PredictTest = predict(ClaimsTree, newdata = ClaimsTest, type = &amp;quot;class&a
     </item>
     
     <item>
-      <title>R语言笔记03－指数回归</title>
+      <title>MIT:The Analytics Edge 笔记03－指数回归</title>
       <link>http://youngspring1.github.io/post/2016/2016-04-26-R03/</link>
       <pubDate>Tue, 26 Apr 2016 11:52:13 +0800</pubDate>
       
       <guid>http://youngspring1.github.io/post/2016/2016-04-26-R03/</guid>
       <description>
 
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x&lt;/a&gt; 第三单元的学习记录。&lt;/p&gt;
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第三单元的学习记录。&lt;/p&gt;
 
 &lt;hr /&gt;
 

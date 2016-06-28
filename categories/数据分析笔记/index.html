@@ -12,38 +12,40 @@
         }
     }
   </script>
-  <title>R语言中的class()、mode()和typeof()的区别 - 行行重行行</title>
+  <title>数据分析笔记 - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="keywords" content="r,class,mode,typeof,">
-<meta name="description" content="今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？ 定义 mode &emsp;The (Storage) Mode of an Object Description &emsp;Get or set the type or storage mode of an object. typeof &emsp;The Type of an">
+
+<meta name="description" content="数据分析笔记">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="R语言中的class()、mode()和typeof()的区别 - 行行重行行">
-<meta itemprop="description" content="今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？ 定义 mode &emsp;The (Storage) Mode of an Object Description &emsp;Get or set the type or storage mode of an object. typeof &emsp;The Type of an">
+<meta itemprop="name" content="数据分析笔记 - 行行重行行">
+<meta itemprop="description" content="数据分析笔记">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="R语言中的class()、mode()和typeof()的区别 - 行行重行行" />
+<meta property="og:title" content="数据分析笔记 - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-03-08-r-class/" />
+<meta property="og:url" content="http://youngspring1.github.io/categories/E695B0E68DAEE58886E69E90E7AC94E8AEB0/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？ 定义 mode &emsp;The (Storage) Mode of an Object Description &emsp;Get or set the type or storage mode of an object. typeof &emsp;The Type of an">
+<meta property="og:description" content="数据分析笔记">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="R语言中的class()、mode()和typeof()的区别 - 行行重行行">
-<meta name="twitter:description" content="今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？ 定义 mode &emsp;The (Storage) Mode of an Object Description &emsp;Get or set the type or storage mode of an object. typeof &emsp;The Type of an">
+<meta name="twitter:title" content="数据分析笔记 - 行行重行行">
+<meta name="twitter:description" content="数据分析笔记">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/post/2016/2016-03-08-r-class/">
-  <link rel='shortlink' href="http://youngspring1.github.io/post/2016/2016-03-08-r-class/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/categories/E695B0E68DAEE58886E69E90E7AC94E8AEB0/">
+  <link rel='shortlink' href="http://youngspring1.github.io/categories/E695B0E68DAEE58886E69E90E7AC94E8AEB0/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
+ <link href="http://youngspring1.github.io//feed.xml" rel="alternate" type="application/rss+xml" title="行行重行行" />
+
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" id="human-style-css2" href="http://youngspring1.github.io/wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
 <link rel="stylesheet" id="responsive-css" href="http://youngspring1.github.io/wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
@@ -63,7 +65,8 @@
 
 </head>
 
-<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<body class="archive category col-3cm full-width topbar-enabled chrome">
+
 <div id="wrapper">
   <header id="header">
 
@@ -170,117 +173,168 @@
         <div class="main-inner group">
           <section class="content">
             <div class="page-title pad group">
-              <ul class="meta-single group">
-                
-                <li class="category">
-                  <a href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/" rel="category tag">新知</a>
-                </li>
-                
-              </ul>
+              <h1><i class="fa fa-folder-open"></i>Category: <span>数据分析笔记</span></h1>
             </div>
-
             <div class="pad group">
-
-              <article
-                  class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
-                <div class="post-inner group">
-
-                  <h1 class="post-title">R语言中的class()、mode()和typeof()的区别</h1>
-
-                  <p class="post-byline">
-                    by  · 2016年03月08日 · 426 Words ·
-                    ~1min reading time |
-
-                  </p>
-
-                  <div class="clear"></div>
-
-                  <div class="entry">
-                    <div class="entry-inner">
-                      
-                      
-
-<p>今天对R语言中的这三个函数产生了疑惑，为什么有时候它们的运行结果一样，有时候却又不一样？</p>
-
-<h3 id="定义:4392bb40a36ba9fbdbf9a9669f2b4fbf">定义</h3>
-
-<p><strong>mode</strong><br />
-&emsp;The (Storage) Mode of an Object<br />
-<strong>Description</strong><br />
-&emsp;Get or set the type or storage mode of an object.</p>
-
-<p><strong>typeof</strong><br />
-&emsp;The Type of an Object<br />
-<strong>Description</strong><br />
-&emsp;typeof determines the (R internal) type or storage mode of any object</p>
-
-<p><strong>class</strong><br />
-&emsp;Object Classes<br />
-<strong>Description</strong><br />
-&emsp;R possesses a simple generic function mechanism which can be used for an object-oriented style of programming.<br />
-&emsp;Method dispatch takes place based on the class of the first argument to the generic function.</p>
-
-<h3 id="解释:4392bb40a36ba9fbdbf9a9669f2b4fbf">解释</h3>
-
-<p>在R里面，每一个对象都有一个mode和一个class。<br />
-前者表示对象在内存中是如何存储的。 (numeric, character, list and function)<br />
-后者表示对象的抽象类型。</p>
-
-<pre><code>d &lt;- data.frame(V1=c(1,2))
-class(d)
-# [1] &quot;data.frame&quot;
-mode(d)
-# [1] &quot;list&quot;
-typeof(d)
-# list
-
-</code></pre>
-
-<p>通过上面的例子，我们可以知道，data frame这种类型，在内存中作为list被存储，但是它们被包装成data frame。<br />
-对于某个函数的参数，它的类型是data frame，却不能说是list。</p>
-
-<p>再来看mode和typeof。<br />
-mode和typeof通常返回同样的值，但也有例外。</p>
-
-<pre><code>typeof(c(1,2))
-# [1] &quot;double&quot;
-mode(c(1,2))
-# [1] &quot;numeric&quot;
-
-</code></pre>
-
-<p>历史原因啦。R语言由S语言发展而来。<br />
-mode，为了和S语言兼容，返回R的对象的模式。<br />
-typeof是R语言特有的，返回一个R的对象的类型。（哎呀，解释不清楚啦）</p>
-
-<h3 id="参考:4392bb40a36ba9fbdbf9a9669f2b4fbf">参考</h3>
-
-<p>1.<a href="http://stackoverflow.com/questions/6258004/r-types-and-classes-of-variables">http://stackoverflow.com/questions/6258004/r-types-and-classes-of-variables</a><br />
-2.<a href="http://stats.stackexchange.com/questions/3212/mode-class-and-type-of-r-objects">http://stats.stackexchange.com/questions/3212/mode-class-and-type-of-r-objects</a></p>
-
-                      
-                    </div>
-                    <div style="border: 1px dashed #e0e0e0; padding: 10px 10px 10px 10px; background-color: #fffeee; background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-size: auto auto; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
-
-                        <div>
-
-                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016/2016-03-08-r-class/">http://youngspring1.github.io/post/2016/2016-03-08-r-class/</a>
-                            <br />
-                            文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  
-
-                </div>
+              
                 
-              </article>
+                
+                
               
-              <div class="clear"></div>
-              
-              
-              
+              <div class="post-list group">
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年06月20日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-06-20-R10/" rel="bookmark" title="MIT:The Analytics Edge 笔记10－数据收集">MIT:The Analytics Edge 笔记10－数据收集</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年06月20日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-06-20-R09/" rel="bookmark" title="MIT:The Analytics Edge 笔记09－整数优化">MIT:The Analytics Edge 笔记09－整数优化</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年06月19日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-06-19-R08/" rel="bookmark" title="MIT:The Analytics Edge 笔记08－线性优化">MIT:The Analytics Edge 笔记08－线性优化</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年05月24日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-05-24-R07/" rel="bookmark" title="MIT:The Analytics Edge 笔记07－可视化">MIT:The Analytics Edge 笔记07－可视化</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年05月18日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-05-18-R06/" rel="bookmark" title="MIT:The Analytics Edge 笔记06－集群">MIT:The Analytics Edge 笔记06－集群</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年05月14日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-05-10-R05/" rel="bookmark" title="MIT:The Analytics Edge 笔记05－文本分析">MIT:The Analytics Edge 笔记05－文本分析</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年05月10日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-05-10-R04/" rel="bookmark" title="MIT:The Analytics Edge 笔记04－决策树和随机森林">MIT:The Analytics Edge 笔记04－决策树和随机森林</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年04月26日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-04-26-R03/" rel="bookmark" title="MIT:The Analytics Edge 笔记03－指数回归">MIT:The Analytics Edge 笔记03－指数回归</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年04月23日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-04-23-R02/" rel="bookmark" title="MIT:The Analytics Edge 笔记02－线性回归">MIT:The Analytics Edge 笔记02－线性回归</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+  <div class="post-row">
+    <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-date">2016年04月18日</p>
+  <p class="post-title-small"><a href="http://youngspring1.github.io/post/2016/2016-04-18-R01/" rel="bookmark" title="MIT:The Analytics Edge 笔记01－R语言入门">MIT:The Analytics Edge 笔记01－R语言入门</a></p>
+</div>
+
+  </div>
+  
+</article>
+
+
+  </div>
+  
+</div>
+
             </div>
           </section>
           <div class="sidebar s1">
@@ -314,26 +368,6 @@ typeof是R语言特有的，返回一个R的对象的类型。（哎呀，解释
 
 </div>
 
-    <ul class="post-nav group">
-      <li class="next">
-        
-        <a href="http://youngspring1.github.io/post/2016/2016-03-08-thought/" rel="next">
-          <i class="fa fa-chevron-right"></i>
-          <strong>Next post</strong>
-          <span>大部分时候都是目光短浅的动物</span>
-        </a>
-        
-      </li>
-      <li class="previous">
-        
-        <a href="http://youngspring1.github.io/post/2016/2016-03-12-designer/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>写给大家看的设计书</span>
-        </a>
-        
-      </li>
-    </ul>
     <div id="search-2" class="widget widget_search"><h3>Search</h3>
       <form method="get" class="searchform themeform" action="https://www.google.com/search">
         <div>
@@ -342,7 +376,6 @@ typeof是R语言特有的，返回一个R的对象的类型。（哎呀，解释
       </form>
     </div>
   </div>
-  
 </div>
 
           <div class="sidebar s2">

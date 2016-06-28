@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>行行重行行</title>
-    <link>http://youngspring1.github.io/</link>
-    <description>Recent content on 行行重行行</description>
+    <title>数据分析笔记 on 行行重行行</title>
+    <link>http://youngspring1.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 数据分析笔记 on 行行重行行</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 21 Jun 2016 22:43:57 +0800</lastBuildDate>
-    <atom:link href="http://youngspring1.github.io/feed/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>一张图看懂开源软件许可证区别</title>
-      <link>http://youngspring1.github.io/post/2016/2016-06-21-lisence/</link>
-      <pubDate>Tue, 21 Jun 2016 22:43:57 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-06-21-lisence/</guid>
-      <description>&lt;p&gt;妈妈再也不担心非法使用别人的代码了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160621-OPLicenses2.jpg&#34; alt=&#34;开源软件许可证区别&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
+    <lastBuildDate>Mon, 20 Jun 2016 09:10:39 +0800</lastBuildDate>
+    <atom:link href="http://youngspring1.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/feed/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>MIT:The Analytics Edge 笔记10－数据收集</title>
@@ -360,146 +348,6 @@ solve(AirlineConnecting)
 get.objective(AirlineConnecting)
 get.variables(AirlineConnecting)
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>乌托邦</title>
-      <link>http://youngspring1.github.io/post/2016/2016-06-17-life/</link>
-      <pubDate>Fri, 17 Jun 2016 21:22:08 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-06-17-life/</guid>
-      <description>&lt;p&gt;今天早上读到&lt;a href=&#34;http://www.jiemian.com/article/209404.html&#34;&gt;两个乌托邦人&lt;/a&gt;这篇文章，下面这段很有感触。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;赛斯的故事是关于一个人寻找到自己在这世界上的位置。我想起来老舍说，每人在这世间，就像八百尊罗汉，各有各的位置。你实在不能像对桌上的尘土一样，随手拿抹布就把我抹掉了。太平洋也真是座温情的海洋。它允许一个奇葩，这样合理地长大，实现梦想，拥有书、拥有沿海顶楼的好风光、拥有盛满三文鱼的冰箱。这无限孤独又无限美满的人生。
-
-每当我怀疑，我的人生究竟有没有意义的时候，我就会想想赛斯这奇葩。我会诧异如何从一开始每个人想要的都只不过是一个幸福的人生。结果走着走着，就变成了一个“独上高楼、高处不胜寒”的人生，变成了“十年生死两茫茫”的人生，变成了日复一日、年复一年，期待着总有一天能够赢取回报、得偿所愿，然后再终于快乐起来的人生。
-
-我们等下去的时候，他蹦跶着跳进海里捞螃蟹，不知不觉就跑远了。我有些羡慕。
-
-我逐渐发觉心理学以平均值导出关于人性若干结论的好笑之处：人与人之间的差异如此巨大，使得一千个人与一个人的样本，距离真理都同样远。曾有一万人的数据表明勤奋带来成功，再加上三百回研究支持金钱与幸福的钟型曲线关系，可世上奇葩那样多，这些适用于群体的结论就必定不可能与任何一个个体完美匹配。这便是人类群体与小白鼠的区别，而赛斯最早看清。
-
-他让我看到，这样活过一生也OK。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一个人非常立体的生活，在不那么熟悉的眼里都被扁平化了。好比看一场比赛的直播，过程惊心动魄，这是亲身体验；而晚间新闻中，却只有几句湖带过，这是别人眼里的我。更加可怕的是，普通人的一生，投影到历史上，简直微不足道。所以，还是把自己的生活过精彩吧。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2016六月 孔庙泰山行记</title>
-      <link>http://youngspring1.github.io/post/2016/2016-06-17-taishan/</link>
-      <pubDate>Fri, 17 Jun 2016 20:53:25 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-06-17-taishan/</guid>
-      <description>
-
-&lt;h4 id=&#34;孔庙孔府孔林:93cd1a03fb24cb10fd9ad355849ea278&#34;&gt;孔庙孔府孔林&lt;/h4&gt;
-
-&lt;p&gt;可能是宗教建筑意外，中国唯一历经各朝战火却能幸存的建筑了。建筑从宋到民国，并且在末尾一个小型的博物馆中看到了乙瑛碑，意外收获。&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160611_sankong.jpg&#34; alt=&#34;三孔邮戳&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;泰山:93cd1a03fb24cb10fd9ad355849ea278&#34;&gt;泰山&lt;/h4&gt;
-
-&lt;p&gt;传统的红门线路，2个多小时到南天门。虽然不是特别辛苦，但是人挤人真的很无聊，而且并没有多少风景可以看。&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160617-taishan.JPG&#34; alt=&#34;五岳独尊&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;泰山石刻:93cd1a03fb24cb10fd9ad355849ea278&#34;&gt;泰山石刻&lt;/h4&gt;
-
-&lt;p&gt;在岱庙见到了向往已久的李斯泰山石刻（仅存9个字），以及明朝的临摹（还有十几个字），原件据说是清朝时从山顶的水池中找到的。真是唏嘘历史的变迁。&lt;/p&gt;
-
-&lt;h4 id=&#34;日常生活:93cd1a03fb24cb10fd9ad355849ea278&#34;&gt;日常生活&lt;/h4&gt;
-
-&lt;p&gt;沉醉于旅途中这样的瞬间，窥见别人的日常生活。许久没有品尝到的人间烟火。&lt;br /&gt;
-另外一个捷径是逛当地的菜市场，婺源清华镇、绩溪、大同、苏州……明显能感受到勃勃的生机。&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160610_band.jpg&#34; alt=&#34;日常生活&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>训练专注力</title>
-      <link>http://youngspring1.github.io/post/2016/2016-06-15-focus/</link>
-      <pubDate>Wed, 15 Jun 2016 20:28:54 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-06-15-focus/</guid>
-      <description>
-
-&lt;h4 id=&#34;1-专注的状态:067ea3473217959ce25f78341d81828e&#34;&gt;1.专注的状态&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;流体验，指的是当人完全专注地投入一项事业中时，可以从中体验到的极度的快乐。沉浸在这种快乐当中的感受与一般的高兴不同，它是一种难得的高峰体验。人们在这时注意力会完全集中在当下的事物上，感觉不到自我的存在，感觉时间在不知不觉中飞逝，创造力和灵感得到激发，内心非常专注而平静，没有任何冲突，并且从自己所从事的事物中获得极大的满足。所谓的“废寝忘食”，就是沉浸在心流体验中的人们会出现的忘我状态。经常拥有这种高峰体验，会让人的内心得到升华，工作和生活进入到更高的境界，也是人充分实现自身潜能的一个重要途径。
-
-这种高峰体验的出现又一些必要条件：首先就是需要人能毫无杂念地投入，全神贯注；另外，需要所做的事情和个人的能力很好地匹配，若是太过简单，人容易感觉无聊，太过复杂，人则容易感觉受挫；第三，人需要能在这个过程中不断地取得进展，比较明确的目标和及时的反馈都很重要，可以帮助人不断地调整自己的行动。有趣的是，人通常都是在非常积极地为事物努力的时候才会体验到这种极度的快乐。如果只是从事一些被动的活动，比如看电视等，哪怕它们会让人愉快，也不会激发心流。除此之外，精力涣散和心不在焉也会减少人们从事某项事物中获得的乐趣。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;2-进入状态-保持状态:067ea3473217959ce25f78341d81828e&#34;&gt;2.进入状态／保持状态&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;程序员们都知道，任务切换需要耗费许多额外的花销，通俗地来讲，首先需要保存当前上下文以便下次能够顺利切换回来，然后要加载目标任务的上下文。如果一个系统不停地在多个任务之间来回倒腾，就会耗费大量的时间在上下文切换上，无形中浪费很多的时间。
-
-相比之下，如果只做一件任务，就不会有此损失。这就是为什么专注的人比不专注的人时间利用效率高得多的原因。任务切换的暗时间看似非常不明显，甚至很多人认为“多任务”是件很好的事情（有时候的确是），但日积月累起来就会发现，消耗在切换上的时间越来越多。
-
-另外，大脑开始一件任务的时候必须要有一定时间来“热身”，这个时间因人而异，并且可以通过练习来改变。举个例子，你看了一会书之后，忽然感到一阵无聊，忍不住打开浏览器，十分钟后你想起来还要继续看书，但要回复到当时理想的状态，却需要一段时间来努力去集中精力，把记忆中相关的知识全都激活起来，从而才能进入“状态”，因为你上了十分钟网之后这些记忆已经被抑制了。如果这个“热身”状态需要一刻钟，那么看似十分钟的上网闲逛其实就花费了二十五分钟。
-
-如果阅读的例子还不够生动，对于程序员来说其实有更好的例子：你写程序写得正high，忽然被叫去开了一通会，写到一半的代码搁在那儿。等你开完会回来你需要多久能够重新进入状态？又或者，你正在调试程序，你已经花了二十分钟的时间把与这个bug可能相关的代码前前后后都理解了一遍，心中构建了一个大致的地图，就在这时，呃，你又被叫去开了个会(:D)，开完会回来，可想而知，得花上一些时间来回想一下刚刚弄清的东西了。
-
-迅速进入状态的能力是可以锻炼的，根据我个人的经验，至少可以缩短到3-5分钟。但要想完全进入状态，却是很难在这么短的时间实现的。所谓完全进入状态，举个例子：你看了3个小时的书，或者调试了半个小时的程序之后，往往满脑子都是相关的东西，所有这些知识都处在活跃状态，换言之你大脑中所有相关的记忆神经网络都被激活了，要达到这样一种忘记时间流逝的“沉浸”状态（心理学上叫做“流体验”），不是三两分钟的事情。而一旦这种状态被破坏，无形间效率就会大打折扣。这也是为什么我总是倾向于创造大块的时间来阅读重要的东西，因为这样有利于“沉浸”进去，使得新知识可以和大脑中与其相关的各种既有的知识充分融合，关联起来，后者对于深刻的记忆非常有帮助。
-
-要充分利用暗时间，不仅要能够迅速进入状态，另一个很重要的习惯就是能够保持状态多久（思维体力）。
-
-能够迅速进入专注状态，以及能够长期保持专注状态，是高效学习的两个最重要习惯。
-值得庆幸的是，专注力和耐力与才能不同，可以通过训练于后天获得可以不断提升其资质。只要每天坐在书桌前，训练将意识倾注于一点，自然就能掌握。这同前面写过的强化肌肉的做法十分相似。每天不间断地写作集中意识去工作，这些非做不可----将这样的信息持续不断地传递给身体系统，让它牢牢地记住，再悄悄移动刻度，一点一点将极限值将上提升，注意不让身体发觉。这跟每天坚持慢跑，强化肌肉，逐步打造出跑步者的体型，乃是异曲同工。给它刺激，持续。再给它刺激，持续。这一过程当然需要耐心，不过一定会得到相应的回报。
-
-优秀的侦探小说家雷蒙德.钱德勒在私信中说过：“哪怕没有什么东西可写，我私吞也肯定在书桌前坐上好几个小时，独自一人集中精力。”他这么做是为了什么，我完全能理解。钱德勒通过这么做，来提高职业作家必需的膂力，静静地提高士气。这样一种日常训练对他必不可缺。
-
-我认为写作长篇小说是一种体力劳动。写文章属于脑力劳动，然而写出一本大部头来，更近于体力劳动。诚然，写书并不需要举起沉重的物体，也不需要飞速地奔来跑去，高高地蹿上跳下。世间的很多人似乎只看到表面，将作家的工作视为宁静而更改的书斋劳动，以为有了足以端起一只咖啡杯的力量，就能写小说了。试它一试，立即就会明白，写小说并非那么安逸的工作。坐在书桌前，将神经如同激光束一般集于一点，动用想象力，从“无”的地平线上催生出故事来，挑选出一个个正确的词语，让所有的流程准确无误----这样一种工作，与一般人想象的相比，更为长久地需要远为巨大的能量。这固然不必运动身体，劳筋动骨的劳动却在体内热火朝天地展开。固然，思索问题的是脑子，小说家却需披挂着叫“故事”的全副装备，动用全身进行思考，这要求作家彻底地驱使----在许多时候是奴役----肢体能力。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;3-排除干扰:067ea3473217959ce25f78341d81828e&#34;&gt;3.排除干扰&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;干吗还会欣羡我能坐稳在咖啡馆里呢？到咖啡馆原本就为着隔离而来，隔离自己的家，隔离善良的声音，隔离掉所有熟悉、舒适、温暖的东西；正在写长篇的小说家林俊颖一人独居，如今却也冲出到咖啡馆来，他笑着说，书架一直在那里叫你，你一碰到困难，借口翻翻资料，寻找感觉，接下来你就发现自己又埋进某本书、某部小说里两小时了。所以，所有像回事的作家最终几乎都在早上书写，趁着整个世界才刚醒来，还跟你暂时处在一种相互隔离的状态，你还有能力把它当在外头——就连海明威这种浮夸好热闹的人都告诉我们，在早晨进入写作之前，不做其他任何有企图心的事；纳博科夫一致工作到下午，知道黄昏散步时才找报纸看，才放世界溜进来；在淡水写作的舞鹤甚至不读报，他只在喂食镇上街猫时顺便瞄一眼头条，知道没发生战争，末日还没来就可以了。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;4-养成习惯:067ea3473217959ce25f78341d81828e&#34;&gt;4.养成习惯&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;书中主人翁流落赌城，在绝望时刻偶然从一个老头手上得到一个必然赢钱的赌方，但这个最后一定大赢的赌方非常诡异非常磨人，它必须先挨过一定阶段的输钱，只能输不能赢，而且明知是输亦一步也不能省——写小说的格林迷朱天心尤其喜欢这个例子，她在新小说顺利开笔之前，一样总要经历这同样的短则数日长可数星期的枯坐思索（在小说题材乃至内容已经完全锁定备妥的情况下），明明知道一定空手而回仍得每天带着书、草稿本和笔到写作的咖啡馆报到，她出门时的口头禅便是：“去输钱”。
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>善哉行</title>
-      <link>http://youngspring1.github.io/post/2016/2016-06-06-lonely/</link>
-      <pubDate>Mon, 06 Jun 2016 22:46:00 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-06-06-lonely/</guid>
-      <description>
-
-&lt;h2 id=&#34;善哉行:fc69331b0f799d0bad7de7a3734ff807&#34;&gt;善哉行&lt;/h2&gt;
-
-&lt;h4 id=&#34;曹丕:fc69331b0f799d0bad7de7a3734ff807&#34;&gt;曹丕&lt;/h4&gt;
-
-&lt;p&gt;上山采薇，薄暮苦饥。&lt;/p&gt;
-
-&lt;p&gt;溪谷多风，霜露沾衣。&lt;/p&gt;
-
-&lt;p&gt;野雉群雊，猿猴相追。&lt;/p&gt;
-
-&lt;p&gt;还望故乡，郁何垒垒！&lt;/p&gt;
-
-&lt;p&gt;高山有崖，林木有枝。&lt;/p&gt;
-
-&lt;p&gt;忧来无方，人莫之知。&lt;/p&gt;
-
-&lt;p&gt;人生如寄，多忧何为？&lt;/p&gt;
-
-&lt;p&gt;今我不乐，岁月如驰。&lt;/p&gt;
-
-&lt;p&gt;汤汤川流，中有行舟。&lt;/p&gt;
-
-&lt;p&gt;随波转薄，有似客游。&lt;/p&gt;
-
-&lt;p&gt;策我良马，被我轻裘。&lt;/p&gt;
-
-&lt;p&gt;载驰载驱，聊以忘忧。&lt;/p&gt;
 </description>
     </item>
     
@@ -1174,65 +1022,6 @@ table(testSparse$Negative, predictRF)
     </item>
     
     <item>
-      <title>眼前：漫游在《左传》的世界</title>
-      <link>http://youngspring1.github.io/post/2016/2016-05-10-zuozhuan/</link>
-      <pubDate>Tue, 10 May 2016 23:20:31 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-05-10-zuozhuan/</guid>
-      <description>&lt;p&gt;后人看历史的时候，不可避免地站在上帝视角思考问题。&lt;br /&gt;
-读史记，一个人将来能够成就什么，从一开始就预设好了。&lt;br /&gt;
-又或者大部分历史书，一个王朝如何兴起、成长、强盛、衰落，仿佛就是按照剧本来演的。&lt;/p&gt;
-
-&lt;p&gt;而实际上，当时的人，哪知道后来会发生什么，哪知道做了某件事情的结果，甚至不知道大国的另外一个角落，此刻发生了什么。&lt;/p&gt;
-
-&lt;p&gt;就好像看比赛直播，心情各种复杂，岂止是晚间新闻报道里三言两语能够概括的。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;亚马逊链接：&lt;a href=&#34;https://www.amazon.cn/gp/product/B01AU85S80/ref=od_aui_detailpages00?ie=UTF8&amp;amp;psc=1&#34;&gt;眼前：漫游在《左传》的世界&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2016五月 西安洛阳行记</title>
-      <link>http://youngspring1.github.io/post/2016/2016-05-10-xianluoyang/</link>
-      <pubDate>Tue, 10 May 2016 23:16:19 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-05-10-xianluoyang/</guid>
-      <description>
-
-&lt;h4 id=&#34;西安印象:bffe2889357b458c59c153b34307fc87&#34;&gt;西安印象&lt;/h4&gt;
-
-&lt;p&gt;很热闹的城市，超多游人。&lt;br /&gt;
-吃的东西，还是自己找小巷子更好。&lt;br /&gt;
-市区或者有名的文保单位明显不及山西的高质量。去了大雁塔50门票+30登塔，顿时发现佛光寺就算收150页不算贵。（啊啊啊，可怜我硬盘数据丢失，两三年的照片都没了）&lt;br /&gt;
-最后发张图证明来过西安：&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160522-dyt.JPG&#34; alt=&#34;大雁塔&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;洛阳印象:bffe2889357b458c59c153b34307fc87&#34;&gt;洛阳印象&lt;/h4&gt;
-
-&lt;p&gt;超棒的小城市，特别喜欢当地人生活的小巷子，特别有人气！（当然让我自己去住我是不愿意的）&lt;br /&gt;
-可为什么大街上都是医院和卖成人用品的店呢？&lt;br /&gt;
-白马寺和龙门石窟都超赞！&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160522-bms.JPG&#34; alt=&#34;白马寺&#34; /&gt;&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160522-lmsk.JPG&#34; alt=&#34;龙门石窟&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;郑州印象:bffe2889357b458c59c153b34307fc87&#34;&gt;郑州印象&lt;/h4&gt;
-
-&lt;p&gt;脏乱差。要不是这次河南博物院大修，我是不愿意来第二次的。&lt;/p&gt;
-
-&lt;h4 id=&#34;多余的话:bffe2889357b458c59c153b34307fc87&#34;&gt;多余的话&lt;/h4&gt;
-
-&lt;p&gt;那些被技术淘汰的事物：旅游地图／景区照相&lt;br /&gt;
-以前到达一个地方，总会立马买一张当地的地图。是的，对我来说，这就是外部世界的入口。而如今大家早已经用手机地图了，在火车站／汽车站，还是能够遇到不少这样的老奶奶，举着地图，“5元一份”，看到这样的情景总是很纳闷，难道没有子女提醒他们，现在大部分人已经不买这个了吗？&lt;br /&gt;
-同样还有景区快照。在以前数码相机还没有普及的时候，无可厚非。但是现在还大规模的打出“5分钟快照”的旗号，你们的世界就不更新吗？除非占据了特别好的机位（只有这个点才能拍到全景，而且我占了，旅游者自己拍不到），或者抓住了时机（比如坐过山车时）。&lt;/p&gt;
-
-&lt;p&gt;停车场&lt;br /&gt;
-秦始皇兵马俑附近农家跑到马路上招揽停车的游人，口号是“只要5块，景区10块”。你们其实没有想到，他们不在乎这五块十块钱，他们在乎的是能不能少走两步路，不谢。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>MIT:The Analytics Edge 笔记04－决策树和随机森林</title>
       <link>http://youngspring1.github.io/post/2016/2016-05-10-R04/</link>
       <pubDate>Tue, 10 May 2016 19:44:08 +0800</pubDate>
@@ -1604,6 +1393,521 @@ set.seed(144)
 vars.for.imputation = setdiff(names(loans), &amp;quot;not.fully.paid&amp;quot;)
 imputed = complete(mice(loans[vars.for.imputation]))
 loans[vars.for.imputation] = imputed
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MIT:The Analytics Edge 笔记02－线性回归</title>
+      <link>http://youngspring1.github.io/post/2016/2016-04-23-R02/</link>
+      <pubDate>Sat, 23 Apr 2016 15:19:39 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-04-23-R02/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第二单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;linear-regression:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;Linear Regression&lt;/h2&gt;
+
+&lt;p&gt;第二单元的主题是线性回归。&lt;/p&gt;
+
+&lt;h3 id=&#34;1-理论:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;1.理论&lt;/h3&gt;
+
+&lt;p&gt;一元线性回归公式：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?y^i=\beta_0+\beta_1x^i+\epsilon^i&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;其中x是自变量independent variable，y是因变量dependent variable。&lt;br /&gt;
+beta是相关系数coefficient，epsilon是误差error。&lt;/p&gt;
+
+&lt;p&gt;为了判断线性回归的效果，我们有如下检验标准：&lt;/p&gt;
+
+&lt;p&gt;1.SSE（sum of squared errors）&lt;br /&gt;
+注意这里的误差是实际值相对于预测值的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?SSE = \sum_{i=1}^{n}\epsilon_i^2&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.SST （total sum of square）&lt;br /&gt;
+公式同上。但这里的误差是实际值相对于baseline的。baseline是因变量的平均值。&lt;br /&gt;
+所以有 0 &amp;lt;= SSE &amp;lt;= SST 。&lt;/p&gt;
+
+&lt;p&gt;3.RMSE（root mean square error）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?RMSE = \sqrt\frac{SSE}{n}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.R平方&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?R^2 = 1 - \frac{SSE}{SST}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;R平方越接近1越好。&lt;/p&gt;
+
+&lt;p&gt;多元线性回归公式：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?y^i = \beta_0 + \beta_1x_1^i + \beta_2x_2^i + \ldots + \beta_nx_n^i + \epsilon^i&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;所有数据分析，都要经历 training－test－predict 这三个过程。
+在接下来的例子中，我们介绍 建模－评估 这前两个过程。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;补充一个relative error的公式：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?relative\;error =  \frac{observed\;value - estimated\,value}{observed\;value}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;2-0-事前整理:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;2.0 事前整理&lt;/h5&gt;
+
+&lt;p&gt;2.0.1 去除空值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 如果数据中包含空值
+DF ＝ na.omit(DF)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.0.2 reference level&lt;br /&gt;
+有些列时字符型的，它们无法进行计算。&lt;br /&gt;
+如果某列的因子不算多，我们可以把这一列变换成多个可以用于计算的列。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# 假设DF$colr有因子 &amp;quot;Red&amp;quot;4次, &amp;quot;Blue&amp;quot;3次, &amp;quot;Yellow&amp;quot;2次
+DF$colr = relevel(DF$colr, &amp;quot;red&amp;quot;)
+
+# 效果是，DF$colr 这一列不见了
+# 增加了两列 DF$colrBlue 和 DF$colrYellow
+# 原先 DF$colr == &amp;quot;Red&amp;quot; 的那些行，它们 colrBlue 和 colrYellow 的值都是0
+# 原先 DF$colr == &amp;quot;Blue&amp;quot; 的那些行，它们 colrBlue=1, colrYellow=0
+# 原先 DF$colr == &amp;quot;Yellow&amp;quot; 的那些行，它们 colrBlue=0, colrYellow=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;2-建立回归模型:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;2.建立回归模型&lt;/h3&gt;
+
+&lt;p&gt;建模使用lm()函数。&lt;br /&gt;
+DF是保存学习数据的data.frame。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;model = lm(y ~ x1 + x2 + ... +xn, data = DF)
+# y不要写成 DF$y
+# x1也不要写成 DF$x1
+# 否则，后面做预测predict()的时候，DFTest代入会报warning
+
+# 除了y列以外所有列
+model = lm(y ~ ., data = DF)
+
+# 误差 model$residuals
+SSE = sum(model$residuals^2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;随便看个结果吧&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; summary(model)
+
+Call:
+lm(formula = Price ~ HarvestRain + WinterRain, data = wine)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.0933 -0.3222 -0.1012  0.3871  1.1877 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+(Intercept)  7.865e+00  6.616e-01  11.888 4.76e-11 ***
+HarvestRain -4.971e-03  1.601e-03  -3.105  0.00516 ** 
+WinterRain  -9.848e-05  9.007e-04  -0.109  0.91392    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5611 on 22 degrees of freedom
+Multiple R-squared:  0.3177,    Adjusted R-squared:  0.2557 
+F-statistic: 5.122 on 2 and 22 DF,  p-value: 0.01492
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Call表示建模使用的语句。&lt;br /&gt;
+Residuals表示误差。&lt;br /&gt;
+Coefficients表示系数，就是公式里面的beta。&lt;br /&gt;
+Estimate的第一行是常数beta0，第二行是第一个自变量的系数beta1，第三行是第二个自变量的系数beta2，后面类推。&lt;br /&gt;
+t value越大越好&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?{t\,value} = \frac{Estimate}{Std. Error}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pr(&amp;gt;|t|) 和t value相反，越小越好。&lt;br /&gt;
+最后一列星星越多越好。&lt;br /&gt;
+三短横下面这行解释了星星的含义。&lt;br /&gt;
+Multiple R-squared就是R平方，越接近1越准确。&lt;/p&gt;
+
+&lt;h3 id=&#34;3-评估:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;3.评估&lt;/h3&gt;
+
+&lt;p&gt;对于刚过简历的模型，我们使用测试数据来评估一下准确度。&lt;br /&gt;
+model就是上文建立的模型。&lt;br /&gt;
+DFTest是测试数据，它的结构和上文的DF一样。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;predict = predict(model, newdata = DFTest)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个命令的返回值是 DFTest$Price 的&lt;strong&gt;预测&lt;/strong&gt;结果。你可以跟 DFTest$Price 的&lt;strong&gt;实际&lt;/strong&gt;结果相比较，计算SSE、RMSE、R平方等等来衡量对测试数据的预测的准确性。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SSE = sum( (DFTest$Price - predict)^2 )
+SST = sum( (DFTest$Price - mean(DF$Price)^2 )
+R2 = 1 - SSE/SST
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;4-correlation:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;4.Correlation&lt;/h3&gt;
+
+&lt;p&gt;线性相关性&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cor(var1, var2)
+# 也可以考察整个DF中，每两列的线性相关性
+cor(DF)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;返回值是斜率。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;建立线性回归模型的时候，应该去掉相关性比较高的列。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;补充知识a-棒球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识A－棒球统计术语&lt;/h3&gt;
+
+&lt;p&gt;完全不懂棒球啊，一开始摸不着头脑。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;缩写&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;原文&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;中文&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;RS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Run Scores&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;跑分，得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;RA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Run Allowed&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失分，对手得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OBP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;On-Base Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;上垒率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OOBP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent On-Base Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对手上垒率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;SLG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Slugging Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;长打率，击中率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;OSLG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent Slugging Percentage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;对手长打率&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;BA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Batting Avarage&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;平均成功率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;补充知识b-篮球统计术语:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识B－篮球统计术语&lt;/h3&gt;
+
+&lt;p&gt;年轻时看NBA，好歹知道一点。&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;缩写&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;原文&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;中文&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;PTS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;oppPTS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Opponent Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失分，对手得分&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Field Goals (success)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FGA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Field Goals Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X2P&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2 Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2分球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X2PA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2 Points Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2分球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X3P&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3 Points&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3分球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;X3PA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3 Points Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3分球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FT&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Free Throw&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;罚球进球数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;FTA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Free Throw Attempted&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;发球出手次数&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;ORB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Offensive Rebounds&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;前场篮板，进攻篮板&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;DRB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Defensive Rebounds&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;后场篮板，防守篮板&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;AST&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Assists&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;助攻&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;STL&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Steals&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;抢断&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;BLK&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Blocks&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;盖帽&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;TOV&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Turnovers&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;失误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;注：X2P列，原始数据列名是2P。由于R不支持数字开头的列名／变量，读取CSV文件的时候，会在原列名2P前加个X，从而变成 X2P。&lt;/p&gt;
+
+&lt;h3 id=&#34;补充知识c-滞后序列:efa3f4364b4acd6454b77ef89af35a47&#34;&gt;补充知识C－滞后序列&lt;/h3&gt;
+
+&lt;p&gt;函数lag，用于生成滞后/偏移序列？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lag(x, k = 1, ...)
+# k &amp;lt; 0, previous observations   
+# k &amp;gt; 0, future observations
+# na.pad=TRUE, add missing values
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MIT:The Analytics Edge 笔记01－R语言入门</title>
+      <link>http://youngspring1.github.io/post/2016/2016-04-18-R01/</link>
+      <pubDate>Mon, 18 Apr 2016 19:55:25 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-04-18-R01/</guid>
+      <description>
+
+&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第一单元的学习记录。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;r语言入门:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;R语言入门&lt;/h2&gt;
+
+&lt;p&gt;R语言入门只讲了一些常用的操作。相对于动辄花一本书来讲这些，真是相当简约。但其实足够了，其他操作，需要的时候再查嘛。&lt;br /&gt;
+数据分析的四要素：data、models、decisions、value&lt;/p&gt;
+
+&lt;h3 id=&#34;简单使用:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;简单使用&lt;/h3&gt;
+
+&lt;p&gt;帮助：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;?func
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;显示当前的临时变量：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ls()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;获取／设置当前目录：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;getwd()
+setwd()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;显示当前文件夹下的文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dir()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据结构:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;数据结构&lt;/h3&gt;
+
+&lt;p&gt;向量概念：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;所有的操作都是对向量的每个元素实施的
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;data.frame：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;observation：行
+variable   ：列，data.frame是按照列存储的
+rbind()合并两个data.frame
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;序列：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;自动生成序列seq()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;获取数据:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;获取数据&lt;/h3&gt;
+
+&lt;p&gt;读取CSV文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DF = read.csv(&amp;quot;file_path&amp;quot;)
+# 返回值是data.frame
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看DF的基本信息：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;str(DF)
+# DF的结构信息。行和列的数目，列名、列的类型、列的数据举例。
+
+summary(DF)
+# 每列的最大值、最小值、中位数、平均数、1/4值、3/4值，以及是否包含空值。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;写入CSV文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;write.csv(DF, &amp;quot;file_path&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;从内存中删除变量：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rm(DF)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;数据操作:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;数据操作&lt;/h3&gt;
+
+&lt;p&gt;选取一部分数据：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;subset( DF, 条件1 &amp;amp; 条件2 ｜ 条件3)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;按照列名选取3列：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DF[c(var1, var2, var3)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;选取1，3，5列：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;DF[c(1, 3, 5)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;计算平均值和标准差：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mean(DF$var)
+sd(DF$var)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;返回最大值／最小值的位置(index)：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;which.max(DF$var)
+which.min(DF$var)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;返回行数：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;nrow(DF)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;绘图:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;绘图&lt;/h3&gt;
+
+&lt;p&gt;直方图，反映&lt;strong&gt;一列&lt;/strong&gt;数据的分布情况：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hist(DF$var, xlim = c(1, 100), breaks = 100)
+# xlim 限定范围
+# breaks x轴的精确度。注意是针对原始数据的，不是对限定后的
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;箱型图：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;boxplot(DF$var1 ~ DF$var2, xlab = &amp;quot;x-label&amp;quot;, ylab = &amp;quot;y-label&amp;quot;, main = &amp;quot;title&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;点阵图：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;plot(......, col = &amp;quot;red&amp;quot;)
+line(......, col = &amp;quot;blue&amp;quot;) # 在原先的基础上再加一条
+
+函数jitter() # 对于有很多重合的点阵图，先用jitter偏移一点，这样看上去效果好很多
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其他共通的参数：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;col = &amp;quot;red&amp;quot;
+type = &amp;quot;line&amp;quot; # 可以指定1，2，3，4，5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;聚合:86ba9dc4beedcb3ca4aa6515cf113aed&#34;&gt;聚合&lt;/h3&gt;
+
+&lt;p&gt;分组：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;table(DF$var1)
+# var1列中，每种数据的数量的统计
+table(DF$var1, DF$var2)
+# var1和var2列中，每种数据的数量的交叉统计
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;分组计算：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tapply(DF$var1, DF$var2, func)
+# DF$var1, 原始数据
+# DF$var2, 分组依据
+# func, 要应用的函数
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
