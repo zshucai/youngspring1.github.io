@@ -2300,6 +2300,10 @@ DT.c2
 
 &lt;hr /&gt;
 
+&lt;p&gt;感谢&lt;a href=&#34;http://weibo.com/u/2120911240&#34;&gt;G_天星&lt;/a&gt;的提醒，貌似现在版本的data.table中还没有setindex()函数，所以可能应该使用set2key()函数。或者通过代码安装data.table试试。&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;h1 id=&#34;二级索引和自动索引:3887792cd19298be3383c54afb194a11&#34;&gt;二级索引和自动索引&lt;/h1&gt;
 
 &lt;p&gt;本教程假定读者已经熟悉data.table的[i, j, by]语法、懂得如何基于二分法的选取了。如果你对这些不熟悉，请学习上面三讲 &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-13-datatable1/&#34;&gt;data.table 介绍&lt;/a&gt; 、 &lt;a href=&#34;http://youngspring1.github.io/post/2016-03-21-datatable2/&#34;&gt;语义引用&lt;/a&gt;和&lt;a href=&#34;http://youngspring1.github.io/post/2016-03-22-datatable3/&#34;&gt;主键、基于快速二分法搜索的subset&lt;/a&gt;。&lt;/p&gt;

@@ -17,25 +17,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="keywords" content="r data.table,">
-<meta name="description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 二级索引和自动索引 本教程假定读者已经熟悉d">
+<meta name="description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 感谢G_天星的提醒，貌似现在版本的data">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
 <meta itemprop="name" content="data.table 教程4－二级索引和自动索引 - 行行重行行">
-<meta itemprop="description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 二级索引和自动索引 本教程假定读者已经熟悉d">
+<meta itemprop="description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 感谢G_天星的提醒，貌似现在版本的data">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
 <meta property="og:title" content="data.table 教程4－二级索引和自动索引 - 行行重行行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-04-02-datatable4/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 二级索引和自动索引 本教程假定读者已经熟悉d">
+<meta property="og:description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 感谢G_天星的提醒，貌似现在版本的data">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
 <meta name="twitter:title" content="data.table 教程4－二级索引和自动索引 - 行行重行行">
-<meta name="twitter:description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 二级索引和自动索引 本教程假定读者已经熟悉d">
+<meta name="twitter:description" content="目录： data.table 介绍 语义引用 主键、基于二分法搜索的subset 二次索引和自动索引 数据拆分和合并 原文地址： data.table/wiki/Getting-started 感谢G_天星的提醒，貌似现在版本的data">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
@@ -192,7 +192,7 @@
                   <h1 class="post-title">data.table 教程4－二级索引和自动索引</h1>
 
                   <p class="post-byline">
-                    by  · 2016年04月02日 · 4310 Words ·
+                    by  · 2016年04月02日 · 4344 Words ·
                     ~9min reading time |
 
                   </p>
@@ -216,6 +216,10 @@
 
 <p>原文地址：<br />
 <a href="https://github.com/Rdatatable/data.table/wiki/Getting-started">data.table/wiki/Getting-started</a></p>
+
+<hr />
+
+<p>感谢<a href="http://weibo.com/u/2120911240">G_天星</a>的提醒，貌似现在版本的data.table中还没有setindex()函数，所以可能应该使用set2key()函数。或者通过代码安装data.table试试。</p>
 
 <hr />
 
