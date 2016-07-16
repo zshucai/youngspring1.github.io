@@ -7,8 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 21 Jun 2016 22:43:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Jul 2016 23:21:40 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2016 07 16 一个想法</title>
+      <link>http://youngspring1.github.io/post/2016/2016-07-16-thoughts/</link>
+      <pubDate>Sat, 16 Jul 2016 23:21:40 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-07-16-thoughts/</guid>
+      <description>&lt;p&gt;作为一个个体，而且是处在这个发展中的世界潮流的个体，如果能看得清自身成功的原因，哪些是自身的努力和天赋，哪些趋势，哪些是运气，是非常难得的。&lt;br /&gt;
+譬如说，和父母辈相比，不管是生活理念和状态，的确是和他们在不一样的世界中；但有可能造成这样状况，主要的原因是整个世界的发展趋势，次要的原因才是自己的努力。我们现在刷微博朋友圈，和他们看电视并没有本质的区别。&lt;br /&gt;
+而如果能够意识到并且驾驭潮流和趋势，就更难得了。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>一张图看懂开源软件许可证区别</title>
@@ -1438,172 +1450,6 @@ ClaimsTree = rpart(bucket2009 ~ age + alzheimers + arthritis + cancer + copd + d
 
 # Redo predictions and penalty error
 PredictTest = predict(ClaimsTree, newdata = ClaimsTest, type = &amp;quot;class&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MIT:The Analytics Edge 笔记03－指数回归</title>
-      <link>http://youngspring1.github.io/post/2016/2016-04-26-R03/</link>
-      <pubDate>Tue, 26 Apr 2016 11:52:13 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-04-26-R03/</guid>
-      <description>
-
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第三单元的学习记录。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;logistic-regression:2842374fb15231f36230fc5afd744bb4&#34;&gt;Logistic Regression&lt;/h2&gt;
-
-&lt;p&gt;第三单元的主题是指数回归。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-理论:2842374fb15231f36230fc5afd744bb4&#34;&gt;1.理论&lt;/h3&gt;
-
-&lt;h4 id=&#34;指数回归:2842374fb15231f36230fc5afd744bb4&#34;&gt;指数回归&lt;/h4&gt;
-
-&lt;p&gt;指数回归用于因变量y是二进制的情况，也就是说，y的取值只有1或者0。&lt;br /&gt;
-y=1的概率：&lt;br /&gt;
-&lt;img src=&#34;http://latex.codecogs.com/svg.latex?P(y=1)=\frac{1}{1+e^{-{(\beta_0 +\beta_1x_1+\beta_2x_2+\ldots+\beta_nx_n+\epsilon)}}}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;y=1的概率与y＝0的概率的比值：&lt;br /&gt;
-&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=\frac{P(y=1)}{P(y=0)}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=\frac{P(y=1)}{1-P(y=1)}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?Odds=e^{\beta_0 +\beta_1x_1+\beta_2x_2+\ldots+\beta_nx_n+\epsilon}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;混淆矩阵-confusion-matrix:2842374fb15231f36230fc5afd744bb4&#34;&gt;混淆矩阵（confusion matrix）&lt;/h4&gt;
-
-&lt;p&gt;有阈值t，&lt;br /&gt;
-如果P(y=1) &amp;gt;=t，则预测y=1。&lt;br /&gt;
-如果P(y=1) &amp;lt; t，则预测y=0。&lt;/p&gt;
-
-&lt;p&gt;对于预测结果，我们得到矩阵&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;predict y=0&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;predict y=1&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;actual y=0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;TN (True  Nagative)&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;FP (False Positive)&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;actual y=1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;FN (False Nagative)&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;TP (True  Positive)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;根据矩阵中的值，我们可以计算指数回归的一些指标：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?accuracy=\frac{TN+TP}{N}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
-&lt;img src=&#34;http://latex.codecogs.com/svg.latex?specificity=\frac{TN}{TN+FP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
-&lt;img src=&#34;http://latex.codecogs.com/svg.latex?sensitivity=\frac{TP}{FN+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;补充概念：&lt;br /&gt;
-适合率&lt;br /&gt;
-&lt;img src=&#34;http://latex.codecogs.com/svg.latex?precision=\frac{TP}{FP+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
-再现率&lt;br /&gt;
-&lt;img src=&#34;http://latex.codecogs.com/svg.latex?recall=tpr=\frac{TP}{FN+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
-F值（F-measure）&lt;br /&gt;
-&lt;img src=&#34;http://latex.codecogs.com/svg.latex?F-measure=\frac{2*precision*recall}{precision+recall}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
-F值越高，性能越好&lt;/p&gt;
-
-&lt;h4 id=&#34;roc曲线:2842374fb15231f36230fc5afd744bb4&#34;&gt;ROC曲线&lt;/h4&gt;
-
-&lt;p&gt;ROC曲线 (Receiver Operator Characteristic curve)可以指导我们如何选取阈值t。
-y轴的指标是 sensitivity，所以也叫 True positive rate。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?sensitivity=\frac{TP}{FN+TP}&#34; alt=&#34;formula&#34; /&gt;&lt;br /&gt;
-x轴的指标是 1-specificity，所以也叫 False positive rate。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://latex.codecogs.com/svg.latex?1-sensitivity=\frac{FP}{TN+FP}&#34; alt=&#34;formula&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;每取一个阈值t，则计算相对应的 TPR 和 FPR，在坐标里标出这个点，就形成ROC曲线。&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160509-ROC.png&#34; alt=&#34;ROC Curve&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如图所示，&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;t=0时，我们预测所有的y=1，即TPR=1，FPR=1，对应的坐标是(1,1)   
-t=1时，我们预测所有的y=0，即TPR=0，FPR=0，对应的坐标是(0,0)   
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这就是曲线的两个端点。&lt;/p&gt;
-
-&lt;h4 id=&#34;auc值:2842374fb15231f36230fc5afd744bb4&#34;&gt;AUC值&lt;/h4&gt;
-
-&lt;p&gt;AUC（Area Under Curve）被定义为ROC曲线下的面积，显然这个面积的数值不会大于1。又由于ROC曲线一般都处于y=x这条直线的上方，所以AUC的取值范围在0.5和1之间。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-建立回归模型:2842374fb15231f36230fc5afd744bb4&#34;&gt;2.建立回归模型&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;# 建立模型
-# Top10作为因变量，其他所有的列都作为自变量
-SongsLog1 = glm(Top10 ~ ., data=SongsTrain, family=binomial)
-
-# Top10作为因变量，除了loudness以外的所有列都作为自变量
-SongsLog2 = glm(Top10 ~ . - loudness, data=SongsTrain, family=binomial)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;3-评估:2842374fb15231f36230fc5afd744bb4&#34;&gt;3.评估&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;# 预测
-testPredict = predict(SongsLog3, newdata=SongsTest, type=&amp;quot;response&amp;quot;)
-
-# 生成混淆矩阵
-table(SongsTest$Top10, testPredict &amp;gt;= 0.45)
-
-# 生成ROC曲线
-library(ROCR)
-pred = prediction(testPredict, test$violator)
-perf = performance(pred, &amp;quot;tpr&amp;quot;, &amp;quot;fpr&amp;quot;)
-plot(perf)
-
-# 加点颜色和坐标点
-plot(perf, colorize=TRUE, print.cutoffs.at=seq(0,1,0.1), text.adj=c(-0.2,1.7))
-
-# 计算AUC值
-as.numeric(performance(pred, &amp;quot;auc&amp;quot;)@y.values)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;附录a-分割train和test的方法一:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录A 分割train和test的方法一&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;library(caTools)
-set.seed(144)
-
-split = sample.split(parole$violator, SplitRatio = 0.7)
-train = subset(parole, split == TRUE)
-test = subset(parole, split == FALSE)
-# 特别注意：每次运行出来的结果是不一样的
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;也可以这样做：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;library(caTools)
-set.seed(144)
-
-split = sample(1:nrow(data), size=0.7 * nrow(data))
-train = data[split,]
-test = data[-split,]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;附录b-补充缺失数据:2842374fb15231f36230fc5afd744bb4&#34;&gt;附录B 补充缺失数据&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;library(mice)
-set.seed(144)
-vars.for.imputation = setdiff(names(loans), &amp;quot;not.fully.paid&amp;quot;)
-imputed = complete(mice(loans[vars.for.imputation]))
-loans[vars.for.imputation] = imputed
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
