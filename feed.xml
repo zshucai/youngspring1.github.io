@@ -55,7 +55,8 @@ else:
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;不过这样的复杂度还是至少O(n^3)吧，肉眼可见的两个for循环，再加上一个count函数。&lt;/p&gt;
+&lt;p&gt;不过这样的复杂度还是至少O(n^3)吧，肉眼可见的两个for循环，再加上一个count函数。&lt;br /&gt;
+网上搜了有更普遍的方法，周末细看。&lt;/p&gt;
 </description>
     </item>
     
