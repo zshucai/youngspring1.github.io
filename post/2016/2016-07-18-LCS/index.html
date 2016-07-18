@@ -12,36 +12,36 @@
         }
     }
   </script>
-  <title>关于我 - 行行重行行</title>
+  <title>最长公共子串(Longest Common Substring) - 行行重行行</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-<meta name="description" content="不想只做码农的程序员一枚 &ldquo;小&rdquo;数据分析/机器学习 我眼中的坏公司： 网吧一样的工作环境，没有集中的思考的时间和空间。 在迟">
+<meta name="keywords" content="LCS,">
+<meta name="description" content="对两个字符串，找到它们的最长公共子串(Longest Common Substring)。 今天面试中把一个小妹妹坑惨了。 于是试着自己写出来。 本来想两个循环">
 <meta name="author" content="youngspring1">
 <meta name="publisher" content="youngspring1">
 <meta name="generator" content="http://gohugo.io/"/>
 
-<meta itemprop="name" content="关于我 - 行行重行行">
-<meta itemprop="description" content="不想只做码农的程序员一枚 &ldquo;小&rdquo;数据分析/机器学习 我眼中的坏公司： 网吧一样的工作环境，没有集中的思考的时间和空间。 在迟">
+<meta itemprop="name" content="最长公共子串(Longest Common Substring) - 行行重行行">
+<meta itemprop="description" content="对两个字符串，找到它们的最长公共子串(Longest Common Substring)。 今天面试中把一个小妹妹坑惨了。 于是试着自己写出来。 本来想两个循环">
 <meta itemprop="image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
-<meta property="og:title" content="关于我 - 行行重行行" />
+<meta property="og:title" content="最长公共子串(Longest Common Substring) - 行行重行行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://youngspring1.github.io/about/" />
+<meta property="og:url" content="http://youngspring1.github.io/post/2016/2016-07-18-LCS/" />
 <meta property="og:image" content="http://youngspring1.github.io//public/coderzh.jpg" />
-<meta property="og:description" content="不想只做码农的程序员一枚 &ldquo;小&rdquo;数据分析/机器学习 我眼中的坏公司： 网吧一样的工作环境，没有集中的思考的时间和空间。 在迟">
+<meta property="og:description" content="对两个字符串，找到它们的最长公共子串(Longest Common Substring)。 今天面试中把一个小妹妹坑惨了。 于是试着自己写出来。 本来想两个循环">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@youngspring1">
-<meta name="twitter:title" content="关于我 - 行行重行行">
-<meta name="twitter:description" content="不想只做码农的程序员一枚 &ldquo;小&rdquo;数据分析/机器学习 我眼中的坏公司： 网吧一样的工作环境，没有集中的思考的时间和空间。 在迟">
+<meta name="twitter:title" content="最长公共子串(Longest Common Substring) - 行行重行行">
+<meta name="twitter:description" content="对两个字符串，找到它们的最长公共子串(Longest Common Substring)。 今天面试中把一个小妹妹坑惨了。 于是试着自己写出来。 本来想两个循环">
 <meta name="twitter:creator" content="@youngspring1">
 <meta name="twitter:image" content="http://7xrjai.com1.z0.glb.clouddn.com/img-icon.jpg">
 
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <link rel="canonical" href="http://youngspring1.github.io/about/">
-  <link rel='shortlink' href="http://youngspring1.github.io/about/"/>
+  <link rel="canonical" href="http://youngspring1.github.io/post/2016/2016-07-18-LCS/">
+  <link rel='shortlink' href="http://youngspring1.github.io/post/2016/2016-07-18-LCS/"/>
   <link rel="shortcut icon" href="http://youngspring1.github.io//public/favicon.ico"/>
   
 <link rel="stylesheet" id="human-style-css" href="http://youngspring1.github.io/wp-content/themes/hueman/style.css" type="text/css" media="all"/>
@@ -172,6 +172,10 @@
             <div class="page-title pad group">
               <ul class="meta-single group">
                 
+                <li class="category">
+                  <a href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/" rel="category tag">新知</a>
+                </li>
+                
               </ul>
             </div>
 
@@ -181,10 +185,10 @@
                   class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                 <div class="post-inner group">
 
-                  <h1 class="post-title">关于我</h1>
+                  <h1 class="post-title">最长公共子串(Longest Common Substring)</h1>
 
                   <p class="post-byline">
-                    by  · 2016年02月28日 · 168 Words ·
+                    by  · 2016年07月18日 · 245 Words ·
                     ~1min reading time |
 
                   </p>
@@ -194,29 +198,46 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      
+                      <p>对两个字符串，找到它们的最长公共子串(Longest Common Substring)。</p>
 
-<p>不想只做码农的程序员一枚<br />
-&ldquo;小&rdquo;数据分析/机器学习</p>
+<p>今天面试中把一个小妹妹坑惨了。<br />
+于是试着自己写出来。<br />
+本来想两个循环暴力找，但是觉得写不下去了。后来想了一个理解起来更简单的方法：</p>
 
-<h4 id="我眼中的坏公司:6083a88ee3411b0d17ce02d738f69d47">我眼中的坏公司：</h4>
+<ol>
+<li>拿str1跟str2比较。</li>
+<li>拿str1的最长的两个子串跟str2比较。</li>
+<li>拿str1的次长的三个子串跟str2比较。</li>
+<li>&hellip;&hellip;</li>
+</ol>
 
-<ul>
-<li>网吧一样的工作环境，没有集中的思考的时间和空间。</li>
-<li>在迟到、着装、听音乐这些事情上斤斤计较。</li>
-<li>不做事的人太多。</li>
-<li>没有支撑远景的发展能力。</li>
-</ul>
+<p>python代码：</p>
 
-<h4 id="我眼中的好公司:6083a88ee3411b0d17ce02d738f69d47">我眼中的好公司：</h4>
+<pre><code>str1=&quot;entertenmant&quot;
+str2=&quot;experting&quot;
 
-<ul>
-<li>可以做自己想做的事情。</li>
-<li>每周有10%以上的时间学习跟目前项目没有关系的知识。</li>
-<li>周围有一大波共同进步的同事。</li>
-<li>轻松的人际关系。</li>
-<li>20天以上的带薪年假。</li>
-</ul>
+length1 = len(str1)
+length2 = len(str2)
+if str1 == str2:
+	print(&quot;common string:&quot; + str1)
+else:
+	found = False
+	for del_len in range(1,length1):
+		for begin_index in range(0, del_len+1):
+			end_index = begin_index + (length1 - del_len)
+			checkstr = str1[begin_index: end_index]
+			if str2.count(checkstr) &gt; 0:
+				print(&quot;find &quot; + checkstr + &quot; in str2. break.&quot;)
+				found = True
+				break
+		if found:
+			break
+
+	print(&quot;common string:&quot; + checkstr)
+
+</code></pre>
+
+<p>不过这样的复杂度还是至少O(n^3)吧，肉眼可见的两个for循环，再加上一个count函数。</p>
 
                       
                     </div>
@@ -224,7 +245,7 @@
 
                         <div>
 
-                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/about/">http://youngspring1.github.io/about/</a>
+                            <br />本文出处：<a target="_blank" href="http://youngspring1.github.io/post/2016/2016-07-18-LCS/">http://youngspring1.github.io/post/2016/2016-07-18-LCS/</a>
                             <br />
                             文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
                         </div>
@@ -277,14 +298,14 @@
     <ul class="post-nav group">
       <li class="next">
         
+        <a href="http://youngspring1.github.io/post/2016/2016-07-16-thoughts/" rel="next">
+          <i class="fa fa-chevron-right"></i>
+          <strong>Next post</strong>
+          <span>2016 07 16 一个想法</span>
+        </a>
+        
       </li>
       <li class="previous">
-        
-        <a href="http://youngspring1.github.io/post/2016/2016-03-06-hugo/" rel="prev">
-          <i class="fa fa-chevron-left"></i>
-          <strong>Previous Post</strong>
-          <span>利用hugo搭建个人博客入门教程</span>
-        </a>
         
       </li>
     </ul>

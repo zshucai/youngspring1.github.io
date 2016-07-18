@@ -7,8 +7,57 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 21 Jun 2016 22:43:57 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 Jul 2016 18:45:09 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/categories/%E6%96%B0%E7%9F%A5/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>最长公共子串(Longest Common Substring)</title>
+      <link>http://youngspring1.github.io/post/2016/2016-07-18-LCS/</link>
+      <pubDate>Mon, 18 Jul 2016 18:45:09 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-07-18-LCS/</guid>
+      <description>&lt;p&gt;对两个字符串，找到它们的最长公共子串(Longest Common Substring)。&lt;/p&gt;
+
+&lt;p&gt;今天面试中把一个小妹妹坑惨了。&lt;br /&gt;
+于是试着自己写出来。&lt;br /&gt;
+本来想两个循环暴力找，但是觉得写不下去了。后来想了一个理解起来更简单的方法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;拿str1跟str2比较。&lt;/li&gt;
+&lt;li&gt;拿str1的最长的两个子串跟str2比较。&lt;/li&gt;
+&lt;li&gt;拿str1的次长的三个子串跟str2比较。&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;python代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;str1=&amp;quot;entertenmant&amp;quot;
+str2=&amp;quot;experting&amp;quot;
+
+length1 = len(str1)
+length2 = len(str2)
+if str1 == str2:
+	print(&amp;quot;common string:&amp;quot; + str1)
+else:
+	found = False
+	for del_len in range(1,length1):
+		for begin_index in range(0, del_len+1):
+			end_index = begin_index + (length1 - del_len)
+			checkstr = str1[begin_index: end_index]
+			if str2.count(checkstr) &amp;gt; 0:
+				print(&amp;quot;find &amp;quot; + checkstr + &amp;quot; in str2. break.&amp;quot;)
+				found = True
+				break
+		if found:
+			break
+
+	print(&amp;quot;common string:&amp;quot; + checkstr)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;不过这样的复杂度还是至少O(n^3)吧，肉眼可见的两个for循环，再加上一个count函数。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>一张图看懂开源软件许可证区别</title>
@@ -2832,134 +2881,6 @@ http://localhost:3838/11_timer/
 
 &lt;p&gt;参照：&lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server2/&#34;&gt;https://www.rstudio.com/products/shiny/shiny-server2/&lt;/a&gt;&lt;br /&gt;
 中国語版：&lt;a href=&#34;http://youngspring1.github.io/post/2016-03-25-shinyserver/&#34;&gt;http://youngspring1.github.io/post/2016-03-25-shinyserver/&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Shiny Server 安装步骤</title>
-      <link>http://youngspring1.github.io/post/2016/2016-03-25-shinyserver/</link>
-      <pubDate>Fri, 25 Mar 2016 20:00:38 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-03-25-shinyserver/</guid>
-      <description>
-
-&lt;p&gt;R语言非常适合用于统计相关的运算。但是在用户交互方面不够友好。&lt;br /&gt;
-Shiny Server是RStudio推出的，一个Web服务。它可以接受用户的输入，使用R语言进行计算，最终展示计算结果。这一切都在浏览器上完成。&lt;br /&gt;
-总之非常实用，现在整理下我自己的安装手册。&lt;/p&gt;
-
-&lt;h4 id=&#34;1-从代码安装r:c33352843d2370512fb8e3c681b7c165&#34;&gt;1.从代码安装R&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;./configure --prefix=/opt/r --enable-R-shlib 
-make 
-make install 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;注意1：PATH要设置这个文件，否则可能会找不到R ：/etc/profile&lt;br /&gt;
-注意2：可能依赖其他包比如fortran，你可能还需要执行下面这些命令。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;yum install gcc-gfortran 
-yum install readline-devel 
-yum install libXt-devel 
-yum install gcc-c++ glibc-headers
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;2-安装xvfb:c33352843d2370512fb8e3c681b7c165&#34;&gt;2.安装Xvfb&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;yum install Xvfb
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;说明：绘制图形好像默认使用 X11，但是安装过程中遇到了各种麻烦，最后尝试了这个，能够正常显示。&lt;/p&gt;
-
-&lt;h4 id=&#34;3-安装shiny:c33352843d2370512fb8e3c681b7c165&#34;&gt;3.安装Shiny&lt;/h4&gt;
-
-&lt;h5 id=&#34;3-1-安装shiny:c33352843d2370512fb8e3c681b7c165&#34;&gt;3.1 安装Shiny&lt;/h5&gt;
-
-&lt;p&gt;R命令行下面安装Shiny的包。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;install.packages(&#39;shiny&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;安装过程中，会安装其他依赖的包。&lt;br /&gt;
-如果你跟我一样，服务器不能连网络，那就必须下载好压缩包，再传到服务器上，从本地安装。&lt;br /&gt;
-但是不在R命令行下，而是还要quit()退出来。&lt;br /&gt;
-安装的命令长这样：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;R CMD INSTALL XXXXX.tar.gz 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;3-2-安装shiny-server:c33352843d2370512fb8e3c681b7c165&#34;&gt;3.2 安装Shiny Server&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;yum install --nogpgcheck shiny-server-1.4.2.786-rh5-x86_64.rpm 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;配置文件路径：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/etc/shiny-server/shiny-server.conf 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;你可以把shiny包里面自带的10个例子，都拷贝到shiny-server的目录下去。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cp -R /opt/r/lib64/R/library/shiny/examples/* /srv/shiny-server/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;是的，你以后所有的APP都要在/srv/shiny-server/目录下，然后在浏览器中通过这样的方式来访问：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;http://localhost:3838/目录名
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;另外，启动／停止等命令：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;start shiny-server 
-stop shiny-server 
-restart shiny-server 
-status shiny-server 
-reload shiny-server #不中断服务的前提下 更新加载配置项
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这时可以看下首页：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;http://localhost:3838/index.html
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;页面能够显示，但是绘图的部分好像报错了。&lt;/p&gt;
-
-&lt;h4 id=&#34;4-绘图引擎:c33352843d2370512fb8e3c681b7c165&#34;&gt;4.绘图引擎&lt;/h4&gt;
-
-&lt;h5 id=&#34;4-1-启动xvfb:c33352843d2370512fb8e3c681b7c165&#34;&gt;4.1 启动Xvfb&lt;/h5&gt;
-
-&lt;p&gt;各种泪流满面啊，九牛二虎啊。之前安装一堆东西，企图使用X11，会报错：can&amp;rsquo;t start PNG device。&lt;br /&gt;
-后来放弃X11，使用Xvfb。需要启动Xvfb。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Xvfb :3 -screen 1 1280x1024x24
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;4-1-设置:c33352843d2370512fb8e3c681b7c165&#34;&gt;4.1 设置&lt;/h5&gt;
-
-&lt;p&gt;ui.R需要加入下面这一行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Sys.setenv(DISPLAY = &amp;quot;:3.1&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;访问示例试试：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;http://localhost:3838/index.html 
-http://localhost:3838/01_hello/ 
-http://localhost:3838/02_text/
-http://localhost:3838/03_reactivity/
-http://localhost:3838/04_mpg/
-http://localhost:3838/05_sliders/
-http://localhost:3838/06_tabsets/
-http://localhost:3838/07_widgets/
-http://localhost:3838/08_html/
-http://localhost:3838/09_upload/
-http://localhost:3838/10_download/
-http://localhost:3838/11_timer/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;参照：&lt;a href=&#34;https://www.rstudio.com/products/shiny/shiny-server2/&#34;&gt;https://www.rstudio.com/products/shiny/shiny-server2/&lt;/a&gt;&lt;br /&gt;
-日文版：&lt;a href=&#34;http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/&#34;&gt;http://youngspring1.github.io/post/2016-03-26-shinyserver-jp/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
