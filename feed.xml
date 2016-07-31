@@ -38,13 +38,14 @@
 &lt;hr /&gt;
 
 &lt;p&gt;前几天有小朋友问我markdown里面能不能放视频，试了一下，youtube不行，vimeo可以。&lt;br /&gt;
-可惜需要翻墙才能播放。&lt;br /&gt;
 嗯嗯，最近听这首：&lt;br /&gt;
 
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//player.vimeo.com/video/176835820&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
  &lt;/div&gt;
 &lt;/p&gt;
+
+&lt;p&gt;是的，vimeo也需要翻墙才能播放。我贴心地提供了一个墙内的链接&lt;a href=&#34;http://7xrjai.com1.z0.glb.clouddn.com/%E5%A4%A7%E9%B1%BC%E6%B5%B7%E6%A3%A0.mp4&#34;&gt;大鱼海棠钢琴曲&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 </description>
