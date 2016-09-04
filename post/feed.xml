@@ -7,8 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 28 Aug 2016 09:21:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Sep 2016 10:30:23 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>银河历险记3</title>
+      <link>http://youngspring1.github.io/post/2016/2016-09-04-samorost3/</link>
+      <pubDate>Sun, 04 Sep 2016 10:30:23 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-09-04-samorost3/</guid>
+      <description>&lt;p&gt;一不小心试玩了游戏“银河历险记3”，突然发现，开发游戏和之前做过的许多事情有很多相似之处。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>有顶天家族 第二代的归来</title>
@@ -1056,152 +1066,6 @@ DayHourCounts$Hour = as.numeric(as.character(DayHourCounts$Var2))
 &lt;p&gt;参考：&lt;br /&gt;
 &lt;a href=&#34;http://www.cookbook-r.com/Graphs/Shapes_and_line_types/&#34;&gt;形状和线段的类型&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&#34;http://www.cookbook-r.com/Graphs/Colors_(ggplot2)&#34;&gt;颜色&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MIT:The Analytics Edge 笔记06－集群</title>
-      <link>http://youngspring1.github.io/post/2016/2016-05-18-R06/</link>
-      <pubDate>Wed, 18 May 2016 16:40:09 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-05-18-R06/</guid>
-      <description>
-
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第六单元的学习记录。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;clustering:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;Clustering&lt;/h2&gt;
-
-&lt;p&gt;第六单元的主题是集群。它用来找到数据内的相似性。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-理论:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;1.理论&lt;/h3&gt;
-
-&lt;h4 id=&#34;recommendation-systems:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;Recommendation Systems&lt;/h4&gt;
-
-&lt;p&gt;Collaborative filtering:&lt;br /&gt;
-过滤出用户间的共同特征／相似性。只使用了用户信息，跟电影内容本身无关。&lt;/p&gt;
-
-&lt;p&gt;Content filtering:&lt;br /&gt;
-利用电影本身的信息，过滤出有共同导演／演员／类别的电影。跟其他用户无关。&lt;/p&gt;
-
-&lt;h4 id=&#34;clustering-1:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;clustering&lt;/h4&gt;
-
-&lt;p&gt;clustering 集群是一种非监督学习，&amp;rdquo;unsupervised learning&amp;rdquo;，将有共同特征的数据分在同一组。&lt;/p&gt;
-
-&lt;h6 id=&#34;hierarchical-clustering:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;Hierarchical clustering&lt;/h6&gt;
-
-&lt;p&gt;Hierarchical clustering的步骤：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;计算距离&lt;/li&gt;
-&lt;li&gt;生成集群&lt;/li&gt;
-&lt;li&gt;生成cutree&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;注意1:计算距离时，有可能造成内存溢出。计算每两点间的距离，得到的结果是n*(n-1)/2个，我们需要保存这个结果，如果n很大，保存结果的矩阵也很大，可能会导致内存溢出。&lt;br /&gt;
-注意2:计算距离的三种方法：&lt;br /&gt;
-Euclidean distance：点与点之间的欧几里得距离&lt;br /&gt;
-Manhattan Distance：绝对值之和&lt;br /&gt;
-Maximum Coordinate：偏离最严重的点&lt;/p&gt;
-
-&lt;h6 id=&#34;k-means-clustering:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;K-means clustering&lt;/h6&gt;
-
-&lt;p&gt;K-means clustering的步骤：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;指定集群数目k&lt;/li&gt;
-&lt;li&gt;随机分配所有的点&lt;/li&gt;
-&lt;li&gt;计算每个集群的中心点&lt;/li&gt;
-&lt;li&gt;计算每个点到这些中心点的距离，选择最近的，重新分配点到离他最近的集群&lt;/li&gt;
-&lt;li&gt;重新计算每个集群的中心点&lt;/li&gt;
-&lt;li&gt;重复4和5多次，直到没有提升&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;注意：centroid distance 集群中所有点的平均值间的距离。&lt;/p&gt;
-
-&lt;h4 id=&#34;normalize:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;normalize&lt;/h4&gt;
-
-&lt;p&gt;如果不同列的数值不是同样的数量级，那么运算后较小的值可能会被忽略，所以需要调整到同样的数量级。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;library(caret)
-preproc = preProcess(airlines)
-airlinesNorm = predict(preproc, airlines)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;效果就是，所有列的平均值都是0。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-建模和评估:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;2.建模和评估&lt;/h3&gt;
-
-&lt;h4 id=&#34;hierarchical-clustering-1:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;Hierarchical clustering&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;# After following the steps in the video, load the data into R
-movies = read.table(&amp;quot;movieLens.txt&amp;quot;, header=FALSE, sep=&amp;quot;|&amp;quot;,quote=&amp;quot;\&amp;quot;&amp;quot;)
-# Add column names
-colnames(movies) = c(&amp;quot;ID&amp;quot;, &amp;quot;Title&amp;quot;, &amp;quot;ReleaseDate&amp;quot;, &amp;quot;VideoReleaseDate&amp;quot;, &amp;quot;IMDB&amp;quot;, &amp;quot;Unknown&amp;quot;, &amp;quot;Action&amp;quot;, &amp;quot;Adventure&amp;quot;, &amp;quot;Animation&amp;quot;, &amp;quot;Childrens&amp;quot;, &amp;quot;Comedy&amp;quot;, &amp;quot;Crime&amp;quot;, &amp;quot;Documentary&amp;quot;, &amp;quot;Drama&amp;quot;, &amp;quot;Fantasy&amp;quot;, &amp;quot;FilmNoir&amp;quot;, &amp;quot;Horror&amp;quot;, &amp;quot;Musical&amp;quot;, &amp;quot;Mystery&amp;quot;, &amp;quot;Romance&amp;quot;, &amp;quot;SciFi&amp;quot;, &amp;quot;Thriller&amp;quot;, &amp;quot;War&amp;quot;, &amp;quot;Western&amp;quot;)
-# Remove unnecessary variables
-movies$ID = NULL
-movies$ReleaseDate = NULL
-movies$VideoReleaseDate = NULL
-movies$IMDB = NULL
-# Remove duplicates
-movies = unique(movies)
-
-# Compute distances
-distances = dist(movies[2:20], method = &amp;quot;euclidean&amp;quot;)
-
-# Hierarchical clustering
-# clusterMovies = hclust(distances, method = &amp;quot;ward&amp;quot;) 
-clusterMovies = hclust(distances, method = &amp;quot;ward.D&amp;quot;)
-
-# Plot the dendrogram
-plot(clusterMovies)
-
-# Assign points to clusters
-clusterGroups = cutree(clusterMovies, k = 10)
-# Create a new data set with just the movies from cluster 2
-cluster2 = subset(movies, clusterGroups==2)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;k-means-clustering-1:98d5e9e5464c079d1b4ca9841cba7675&#34;&gt;K-means clustering&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;healthy = read.csv(&amp;quot;healthy.csv&amp;quot;, header=FALSE)
-# 注意
-# data.frame-&amp;gt;matrix-&amp;gt;vector 变成一个2500的vector
-# data.frame-&amp;gt;vector 还是一个50*50的data.frame
-healthyMatrix = as.matrix(healthy)
-healthyVector = as.vector(healthyMatrix)
-
-# Specify number of clusters
-k = 5
-# Run k-means
-set.seed(1)
-KMC = kmeans(healthyVector, centers = k, iter.max = 1000)
-
-# Extract clusters
-healthyClusters = KMC$cluster
-
-# Plot the image with the clusters
-dim(healthyClusters) = c(nrow(healthyMatrix), ncol(healthyMatrix))
-
-image(healthyClusters, axes = FALSE, col=rainbow(k))
-
-# Apply to a test image
-tumor = read.csv(&amp;quot;tumor.csv&amp;quot;, header=FALSE)
-tumorMatrix = as.matrix(tumor)
-tumorVector = as.vector(tumorMatrix)
-
-# Apply clusters from before to new image, using the flexclust package
-# kcca K-Centroids Cluster Analysis
-install.packages(&amp;quot;flexclust&amp;quot;)
-library(flexclust)
-KMC.kcca = as.kcca(KMC, healthyVector)
-tumorClusters = predict(KMC.kcca, newdata = tumorVector)
-
-# Visualize the clusters
-dim(tumorClusters) = c(nrow(tumorMatrix), ncol(tumorMatrix))
-image(tumorClusters, axes = FALSE, col=rainbow(k))
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
