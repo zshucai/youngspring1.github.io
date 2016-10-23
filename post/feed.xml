@@ -7,8 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 16 Oct 2016 13:51:55 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 23 Oct 2016 22:37:46 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>一些想法</title>
+      <link>http://youngspring1.github.io/post/2016/2016-10-23-thoughts/</link>
+      <pubDate>Sun, 23 Oct 2016 22:37:46 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-10-23-thoughts/</guid>
+      <description>&lt;p&gt;如果能看清楚，自己成功／失败的原因，有多少是因为时势，有多少是因为自己所处的平台，有多少是自己的努力，那真是相当睿智啊。&lt;/p&gt;
+
+&lt;p&gt;活着，应该压抑享乐的天性，过着苦行僧般的生活；还是应该尽情释放自己，及时行乐？&lt;/p&gt;
+
+&lt;p&gt;如果眼光能看到未来几年的发展趋势多好啊。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>三只流浪猫的丛林法则</title>
@@ -765,29 +779,6 @@ solve(AirlineConnecting)
 get.objective(AirlineConnecting)
 get.variables(AirlineConnecting)
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>乌托邦</title>
-      <link>http://youngspring1.github.io/post/2016/2016-06-17-life/</link>
-      <pubDate>Fri, 17 Jun 2016 21:22:08 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-06-17-life/</guid>
-      <description>&lt;p&gt;今天早上读到&lt;a href=&#34;http://www.jiemian.com/article/209404.html&#34;&gt;两个乌托邦人&lt;/a&gt;这篇文章，下面这段很有感触。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;赛斯的故事是关于一个人寻找到自己在这世界上的位置。我想起来老舍说，每人在这世间，就像八百尊罗汉，各有各的位置。你实在不能像对桌上的尘土一样，随手拿抹布就把我抹掉了。太平洋也真是座温情的海洋。它允许一个奇葩，这样合理地长大，实现梦想，拥有书、拥有沿海顶楼的好风光、拥有盛满三文鱼的冰箱。这无限孤独又无限美满的人生。
-
-每当我怀疑，我的人生究竟有没有意义的时候，我就会想想赛斯这奇葩。我会诧异如何从一开始每个人想要的都只不过是一个幸福的人生。结果走着走着，就变成了一个“独上高楼、高处不胜寒”的人生，变成了“十年生死两茫茫”的人生，变成了日复一日、年复一年，期待着总有一天能够赢取回报、得偿所愿，然后再终于快乐起来的人生。
-
-我们等下去的时候，他蹦跶着跳进海里捞螃蟹，不知不觉就跑远了。我有些羡慕。
-
-我逐渐发觉心理学以平均值导出关于人性若干结论的好笑之处：人与人之间的差异如此巨大，使得一千个人与一个人的样本，距离真理都同样远。曾有一万人的数据表明勤奋带来成功，再加上三百回研究支持金钱与幸福的钟型曲线关系，可世上奇葩那样多，这些适用于群体的结论就必定不可能与任何一个个体完美匹配。这便是人类群体与小白鼠的区别，而赛斯最早看清。
-
-他让我看到，这样活过一生也OK。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一个人非常立体的生活，在不那么熟悉的眼里都被扁平化了。好比看一场比赛的直播，过程惊心动魄，这是亲身体验；而晚间新闻中，却只有几句湖带过，这是别人眼里的我。更加可怕的是，普通人的一生，投影到历史上，简直微不足道。所以，还是把自己的生活过精彩吧。&lt;/p&gt;
 </description>
     </item>
     
