@@ -7,8 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 23 Oct 2016 22:37:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 07 Nov 2016 19:56:32 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/post/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>无知的游历</title>
+      <link>http://youngspring1.github.io/post/2016/2016-11-07-travellor/</link>
+      <pubDate>Mon, 07 Nov 2016 19:56:32 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-11-07-travellor/</guid>
+      <description>&lt;p&gt;今年读了几本书，是作者在中国生活、游历的记录。&lt;br /&gt;
+和两位作者的观点一样，我觉得游历的重点，自然是遇到的人和他们的故事。&lt;br /&gt;
+所以以后出去玩要在一个地方待久点，和当地人一起生活，不要匆匆忙忙只做游客。&lt;/p&gt;
+
+&lt;p&gt;PS 不要比读过多少书，要看读过的书中，有多少还愿意再读的。这部分才是真的该买的书。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;彼得•海斯勒 &lt;a href=&#34;https://www.amazon.cn/江城-彼得•海斯勒/dp/B0074E7CVU/ref=sr_1_1?ie=UTF8&amp;amp;qid=1478519919&amp;amp;sr=8-1&amp;amp;keywords=江城&#34;&gt;江城&lt;/a&gt;&lt;br /&gt;
+彼得•海斯勒 &lt;a href=&#34;https://www.amazon.cn/寻路中国-从乡村到工厂的自驾之旅-彼得•海斯勒/dp/B004IJO942/ref=sr_1_1?ie=UTF8&amp;amp;qid=1478519980&amp;amp;sr=8-1&amp;amp;keywords=寻路中国&#34;&gt;寻路中国&lt;/a&gt;&lt;br /&gt;
+比尔•波特 &lt;a href=&#34;https://www.amazon.cn/dp/B00FCT5Q1W/ref=tmm_pap_swatch_0?_encoding=UTF8&amp;amp;qid=1478520079&amp;amp;sr=8-3&#34;&gt;丝绸之路&lt;/a&gt;&lt;br /&gt;
+比尔•波特 &lt;a href=&#34;https://www.amazon.cn/图书/dp/B00MO05IP6/ref=sr_1_1?ie=UTF8&amp;amp;qid=1478520167&amp;amp;sr=8-1&amp;amp;keywords=黄河之旅&#34;&gt;黄河之旅&lt;/a&gt;&lt;br /&gt;
+比尔•波特 &lt;a href=&#34;https://www.amazon.cn/禅的行囊-比尔·波特/dp/B00KLUX2LS/ref=sr_1_1?ie=UTF8&amp;amp;qid=1478520254&amp;amp;sr=8-1&amp;amp;keywords=禅的行囊&#34;&gt;禅的行囊&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>一些想法</title>
@@ -628,157 +650,6 @@ multivariate El Nino Southern Oscillation index (MEI)数据来自 &lt;a href=&#3
 &lt;h3 id=&#34;2-实战:2434367f671f708106a85f2a67d5fdf5&#34;&gt;2.实战&lt;/h3&gt;
 
 &lt;p&gt;做法和线性优化是一样的。只是在条件里面要加一个Integer／Binary的限制。所以就不细讲了。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MIT:The Analytics Edge 笔记08－线性优化</title>
-      <link>http://youngspring1.github.io/post/2016/2016-06-19-R08/</link>
-      <pubDate>Sun, 19 Jun 2016 09:28:58 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-06-19-R08/</guid>
-      <description>
-
-&lt;p&gt;MIT课程 &lt;a href=&#34;https://courses.edx.org/courses/course-v1:MITx+15.071x_3+1T2016/info&#34;&gt;15.071x The Analytics Edge&lt;/a&gt; 第八单元的学习记录。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;linear-optimization:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;Linear Optimization&lt;/h2&gt;
-
-&lt;p&gt;第八单元的主题是线性优化。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-理论:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;1.理论&lt;/h3&gt;
-
-&lt;h4 id=&#34;线性优化:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;线性优化&lt;/h4&gt;
-
-&lt;p&gt;线性优化，其实是用Excel／LibreOffice求解一个简单的多元1次多项式的最大值。&lt;br /&gt;
-使用LibreOffice是这样做的：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;在单元格中填写多项式和约束条件。&lt;/li&gt;
-&lt;li&gt;选取Tools-&amp;gt;Solver，指定多项式，以及各种约束条件，当然也要选择［Linear Solver］这个方法。&lt;/li&gt;
-&lt;li&gt;点击［Solve］就可以得到结果啦。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;在Excel中，需要在&lt;code&gt;option&lt;/code&gt; - &lt;code&gt;addin&lt;/code&gt; - &lt;code&gt;Excel addin&lt;/code&gt; 选择加载&lt;code&gt;solver addin&lt;/code&gt;，这样才会在data菜单栏中显示出&lt;code&gt;solver&lt;/code&gt;按钮。&lt;/p&gt;
-
-&lt;h4 id=&#34;sensitivity-analysis:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;sensitivity analysis&lt;/h4&gt;
-
-&lt;p&gt;sensitivity analysis用来展示，结果是如何随数据（变量／约束条件）的变化而变化的。&lt;br /&gt;
-shadow prices：表示当需求增加时，将（总量增加量／需求增量）的值定义为影子价格。&lt;br /&gt;
-&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20160624-R08-sensitive.png&#34; alt=&#34;sensitivity analysis&#34; /&gt;
-如图，纵坐标和横坐标表示两种不同的需求。暗红色阴影表示可能的取值范围。&lt;br /&gt;
-如果不断提高需求R，从100到125到150，影子价格都保持不变；但是如果需求提高到170，影子价格就会发生变化。&lt;br /&gt;
-如果不短提高需求D，从150到100，影子价格都为0，总量也不变。&lt;/p&gt;
-
-&lt;p&gt;影子价格有可能在需求增加的一个范围内保持不变。也有可能一直为0。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-实战:b27ba36c9adad52060ae60e72a6ed77d&#34;&gt;2.实战&lt;/h3&gt;
-
-&lt;p&gt;当然，用R也能解决这样的问题。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# 先安装pkg
-install.packages(&amp;quot;lpSolveAPI&amp;quot;)
-library(lpSolveAPI)
-
-# 创建模型
-# 说明：
-# 第一个参数是约束条件的个数。
-# one capacity constraint: 载客量有一个最大值（飞机座位数）
-# two demand constraints : 每种票价的数目（regular seats／discount seats）都有一个最大值
-# 所以这个参数的取值是3
-# 第二个参数是变量的个数。
-# decision variables : 我们有两种票价（regular seats／discount seats）
-# 所以这个参数的取值是2
-
-AirlineSimple = make.lp(3,2)
-# 创建出来的AirlineSimple是这样子的：
-Model name: 
-            C1    C2         
-Minimize     0     0         
-R1           0     0  free  0
-R2           0     0  free  0
-R3           0     0  free  0
-Kind       Std   Std         
-Type      Real  Real         
-Upper      Inf   Inf         
-Lower        0     0         
-
-# 那下面我们就来指定多项式和约束条件
-# 最终的效果是这样的：
-# max         617*R + 238*D
-# subject to    1*R +   1*D &amp;lt;= 166
-#               1*R +   0*D &amp;lt;= 100
-#               0*R +   1*D &amp;lt;= 150  
-
-# 特别注意：执行顺序，set.objfn()不能放在前面，我被坑了。。。
-# 指定约束条件（跟效果竖着对比着看）
-set.column(AirlineSimple, 1, c(1,1,0))
-set.column(AirlineSimple, 2, c(1,0,1))
-set.constr.type(AirlineSimple, c(&amp;quot;&amp;lt;=&amp;quot;,&amp;quot;&amp;lt;=&amp;quot;,&amp;quot;&amp;lt;=&amp;quot;))
-set.rhs(AirlineSimple, c(166,100,150))
-# 指定两个变量的参数
-set.objfn(AirlineSimple, c(617,238))
-# 默认的是最小值，我们改为最大值
-lp.control(AirlineSimple,sense=&#39;max&#39;)
-
-# 这样就创建好了：
-Model name: 
-            C1    C2         
-Maximize   617   238         
-R1           1     1  &amp;lt;=  166
-R2           1     0  &amp;lt;=  100
-R3           0     1  &amp;lt;=  150
-Kind       Std   Std         
-Type      Real  Real         
-Upper      Inf   Inf         
-Lower        0     0
-
-# 变量的取值是上面最后两行Upper和Lower，可以通过函数set.bounds()来修改
-
-# 现在可以来运行了
-# 如果正确运行，返回值是0
-solve(AirlineSimple)
-# 查看取得的最大值
-get.objective(AirlineSimple)
-# 查看取最大值时，两个变量的取值
-get.variables(AirlineSimple)
-
-# JFK 从DFW中转，到LAX的场景
-# 有8个约束条件，6个变量：
-AirlineConnecting = make.lp(8,6)
-set.column(AirlineConnecting, 1, c(1,1,1,0,0,0,0,0))
-set.column(AirlineConnecting, 2, c(1,1,0,1,0,0,0,0))
-set.column(AirlineConnecting, 3, c(1,0,0,0,1,0,0,0))
-set.column(AirlineConnecting, 4, c(1,0,0,0,0,1,0,0))
-set.column(AirlineConnecting, 5, c(0,1,0,0,0,0,1,0))
-set.column(AirlineConnecting, 6, c(0,1,0,0,0,0,0,1))
-set.constr.type(AirlineConnecting, rep(&amp;quot;&amp;lt;=&amp;quot;,8))
-set.rhs(AirlineConnecting, c(166,166,80,120,75,100,60,110))
-set.objfn(AirlineConnecting, c(428,190,642,224,512,190))
-lp.control(AirlineConnecting,sense=&#39;max&#39;)
-
-# 模型稍微有点大
-Model name: 
-        C1    C2    C3    C4    C5    C6         
-Maximize   428   190   642   224   512   190         
-R1           1     1     1     1     0     0  &amp;lt;=  166
-R2           1     1     0     0     1     1  &amp;lt;=  166
-R3           1     0     0     0     0     0  &amp;lt;=   80
-R4           0     1     0     0     0     0  &amp;lt;=  120
-R5           0     0     1     0     0     0  &amp;lt;=   75
-R6           0     0     0     1     0     0  &amp;lt;=  100
-R7           0     0     0     0     1     0  &amp;lt;=   60
-R8           0     0     0     0     0     1  &amp;lt;=  110
-Kind       Std   Std   Std   Std   Std   Std         
-Type      Real  Real  Real  Real  Real  Real         
-Upper      Inf   Inf   Inf   Inf   Inf   Inf         
-Lower        0     0     0     0     0     0
-
-solve(AirlineConnecting)
-get.objective(AirlineConnecting)
-get.variables(AirlineConnecting)
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
