@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>机器学习的数学基础 on 行行重行行</title>
+    <link>http://youngspring1.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/</link>
+    <description>Recent content in 机器学习的数学基础 on 行行重行行</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2016. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 20 Dec 2016 22:43:37 +0800</lastBuildDate>
+    <atom:link href="http://youngspring1.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>机器学习的数学基础02－贝叶斯条件概率</title>
+      <link>http://youngspring1.github.io/post/2016/2016-12-20-ml02-bayes/</link>
+      <pubDate>Tue, 20 Dec 2016 22:43:37 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-12-20-ml02-bayes/</guid>
+      <description>&lt;p&gt;贝叶斯条件概率&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>机器学习的数学基础01－概率与上帝视角</title>
+      <link>http://youngspring1.github.io/post/2016/2016-12-20-ml01-prob/</link>
+      <pubDate>Tue, 20 Dec 2016 17:57:36 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2016/2016-12-20-ml01-prob/</guid>
+      <description>&lt;p&gt;现在无比流行的机器学习，其实对大量数据进行统计，计算其主要特征。以前叫做“统计学习”，倒是非常明确地说出了它的本质，就是统计，在计算时候也会涉及到一些代数的知识。&lt;br /&gt;
+这个专栏就按照自己的理解，一点点地讲些肤浅的数学基础。&lt;/p&gt;
+
+&lt;p&gt;题外话：“机器学习”真是个非常投机取巧的名字，搞得很多外行人以为只要有台机器就可以学习了。实际上这是建立在大量数据，以及数学运算的基础上的。人工智能，有人做苦工才会带来智能，并不是像科幻片那样，想到就能做到。统计和代数的知识早就成熟了，机器学习以前没有流行，主要是因为人类还没攒下足够多的数据。&lt;/p&gt;
+
+&lt;p&gt;这次就说说概率吧。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
