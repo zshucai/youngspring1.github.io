@@ -7,8 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2016. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 20 Dec 2016 22:43:37 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Jan 2017 21:42:40 +0800</lastBuildDate>
     <atom:link href="http://youngspring1.github.io/feed/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>比利林恩的内心世界</title>
+      <link>http://youngspring1.github.io/post/2017/2017-01-07-bilylyne/</link>
+      <pubDate>Sat, 07 Jan 2017 21:42:40 +0800</pubDate>
+      
+      <guid>http://youngspring1.github.io/post/2017/2017-01-07-bilylyne/</guid>
+      <description>&lt;p&gt;一个普通人的内心世界&lt;/p&gt;
+
+&lt;p&gt;和1900一样，待在家里、待在美国更麻烦，才回战场的吧。毕竟那里才是他擅长的地方。&lt;/p&gt;
+
+&lt;p&gt;封面很素气。&lt;br /&gt;
+&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20170107-billytext.JPG&#34; alt=&#34;book&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;读到这一句的时候惊心动魄。&lt;br /&gt;
+人生大部分时间是慵懒而得过且过的，也许某天出现了一些酸甜苦辣，但往往第二天就淡了，最终变成索然无味的一团。
+&lt;img src=&#34;http://7xrjai.com1.z0.glb.clouddn.com/20170107-billybook.jpg&#34; alt=&#34;txt&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>机器学习的数学基础02－贝叶斯条件概率</title>
@@ -415,47 +434,6 @@
 &lt;h3 id=&#34;大阪:66a20a1b18f5b2a06185ad3f2ae31f36&#34;&gt;大阪&lt;/h3&gt;
 
 &lt;p&gt;道顿堀、心斋桥&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>动作执行层和任务执行层</title>
-      <link>http://youngspring1.github.io/post/2016/2016-07-30-confusing/</link>
-      <pubDate>Sat, 30 Jul 2016 14:51:22 +0800</pubDate>
-      
-      <guid>http://youngspring1.github.io/post/2016/2016-07-30-confusing/</guid>
-      <description>
-
-&lt;p&gt;之前的转帖&lt;a href=&#34;http://youngspring1.github.io/post/2016/2016-03-15-career/&#34;&gt;职级系统&lt;/a&gt;，现在感受更加深刻了。&lt;/p&gt;
-
-&lt;h4 id=&#34;动作执行层:6495a2b8d9538cee1b4b537108fefa7b&#34;&gt;动作执行层&lt;/h4&gt;
-
-&lt;p&gt;动作执行层简直是最幸福最舒服的，把上级安排的任务按时保质地完成，最多优化成果、提高效率，其他什么都不需要操心。&lt;br /&gt;
-在这个层次上，才气（技术）最重要，而且很大程度上可以按照自己的意愿发展才气。&lt;/p&gt;
-
-&lt;h4 id=&#34;任务执行层:6495a2b8d9538cee1b4b537108fefa7b&#34;&gt;任务执行层&lt;/h4&gt;
-
-&lt;p&gt;现在可以接触到这个层次。&lt;br /&gt;
-任务执行层就苦逼了。需要将客户的任务拆解成动作，分配给动作执行层，还要将状况反馈给自己的上级。&lt;br /&gt;
-有更苦逼的吗？有哇，有时候任务执行层，也要承担动作执行层的一部分动作。&lt;br /&gt;
-还有更苦逼一点的吗？有哇，你来管理多个项目。&lt;br /&gt;
-在这个层次上，需要千方百计压抑自己的才气，才气的发挥都留给动作执行层；安排动作，配置风险，管理团队成员的情绪；最大化责任心……无穷无尽的操心啊。&lt;br /&gt;
-需要像一台虚拟平台的host一样，虚拟出各种角色（客户、上级、下级），考虑他们的所思所想，还要在这些角色之间随意切换！&lt;br /&gt;
-如果吃不了这个层次的苦，就只有一辈子待在动作执行层了。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;前几天有小朋友问我markdown里面能不能放视频，试了一下，youtube不行，vimeo可以。&lt;br /&gt;
-嗯嗯，最近听这首：&lt;br /&gt;
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//player.vimeo.com/video/176835820&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
- &lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;是的，vimeo也需要翻墙才能播放。我贴心地提供了一个墙内的链接&lt;a href=&#34;http://7xrjai.com1.z0.glb.clouddn.com/%E5%A4%A7%E9%B1%BC%E6%B5%B7%E6%A3%A0.mp4&#34;&gt;大鱼海棠钢琴曲&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
 </description>
     </item>
     
